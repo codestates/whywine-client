@@ -1,6 +1,6 @@
 ---
 name: Task Card
-about: Describe this issue template's purpose here.
+about: 할 일, 이슈 그리고 마무리
 title: ''
 labels: ''
 assignees: ''

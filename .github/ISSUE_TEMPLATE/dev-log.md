@@ -1,6 +1,6 @@
 ---
 name: Dev-Log
-about: Describe this issue template's purpose here.
+about: 매일 매일 작성합시다
 title: ''
 labels: ''
 assignees: ''
