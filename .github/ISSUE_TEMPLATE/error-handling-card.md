@@ -1,6 +1,6 @@
 ---
 name: Error Handling Card
-about: 너를 힘들게 한 에러를 혼내주자
+about: 당신을 힘들게 한 에러를 혼내주자
 title: ''
 labels: ''
 assignees: ''
