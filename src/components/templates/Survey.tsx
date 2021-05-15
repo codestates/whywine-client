@@ -1,5 +1,7 @@
-import React from "react";
+import * as React from "react";
 
-export default function Survey() {
-  return <div></div>;
-}
+const Survey: React.FC = () => {
+  return <div>설문조사</div>;
+};
+
+export default Survey;

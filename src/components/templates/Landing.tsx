@@ -1,11 +1,8 @@
 import Survey1 from "../organisms/survey1";
+import * as React from "react";
 
-function Landing() {
-  return (
-    <div className="Landing">
-      <Survey1 />
-    </div>
-  );
-}
+const Landing: React.FC = () => {
+  return <div>랜딩페이지</div>;
+};
 
 export default Landing;
