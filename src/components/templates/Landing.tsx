@@ -1,7 +1,13 @@
 import * as React from "react";
+import SurveyModal from "../organisms/surveyModal";
 
 const Landing: React.FC = () => {
-  return <div>랜딩페이지</div>;
+  return (
+    <div className="landingPage">
+      랜딩페이지
+      <SurveyModal />
+    </div>
+  );
 };
 
 export default Landing;
