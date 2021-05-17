@@ -5,12 +5,11 @@
 }
 
 body {
-  background-color: black;
+  /* background-color: black; */
 }
 
-html {
-  display: flex;
-  justify-content: center;
+button {
+  margin: 20px;
 }
 
 .SurveyModal {
@@ -45,6 +44,12 @@ html {
 .surNextPrevBox {
   display: flex;
   flex-direction: row;
+  width: 100rem;
+  justify-content: space-around;
+}
+.surDKnowBtn {
+  display: flex;
+  justify-content: center;
 }
 
 .surFirstBox {
@@ -54,4 +59,73 @@ html {
 }
 .langdingImg img {
   width: 50%;
+}
+
+.surveySkipBtn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 20px;
+}
+
+.surMainText {
+  margin-top: 300px;
+  margin-bottom: 20px;
+}
+
+.kindOfWine {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+}
+
+.resultCardBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20rem;
+}
+.resultBtnBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rem;
+}
+.goToSignUpBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.frontCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.backCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardLeft {
+  position: absolute;
+  transition: all 1s ease;
+  transition-delay: 0.5s;
+}
+.cardCenter {
+  position: absolute;
+  transition: all 1s ease;
+  transition-delay: 1s;
+}
+.cardRight {
+  position: absolute;
+  transition: all 1s ease;
+  transition-delay: 1.5s;
+}
+
+.wine {
+  width: 317px;
+  height: 490px;
+  position: absolute;
 }
