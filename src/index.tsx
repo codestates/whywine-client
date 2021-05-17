@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Landing from "./components/templates/Landing";
+import App from "./router/App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Landing />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
