@@ -1,7 +1,9 @@
-
 root {
   margin: 0;
   padding: 0;
+}
+body {
+  background-color: black;
 }
 .SurveyModal {
   display: flex;
@@ -22,8 +24,6 @@ root {
 .SurveyModalBtn {
   display: flex;
   width: 200px;
-body {
-  background-color: black;
 }
 .langdingImg {
   display: flex;
@@ -32,5 +32,4 @@ body {
 }
 .langdingImg img {
   width: 50%;
-
 }
