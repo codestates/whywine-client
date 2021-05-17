@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+}
+
+.surTypeTags {
+  display: flex;
+  flex-direction: row;
+}
+
+.surNextPrevBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.surFirstBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
