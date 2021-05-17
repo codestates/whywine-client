@@ -1,0 +1,11 @@
+body {
+  background-color: black;
+}
+.langdingImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.langdingImg img {
+  width: 50%;
+}
