@@ -16,3 +16,4 @@ export default function surTypeTags() {
     </div>
   );
 }
+// TODO: 사용자가 태그를 선택하면 로컬스토리지에 저장해주어야 함. 설문 flow가 완료되면 작업할 예정
