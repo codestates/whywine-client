@@ -1,19 +1,72 @@
-root {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
+
 body {
   background-color: black;
 }
+
+html {
+  display: flex;
+  justify-content: center;
+}
+
 .SurveyModal {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border: 2px solid red;
+  border: 2px solid rgb(109, 95, 95);
+  justify-content: space-around;
   width: 400px;
   height: 300px;
 }
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.modal > div {
+  width: 90%;
+  max-width: 450px;
+  margin: 0 auto;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  animation: modal-show 0.3s;
+  overflow: hidden;
+}
+
+.modal.openModal {
+  display: flex;
+  align-items: center;
+  animation: modal-bg-show 0.3s;
+}
+
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .landingPage {
   user-select: auto;
   display: flex;
@@ -23,9 +76,38 @@ body {
 }
 .SurveyModalBtn {
   display: flex;
-  width: 200px;
+  width: 400px;
+  height: 80px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.SurveyModalBtn button {
+  width: 8rem;
+  height: 30px;
 }
 .langdingImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 150px;
+}
+
+.langdingImg img {
+  margin: 20px auto;
+}
+.surTypeTags {
+  display: flex;
+  flex-direction: row;
+}
+
+.surNextPrevBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.surFirstBox {
   display: flex;
   flex-direction: column;
   align-items: center;
