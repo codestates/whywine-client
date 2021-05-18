@@ -4,7 +4,9 @@ import { useHistory } from "react-router-dom";
 const GoToMainBtn: Raect.FC = () => {
   const history = useHistory();
   return (
-    <button onClick={() => history.push("/main")}>메인페이지로 가기</button>
+    <div>
+      <button onClick={() => history.push("/main")}>메인페이지로 가기</button>
+    </div>
   );
 };
 

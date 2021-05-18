@@ -1,6 +1,6 @@
 import * as React from "react";
-import GoToMainBtn from "../atoms/Buttons/goToMainBtn";
-import GoToSurveyBtn from "../atoms/Buttons/goToSurveyBtn";
+import GoToMainBtn from "../atoms/Buttons/GoToMainBtn";
+import GoToSurveyBtn from "../atoms/Buttons/GoToSurveyBtn";
 
 interface Props {
   isOpen: Boolean;
