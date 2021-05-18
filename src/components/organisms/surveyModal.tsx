@@ -1,6 +1,6 @@
 import * as React from "react";
-import GoToMainBtn from "../atoms/Buttons/goToMainBtn";
-import GoToSurveyBtn from "../atoms/Buttons/goToSurveyBtn";
+import GoToMainBtn from "../atoms/Buttons/GoToMainBtn";
+import GoToSurveyBtn from "../atoms/Buttons/GoToSurveyBtn";
 
 const SurveyModal: React.FC = () => {
   const [isOpen, setIsipen] = React.useState<Boolean>(false);
@@ -8,7 +8,7 @@ const SurveyModal: React.FC = () => {
   React.useEffect(() => {
     setTimeout(() => {
       setIsipen(true);
-    }, 3000);
+    }, 2000);
   }, []);
 
   return (
