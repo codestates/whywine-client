@@ -1,9 +1,9 @@
 import React, { Children } from "react";
 
-interface wineTag {
+interface typeTag {
   wineType: string;
 }
-const surTypeTag: React.FC<wineTag> = ({ wineType }) => {
+const surTypeTag: React.FC<typeTag> = ({ wineType }) => {
   return <div className="kindOfWine">{wineType}</div>;
 };
 export default surTypeTag;

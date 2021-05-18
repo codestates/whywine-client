@@ -8,8 +8,8 @@ export default function surTypeTags() {
   return (
     <div>
       <div className="surTypeTags">
-        <RedWine wineType="#씁쓸한" />
-        <WhiteWine wineType="#달달한" />
+        <RedWine wineType="#레드" />
+        <WhiteWine wineType="#화이트" />
         <RoseWine wineType="#로제" />
         <SparklingWine wineType="#스파클링" />
       </div>
