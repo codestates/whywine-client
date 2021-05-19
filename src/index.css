@@ -194,8 +194,12 @@ button {
 .mainWineCon {
   margin-left: 40px;
   width: 70%;
-  overflow-y: scroll;
   height: 750px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.mainWineCon::-webkit-scrollbar {
+  visibility: hidden;
 }
 .mainContainers {
   display: flex;
@@ -204,6 +208,12 @@ button {
 }
 .mainLabelBox {
   display: none;
+}
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  /* background-image: url(./img/arrow_right.svg); */
 }
 
 @media screen and (max-width: 800px) {

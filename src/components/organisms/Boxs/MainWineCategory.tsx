@@ -3,9 +3,28 @@ import MainWineCard from "../../atoms/Cards/MainWineCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { url } from "inspector";
+import rightArrow from "../../../img/arrow_right.svg";
 
 interface categoryType {
   category: string;
+}
+
+function SampleNextArrow(props: any) {
+  const { className, style, onClick } = props;
+  return (
+    <img
+      className={className}
+      style={{
+        ...style,
+        marginRight: "40px",
+        width: "40px",
+        fontSize: "40px",
+      }}
+      src={rightArrow}
+      onClick={onClick}
+    />
+  );
 }
 
 const MainWineCategory: React.FC<categoryType> = ({ category }) => {
@@ -15,6 +34,7 @@ const MainWineCategory: React.FC<categoryType> = ({ category }) => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
+    nextArrow: <SampleNextArrow />,
     responsive: [
       {
         breakpoint: 1024,
