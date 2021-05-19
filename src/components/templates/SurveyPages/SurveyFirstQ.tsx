@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SurMainText from "../../atoms/Texts/surMainText";
-import SurColorTags from "../../organisms/Tags/surTypeTags";
+import SurTypeTags from "../../organisms/Tags/surTypeTags";
 import SurBtns from "../../organisms/Buttons/surBtns";
 
 const SurveyFirstQ = () => {
@@ -12,7 +12,7 @@ const SurveyFirstQ = () => {
       <div className="surFirstBox">
         <h1>1번질문</h1>
         <SurMainText />
-        <SurColorTags />
+        <SurTypeTags />
         <SurBtns surNext={surNext} surPrev={surPrev} />
       </div>
     </div>
