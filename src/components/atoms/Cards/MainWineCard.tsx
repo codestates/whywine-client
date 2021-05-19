@@ -9,19 +9,17 @@ interface wineData {
 
 const MainWineCard = () => {
   return (
-    <div>
-      <div className="mainWineCard">
-        <img src={photo} alt="와인" className="mainWinePhoto" />
-        <div className="mainWineData">
-          <div className="mainWineNameBox">
-            <div className="mainWineName">Lupi Rezerva</div>
-            <div className="mainWineYear">2016</div>
-          </div>
+    <div className="mainWineCard">
+      <img src={photo} alt="와인" className="mainWinePhoto" />
+      <div className="mainWineData">
+        <div className="mainWineNameBox">
+          <div className="mainWineName">Lupi Rezerva</div>
+          <div className="mainWineYear">2016</div>
+        </div>
 
-          <div className="mainWineLikeTagBox">
-            <div className="mainWineLike">좋아요: 100</div>
-            <div className="mainWineTag">#레드#씁쓸한#인기있는</div>
-          </div>
+        <div className="mainWineLikeTagBox">
+          <div className="mainWineLike">좋아요: 100</div>
+          <div className="mainWineTag">#레드#씁쓸한#인기있는</div>
         </div>
       </div>
     </div>

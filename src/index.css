@@ -1,5 +1,5 @@
 body {
-  /* background-color: black; */
+  background-color: rgb(139, 137, 137);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -69,8 +69,10 @@ button {
   margin-top: 300px;
   margin-bottom: 20px;
 }
-
-.kindOfWine {
+.wineTypeBox {
+  display: flex;
+}
+.wineTypeTag {
   margin-bottom: 20px;
   display: flex;
   justify-content: space-around;
@@ -152,27 +154,27 @@ button {
 }
 .mainWineCard {
   display: flex;
-  flex-direction: row;
-  margin-left: 20px;
-  width: 300px;
-  border: 2px solid black;
+  flex-direction: column;
+  /* margin-left: 70px; */
+  align-items: center;
+  height: 400px;
 }
 .mainWineData {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   margin-left: 20px;
+  justify-content: center;
 }
-.mainWineCardBox {
+/* .mainWineCardBox {
   margin-right: 10px;
   margin-top: 20px;
   display: flex;
   flex-direction: row;
-  width: 980px;
+  width: 1430px;
   overflow: hidden;
   overflow-x: scroll;
-}
+} */
 .mainWinePhoto {
+  width: 82px;
   height: 300px;
 }
 .navBars {
@@ -184,13 +186,27 @@ button {
   display: none;
   cursor: pointer;
 }
-.mainWineConBox {
-  height: 750px;
+/* .mainWineConBox {
+  width: 1024px;
   overflow-y: scroll;
   padding: 0;
+} */
+.mainWineCon {
+  margin-left: 40px;
+  width: 70%;
+  overflow-y: scroll;
+  height: 750px;
+}
+.mainContainers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.mainLabelBox {
+  display: none;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 800px) {
   body {
     overflow: hidden;
     overflow-y: scroll;
@@ -231,13 +247,7 @@ button {
   .mainWineCategory {
     width: 100%;
   }
-  .mainWineCard {
-    width: 91vw;
-    margin-left: 25px;
-    margin-right: 20px;
-    flex-direction: column;
-    align-items: center;
-  }
+
   .mainWinePhoto {
     width: 82px;
   }
@@ -245,4 +255,25 @@ button {
     flex-direction: row;
     width: 100%;
   }
+  .slick-slider {
+    width: 100%;
+  }
+  .mainWineConBox {
+    width: 100%;
+  }
+  .mainTagBox {
+    display: none;
+  }
+  .mainTagBox.active {
+    display: block;
+    width: 800px;
+    position: absolute;
+  }
+  .mainLabelBox {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
 }
+
+/**slick-slider**/
