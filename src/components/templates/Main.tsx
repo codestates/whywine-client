@@ -12,7 +12,6 @@ const Main: React.FC = () => {
         <MainWineCon />
         <MainWineCon />
         <MainWineCon />
-        <MainWineCon />
       </ul>
     </div>
   );

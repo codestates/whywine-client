@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import GoToSurveyBtn from "../../atoms/Buttons/GoToSurveyBtn";
 import MainMyPageBtn from "../../atoms/Buttons/MainMyPageBtn";
 import MainSignInBtn from "../../atoms/Buttons/MainSignInBtn";
@@ -8,27 +8,32 @@ import MainSearchBar from "../Inputs/MainSearchBar";
 import navBars from "../../../img/bars-solid.svg";
 
 const MainNav = () => {
-  useEffect(() => {
-    const bars = document.querySelector(".navBars");
-    const navMenu = document.querySelector(".mainNavMenu");
-
-    bars?.addEventListener("click", () => {
-      navMenu?.classList.toggle("active");
-    });
-  }, []);
+  const [menu, setMenu] = useState(false);
+  //! react에서 권장하는 방식이 아님
+  // useEffect(() => {
+  //   const bars = document.querySelector(".navBars");
+  //   const navMenu = document.querySelector(".mainNavMenu");
+  //   bars?.addEventListener("click", () => {
+  //     navMenu?.classList.toggle("active");
+  //   });
+  // }, []);
+  const handleMenu = () => {
+    setMenu(!menu);
+  };
+  //*class name을 띄우고 쓰면 여러개 가능
   return (
     <div className="mainNav">
       <div className="mainLogoSearchBox">
         <MainLogo />
         <MainSearchBar />
       </div>
-      <ul className="mainNavMenu">
+      <div className={menu ? "mainNavMenu active" : "mainNavMenu"}>
         <GoToSurveyBtn />
         <MainSignInBtn />
         <MainSignUpBtn />
         <MainMyPageBtn />
-      </ul>
-      <img src={navBars} alt="Bars" className="navBars" />
+      </div>
+      <img src={navBars} alt="Bars" className="navBars" onClick={handleMenu} />
     </div>
   );
 };
