@@ -1,11 +1,8 @@
-* {
+body {
+  background-color: rgb(139, 137, 137);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  /* background-color: black; */
 }
 
 button {
@@ -72,8 +69,10 @@ button {
   margin-top: 300px;
   margin-bottom: 20px;
 }
-
-.kindOfWine {
+.wineTypeBox {
+  display: flex;
+}
+.wineTypeTag {
   margin-bottom: 20px;
   display: flex;
   justify-content: space-around;
@@ -129,3 +128,162 @@ button {
   height: 490px;
   position: absolute;
 }
+
+/**Main**/
+
+.mainNav {
+  display: flex;
+  justify-content: space-between;
+  background-color: cornflowerblue;
+  align-items: center;
+}
+.mainNavMenu {
+  display: flex;
+}
+.mainLogoSearchBox {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+}
+.mainSearchBar {
+  display: flex;
+  flex-direction: row;
+}
+.mainSearchBtn {
+  margin: 0;
+}
+.mainWineCard {
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 70px; */
+  align-items: center;
+  height: 400px;
+}
+.mainWineData {
+  display: flex;
+  margin-left: 20px;
+  justify-content: center;
+}
+/* .mainWineCardBox {
+  margin-right: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 1430px;
+  overflow: hidden;
+  overflow-x: scroll;
+} */
+.mainWinePhoto {
+  width: 82px;
+  height: 300px;
+}
+.navBars {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+  cursor: pointer;
+}
+/* .mainWineConBox {
+  width: 1024px;
+  overflow-y: scroll;
+  padding: 0;
+} */
+.mainWineCon {
+  margin-left: 40px;
+  width: 70%;
+  height: 750px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.mainWineCon::-webkit-scrollbar {
+  visibility: hidden;
+}
+.mainContainers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.mainLabelBox {
+  display: none;
+}
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  /* background-image: url(./img/arrow_right.svg); */
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+  .mainNav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .mainLogoSearchBox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .mainLogo {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .mainNavMenu {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 8px 24px;
+    display: none;
+    width: 100%;
+    text-align: center;
+  }
+  .navBars {
+    display: block;
+  }
+  .mainNavMenu.active {
+    display: flex;
+  }
+
+  .mainCategoryName {
+    text-align: center;
+  }
+  .mainWineCategory {
+    width: 100%;
+  }
+
+  .mainWinePhoto {
+    width: 82px;
+  }
+  .mainWineData {
+    flex-direction: row;
+    width: 100%;
+  }
+  .slick-slider {
+    width: 100%;
+  }
+  .mainWineConBox {
+    width: 100%;
+  }
+  .mainTagBox {
+    display: none;
+  }
+  .mainTagBox.active {
+    display: block;
+    width: 800px;
+    position: absolute;
+  }
+  .mainLabelBox {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+}
+
+/**slick-slider**/

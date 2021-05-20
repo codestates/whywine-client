@@ -4,7 +4,7 @@ import SurColorTags from "../../organisms/Tags/surTypeTags";
 import SurBtns from "../../organisms/Buttons/surBtns";
 
 const SurveyThirdQ = () => {
-  const [surNext, setSurNext] = useState("last");
+  const [surNext, setSurNext] = useState("result");
   const [surPrev, setSurPrev] = useState("second");
 
   return (

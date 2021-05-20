@@ -8,14 +8,14 @@ import SurveyResultQ from "../components/templates/SurveyPages/SurveyResultQ";
 
 import Main from "../components/templates/Main";
 
-const App: React.FC = () => {
+const Survey: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/survey" exact component={SurveyFirstQ}></Route>
         <Route path="/survey/second" exact component={SurveySecondQ}></Route>
         <Route path="/survey/third" exact component={SurveyThirdQ}></Route>
-        <Route path="/survey/last" exact component={SurveyResultQ}></Route>
+        <Route path="/survey/result" exact component={SurveyResultQ}></Route>
         <Route path="/main" component={Main}></Route>
         <Redirect path="*" to="/" />
       </Switch>
@@ -23,4 +23,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default Survey;
