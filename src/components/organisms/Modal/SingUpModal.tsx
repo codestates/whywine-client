@@ -1,10 +1,11 @@
 import * as React from "react";
-import GoToMainBtn from "../../atoms/Buttons/GoToSurveyBtn copy";
+import GoToMainBtn from "../../atoms/Buttons/GoToSurveyBtn";
+import GoToSurveyBtn from "../../atoms/Buttons/GoToSurveyBtn";
 
 interface Props {
   isOpen: Boolean;
 }
-
+//asd
 function SurveyModal({ isOpen }: Props) {
   return (
     <div className={isOpen ? "openModal modal" : "modal"}>
