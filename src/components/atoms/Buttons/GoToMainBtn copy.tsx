@@ -5,7 +5,7 @@ const GoToMainBtn: Raect.FC = () => {
   const history = useHistory();
   return (
     <div>
-      <button onClick={() => history.push("/main")}>메인페이지로 가기</button>
+      <div onClick={() => history.push("/main")}>메인페이지</div>
     </div>
   );
 };

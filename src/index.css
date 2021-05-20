@@ -5,32 +5,191 @@ body {
   box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(228, 10, 10);
+  line-height: 1.6;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.contanier {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  position: absolute;
+}
+section {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: center;
+}
 button {
   margin: 20px;
+}
+
+/* *      랜딩페이지 첫번째        */
+
+.FirstPage {
+  background-image: url("./img/wine-bottles-3623697_1920-복구됨.png");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.FirstPage > div {
+  margin: 0px 30px;
+}
+.FirstPage_Summery h1 {
+  margin: 0;
+  font-size: 100px;
+}
+.FirstPage_Summery p {
+  font-size: 20px;
+}
+.inputSurvey {
+  display: flex;
+  font-size: 50px;
+}
+.fa,
+.fas {
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin: 0px 7px;
+  cursor: pointer;
+}
+
+.LandingHeader {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 30px;
+  padding: 23px;
+  display: flex;
+  border-bottom: 2px solid;
+  justify-content: space-between;
+  width: 100%;
+  background: #fff;
+}
+
+.LandingHeader :nth-child(2) {
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* *      랜딩페이지 두번째        */
+
+.SecondPage {
+  background-image: url("./img/KakaoTalk_Photo_2021-05-20-00-28-15.jpeg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.SecondPage > div {
+  margin: 0px 30px;
+}
+.SecondPage_Summery h1 {
+  margin: 0;
+  font-size: 30px;
+}
+/* *      랜딩페이지 세번째        */
+
+.ThirdPage {
+  background-image: url("./img/KakaoTalk_Photo_2021-05-20-00-28-22.jpeg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+/* *      랜딩페이지 네번째        */
+
+.FourthPage {
+  background-image: url("./img/KakaoTalk_Photo_2021-05-20-00-28-22.jpeg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 
 .SurveyModal {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border: 2px solid red;
+  border: 2px solid rgb(109, 95, 95);
+  justify-content: space-around;
   width: 400px;
   height: 300px;
 }
-.landingPage {
-  user-select: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6);
 }
-.SurveyModalBtn {
-  display: flex;
-  width: 200px;
+.modal > div {
+  width: 90%;
+  max-width: 450px;
+  margin: 0 auto;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  animation: modal-show 0.3s;
+  overflow: hidden;
 }
 
-.langdingImg {
+.modal.openModal {
+  display: flex;
+  align-items: center;
+  animation: modal-bg-show 0.3s;
+}
+
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    margin-top: -50px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+@keyframes modal-bg-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.SurveyModalBtn {
+  display: flex;
+  width: 400px;
+  height: 80px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.SurveyModalBtn button {
+  width: 8rem;
+  height: 30px;
 }
 
 .surTypeTags {
@@ -53,9 +212,6 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.langdingImg img {
-  width: 50%;
 }
 
 .surveySkipBtn {
