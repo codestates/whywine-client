@@ -15,7 +15,7 @@ const Survey: React.FC = () => {
         <Route path="/survey" exact component={SurveyFirstQ}></Route>
         <Route path="/survey/second" exact component={SurveySecondQ}></Route>
         <Route path="/survey/third" exact component={SurveyThirdQ}></Route>
-        <Route path="/survey/last" exact component={SurveyResultQ}></Route>
+        <Route path="/survey/result" exact component={SurveyResultQ}></Route>
         <Route path="/main" component={Main}></Route>
         <Redirect path="*" to="/" />
       </Switch>
