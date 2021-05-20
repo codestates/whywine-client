@@ -1,7 +1,7 @@
-import * as Raect from "react";
+import * as React from "react";
 import { useHistory } from "react-router-dom";
 
-const GoToMainBtn: Raect.FC = () => {
+const GoToMainBtn: React.FC = () => {
   const history = useHistory();
   return (
     <div>
