@@ -33,7 +33,7 @@ button {
 /* *      랜딩페이지 첫번째        */
 
 .FirstPage {
-  background-image: url("./img/wine-bottles-3623697_1920-복구됨.png");
+  background-image: url("./img/wine-bottles-3623697_1920.png");
   background-size: cover;
   display: flex;
   flex-direction: column;

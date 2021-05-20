@@ -1,8 +1,8 @@
 import * as React from "react";
-import FirstPage from "../organisms/LandingPage/FirstPage";
-import SecondPage from "../organisms/LandingPage/SecondPage";
-import ThirdPage from "../organisms/LandingPage/ThirdPage";
-import FourthPage from "../organisms/LandingPage/FourthPage";
+import FirstPage from "./LandingPage/FirstPage";
+import SecondPage from "./LandingPage/SecondPage";
+import ThirdPage from "./LandingPage/ThirdPage";
+import FourthPage from "./LandingPage/FourthPage";
 import LandingHeader from "../organisms/Header/LandingHeader";
 
 function Landing() {

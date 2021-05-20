@@ -10,6 +10,7 @@ interface categoryType {
   category: string;
 }
 
+//! 커스텀 arrow사용하는 함수 나중에 결정이 나면 atoms로 옮겨야 함
 function SampleNextArrow(props: any) {
   const { className, style, onClick } = props;
   return (
