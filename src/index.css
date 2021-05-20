@@ -26,14 +26,11 @@ section {
   height: 100vh;
   scroll-snap-align: center;
 }
-button {
-  margin: 20px;
-}
 
 /* *      랜딩페이지 첫번째        */
 
 .FirstPage {
-  background-image: url("./img/wine-bottles-3623697_1920-복구됨.png");
+  background-image: url("./img/wine-bottles-3623697_1920.png");
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -50,7 +47,7 @@ button {
 .FirstPage_Summery p {
   font-size: 20px;
 }
-.inputSurvey {
+.FirstPage_InputSurvey {
   display: flex;
   font-size: 50px;
 }
@@ -63,7 +60,67 @@ button {
   margin: 0px 7px;
   cursor: pointer;
 }
+.scroll-down {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  opacity: 1;
+}
+.animated {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+@-webkit-keyframes bounce {
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    -webkit-transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-5px);
+  }
+}
 
+@keyframes bounce {
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+}
+
+.scroll-down i {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+}
+
+.scrollDownImg img {
+  text-align: center;
+}
 .LandingHeader {
   position: fixed;
   top: 0;
@@ -82,6 +139,8 @@ button {
 .LandingHeader :nth-child(2) {
   font-size: 15px;
   cursor: pointer;
+  display: flex;
+  margin: 0px 40px;
 }
 
 /* *      랜딩페이지 두번째        */
@@ -123,7 +182,7 @@ button {
   justify-content: center;
 }
 
-.SurveyModal {
+.SignInModal {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,7 +237,7 @@ button {
   }
 }
 
-.SurveyModalBtn {
+.SignInModalBtn {
   display: flex;
   width: 400px;
   height: 80px;
@@ -187,7 +246,7 @@ button {
   justify-content: space-between;
 }
 
-.SurveyModalBtn button {
+.SignInModalBtn button {
   width: 8rem;
   height: 30px;
 }

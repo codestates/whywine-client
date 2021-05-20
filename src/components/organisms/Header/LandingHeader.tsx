@@ -1,12 +1,18 @@
 import * as React from "react";
 import Title from "../../atoms/Title/Title";
 import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn copy";
+import SignIn from "../../atoms/Buttons/SignIn";
+import SignUp from "../../atoms/Buttons/SignUp";
 
 function LandingHeader() {
   return (
     <div className="LandingHeader">
       <Title />
-      <GoToMainBtn />
+      <div>
+        <SignIn />
+        <SignUp />
+        <GoToMainBtn />
+      </div>
     </div>
   );
 }
