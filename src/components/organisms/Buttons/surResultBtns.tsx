@@ -1,5 +1,5 @@
 import React from "react";
-import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn copy";
+import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn";
 import GoToSignUpBtn from "../../atoms/Buttons/GoToSignUpBtn";
 
 const surResultBtns = () => {
