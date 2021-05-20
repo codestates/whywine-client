@@ -1,6 +1,6 @@
 import * as React from "react";
 import Title from "../../atoms/Title/Title";
-import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn copy";
+import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn";
 import SignIn from "../../atoms/Buttons/SignIn";
 import SignUp from "../../atoms/Buttons/SignUp";
 
