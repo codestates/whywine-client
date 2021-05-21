@@ -5,7 +5,6 @@ import axios from "axios";
 interface Props {
   isOpen: Boolean;
   closeModal: React.MouseEventHandler<HTMLDivElement>;
-  //   loginHandler: any;
 }
 
 function SignInModal({ isOpen, closeModal }: Props) {
