@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useDisclosure, Button, Input } from "@chakra-ui/react";
+import { useDisclosure, Button } from "@chakra-ui/react";
 import {
   Drawer,
   DrawerBody,
@@ -20,7 +20,6 @@ const MainLabel = () => {
     <>
       <Button
         ref={btnRef}
-        colorScheme="teal"
         onClick={onOpen}
         margin="0"
         width="70px"
@@ -29,6 +28,7 @@ const MainLabel = () => {
         cursor="pointer"
         clipPath="polygon(0 0, 100% 0%, 100% 100%, 0 100%, 30% 50%)"
         marginTop="20px"
+        backgroundColor="wheat"
       >
         라벨
       </Button>
