@@ -29,8 +29,6 @@ const MainNav = () => {
       </div>
       <div className={menu ? "mainNavMenu active" : "mainNavMenu"}>
         <GoToSurveyBtn />
-        <MainSignInBtn />
-        <MainSignUpBtn />
         <MainMyPageBtn />
       </div>
       <img src={navBars} alt="Bars" className="navBars" onClick={handleMenu} />
