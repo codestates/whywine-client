@@ -7,7 +7,11 @@ const surTypeTag: React.FC<typeTag> = ({ wineType }) => {
   return (
     <div className="wineTypeBox">
       {wineType.map((type) => {
-        return <div className="wineTypeTag">{type}</div>;
+        return (
+          <div className="wineTypeTag">
+            <a href="#surFirstBox">{type}</a>
+          </div>
+        );
       })}
     </div>
   );

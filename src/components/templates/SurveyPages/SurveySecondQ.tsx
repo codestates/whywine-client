@@ -9,7 +9,7 @@ export default function SurveyFirstQ() {
 
   return (
     <div>
-      <div className="surFirstBox">
+      <div id="surFirstBox" className="surFirstBox">
         <h1>2번질문</h1>
         <SurMainText />
         <SurColorTags />
