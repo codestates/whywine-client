@@ -1,11 +1,56 @@
 import * as React from "react";
+require('dotenv').config();
 
 export default function SocialLogin() {
-  const socialLoginHandler = () => {
-    const url = `https://accounts.google.com/o/oauth2/auth?client_id=970331179604-upa291p2st8pmj3676qmnm4geurg21cb.apps.googleusercontent.com&redirect_uri=http://localhost:3000&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile email`;
+  // const socialLoginHandler = () => {
+  //   const url = `https://accounts.google.com/o/oauth2/auth?
+  //   client_id=970331179604-upa291p2st8pmj3676qmnm4geurg21cb.apps.googleusercontent.com&
+  //   redirect_uri=http://localhost:3000&
+  //   response_type=code&
+  //   scope=https://www.googleapis.com/auth/userinfo.profile email`;
 
-    window.location.assign(url);
-  };
+  //   window.location.assign(url);
+  // };
+  const googleId='683216118295-1hm4t23tq34jn8s6g2aegc9q2spt6jii.apps.googleusercontent.com'
+  const clientAddress = process.env.REACT_APP_API_ClIENT || 'https://localhost:3000'
+
+  const GoogleLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?
+    scope=https://www.googleapis.com/auth/userinfo.profile email&
+    access_type=offline&
+    include_granted_scopes=true&
+    response_type=code&
+    state=state_parameter_passthrough_value&
+    redirect_uri=${clientAddress}&
+    client_id=${googleId}`
+
+	const googleLoginHandler = () => {
+		window.location.assign(GoogleLoginUrl);
+	};
+
+	const getAuth = (authorizationCode: string) => {
+		const url = "/api/user/google";
+		axios
+			.post(url, { authorizationCode }, { withCredentials: true })
+			.then((res) => {
+				console.log(res)
+			})
+			.catch(() => {
+				alert("불가능");
+			});
+	};
+	useEffect(() => {
+		const url = new URL(window.location.href);
+		const authorizationCode = url.searchParams.get("code");
+		const googleCheck = window.location.href.indexOf("google");
+		if (authorizationCode && googleCheck !== -1) {
+			getAuth(authorizationCode);
+		}
+	});
+
+
+
+
+
   return (
     <div>
       <div className="social_box">
@@ -14,7 +59,7 @@ export default function SocialLogin() {
           type="text/css"
           href="//fonts.googleapis.com/css?family=Open+Sans"
         />
-        <div className="google-btn" onClick={socialLoginHandler}>
+        <div className="google-btn" onClick={googleLoginHandler}>
           <div className="google-icon-wrapper">
             <img
               className="google-icon"
