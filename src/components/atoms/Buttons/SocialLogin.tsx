@@ -1,4 +1,7 @@
 import * as React from "react";
+import { useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 require('dotenv').config();
 
 export default function SocialLogin() {
@@ -27,6 +30,7 @@ export default function SocialLogin() {
 		window.location.assign(GoogleLoginUrl);
 	};
 
+  const history = useHistory();
 	const getAuth = (authorizationCode: string) => {
 		const url = "/api/user/google";
 		axios
