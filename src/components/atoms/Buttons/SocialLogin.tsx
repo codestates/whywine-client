@@ -15,16 +15,9 @@ export default function SocialLogin() {
   //   window.location.assign(url);
   // };
   const googleId='683216118295-1hm4t23tq34jn8s6g2aegc9q2spt6jii.apps.googleusercontent.com'
-  const clientAddress = process.env.REACT_APP_API_ClIENT || 'https://localhost:3000'
+  const clientAddress = /* process.env.REACT_APP_API_ClIENT || */ 'https://localhost:3000'
 
-  const GoogleLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?
-    scope=https://www.googleapis.com/auth/userinfo.profile email&
-    access_type=offline&
-    include_granted_scopes=true&
-    response_type=code&
-    state=state_parameter_passthrough_value&
-    redirect_uri=${clientAddress}&
-    client_id=${googleId}`
+  const GoogleLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/userinfo.profile email&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=${clientAddress}&client_id=${googleId}`
 
 	const googleLoginHandler = () => {
 		window.location.assign(GoogleLoginUrl);
@@ -32,9 +25,9 @@ export default function SocialLogin() {
 
   const history = useHistory();
 	const getAuth = (authorizationCode: string) => {
-		const url = "/api/user/google";
+		const server = /* process.env.REACT_APP_API_SERVER */'https://localhost:4000'+'/auth/google'
 		axios
-			.post(url, { authorizationCode }, { withCredentials: true })
+			.post(server, { authorizationCode }, { withCredentials: true })
 			.then((res) => {
 				console.log(res)
 			})
