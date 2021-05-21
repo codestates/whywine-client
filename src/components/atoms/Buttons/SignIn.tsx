@@ -1,11 +1,13 @@
-import * as Raect from "react";
+export interface Props {
+  openModal: React.MouseEventHandler<HTMLDivElement>;
+}
 
-const SignIn: Raect.FC = () => {
+function SignIn({ openModal }: Props) {
   return (
-    <div>
+    <div onClick={openModal}>
       <div>로그인</div>
     </div>
   );
-};
+}
 
 export default SignIn;

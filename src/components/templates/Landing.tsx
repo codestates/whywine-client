@@ -1,10 +1,11 @@
-import * as React from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import FirstPage from "./LandingPage/FirstPage";
 import SecondPage from "./LandingPage/SecondPage";
 import ThirdPage from "./LandingPage/ThirdPage";
 import FourthPage from "./LandingPage/FourthPage";
 import LandingHeader from "../organisms/Header/LandingHeader";
+import SingInModal from "../organisms/Modal/SingInModal";
 
 interface Handler {
   data: string;
@@ -12,10 +13,6 @@ interface Handler {
 
 function Landing() {
   const history = useHistory();
-
-  const loginHandler = (data: object) => {
-    return history.push("/main");
-  };
 
   return (
     <>

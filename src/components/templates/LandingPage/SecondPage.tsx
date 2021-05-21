@@ -4,9 +4,7 @@ import UseScrollFadeIn from "../../atoms/Scroll/UseScrollFadeIn";
 function SecondPage() {
   const animatedItem = UseScrollFadeIn("up", 2, 1);
 
-  React.useEffect(() => {
-    console.log("asdasdsad", animatedItem);
-  }, []);
+  React.useEffect(() => {}, []);
 
   return (
     <div>

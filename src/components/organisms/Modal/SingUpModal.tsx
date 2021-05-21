@@ -1,20 +1,96 @@
-import * as React from "react";
-import GoToSurveyBtn from "../../atoms/Buttons/GoToSurveyBtn";
-import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn";
+import { useState, useEffect } from "react";
+import SocialLogin from "../../atoms/Buttons/SocialLogin";
+import axios from "axios";
 
 interface Props {
   isOpen: Boolean;
+  closeModal: React.MouseEventHandler<HTMLDivElement>;
+  //   loginHandler: any;
 }
 
-function SurveyModal({ isOpen }: Props) {
+function SignInModal({ isOpen, closeModal }: Props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [nickname, setNickName] = useState("");
+  const [isNone, setIsNone] = useState(true);
+  const [message, setMessage] = useState("");
+
+  const emailInputValue = (e: any) => {
+    setEmail(e.target.value);
+  };
+
+  const passwordInputValue = (e: any) => {
+    setPassword(e.target.value);
+  };
+
+  const nickNameInputValue = (e: any) => {
+    setNickName(e.target.value);
+  };
+
+  const signUpHandler = async (e: any) => {
+    if (e.key === "Enter" || e.type === "click") {
+      try {
+        const data = await axios.post(
+          "https://api.cakes.com/auth/signup",
+          { email, password, nickname },
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        );
+        close();
+      } catch (error) {
+        setIsNone(false);
+        setMessage(error.response.data.message);
+        setTimeout(() => {
+          setIsNone(true);
+        }, 2000);
+      }
+    }
+  };
+
   return (
     <div className={isOpen ? "openModal modal" : "modal"}>
       {isOpen ? (
-        <div className="SurveyModal">
-          <h1>와인 추천 받아보시겠습니까?</h1>
-          <div className="SurveyModalBtn">
-            <GoToSurveyBtn />
-            <GoToMainBtn />
+        <div className="SignInModal">
+          <div
+            className="failed_sginin"
+            style={{ opacity: isNone ? "0" : "1" }}
+          >
+            {message}
+          </div>
+          <input
+            name="email"
+            className="signup_input"
+            type="text"
+            placeholder="이메일"
+            onChange={emailInputValue}
+            onKeyDown={signUpHandler}
+          />
+          <input
+            name="password"
+            className="signup_input"
+            type="password"
+            placeholder="패스워드"
+            onChange={passwordInputValue}
+            onKeyDown={signUpHandler}
+          />
+          <input
+            name="nickname"
+            className="signup_input"
+            type="text"
+            placeholder="닉네임"
+            onChange={nickNameInputValue}
+            onKeyDown={signUpHandler}
+          />
+          <button onClick={signUpHandler} className="signup_btn">
+            회원가입
+          </button>
+          <div className="socialLogin">
+            <SocialLogin />
+          </div>
+          <div className="closeModal" onClick={closeModal}>
+            closeModal
           </div>
         </div>
       ) : null}
@@ -22,4 +98,4 @@ function SurveyModal({ isOpen }: Props) {
   );
 }
 
-export default SurveyModal;
+export default SignInModal;
