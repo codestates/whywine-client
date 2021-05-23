@@ -6,7 +6,7 @@ const GoToSurveyBtn: Raect.FC = () => {
   return (
     <div>
       <button className="goToSurveyBtn" onClick={() => history.push("/survey")}>
-        설문조사 하러 갈래요!
+        넵
       </button>
     </div>
   );

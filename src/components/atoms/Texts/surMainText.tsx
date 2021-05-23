@@ -1,12 +1,16 @@
 import React from "react";
 
-export default function surMainText() {
+interface Props {
+  text1: string;
+  text2: string;
+}
+
+export default function surMainText({ text1, text2 }: Props) {
   return (
     <div>
       <div className="surMainText">
-        <div>원하는 와인 종류를 선택해 주세요.</div>
-        <div>간단한 취향을 물어보는 단계입니다. 편하게 선택해주세요.</div>
-        <div>여기서 선택하신 태그는 기본 태그로 저장됩니다.</div>
+        <div>{text1}</div>
+        <div>{text2}</div>
       </div>
     </div>
   );
