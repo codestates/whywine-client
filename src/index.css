@@ -32,7 +32,13 @@ section {
 }
 
 /* *      랜딩페이지 첫번째        */
-
+.SurveyModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid rgb(109, 95, 95);
+  justify-content: space-around;
+}
 .FirstPage {
   background-image: url("./img/wine-bottles-3623697_1920.png");
   background-size: cover;
@@ -295,12 +301,6 @@ section {
   justify-content: center;
 }
 
-.surFirstBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .surveySkipBtn {
   position: absolute;
   right: 0;
@@ -308,12 +308,41 @@ section {
   margin: 20px;
 }
 
+.question {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.question h1 {
+  font-size: 50px;
+  border: 1px solid black;
+  margin: 0;
+}
+
+.question p {
+  opacity: 0.5;
+  color: gray;
+  margin: 0;
+}
+.survey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.surveyBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .surMainText {
-  margin-top: 300px;
+  margin-top: 100px;
   margin-bottom: 20px;
 }
 .wineTypeBox {
   display: flex;
+  flex-direction: column;
 }
 .wineTypeTag {
   margin-bottom: 20px;
