@@ -137,6 +137,7 @@ section {
   text-align: center;
 }
 .LandingHeader {
+  color: white;
   position: fixed;
   top: 0;
   z-index: 1;
@@ -145,10 +146,11 @@ section {
   line-height: 30px;
   padding: 23px;
   display: flex;
-  border-bottom: 2px solid;
   justify-content: space-between;
-  width: 100%;
-  background: #fff;
+  left: 25px;
+  top: 25px;
+  right: 25px;
+  border-bottom: 1px solid;
 }
 
 .LandingHeader :nth-child(2) {
