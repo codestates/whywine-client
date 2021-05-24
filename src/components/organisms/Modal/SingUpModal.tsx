@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import SocialLogin from "../../atoms/Buttons/SocialLogin";
 import axios from "axios";
+require('dotenv').config();
+const server = process.env.REACT_APP_API_SERVER || 'https://localhost:4000'
 
 interface Props {
   isOpen: Boolean;
@@ -31,7 +33,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
     if (e.key === "Enter" || e.type === "click") {
       try {
         const data = await axios.post(
-          "https://api.cakes.com/auth/signup",
+          `${server}/auth/signup`,
           { email, password, nickname },
           {
             headers: { "Content-Type": "application/json" },
