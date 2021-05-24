@@ -25,6 +25,9 @@ body {
   scroll-snap-type: y mandatory;
   position: absolute;
 }
+.container::-webkit-scrollbar {
+  display: none;
+}
 section {
   width: 100%;
   height: 100vh;
@@ -169,7 +172,7 @@ section {
 .closeModal {
   cursor: pointer;
 }
-.failed_singin {
+.failed_signin {
   position: absolute;
   box-sizing: border-box;
   text-align: center;
