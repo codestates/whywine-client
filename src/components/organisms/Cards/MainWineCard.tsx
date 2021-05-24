@@ -3,6 +3,8 @@ import photo from "../../../img/whywine_redWine_sample.png";
 import ReviewWineCon from "../Containers/ReviewWineCon";
 import ReviewCon from "../Containers/ReviewCon";
 import ClickWine from "../../atoms/Imgs/ClickWine";
+import whiteHeart from "../../../img/white_heart.png";
+import UnLike from "../../atoms/Imgs/unLike";
 
 //* chakra-modal *//
 import { useDisclosure, Button } from "@chakra-ui/react";
@@ -26,7 +28,7 @@ interface wineData {
 
 const MainWineCard: React.FC<wineData> = () => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
-
+  const [isShown, setIsShown] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleIsClicked = () => {
@@ -35,16 +37,31 @@ const MainWineCard: React.FC<wineData> = () => {
   };
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
   return (
-    <div className="mainWineCard" onClick={handleIsClicked}>
+    <div
+      className="mainWineCard"
+      onClick={handleIsClicked}
+      onMouseEnter={() => setIsShown(true)}
+      onMouseLeave={() => setIsShown(false)}
+    >
+      {isShown && (
+        <div className="likeHover">
+          <UnLike />
+          <div className="likeCount" style={{ lineHeight: "35px" }}>
+            100
+          </div>
+        </div>
+      )}
+
       <img src={photo} alt="와인" className="mainWinePhoto" />
       <div className="mainWineData">
         <div className="mainWineNameBox">
-          <div className="mainWineName">Lupi Rezerva</div>
-          <div className="mainWineYear">2016</div>
+          <div className="mainWineName">Lupi Rezerva </div>
+          <div className="mainWineYear" style={{ margin: "0 0 0 5px" }}>
+            2016
+          </div>
         </div>
 
         <div className="mainWineLikeTagBox">
-          <div className="mainWineLike">좋아요: 100</div>
           <div className="mainWineTag">#레드#씁쓸한#인기있는</div>
         </div>
         <ClickWine isClicked={isClicked} />
