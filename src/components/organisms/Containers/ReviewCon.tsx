@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import LikeBtn from "../../atoms/Buttons/LikeBtn";
 import ReplyBtn from "../../atoms/Buttons/ReplyBtn";
 import ReviewBtn from "../../atoms/Buttons/ReviewBtn";
 import ReviewLikeBtn from "../../atoms/Buttons/ReviewLikeBtn";
+import Like from "../../atoms/Imgs/like";
+import UnLike from "../../atoms/Imgs/unLike";
 import ReviewInput from "../../atoms/Inputs/ReviewInput";
 import ReviewTime from "../../atoms/Texts/ReviewTime";
 import ReviewWineName from "../../atoms/Texts/ReviewWineName";
 
 const ReviewCon = () => {
+  const [isLike, setIsLike] = useState(false);
+
+  const handleLikeBtn = (): any => {
+    setIsLike(!isLike);
+  };
   return (
     <div>
       <div className="reviewHeader">
@@ -56,7 +63,11 @@ const ReviewCon = () => {
       </ul>
 
       <div className="likeBox">
-        <LikeBtn />
+        {isLike ? (
+          <Like handleLikeBtn={handleLikeBtn} />
+        ) : (
+          <UnLike handleLikeBtn={handleLikeBtn} />
+        )}
         <div>나는야와인고수님 외 4,382명이 찜한 와인입니다!</div>
       </div>
 
