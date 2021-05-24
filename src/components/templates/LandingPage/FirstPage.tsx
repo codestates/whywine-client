@@ -1,13 +1,24 @@
-import * as React from "react";
+import { MouseEventHandler, useState } from "react";
 import { useHistory } from "react-router-dom";
 import UseScrollFadeIn from "../../atoms/Scroll/UseScrollFadeIn";
+import SurveyModal from "../../organisms/Modal/surveyModal";
 
-function FirstPage() {
+interface Props {
+  openSurveyModal?: MouseEventHandler<HTMLElement>;
+}
+
+function FirstPage(props: Props) {
   const history = useHistory();
   const animatedItem = UseScrollFadeIn("right", 2, 1);
+  const [openSurvey, setOpenSurvey] = useState<boolean>(false);
+
+  function openSurveyModal() {
+    setOpenSurvey(true);
+  }
 
   return (
     <div>
+      <SurveyModal isOpen={openSurvey} />
       <div className="FirstPage_Summery">
         <h1>Best Wine</h1>
         <h1>For You.</h1>
@@ -17,7 +28,7 @@ function FirstPage() {
         <div>설문하기</div>
         <i
           className="fas fa-arrow-alt-circle-right"
-          onClick={() => history.push("/survey")}
+          onClick={() => openSurveyModal()}
         ></i>
       </div>
       <div className="scroll-down">

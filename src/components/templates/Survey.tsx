@@ -3,7 +3,7 @@ import Survey1 from "./SurveyPages/Survey1";
 import Survey2 from "./SurveyPages/Survey2";
 import Survey3 from "./SurveyPages/Survey3";
 import Survey4 from "./SurveyPages/Survey4";
-
+import Survey5 from "./SurveyPages/Survey5";
 import Result from "./SurveyPages/SurveyResultQ";
 import UseScrollFadeIn from "../atoms/Scroll/UseScrollFadeIn";
 
@@ -22,6 +22,9 @@ function Survey() {
       </section>
       <section className="survey">
         <Survey4 />
+      </section>
+      <section className="survey">
+        <Survey5 />
       </section>
       <section className="survey">
         <Result />
