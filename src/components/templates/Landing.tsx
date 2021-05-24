@@ -4,7 +4,7 @@ import FirstPage from "./LandingPage/FirstPage";
 import SecondPage from "./LandingPage/SecondPage";
 import ThirdPage from "./LandingPage/ThirdPage";
 import FourthPage from "./LandingPage/FourthPage";
-import LandingHeader from "../organisms/Header/LandingHeader";
+import Header from "../organisms/Header/Header";
 
 interface Handler {
   data: string;
@@ -15,7 +15,7 @@ function Landing() {
 
   return (
     <>
-      <LandingHeader />
+      <Header />
       <div className="container">
         <section className="FirstPage">
           <FirstPage />

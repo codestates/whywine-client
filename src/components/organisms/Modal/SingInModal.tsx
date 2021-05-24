@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import SocialLogin from "../../atoms/Buttons/SocialLogin";
 import axios from "axios";
-require('dotenv').config();
-const server = process.env.REACT_APP_API_SERVER || 'https://localhost:4000'
+require("dotenv").config();
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
 interface Props {
   isOpen: Boolean;
@@ -23,11 +23,11 @@ function SignInModal({ isOpen, closeModal }: Props) {
     history.push("/Waiting");
   };
 
-  const loginRequestHandler = (e: any) => {
+  const loginRequestHandler = async (e: any) => {
     if (e.key === "Enter" || e.type === "click") {
-      axios
+      await axios
         .post(
-          `${server}/auth/signin`,
+          `https://localhost:4000/auth/signin`,
           { email, password },
           {
             headers: { "Content-Type": "application/json" },
@@ -36,9 +36,12 @@ function SignInModal({ isOpen, closeModal }: Props) {
         )
         .then((res) => {
           loginHandler();
+          console.log(res.data.data);
+          localStorage.setItem("token", JSON.stringify(res.data.data));
         })
         .catch((err) => {
           if (err) {
+            console.log(err);
             setTimeout(() => {
               setIsNone(true);
               setIsNone(false);
