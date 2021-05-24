@@ -6,7 +6,7 @@ import SignUp from "../../atoms/Buttons/SignUp";
 import SingInModal from "../Modal/SignInModal";
 import SignUpModal from "../Modal/SignUpModal";
 import Logout from "../../atoms/Buttons/Logout";
-import MyAccount from "../../atoms/Buttons/MyAccount";
+import MyAccount from "../../organisms/Togle/MyAccount";
 
 function LandingHeader() {
   const [signInOpen, setSignInOpen] = useState<boolean>(false);
@@ -38,16 +38,16 @@ function LandingHeader() {
       {isLogin ? (
         <div className="LandingHeader">
           <Title />
-          <div>
-            <MyAccount />
+          <div className="headerMeun">
             <GoToMainBtn />
             <Logout setIslogin={setIslogin} />
+            <MyAccount />
           </div>
         </div>
       ) : (
         <div className="LandingHeader">
           <Title />
-          <div>
+          <div className="headerMeun">
             <SignIn openModal={openSignInModal} />
             <SignUp openModal={openSignUpModal} />
             <GoToMainBtn />

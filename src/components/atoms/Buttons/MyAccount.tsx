@@ -1,13 +1,16 @@
+import { useState } from "react";
+
 export interface Props {
-  openModal: React.MouseEventHandler<HTMLDivElement>;
+  setMeunOpen: any;
 }
 
-function Logout() {
+function MyAccount({ setMeunOpen }: Props) {
   return (
-    <div>
+    <div className="MyAccount" onClick={() => setMeunOpen(true)}>
       <i className="fas fa-user-circle fa-2x"></i>
+      <i className="fas fa-caret-down"></i>
     </div>
   );
 }
 
-export default Logout;
+export default MyAccount;
