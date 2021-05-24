@@ -1,7 +1,16 @@
 import * as React from "react";
+import { useHistory } from "react-router-dom";
 
-function Title() {
-  return <div className="title">whywine</div>;
+interface Props {}
+
+function Title(params: any) {
+  const history = useHistory();
+
+  return (
+    <div className="title" onClick={() => history.push("/")}>
+      whywine
+    </div>
+  );
 }
 
 export default Title;

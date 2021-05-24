@@ -5,7 +5,6 @@ import SecondPage from "./LandingPage/SecondPage";
 import ThirdPage from "./LandingPage/ThirdPage";
 import FourthPage from "./LandingPage/FourthPage";
 import LandingHeader from "../organisms/Header/LandingHeader";
-import SingInModal from "../organisms/Modal/SingInModal";
 
 interface Handler {
   data: string;
@@ -17,7 +16,7 @@ function Landing() {
   return (
     <>
       <LandingHeader />
-      <div className="contanier">
+      <div className="container">
         <section className="FirstPage">
           <FirstPage />
         </section>

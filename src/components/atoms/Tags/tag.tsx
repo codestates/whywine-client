@@ -1,5 +1,13 @@
 import React from "react";
 
-export default function tag() {
-  return <div>tag</div>;
+interface Props {
+  tagName: string;
 }
+
+export default function tag(props: Props) {
+  return <div>{props.tagName}</div>;
+}
+
+// export default function tag() {
+//   return <div>tag</div>;
+// }

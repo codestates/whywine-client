@@ -1,8 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import GoToSurveyBtn from "../../atoms/Buttons/GoToSurveyBtn";
 import MainMyPageBtn from "../../atoms/Buttons/MainMyPageBtn";
-import MainSignInBtn from "../../atoms/Buttons/MainSignInBtn";
-import MainSignUpBtn from "../../atoms/Buttons/MainSignUpBtn";
 import MainLogo from "../../atoms/Logos/MainLogo";
 import MainSearchBar from "../Inputs/MainSearchBar";
 import navBars from "../../../img/bars-solid.svg";

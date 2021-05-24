@@ -4,7 +4,7 @@ import SurResultCards from "../../organisms/Cards/surResultCards";
 
 const SurveyResultQ = () => {
   return (
-    <div className="surResultContainer">
+    <div id="result" className="surResultContainer">
       <SurResultCards />
       <SurResultBtns />
     </div>

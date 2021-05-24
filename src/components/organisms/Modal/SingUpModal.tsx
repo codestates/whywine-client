@@ -7,7 +7,6 @@ const server = process.env.REACT_APP_API_SERVER || 'https://localhost:4000'
 interface Props {
   isOpen: Boolean;
   closeModal: React.MouseEventHandler<HTMLDivElement>;
-  //   loginHandler: any;
 }
 
 function SignInModal({ isOpen, closeModal }: Props) {
