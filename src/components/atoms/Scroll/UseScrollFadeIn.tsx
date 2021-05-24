@@ -40,7 +40,6 @@ const UseScrollFadeIn = (direction = "up", duration = 1, delay = 0) => {
 
   useEffect(() => {
     let observer: IntersectionObserver;
-    console.log(element);
     if (element.current) {
       observer = new IntersectionObserver(onScroll, { threshold: 0.7 });
       observer.observe(element.current);
