@@ -58,7 +58,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
       {isOpen ? (
         <div className="SignInModal">
           <div
-            className="failed_sginin"
+            className="failed_signin"
             style={{ opacity: isNone ? "0" : "1" }}
           >
             {message}

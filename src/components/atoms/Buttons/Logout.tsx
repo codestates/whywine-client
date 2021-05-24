@@ -8,7 +8,7 @@ interface Props {
 function Logout({ setIslogin }: Props) {
   const history = useHistory();
 
-  const hendleLogout = () => {
+  const handleLogout = () => {
     localStorage.removeItem("token");
     history.push("/");
     setIslogin(false);
@@ -16,7 +16,7 @@ function Logout({ setIslogin }: Props) {
 
   return (
     <div>
-      <div onClick={() => hendleLogout()}>로그아웃</div>
+      <div onClick={() => handleLogout()}>로그아웃</div>
     </div>
   );
 }

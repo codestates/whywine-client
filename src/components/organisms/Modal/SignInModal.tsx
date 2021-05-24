@@ -65,7 +65,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
       {isOpen ? (
         <div className="SignInModal">
           <div
-            className="failed_singin"
+            className="failed_signin"
             style={{ opacity: isNone ? "1" : "0" }}
           >
             이메일과 비밀번호를 확인해주세요.

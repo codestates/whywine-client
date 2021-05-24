@@ -3,10 +3,10 @@ import Title from "../../atoms/Title/Title";
 import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn";
 import SignIn from "../../atoms/Buttons/SignIn";
 import SignUp from "../../atoms/Buttons/SignUp";
-import SingInModal from "../Modal/SingInModal";
-import SignUpModal from "../Modal/SingUpModal";
+import SingInModal from "../Modal/SignInModal";
+import SignUpModal from "../Modal/SignUpModal";
 import Logout from "../../atoms/Buttons/Logout";
-import Myaccount from "../../atoms/Buttons/MyAccount";
+import MyAccount from "../../atoms/Buttons/MyAccount";
 
 function LandingHeader() {
   const [signInOpen, setSignInOpen] = useState<boolean>(false);
@@ -26,6 +26,7 @@ function LandingHeader() {
   const closeSignUpModal: React.MouseEventHandler<HTMLDivElement> = () => {
     setSignUpOpen(false);
   };
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setIslogin(true);
@@ -38,7 +39,7 @@ function LandingHeader() {
         <div className="LandingHeader">
           <Title />
           <div>
-            <Myaccount />
+            <MyAccount />
             <GoToMainBtn />
             <Logout setIslogin={setIslogin} />
           </div>
