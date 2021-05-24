@@ -10,7 +10,7 @@ body {
   color: rgb(228, 10, 10);
   line-height: 1.6;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .surResultContainer {
   display: flex;
@@ -478,10 +478,11 @@ section {
 } */
 .mainWineCon {
   margin-left: 40px;
+  margin-top: 100px;
   width: 70%;
-  height: 750px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  /* height: 750px; */
+  /* overflow-y: scroll;
+  overflow-x: hidden; */
 }
 .mainWineCon::-webkit-scrollbar {
   visibility: hidden;
@@ -547,6 +548,30 @@ section {
 .clickWine {
   animation: fadeIn 0.5s infinite alternate;
   position: absolute;
+}
+.footer {
+  display: flex;
+  width: 100vw;
+  justify-content: space-around;
+  background-color: #f1f1f3;
+  color: #4d4d4d;
+}
+.footerTeam {
+  display: flex;
+  flex-direction: column;
+}
+.footerCrews {
+  display: flex;
+  line-height: 35px;
+  cursor: pointer;
+}
+.footerGitHub {
+  width: 50px;
+  cursor: pointer;
+}
+.footerContent {
+  color: gray;
+  margin-top: 100px;
 }
 
 @keyframes fadeIn {
