@@ -32,6 +32,7 @@ export default function Survey2({ animatedItem, userTag, setUserTag }: Props) {
   useEffect(() => {
     console.log("2", tag);
     let target = "";
+
     Object.keys(tannins).map((el) => {
       if (tannins[el] === tag) {
         target = el;

@@ -30,11 +30,13 @@ const Survey1 = ({ animatedItem, userTag, setUserTag }: Props) => {
   useEffect(() => {
     console.log("1", tag);
     let target = "";
+
     Object.keys(body).map((el) => {
       if (body[el] === tag) {
         target = el;
       }
     });
+
     return setUserTag([target]);
   }, [tag]);
 
