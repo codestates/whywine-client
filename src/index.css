@@ -25,6 +25,9 @@ body {
   scroll-snap-type: y mandatory;
   position: absolute;
 }
+.container::-webkit-scrollbar {
+  display: none;
+}
 section {
   width: 100%;
   height: 100vh;
@@ -32,6 +35,7 @@ section {
 }
 .title {
   cursor: pointer;
+  margin: 0px 10px;
 }
 .title:hover {
   color: rgb(240, 119, 88);
@@ -137,6 +141,7 @@ section {
   text-align: center;
 }
 .LandingHeader {
+  color: white;
   position: fixed;
   top: 0;
   z-index: 1;
@@ -145,17 +150,50 @@ section {
   line-height: 30px;
   padding: 23px;
   display: flex;
-  border-bottom: 2px solid;
   justify-content: space-between;
-  width: 100%;
-  background: #fff;
+  left: 25px;
+  top: 25px;
+  right: 25px;
+  border-bottom: 1px solid;
 }
 
-.LandingHeader :nth-child(2) {
+.headerMeun {
   font-size: 15px;
   cursor: pointer;
   display: flex;
+}
+.headerMeun > div {
   margin: 0px 40px;
+}
+.headerMeun :nth-child(3) {
+  margin-right: 10px;
+}
+.togle {
+  position: absolute;
+  top: 100%;
+  margin-top: 1rem;
+  right: 0px;
+}
+.togle > .menuWrapper {
+  position: relative;
+  z-index: 5;
+  width: 12rem;
+  background: white;
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
+}
+.menuWrapper > div {
+  color: rgb(33, 37, 41);
+  padding: 0.75rem 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.MyAccount {
+  display: flex;
+}
+.MyAccount :nth-child(2) {
+  margin: 7px;
 }
 .SignInModal div {
   font-size: 30px;
@@ -167,7 +205,7 @@ section {
 .closeModal {
   cursor: pointer;
 }
-.failed_singin {
+.failed_signin {
   position: absolute;
   box-sizing: border-box;
   text-align: center;
@@ -248,7 +286,7 @@ section {
   border-radius: 0.5rem;
   background-color: #fff;
   animation: modal-show 0.3s;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .modal.openModal {

@@ -4,9 +4,6 @@ import SurTypeTags from "../../organisms/Tags/surTypeTags";
 import SurBtns from "../../organisms/Buttons/surBtns";
 
 export default function Survey2() {
-  const [surNext, setSurNext] = useState("third");
-  const [surPrev, setSurPrev] = useState("");
-
   return (
     <div id="survey2" className="surveyBox">
       <div className="question">
@@ -18,7 +15,6 @@ export default function Survey2() {
         text2={""}
       />
       <SurTypeTags num={2} />
-      <SurBtns surNext={surNext} surPrev={surPrev} />
     </div>
   );
 }
