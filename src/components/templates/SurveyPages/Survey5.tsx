@@ -1,9 +1,13 @@
-import React, { SetStateAction, useState } from "react";
+import React, {
+  SetStateAction,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from "react";
 import SurMainText from "../../atoms/Texts/surMainText";
 import SurTypeTags from "../../atoms/Tags/surTypeTag";
 import SurBtns from "../../organisms/Buttons/surBtns";
-import { useCallback } from "react";
-import { useEffect } from "react";
 
 interface Props {
   animatedItem: any;
@@ -14,6 +18,7 @@ interface Props {
 const Survey5 = ({ animatedItem, userTag, setUserTag }: Props) => {
   const answer: string[] = [];
   const [tag, setTag] = useState("");
+  const btnRef: any = useRef();
 
   const sweetness: any = {
     sweet: "달달",
@@ -23,8 +28,18 @@ const Survey5 = ({ animatedItem, userTag, setUserTag }: Props) => {
   };
 
   const getTag = useCallback(
-    (tag: string) => {
+    (tag: string, e: any) => {
       setTag(tag);
+      const el: any = document.querySelector(".wineTypeBox");
+
+      if (e.target.style.backgroundColor === "skyblue") {
+        e.target.style.backgroundColor = "white";
+      } else {
+        for (let i = 0; i < 4; i++) {
+          el.childNodes[i].childNodes[0].style.backgroundColor = "white";
+        }
+        e.target.style.backgroundColor = "skyblue";
+      }
     },
     [tag]
   );
@@ -49,6 +64,7 @@ const Survey5 = ({ animatedItem, userTag, setUserTag }: Props) => {
         <h1>와인성향테스트</h1>
         <p>와인의 당도를 물어보는 단계입니다.</p>
       </div>
+      <hr className="hr"></hr>
       <SurMainText
         text1={
           "황금 같은 주말이 다가왔다./n친구들과 집에서 와인파티를 하기로 했다."

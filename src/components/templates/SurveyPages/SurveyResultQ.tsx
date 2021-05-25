@@ -9,7 +9,7 @@ const SurveyResultQ = () => {
   useEffect(() => {
     const tagsArr = localStorage.getItem("userTag");
     // * 로컬 스토리지에 있는 선택한 태그들을 tagsArr에 할당
-    console.log(tagsArr);
+    console.log("tags:", tagsArr);
 
     axios
       .post(
@@ -20,7 +20,7 @@ const SurveyResultQ = () => {
           withCredentials: true,
         }
       )
-      .then((data) => console.log(data));
+      .then((data) => console.log(data.data.wines));
   }, []);
 
   return (

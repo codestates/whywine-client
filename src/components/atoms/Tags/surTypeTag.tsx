@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+
 interface typeTag {
   answer: Array<string>;
   num: number;
@@ -11,13 +12,13 @@ const surTypeTag: React.FC<typeTag> = ({ answer, num, getTag }) => {
 
   return (
     <div className="wineTypeBox">
-      {answer.map((type) => {
+      {answer.map((type, index) => {
         return (
           <a
             href={num !== 5 ? `#survey${num + 1}` : "/survey/result"}
             className="wineTypeTag"
           >
-            <button onClick={() => getTag(type)}>{type}</button>
+            <button onClick={(e) => getTag(type, e)}>{type}</button>
           </a>
         );
       })}

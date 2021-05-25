@@ -1,9 +1,13 @@
-import React, { SetStateAction, useState } from "react";
+import React, {
+  SetStateAction,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+} from "react";
 import SurMainText from "../../atoms/Texts/surMainText";
 import SurTypeTags from "../../atoms/Tags/surTypeTag";
 import SurBtns from "../../organisms/Buttons/surBtns";
-import { useCallback } from "react";
-import { useEffect } from "react";
 
 interface Props {
   animatedItem: any;
@@ -23,8 +27,18 @@ export default function Survey2({ animatedItem, userTag, setUserTag }: Props) {
   };
 
   const getTag = useCallback(
-    (tag: string) => {
+    (tag: string, e: any) => {
       setTag(tag);
+      const el: any = document.querySelector(".wineTypeBox");
+
+      if (e.target.style.backgroundColor === "skyblue") {
+        e.target.style.backgroundColor = "white";
+      } else {
+        for (let i = 0; i < 4; i++) {
+          el.childNodes[i].childNodes[0].style.backgroundColor = "white";
+        }
+        e.target.style.backgroundColor = "skyblue";
+      }
     },
     [tag]
   );
@@ -50,6 +64,7 @@ export default function Survey2({ animatedItem, userTag, setUserTag }: Props) {
         <h1>와인성향테스트</h1>
         <p>와인의 탄님감을 물어보는 단계입니다.</p>
       </div>
+      <hr className="hr"></hr>
       <SurMainText
         text1={"방금 꿀맛같은 퇴근을한 당신, 오늘의 기분은?"}
         text2={""}
