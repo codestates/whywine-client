@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 
-const MainBodyTag = () => {
+const MainTanninTag = () => {
   const [high, setHigh] = useState(false);
   const [mid, setMid] = useState(false);
   const [low, setLow] = useState(false);
 
-  const handleBodyTagClick = (e: any) => {
+  const handleTanninTagClick = (e: any) => {
     switch (e.target.textContent) {
-      case "가벼운":
+      case "부드러운":
         setLow(!low);
+
         break;
       case "적당한":
         setMid(!mid);
 
         break;
-      case "무거운":
+      case "떫은":
         setHigh(!high);
 
         break;
@@ -24,9 +25,9 @@ const MainBodyTag = () => {
     }
   };
   return (
-    <div className="mainWineBodyBox">
+    <div className="mainWineTanninBox">
       <span className="toolTip">
-        바디
+        탄닌
         <span className="toolTipText">
           와인에서 말하는 바디란 와인을 마실 때 입안에서 느껴지는 무게감을
           뜻합니다.
@@ -35,25 +36,25 @@ const MainBodyTag = () => {
       <div className="mainWineTypeTags">
         <div
           className={low ? `mainWineTypeTag active` : `mainWineTypeTag`}
-          onClick={handleBodyTagClick}
+          onClick={handleTanninTagClick}
         >
-          가벼운
+          부드러운
         </div>
         <div
           className={mid ? `mainWineTypeTag active` : `mainWineTypeTag`}
-          onClick={handleBodyTagClick}
+          onClick={handleTanninTagClick}
         >
           적당한
         </div>
         <div
           className={high ? `mainWineTypeTag active` : `mainWineTypeTag`}
-          onClick={handleBodyTagClick}
+          onClick={handleTanninTagClick}
         >
-          무거운
+          떫은
         </div>
       </div>
     </div>
   );
 };
 
-export default MainBodyTag;
+export default MainTanninTag;

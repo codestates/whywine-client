@@ -56,7 +56,7 @@ const MainLabel = () => {
 
           <DrawerBody>
             <MainTypeTag wineType={["레드", "화이트", "로제", "스파클링"]} />
-            <MainBodyTag wineBody={"묵직한"} />
+            <MainBodyTag />
           </DrawerBody>
 
           <DrawerFooter>

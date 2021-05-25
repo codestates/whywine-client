@@ -1,15 +1,11 @@
 body {
-  /* background-color: rgb(241, 237, 237); */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
   font-family: "Prata", "Noto Serif KR", serif;
   color: rgb(170, 20, 20);
   line-height: 1.6;
   height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   /* overflow: hidden; */
 }
 .surResultContainer {
@@ -603,6 +599,57 @@ section {
 .footerContent {
   color: gray;
   margin-top: 100px;
+}
+.mainTagBox {
+  margin-top: 100px;
+}
+.mainWineTypeTags {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.mainWineTypeTag {
+  border: 2px solid #aa1414;
+  border-radius: 15px;
+  padding: 0 5px 0 5px;
+  cursor: pointer;
+  font-weight: 1000;
+  color: black;
+  margin-right: 10px;
+}
+/* .mainWineTypeTag:hover {
+  border: 2px solid #aa1414;
+  background-color: #aa1414;
+  color: white;
+} */
+.mainWineTypeTag.active {
+  border: 2px solid #aa1414;
+  background-color: #aa1414;
+  color: white;
+}
+.mainWineTag {
+  color: black;
+}
+.toolTip {
+  font-weight: bold;
+  font-size: 25px;
+  position: relative;
+  cursor: default;
+  margin-bottom: 21px;
+}
+.toolTipText {
+  display: none;
+  position: absolute;
+  width: 280px;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.5em;
+  background-color: #aa1414;
+  color: white;
+}
+.toolTip:hover .toolTipText {
+  display: block;
 }
 
 @keyframes fadeIn {
