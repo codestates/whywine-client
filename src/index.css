@@ -390,6 +390,7 @@ section {
   margin-bottom: 20px;
 }
 .wineTypeBox {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
 }

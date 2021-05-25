@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import FirstPage from "./LandingPage/FirstPage";
 import SecondPage from "./LandingPage/SecondPage";
 import ThirdPage from "./LandingPage/ThirdPage";
@@ -11,8 +10,6 @@ interface Handler {
 }
 
 function Landing() {
-  const history = useHistory();
-
   return (
     <>
       <Header />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Survey1 from "./SurveyPages/Survey1";
 import Survey2 from "./SurveyPages/Survey2";
 import Survey3 from "./SurveyPages/Survey3";
@@ -9,25 +9,52 @@ import UseScrollFadeIn from "../atoms/Scroll/UseScrollFadeIn";
 
 function Survey() {
   const animatedItem = UseScrollFadeIn("Down", 1, 0.5);
+  const [userTag, setUserTag] = useState<string[]>([]);
+
+  useEffect(() => {
+    console.log("배열", userTag);
+    if (userTag.length === 5) {
+      localStorage.setItem("userTag", JSON.stringify(userTag));
+      // * 선택한 답변의 갯수가 5개가 되면 로컬스토리지에 "userTag"으로 태그들을 저장함
+    }
+  });
+
   return (
     <div className="container">
       <section className="survey">
-        <Survey1 animatedItem={animatedItem} />
+        <Survey1
+          animatedItem={animatedItem}
+          userTag={userTag}
+          setUserTag={setUserTag}
+        />
       </section>
       <section className="survey">
-        <Survey2 />
+        <Survey2
+          animatedItem={animatedItem}
+          userTag={userTag}
+          setUserTag={setUserTag}
+        />
       </section>
       <section className="survey">
-        <Survey3 />
+        <Survey3
+          animatedItem={animatedItem}
+          userTag={userTag}
+          setUserTag={setUserTag}
+        />
       </section>
       <section className="survey">
-        <Survey4 />
+        <Survey4
+          animatedItem={animatedItem}
+          userTag={userTag}
+          setUserTag={setUserTag}
+        />
       </section>
       <section className="survey">
-        <Survey5 />
-      </section>
-      <section className="survey">
-        <Result />
+        <Survey5
+          animatedItem={animatedItem}
+          userTag={userTag}
+          setUserTag={setUserTag}
+        />
       </section>
     </div>
   );
