@@ -80,6 +80,7 @@ section {
   cursor: pointer;
 }
 .scroll-down {
+  font-family: "Noto Sans KR", sans-serif;
   position: absolute;
   left: 0;
   bottom: 20px;
@@ -161,6 +162,7 @@ section {
   font-size: 15px;
   cursor: pointer;
   display: flex;
+  font-family: "Noto Sans KR", sans-serif;
 }
 .headerMeun > div {
   margin: 0px 40px;
