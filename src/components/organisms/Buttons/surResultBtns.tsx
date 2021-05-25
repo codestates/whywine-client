@@ -18,8 +18,10 @@ const surResultBtns = () => {
   return (
     <div>
       <div className="resultBtnBox">
-        <GoToMainBtn />
-        <SignUp openModal={openSignUpModal} />
+        <div className="resultBtnBoxBtn">
+          <GoToMainBtn />
+          <SignUp openModal={openSignUpModal} />
+        </div>
         <div className="pleaseSignUp">
           회원가입을 하시면 추천받은 와인 태그가 저장됩니다.
         </div>

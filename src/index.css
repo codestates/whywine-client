@@ -431,6 +431,14 @@ section {
 .wineTypeTag button::after {
   background-color: skyblue;
 }
+
+.resultBtnBoxBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
 .resultCardBox {
   display: flex;
   flex-direction: row;
