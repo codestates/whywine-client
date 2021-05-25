@@ -5,6 +5,7 @@ import SurveyFirstQ from "../components/templates/SurveyPages/Survey1";
 import SurveySecondQ from "../components/templates/SurveyPages/Survey2";
 import SurveyThirdQ from "../components/templates/SurveyPages/Survey3";
 import SurveyResultQ from "../components/templates/SurveyPages/SurveyResultQ";
+import result from "../components/templates/SurveyPages/SurveyResultQ";
 
 import Main from "../components/templates/Main";
 
@@ -16,8 +17,8 @@ const Survey: React.FC = () => {
         <Route path="/survey/2" exact component={SurveySecondQ}></Route>
         <Route path="/survey/3" exact component={SurveyThirdQ}></Route>
         <Route path="/survey/4" exact component={SurveyResultQ}></Route>
+        <Route path="/survey/result" component={result}></Route>
         <Route path="/main" component={Main}></Route>
-        <Redirect path="*" to="/" />
       </Switch>
     </BrowserRouter>
   );
