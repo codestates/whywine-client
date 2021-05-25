@@ -3,8 +3,8 @@ import photo from "../../../img/whywine_redWine_sample.png";
 import ReviewWineCon from "../Containers/ReviewWineCon";
 import ReviewCon from "../Containers/ReviewCon";
 import ClickWine from "../../atoms/Imgs/ClickWine";
-import whiteHeart from "../../../img/white_heart.png";
 import UnLike from "../../atoms/Imgs/unLike";
+import StarIconSolid from "../../atoms/Imgs/StarIconSolid";
 
 //* chakra-modal *//
 import { useDisclosure, Button } from "@chakra-ui/react";
@@ -17,6 +17,7 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
+import RatingAvg from "../../atoms/Texts/RatingAvg";
 
 interface wineData {
   // name: string;
@@ -28,41 +29,47 @@ interface wineData {
 
 const MainWineCard: React.FC<wineData> = () => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const [isShown, setIsShown] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleIsClicked = () => {
     onOpen();
     setIsClicked(true);
   };
+
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
   return (
-    <div
-      className="mainWineCard"
-      onClick={handleIsClicked}
-      onMouseEnter={() => setIsShown(true)}
-      onMouseLeave={() => setIsShown(false)}
-    >
-      {isShown && (
-        <div className="likeHover">
-          <UnLike />
-          <div className="likeCount" style={{ lineHeight: "35px" }}>
-            100
-          </div>
+    <li className="mainWineCard" onClick={handleIsClicked}>
+      <div className="mainWineRating">
+        <div className="mainWineRatingAvg">
+          <RatingAvg />
         </div>
-      )}
+        <div className="mainWineRatingStars">
+          {[1, 2, 3, 4, 5].map((star) => {
+            return <StarIconSolid />;
+          })}
+        </div>
+      </div>
 
-      <img src={photo} alt="와인" className="mainWinePhoto" />
-      <div className="mainWineData">
-        <div className="mainWineNameBox">
-          <div className="mainWineName">Lupi Rezerva </div>
-          <div className="mainWineYear" style={{ margin: "0 0 0 5px" }}>
-            2016
-          </div>
+      <div className="mainWineProfile">
+        <img src={photo} alt="와인" />
+        <div className="mainWineContent">
+          <h2>Lupi Rezerva</h2>
+          <span>2016</span>
+          <p>
+            this is one of the finest wine blends of Moldova, yet one that is
+            still on the rise, as it has yet to reach the summit of its prime
+            form. This is a wine that requires a bit more time, as in its
+            current state it might feel a bit too tart and youthful, therefore
+            we would strongly suggest another 3 or 4 years of bottle ageing.{" "}
+          </p>
         </div>
+      </div>
+
+      <div className="mainWineData">
+        <div className="mainWineNameBox"></div>
 
         <div className="mainWineLikeTagBox">
-          <div className="mainWineTag">#레드#씁쓸한#인기있는</div>
+          <div className="mainWineTag">#레드 #씁쓸한 #인기있는</div>
         </div>
         <ClickWine isClicked={isClicked} />
       </div>
@@ -102,7 +109,7 @@ const MainWineCard: React.FC<wineData> = () => {
           </ModalContent>
         </Modal>
       </div>
-    </div>
+    </li>
   );
 };
 
