@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import card from "../../../img/whywine_card.png";
+import card from "../../../img/wine_sample.png";
 import cardSample from "../../../img/whywine_card_sample.png";
 import ReactCardFlip from "react-card-flip";
 
@@ -21,6 +21,7 @@ const SurResultCardCenter = () => {
         <img
           style={{
             opacity: isOpacity ? "1" : "0",
+            width: "300px",
           }}
           className="cardCenter"
           src={card}
