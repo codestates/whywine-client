@@ -20,11 +20,12 @@ export default function Survey2({ animatedItem, userTag, setUserTag }: Props) {
   const [tag, setTag] = useState("");
 
   const tannins: any = {
-    tannic: "하 인생..",
-    medium: "오늘은 버스말고 택시탈까?",
-    smooth: "밀린 업무 끝! 상쾌하다",
+    tannins_tannic: "하 인생..",
+    tannins_medium: "오늘은 버스말고 택시탈까?",
+    tannins_smooth: "밀린 업무 끝! 상쾌하다",
     "": "잘모르겠어요",
   };
+  // *             태그들               * //
 
   const getTag = useCallback(
     (tag: string, e: any) => {

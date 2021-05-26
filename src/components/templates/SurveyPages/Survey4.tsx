@@ -21,11 +21,12 @@ const Survey4 = ({ animatedItem, userTag, setUserTag }: Props) => {
   const btnRef: any = useRef();
 
   const sweetness: any = {
-    sweet: "달달",
-    medium: "담백",
-    dry: "씁쓸",
+    sweetness_sweet: "달달",
+    sweetness_medium: "담백",
+    sweetness_dry: "씁쓸",
     "": "잘모르겠어요",
   };
+  // *             태그들               * //
 
   const getTag = useCallback(
     (tag: string, e: any) => {

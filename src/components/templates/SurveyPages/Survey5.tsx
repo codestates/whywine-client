@@ -20,12 +20,13 @@ const Survey5 = ({ animatedItem, userTag, setUserTag }: Props) => {
   const [tag, setTag] = useState("");
   const btnRef: any = useRef();
 
-  const sweetness: any = {
-    sweet: "달달",
-    medium: "담백",
-    dry: "씁쓸",
+  const sparkling: any = {
+    sparkling_fizzy: "톡톡 터져보자",
+    sparkling_medium: "나는 중간이요",
+    sparkling_gentle: "마동석 무서워;;",
     "": "잘모르겠어요",
   };
+  // *             태그들               * //
 
   const getTag = useCallback(
     (tag: string, e: any) => {
@@ -47,15 +48,15 @@ const Survey5 = ({ animatedItem, userTag, setUserTag }: Props) => {
   useEffect(() => {
     console.log("5", tag);
     let target = "";
-    Object.keys(sweetness).map((el) => {
-      if (sweetness[el] === tag) {
+    Object.keys(sparkling).map((el) => {
+      if (sparkling[el] === tag) {
         target = el;
       }
     });
     return setUserTag([...userTag, target]);
   }, [tag]);
 
-  Object.keys(sweetness).map((el) => answer.push(sweetness[el]));
+  Object.keys(sparkling).map((el) => answer.push(sparkling[el]));
   // * 질문 객체의 키 값을 answer에 넣어줘서 SurTypeTags의 배열로 전달해서 질문을 maping 시킴
 
   return (
@@ -65,12 +66,7 @@ const Survey5 = ({ animatedItem, userTag, setUserTag }: Props) => {
         <p>와인의 당도를 물어보는 단계입니다.</p>
       </div>
       <hr className="hr"></hr>
-      <SurMainText
-        text1={
-          "황금 같은 주말이 다가왔다./n친구들과 집에서 와인파티를 하기로 했다."
-        }
-        text2={"어떤 와인을 마시겠습니까?"}
-      />
+      <SurMainText text1={"마동석 왈"} text2={"톡톡 터져볼래?"} />
       <SurTypeTags num={5} answer={answer} getTag={getTag} />
     </div>
   );

@@ -21,11 +21,12 @@ const Survey3 = ({ animatedItem, userTag, setUserTag }: Props) => {
   const btnRef: any = useRef();
 
   const acidity: any = {
-    acidic: "고급진 스테이크",
-    medium: "아무거나 괜찮아",
-    soft: "안주는 사치야",
+    acidity_acidic: "고급진 스테이크",
+    acidity_medium: "아무거나 괜찮아",
+    acidity_soft: "안주는 사치야",
     "": "잘모르겠어요",
   };
+  // *             태그들               * //
 
   const getTag = useCallback(
     (tag: string, e: any) => {

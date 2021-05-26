@@ -21,11 +21,12 @@ const Survey1 = ({ animatedItem, userTag, setUserTag }: Props) => {
   const [tag, setTag] = useState("");
 
   const body: any = {
-    bold: "오늘은 쫌 취하고 싶은데?",
-    medium: "와인은 분위기로 마시는거지",
-    light: "내일 출근해야되는데...",
+    body_bold: "오늘은 쫌 취하고 싶은데?",
+    body_medium: "와인은 분위기로 마시는거지",
+    body_light: "내일 출근해야되는데...",
     "": "잘모르겠어요",
   };
+  // * 태그들 * //
 
   const getTag = useCallback(
     (tag: string, e: any) => {
