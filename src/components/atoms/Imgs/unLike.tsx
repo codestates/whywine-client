@@ -10,7 +10,7 @@ export default function UnLike({ handleLikeBtn }: State) {
     <FontAwesomeIcon
       icon={faHeart}
       size="2x"
-      style={{ width: "20px", margin: " 0 10px 0 0 ", cursor: "pointer" }}
+      style={{ width: "20px", margin: " 0 15px 0 0 ", cursor: "pointer" }}
       onClick={handleLikeBtn}
     />
   );

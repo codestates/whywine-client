@@ -8,6 +8,7 @@ import UnLike from "../../atoms/Imgs/unLike";
 import ReviewInput from "../../atoms/Inputs/ReviewInput";
 import ReviewTime from "../../atoms/Texts/ReviewTime";
 import ReviewWineName from "../../atoms/Texts/ReviewWineName";
+import Stars from "../../atoms/Imgs/Stars";
 
 const ReviewCon = () => {
   const [isLike, setIsLike] = useState(false);
@@ -68,6 +69,11 @@ const ReviewCon = () => {
         ) : (
           <UnLike handleLikeBtn={handleLikeBtn} />
         )}
+        <div style={{ display: "flex" }}>
+          {[1, 2, 3, 4, 5].map((idx) => {
+            return <Stars />;
+          })}
+        </div>
         <div>나는야와인고수님 외 4,382명이 찜한 와인입니다!</div>
       </div>
 

@@ -4,11 +4,7 @@ import MainWineCategory from "../Categories/MainWineCategory";
 
 //! 와인 카테고리가 나뉘어서 들어와야함
 const MainWineCon = () => {
-  let categories = [
-    "당신을 위한 완벽한 와인",
-    "적합한",
-    "당신의 선택을 존중합니다",
-  ];
+  let categories = ["당신을 위한 완벽한 와인"];
 
   return (
     <div className="mainWineCon">
