@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import SocialLogin from "../../atoms/Buttons/SocialLogin";
 import axios from "axios";
-require('dotenv').config();
-const server = process.env.REACT_APP_API_SERVER || 'https://localhost:4000'
+
+require("dotenv").config();
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
 interface Props {
   isOpen: Boolean;
@@ -40,12 +41,15 @@ function SignInModal({ isOpen, closeModal }: Props) {
           }
         );
         close();
+        console.log(data);
       } catch (error) {
         setIsNone(false);
-        setMessage(error.response.data.message);
+        // setMessage(error.response.data.message);
         setTimeout(() => {
           setIsNone(true);
         }, 2000);
+        console.log("error");
+        console.log(error);
       }
     }
   };
@@ -55,7 +59,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
       {isOpen ? (
         <div className="SignInModal">
           <div
-            className="failed_sginin"
+            className="failed_signin"
             style={{ opacity: isNone ? "0" : "1" }}
           >
             {message}

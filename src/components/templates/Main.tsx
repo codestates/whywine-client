@@ -5,8 +5,9 @@ import MainWineCon from "../organisms/Containers/MainWineCon";
 import MainWineTagCon from "../organisms/Containers/MainWineTagCon";
 import MainSearchBar from "../organisms/Inputs/MainSearchBar";
 import ReviewModal from "../organisms/Modal/ReviewModal";
-import Header from "../organisms/Header/LandingHeader";
+import Header from "../organisms/Header/Header";
 import Footer from "../organisms/Footer/Footer";
+
 
 const Main: React.FC = () => {
   return (

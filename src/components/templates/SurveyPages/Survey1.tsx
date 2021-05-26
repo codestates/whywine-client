@@ -8,10 +8,6 @@ interface Props {
 }
 
 const Survey1 = ({ animatedItem }: Props) => {
-  const [surNext, setSurNext] = useState("second");
-  const [surPrev, setSurPrev] = useState("first");
-  // 페이지 구분을 위해 <h1>태그를 달아놓았음
-
   const answer: Array<string> = [];
 
   const body: object = {
@@ -33,7 +29,6 @@ const Survey1 = ({ animatedItem }: Props) => {
         text2={"맨날 마시는 소주,맥주 말고 와인을 마셔보자 하는데..."}
       />
       <SurTypeTags num={1} />
-      <SurBtns surNext={surNext} surPrev={surPrev} />
     </div>
   );
 };

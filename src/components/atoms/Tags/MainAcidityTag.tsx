@@ -1,22 +1,35 @@
 import React, { useState } from "react";
 
-const MainBodyTag = () => {
+const MainAcidityTag = () => {
   const [high, setHigh] = useState(false);
   const [mid, setMid] = useState(false);
   const [low, setLow] = useState(false);
 
-  const handleBodyTagClick = (e: any) => {
+  const handleAcidityTagClick = (e: any) => {
     switch (e.target.textContent) {
-      case "가벼운":
+      case "낮은":
         setLow(!low);
+        if (high === true) {
+          setHigh(!high);
+        } else if (mid === true) {
+          setMid(!mid);
+        }
         break;
       case "적당한":
         setMid(!mid);
-
+        if (high === true) {
+          setHigh(!high);
+        } else if (low === true) {
+          setLow(!low);
+        }
         break;
-      case "무거운":
+      case "높은":
         setHigh(!high);
-
+        if (mid === true) {
+          setMid(!mid);
+        } else if (low === true) {
+          setLow(!low);
+        }
         break;
 
       default:
@@ -24,9 +37,9 @@ const MainBodyTag = () => {
     }
   };
   return (
-    <div className="mainWineBodyBox">
+    <div className="mainWineAcidityBox">
       <span className="toolTip">
-        바디
+        산미
         <span className="toolTipText">
           와인에서 말하는 바디란 와인을 마실 때 입안에서 느껴지는 무게감을
           뜻합니다.
@@ -35,25 +48,25 @@ const MainBodyTag = () => {
       <div className="mainWineTypeTags">
         <div
           className={low ? `mainWineTypeTag active` : `mainWineTypeTag`}
-          onClick={handleBodyTagClick}
+          onClick={handleAcidityTagClick}
         >
-          가벼운
+          낮은
         </div>
         <div
           className={mid ? `mainWineTypeTag active` : `mainWineTypeTag`}
-          onClick={handleBodyTagClick}
+          onClick={handleAcidityTagClick}
         >
           적당한
         </div>
         <div
           className={high ? `mainWineTypeTag active` : `mainWineTypeTag`}
-          onClick={handleBodyTagClick}
+          onClick={handleAcidityTagClick}
         >
-          무거운
+          높은
         </div>
       </div>
     </div>
   );
 };
 
-export default MainBodyTag;
+export default MainAcidityTag;
