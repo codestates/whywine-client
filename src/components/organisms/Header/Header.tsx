@@ -8,7 +8,7 @@ import SignUpModal from "../Modal/SignUpModal";
 import Logout from "../../atoms/Buttons/Logout";
 import MyAccount from "../../organisms/Togle/MyAccount";
 
-function LandingHeader() {
+function LandingHeader({}) {
   const [signInOpen, setSignInOpen] = useState<boolean>(false);
   const [signUpOpen, setSignUpOpen] = useState<boolean>(false);
   const [isLogin, setIslogin] = useState<boolean>(false);

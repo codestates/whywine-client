@@ -166,6 +166,19 @@ section {
   right: 25px;
   border-bottom: 1px solid;
 }
+.MainHeader {
+  margin: 25px;
+  position: relative;
+  top: 0;
+  z-index: 1;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 30px;
+  padding: 23px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f9f1e6;
+}
 
 .headerMeun {
   font-size: 15px;
