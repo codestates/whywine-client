@@ -1,23 +1,30 @@
-import React, { Children } from "react";
+import React, { useRef, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 interface typeTag {
-  wineType: Array<string>;
+  answer: Array<string>;
   num: number;
+  getTag: any;
 }
-const surTypeTag: React.FC<typeTag> = ({ wineType, num }) => {
+
+const surTypeTag: React.FC<typeTag> = ({ answer, num, getTag }) => {
+  const history = useHistory();
+
   return (
     <div className="wineTypeBox">
-      {wineType.map((type) => {
+      {answer.map((type, index) => {
         return (
           <a
-            href={num !== 5 ? `#survey${num + 1}` : "#result"}
+            href={num !== 5 ? `#survey${num + 1}` : "/survey/result"}
             className="wineTypeTag"
           >
-            <button>{type}</button>
+            <button onClick={(e) => getTag(type, e)}>{type}</button>
           </a>
         );
       })}
     </div>
   );
 };
+
+// TODO: 사용자가 태그를 선택하면 로컬스토리지에 저장해주어야 함. 설문 flow가 완료되면 작업할 예정
 export default surTypeTag;
