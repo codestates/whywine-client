@@ -18,7 +18,7 @@ const MainWineCategory: React.FC<categoryType> = ({ category }) => {
       <h2 className="mainCategoryName">{category}</h2>
       <div className="mainWineCardBox">
         <ul className="mainWineCardList">
-          {wineData.map((data) => {
+          {wineData.map((data, index) => {
             return data;
           })}
         </ul>
