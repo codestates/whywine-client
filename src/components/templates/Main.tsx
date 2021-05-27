@@ -20,6 +20,7 @@ const Main: React.FC = () => {
   return (
     <div>
       <Header />
+      <MainSearchBar />
       <div className="mainContainers">
         <MainWineCon />
         <MainWineTagCon />

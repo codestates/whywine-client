@@ -1,9 +1,14 @@
 import React from "react";
 
-const MainSearchBtn = () => {
+interface State {
+  handleClickSearchBtn: () => void;
+}
+const MainSearchBtn = ({ handleClickSearchBtn }: State) => {
   return (
     <div>
-      <button className="mainSearchBtn">검색</button>
+      <button className="mainSearchBtn" onClick={handleClickSearchBtn}>
+        검색
+      </button>
     </div>
   );
 };

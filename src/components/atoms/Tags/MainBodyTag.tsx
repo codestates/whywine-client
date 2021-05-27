@@ -26,7 +26,7 @@ const MainBodyTag = () => {
   return (
     <div className="mainWineBodyBox">
       <span className="toolTip">
-        바디
+        바디.
         <span className="toolTipText">
           와인에서 말하는 바디란 와인을 마실 때 입안에서 느껴지는 무게감을
           뜻합니다.

@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
-const MainSearch = () => {
+interface State {
+  handleSearch: (e: any) => void;
+}
+
+const MainSearch = ({ handleSearch }: State) => {
   return (
-    <div>
-      <input className="mainSearch" placeholder="검색" />
-    </div>
+    <form>
+      <input
+        className="mainSearch"
+        placeholder="검색"
+        onChange={handleSearch}
+      />
+    </form>
   );
 };
 
