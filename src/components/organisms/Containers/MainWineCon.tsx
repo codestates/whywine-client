@@ -9,8 +9,8 @@ const MainWineCon = () => {
 
   return (
     <div className="mainWineCon">
-      {categories.map((category) => {
-        return <MainWineCategory category={category} />;
+      {categories.map((category, index) => {
+        return <MainWineCategory key={index} category={category} />;
       })}
       <MainSearchCategory />
     </div>
