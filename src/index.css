@@ -778,7 +778,7 @@ section {
 }
 .mainContainers {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
 }
 .mainCategoryName {
@@ -918,10 +918,43 @@ section {
 }
 
 .mainTagBox {
-  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+.typeTag {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+.mainWineTypeBox {
+  margin-bottom: 28px;
+}
+.redWhite {
+  display: flex;
+  margin-bottom: 30px;
+}
+.roseSparkling {
+  display: flex;
+}
+.bodyTanninTag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 40px;
+}
+.aciditySweetnessTag {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mainWineTags {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .mainWineTypeTags {
   display: flex;
+  flex-direction: column;
   margin-top: 20px;
   margin-bottom: 20px;
 }

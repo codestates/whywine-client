@@ -9,27 +9,15 @@ const MainAcidityTag = () => {
     switch (e.target.textContent) {
       case "낮은":
         setLow(!low);
-        if (high === true) {
-          setHigh(!high);
-        } else if (mid === true) {
-          setMid(!mid);
-        }
+
         break;
       case "적당한":
         setMid(!mid);
-        if (high === true) {
-          setHigh(!high);
-        } else if (low === true) {
-          setLow(!low);
-        }
+
         break;
       case "높은":
         setHigh(!high);
-        if (mid === true) {
-          setMid(!mid);
-        } else if (low === true) {
-          setLow(!low);
-        }
+
         break;
 
       default:
@@ -45,7 +33,7 @@ const MainAcidityTag = () => {
           뜻합니다.
         </span>
       </span>
-      <div className="mainWineTypeTags">
+      <div className="mainWineTags">
         <div
           className={low ? `mainWineTypeTag active` : `mainWineTypeTag`}
           onClick={handleAcidityTagClick}

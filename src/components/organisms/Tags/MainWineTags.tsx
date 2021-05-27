@@ -6,19 +6,27 @@ import MainLabel from "../../atoms/Tags/MainLabel";
 import MainTanninTag from "../../atoms/Tags/MainTanninTag";
 import MainAcidityTag from "../../atoms/Tags/MainAcidityTag";
 import MainSweetnessTag from "../../atoms/Tags/MainSweetnessTag";
-
+import wine from "../../../img/wine_main.png";
 const MainWineTags = () => {
   return (
     <div>
-      <div className="mainLabelBox">
+      {/* <div className="mainLabelBox">
         <MainLabel />
-      </div>
+      </div> */}
       <div className={"mainTagBox"}>
-        <MainTypeTag wineType={["레드", "화이트", "로제", "스파클링"]} />
-        <MainBodyTag />
-        <MainTanninTag />
-        <MainAcidityTag />
-        <MainSweetnessTag />
+        <img src={wine} style={{ width: "300px" }} />
+
+        <div className="typeTag">
+          <MainTypeTag />
+        </div>
+        <div className="bodyTanninTag">
+          <MainBodyTag />
+          <MainTanninTag />
+        </div>
+        <div className="aciditySweetnessTag">
+          <MainAcidityTag />
+          <MainSweetnessTag />
+        </div>
       </div>
     </div>
   );

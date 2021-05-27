@@ -22,8 +22,8 @@ const Main: React.FC = () => {
       <Header />
       <MainSearchBar />
       <div className="mainContainers">
-        <MainWineCon />
         <MainWineTagCon />
+        <MainWineCon />
       </div>
       <Footer />
     </div>

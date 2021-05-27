@@ -33,7 +33,7 @@ const MainTanninTag = () => {
           뜻합니다.
         </span>
       </span>
-      <div className="mainWineTypeTags">
+      <div className="mainWineTags">
         <div
           className={low ? `mainWineTypeTag active` : `mainWineTypeTag`}
           onClick={handleTanninTagClick}
