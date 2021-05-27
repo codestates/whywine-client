@@ -4,7 +4,7 @@ import ReviewWineCon from "../Containers/ReviewWineCon";
 import ReviewCon from "../Containers/ReviewCon";
 import ClickWine from "../../atoms/Imgs/ClickWine";
 import UnLike from "../../atoms/Imgs/unLike";
-import StarIconSolid from "../../atoms/Imgs/StarIconSolid";
+import Rating from "../Ratings/Rating";
 
 //* chakra-modal *//
 import { useDisclosure, Button } from "@chakra-ui/react";
@@ -17,7 +17,6 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
-import RatingAvg from "../../atoms/Texts/RatingAvg";
 
 interface wineData {
   // name: string;
@@ -39,17 +38,7 @@ const MainWineCard: React.FC<wineData> = () => {
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
   return (
     <li className="mainWineCard" onClick={handleIsClicked}>
-      <div className="mainWineRating">
-        <div className="mainWineRatingAvg">
-          <RatingAvg />
-        </div>
-        <div className="mainWineRatingStars">
-          {[1, 2, 3, 4, 5].map((star) => {
-            return <StarIconSolid />;
-          })}
-        </div>
-      </div>
-
+      <Rating />
       <div className="mainWineProfile">
         <img src={photo} alt="와인" />
         <div className="mainWineContent">

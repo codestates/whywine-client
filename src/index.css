@@ -550,20 +550,27 @@ section {
   line-height: 170%;
 }
 .mainWineRatingAvg {
-  display: flex;
   flex-direction: column;
   position: absolute;
-  left: 100px;
-  top: 50px;
+  left: 120px;
+  top: 120px;
   color: rgb(196, 118, 1);
   font-size: 25px;
 }
 .mainWineRatingStars {
   display: flex;
   position: absolute;
-  left: 80px;
-  top: 130px;
+  left: 90px;
+  top: 200px;
+  font-size: 20px;
   color: rgb(255, 153, 0);
+}
+.mainWineRatingCounts {
+  position: absolute;
+  left: 100px;
+  top: 230px;
+  font-size: 15px;
+  color: black;
 }
 
 .mainWineCardBox {
@@ -606,19 +613,26 @@ section {
 .mainWineCard:hover .mainWineRatingAvg {
   font-size: 40px;
   margin-left: 50px;
-  top: 10px;
-  color: rgb(238, 199, 24);
+  top: 70px;
+  color: #ffd700;
   transition: all 0.4s;
 }
 .mainWineCard:hover .mainWineRatingStars {
   font-size: 40px;
   transition: all 0.4s;
 }
+.mainWineCard:hover .mainWineRatingCounts {
+  display: none;
+}
+.mainWineCard:hover .mainWineData {
+  background-color: #faf1e6c4;
+  transition: margin 1.4s;
+}
 
 .mainWineCard:hover .mainWineContent h2 {
-  margin-top: 60px;
   width: 400px;
   color: bisque;
+  font-size: 35px;
   transition: margin 0.4s;
 }
 .mainWineCard:hover .mainWineProfile span {
@@ -626,15 +640,18 @@ section {
   position: absolute;
   bottom: 10px;
   color: bisque;
+  font-size: 35px;
+
   transition: margin 0.4s;
 }
 
 .mainWineData {
   display: flex;
   justify-content: center;
-  background-color: #fdfaf6;
+  /* background-color: #fdfaf6; */
+  background-color: bisque;
   width: 400px;
-  height: 100px;
+  height: 60px;
   margin-top: 300px;
   line-height: 30px;
   flex-direction: column;
@@ -650,7 +667,7 @@ section {
 }
 .mainWineContent {
   position: absolute;
-  margin-top: 180px;
+  margin-top: 0px;
   padding: 10px;
   left: 0;
 }
@@ -668,7 +685,7 @@ section {
 .mainWineCard:hover .mainWineContent p {
   opacity: 1;
   max-height: 200px;
-  margin-top: 130px;
+  margin-top: 330px;
 }
 .mainWineContent h2 {
   font-size: 30px;
