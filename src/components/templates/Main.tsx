@@ -42,7 +42,9 @@ const Main: React.FC = () => {
         withCredentials: true,
       });
 
-      console.log(userInfo);
+      console.log(userInfo.data.data);
+      localStorage.setItem("userInfo", JSON.stringify(userInfo.data.data));
+      // * 유저 정보 로컬스토리지 저장
     } catch (error) {
       console.error();
     }
