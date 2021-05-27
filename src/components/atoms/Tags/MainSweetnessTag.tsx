@@ -1,41 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const MainSweetnessTag = () => {
   const [high, setHigh] = useState(false);
   const [mid, setMid] = useState(false);
   const [low, setLow] = useState(false);
-
-  const handleSweetnessTagClick = (e: any) => {
-    switch (e.target.textContent) {
+  let tags: any = localStorage.getItem("userTag");
+  let userMainTag = JSON.parse(tags);
+  const handleSweetnessTagClick = (sweetness: string) => {
+    switch (sweetness) {
       case "씁쓸한":
         setLow(!low);
-        if (high === true) {
-          setHigh(!high);
-        } else if (mid === true) {
-          setMid(!mid);
-        }
+
         break;
       case "적당한":
         setMid(!mid);
-        if (high === true) {
-          setHigh(!high);
-        } else if (low === true) {
-          setLow(!low);
-        }
+
         break;
       case "달달한":
         setHigh(!high);
-        if (mid === true) {
-          setMid(!mid);
-        } else if (low === true) {
-          setLow(!low);
-        }
+
         break;
 
       default:
         break;
     }
   };
+  useEffect(() => {
+    switch (userMainTag[3]) {
+      case "sweetness_dry":
+        handleSweetnessTagClick("씁쓸한");
+        break;
+      case "sweetness_medium":
+        handleSweetnessTagClick("적당한");
+        break;
+      case "sweetness_sweet":
+        handleSweetnessTagClick("달달한");
+        break;
+      default:
+        break;
+    }
+  }, []);
   return (
     <div className="mainWineSweetnessBox">
       <span className="toolTip">
@@ -45,22 +49,22 @@ const MainSweetnessTag = () => {
           뜻합니다.
         </span>
       </span>
-      <div className="mainWineTypeTags">
+      <div className="mainWineTags">
         <div
           className={low ? `mainWineTypeTag active` : `mainWineTypeTag`}
-          onClick={handleSweetnessTagClick}
+          onClick={() => handleSweetnessTagClick("씁쓸한")}
         >
           씁쓸한
         </div>
         <div
           className={mid ? `mainWineTypeTag active` : `mainWineTypeTag`}
-          onClick={handleSweetnessTagClick}
+          onClick={() => handleSweetnessTagClick("적당한")}
         >
           적당한
         </div>
         <div
           className={high ? `mainWineTypeTag active` : `mainWineTypeTag`}
-          onClick={handleSweetnessTagClick}
+          onClick={() => handleSweetnessTagClick("달달한")}
         >
           달달한
         </div>
