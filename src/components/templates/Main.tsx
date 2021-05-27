@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ClickWine from "../atoms/Imgs/ClickWine";
 import MainNav from "../organisms/Buttons/MainNav";
 import MainWineCon from "../organisms/Containers/MainWineCon";
@@ -8,8 +8,15 @@ import ReviewModal from "../organisms/Modal/ReviewModal";
 import Header from "../organisms/Header/Header";
 import Footer from "../organisms/Footer/Footer";
 
-
 const Main: React.FC = () => {
+  const [mainPage, setMainPage] = useState(false);
+
+  useEffect(() => {
+    setMainPage(true);
+    const HeaderEl: any = document.querySelector(".LandingHeader");
+    HeaderEl.className = "MainHeader";
+  }, []);
+
   return (
     <div>
       <Header />

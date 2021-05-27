@@ -1,11 +1,9 @@
-
 ul {
   /* background-color: rgb(241, 237, 237); */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 
 body {
   font-family: "Prata", "Noto Serif KR", serif;
@@ -167,6 +165,19 @@ section {
   top: 25px;
   right: 25px;
   border-bottom: 1px solid;
+}
+.MainHeader {
+  margin: 25px;
+  position: relative;
+  top: 0;
+  z-index: 1;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 30px;
+  padding: 23px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f9f1e6;
 }
 
 .headerMeun {
@@ -770,32 +781,70 @@ section {
 .mainWineNameBox {
   display: flex;
 }
+/*             footer                */
 .footer {
   display: flex;
   width: 100vw;
-  justify-content: space-around;
   background-color: #f1f1f3;
   color: #4d4d4d;
-  position: fixed;
-  bottom: 0;
-}
-.footerTeam {
-  display: flex;
   flex-direction: column;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.footerTitle {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  justify-content: space-between;
+}
+.hr2 {
+  width: 95%;
+}
+.footerCORK {
+  margin-left: 0px;
 }
 .footerCrews {
+  margin: 20px 0px;
   display: flex;
   line-height: 35px;
   cursor: pointer;
+  flex-direction: row;
+  width: 95%;
+  justify-content: space-between;
+}
+.footerCrews span {
+  margin: 0px 10px;
+}
+.creator {
+  display: flex;
+  user-select: auto;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.creator > div {
+  display: flex;
+  user-select: auto;
+  flex-direction: row;
+}
+.creator img {
+  border-radius: 20px;
+  width: 30px;
+  margin: 0px 5px;
 }
 .footerGitHub {
-  width: 50px;
+  display: flex;
   cursor: pointer;
 }
-.footerContent {
-  color: gray;
-  margin-top: 100px;
+.footerGitHub img {
+  margin: 0px 10px;
+  width: 40px;
 }
+.footerContent {
+  text-align: center;
+  color: gray;
+}
+
 .mainTagBox {
   margin-top: 100px;
 }
