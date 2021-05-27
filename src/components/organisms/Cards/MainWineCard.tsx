@@ -1,22 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import photo from "../../../img/whywine_redWine_sample.png";
 import ReviewWineCon from "../Containers/ReviewWineCon";
 import ReviewCon from "../Containers/ReviewCon";
 import ClickWine from "../../atoms/Imgs/ClickWine";
 import UnLike from "../../atoms/Imgs/unLike";
 import Rating from "../Ratings/Rating";
-
-//* chakra-modal *//
-import { useDisclosure, Button } from "@chakra-ui/react";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
+import WineModal from "../Modal/WineModal";
 
 interface wineData {
   // name: string;
@@ -28,13 +17,28 @@ interface wineData {
 
 const MainWineCard: React.FC<wineData> = () => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isOpen, setIsOpen] = useState(false);
+  const ModalEl: any = useRef();
 
   const handleIsClicked = () => {
-    onOpen();
+    setIsOpen(true);
     setIsClicked(true);
   };
 
+  const handleClickOutside = (e: any) => {
+    console.log(ModalEl.current.contains(e.target));
+    if (isOpen && !ModalEl.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+    console.log("클릭됨?");
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  });
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
   return (
     <li className="mainWineCard" onClick={handleIsClicked}>
@@ -62,41 +66,9 @@ const MainWineCard: React.FC<wineData> = () => {
         </div>
         <ClickWine isClicked={isClicked} />
       </div>
-      <div className="wineReviewModal">
-        <Modal onClose={onClose} isOpen={isOpen} isCentered>
-          <ModalOverlay
-            backgroundColor="rgb(138, 138, 138, 0.5)"
-            width="100%"
-            height="100%"
-            position="absolute"
-          />
-          <ModalCloseButton
-            width="30px"
-            height="30px"
-            position="absolute"
-            right="0"
-            top="0"
-            marginTop="80px"
-          />
-          <ModalContent
-            backgroundColor="wheat"
-            width="100%"
-            height="600px"
-            maxWidth="935px"
-            position="absolute"
-            margin="auto"
-            top="20%"
-            left="25%"
-          >
-            <ModalBody>
-              <div className="reviewModal">
-                <ReviewWineCon />
-                <ReviewCon />
-              </div>
-            </ModalBody>
-            <ModalFooter></ModalFooter>
-          </ModalContent>
-        </Modal>
+
+      <div className={isOpen ? "openModal modal" : "modal"}>
+        <WineModal ModalEl={ModalEl} />
       </div>
     </li>
   );
