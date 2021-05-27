@@ -70,8 +70,8 @@ const ReviewCon = () => {
           <UnLike handleLikeBtn={handleLikeBtn} />
         )}
         <div style={{ display: "flex" }}>
-          {[1, 2, 3, 4, 5].map((idx) => {
-            return <Stars />;
+          {[1, 2, 3, 4, 5].map((idx, index) => {
+            return <Stars key={index} />;
           })}
         </div>
         <div>나는야와인고수님 외 4,382명이 찜한 와인입니다!</div>
