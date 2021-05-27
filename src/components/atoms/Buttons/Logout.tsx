@@ -9,19 +9,22 @@ function Logout({ setIslogin }: Props) {
   const history = useHistory();
 
   const handleLogout = async () => {
-    localStorage.removeItem("token");
+    console.log('로그아웃 작동')
     await axios
-        .get(`https://localhost:4000/auth/logout`)
+        .get(`https://localhost:4000/auth/logout`,
+        {withCredentials: true})
         .then((res) => {
-          console.log(res.data.data);
+          console.log('쿠키삭제성공');
+          localStorage.removeItem("token");
+          history.push("/");
+          setIslogin(false);
         })
         .catch((err) => {
           if (err) {
             console.error();
           }
         });
-    history.push("/");
-    setIslogin(false);
+    
   };
 
   return (
