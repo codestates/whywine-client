@@ -39,7 +39,7 @@ const MainAcidityTag = () => {
   return (
     <div className="mainWineAcidityBox">
       <span className="toolTip">
-        산미
+        산미.
         <span className="toolTipText">
           와인에서 말하는 바디란 와인을 마실 때 입안에서 느껴지는 무게감을
           뜻합니다.

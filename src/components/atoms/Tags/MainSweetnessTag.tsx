@@ -39,7 +39,7 @@ const MainSweetnessTag = () => {
   return (
     <div className="mainWineSweetnessBox">
       <span className="toolTip">
-        당도
+        당도.
         <span className="toolTipText">
           와인에서 말하는 바디란 와인을 마실 때 입안에서 느껴지는 무게감을
           뜻합니다.

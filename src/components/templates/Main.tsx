@@ -8,11 +8,11 @@ import ReviewModal from "../organisms/Modal/ReviewModal";
 import Header from "../organisms/Header/Header";
 import Footer from "../organisms/Footer/Footer";
 
-
 const Main: React.FC = () => {
   return (
     <div>
       <Header />
+      <MainSearchBar />
       <div className="mainContainers">
         <MainWineCon />
         <MainWineTagCon />
