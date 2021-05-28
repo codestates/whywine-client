@@ -20,6 +20,42 @@ tags = localStorage.getItem("userTag");
 const Main: React.FC = () => {
   const [mainPage, setMainPage] = useState(false);
   const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags));
+  const Token: any = localStorage.getItem("token");
+
+  // const socialToken = async () => {
+  //   await axios
+  //     .get(`${server}/auth/refreshTokenReq`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       withCredentials: true,
+  //     })
+  //     .then((deta) => {
+  //       console.log(deta);
+  //     });
+
+  // const saveToken = await localStorage.getItem(
+  //   "token",
+  //   JSON.stringify(getAccessToken)
+  // );
+  // };
+
+  const getUserInfo = async () => {
+    try {
+      const userInfo = await axios.get(`${server}/userinfo`, {withCredentials: true});
+
+      console.log(userInfo);
+      //localStorage.setItem("userInfo", JSON.stringify(userInfo.data.data));
+      // * 유저 정보 로컬스토리지 저장
+    } catch (error) {
+      console.error();
+    }
+  };
+  const a = async () => {
+    // await socialToken();
+    await getUserInfo();
+  };
+
 
   useEffect(() => {
     setMainPage(true);

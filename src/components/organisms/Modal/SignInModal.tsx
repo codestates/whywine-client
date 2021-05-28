@@ -27,7 +27,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
     if (e.key === "Enter" || e.type === "click") {
       await axios
         .post(
-          `https://localhost:4000/auth/signin`,
+          `${server}/auth/signin`,
           { email, password },
           {
             headers: { "Content-Type": "application/json" },
@@ -36,8 +36,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
         )
         .then((res) => {
           loginHandler();
-          console.log(res.data.data);
-          localStorage.setItem("token", JSON.stringify(res.data.data));
+          console.log(res.data);
         })
         .catch((err) => {
           if (err) {
