@@ -34,16 +34,10 @@ const Main: React.FC = () => {
 
   const getUserInfo = async () => {
     try {
-      const userInfo = await axios.get(`${server}/userinfo`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${JSON.parse(Token)}`,
-        },
-        withCredentials: true,
-      });
+      const userInfo = await axios.get(`${server}/userinfo`, {withCredentials: true});
 
-      console.log(userInfo.data.data);
-      localStorage.setItem("userInfo", JSON.stringify(userInfo.data.data));
+      console.log(userInfo);
+      //localStorage.setItem("userInfo", JSON.stringify(userInfo.data.data));
       // * 유저 정보 로컬스토리지 저장
     } catch (error) {
       console.error();
