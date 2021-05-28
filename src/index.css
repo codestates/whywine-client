@@ -515,7 +515,15 @@ section {
 }
 
 /**Main**/
-
+.winemodal {
+  max-width: 850px;
+  height: 700px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  animation: modal-show 0.3s;
+}
 .mainNav {
   display: flex;
   justify-content: space-between;

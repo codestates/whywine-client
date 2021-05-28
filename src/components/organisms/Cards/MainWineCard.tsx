@@ -26,11 +26,9 @@ const MainWineCard: React.FC<wineData> = () => {
   };
 
   const handleClickOutside = (e: any) => {
-    console.log(ModalEl.current.contains(e.target));
     if (isOpen && !ModalEl.current.contains(e.target)) {
       setIsOpen(false);
     }
-    console.log("클릭됨?");
   };
 
   useEffect(() => {
