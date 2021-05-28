@@ -3,12 +3,12 @@ import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 require("dotenv").config();
-
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000"
 export default function SocialLogin() {
 
   const googleLoginHandler = () => {
     //window.location.assign(GoogleLoginUrl);
-    window.location.assign('https://localhost:4000/auth/kakao');
+    window.location.assign(`${server}/auth/kakao`);
   };
 
   return (

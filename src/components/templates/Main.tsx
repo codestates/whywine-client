@@ -8,7 +8,7 @@ import axios from "axios";
 import dotenv from "dotenv";
 import { join } from "path/posix";
 require("dotenv").config();
-const server = process.env.REACT_APP_API_SERVER;
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
 const Main: React.FC = () => {
   const [mainPage, setMainPage] = useState(false);
