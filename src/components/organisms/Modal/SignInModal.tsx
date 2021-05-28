@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import SocialLogin from "../../atoms/Buttons/SocialLogin";
 import axios from "axios";
 require("dotenv").config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000"
 
 interface Props {
   isOpen: Boolean;
@@ -40,7 +40,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
         })
         .catch((err) => {
           if (err) {
-            console.log(err);
+            console.error(err.message);
             setTimeout(() => {
               setIsNone(true);
               setIsNone(false);

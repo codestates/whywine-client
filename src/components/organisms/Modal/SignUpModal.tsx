@@ -3,7 +3,7 @@ import SocialLogin from "../../atoms/Buttons/SocialLogin";
 import axios from "axios";
 import dotenv from "dotenv";
 require("dotenv").config();
-const server = process.env.REACT_APP_API_SERVER;
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
 interface Props {
   isOpen: Boolean;
