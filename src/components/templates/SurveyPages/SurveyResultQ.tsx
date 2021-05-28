@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import SurResultBtns from "../../organisms/Buttons/surResultBtns";
 import SurResultCards from "../../organisms/Cards/surResultCards";
 import axios from "axios";
+import dotenv from "dotenv";
 require("dotenv").config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
+const server = process.env.REACT_APP_API_SERVER;
 
 const SurveyResultQ = () => {
   const [wines, setWines] = useState();
@@ -16,7 +17,7 @@ const SurveyResultQ = () => {
 
     axios
       .post(
-        "https://localhost:4000/main/tags",
+        `${server}/main/tags`,
         { tags: JSON.parse(tagsArr).filter((el: string) => el !== "") },
         // * (el: string) => el !== "") 빈문자열 제외하는 부분
         {

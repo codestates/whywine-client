@@ -10,8 +10,8 @@ const Rating = () => {
         <RatingAvg />
       </div>
       <div className="mainWineRatingStars">
-        {[1, 2, 3, 4, 5].map((star) => {
-          return <StarIconSolid />;
+        {[1, 2, 3, 4, 5].map((star, index) => {
+          return <StarIconSolid key={index} />;
         })}
       </div>
       <div className="mainWineRatingCounts">

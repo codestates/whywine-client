@@ -25,6 +25,8 @@ const Main: React.FC = () => {
     setMainPage(true);
     const HeaderEl: any = document.querySelector(".LandingHeader");
     HeaderEl.className = "MainHeader";
+    // * 해더 색깔 바꿔주는 부분
+    a();
   }, []);
 
   //* 태그 최신화

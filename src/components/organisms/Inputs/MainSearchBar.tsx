@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import MainSearchBtn from "../../atoms/Buttons/MainSearchBtn";
 import MainSearch from "../../atoms/Inputs/MainSearch";
 import axios from "axios";
-
+import dotenv from "dotenv";
+dotenv.config();
+const server = process.env.REACT_APP_API_SERVER;
+//${server}
 let word = "wine";
 
 const MainSearchBar = () => {
@@ -13,7 +16,7 @@ const MainSearchBar = () => {
   const handleClickSearchBtn = () => {
     console.log(search);
     axios
-      .get(`https://localhost:4000/main/search?word=${search}`, {
+      .get(`${server}/main/search?word=${search}`, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       })
