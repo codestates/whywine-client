@@ -515,6 +515,10 @@ section {
 }
 
 /**Main**/
+.hrDiv {
+  display: flex;
+  flex-direction: row;
+}
 .winemodal {
   max-width: 850px;
   height: 700px;
@@ -523,6 +527,10 @@ section {
   border-radius: 0.5rem;
   background-color: #fff;
   animation: modal-show 0.3s;
+  font-family: "Noto Sans KR", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .mainNav {
   display: flex;
@@ -759,6 +767,17 @@ section {
   height: 100%;
   border: 2px solid black;
 }
+.wineimg {
+  border: 1px solid;
+  text-align: center;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.textarea {
+  resize: none;
+}
 .reviewBox {
   border: 2px solid black;
 }
@@ -767,8 +786,9 @@ section {
 }
 .reviewInputBox {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border: 2px solid black;
+  justify-content: center;
 }
 .reviewInput {
   display: flex;

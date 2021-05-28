@@ -22,13 +22,11 @@ function WineModal({ ModalEl }: Props) {
 
   return (
     <section ref={ModalEl} className="winemodal">
-      <div className="reviewHeader">
-        <ReviewWineName />
-      </div>
-
-      <Reviews />
-
       <div className="likeBox">
+        <div className="reviewHeader">
+          <ReviewWineName />
+        </div>
+        <div className="wineimg">사진</div>
         {isLike ? (
           <Like handleLikeBtn={handleLikeBtn} />
         ) : (
@@ -41,8 +39,12 @@ function WineModal({ ModalEl }: Props) {
         </div>
         <div>나는야와인고수님 외 4,382명이 찜한 와인입니다!</div>
       </div>
+      <div className="hrDiv">
+        <hr className="hr2"></hr>
+      </div>
 
       <div className="reviewInputBox">
+        <Reviews />
         <form className="reviewInput">
           <ReviewInput />
           <ReviewBtn />
