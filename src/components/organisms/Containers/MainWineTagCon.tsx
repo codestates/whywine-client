@@ -1,10 +1,14 @@
 import React from "react";
 import MainWineTags from "../Tags/MainWineTags";
 
-const MainWineTagCon = () => {
+interface Tags {
+  userMainTag: string[];
+  setUserMainTag: React.Dispatch<React.SetStateAction<string[]>>;
+}
+const MainWineTagCon = ({ userMainTag, setUserMainTag }: Tags) => {
   return (
     <div className="mainWineTagCon">
-      <MainWineTags />
+      <MainWineTags userMainTag={userMainTag} setUserMainTag={setUserMainTag} />
     </div>
   );
 };

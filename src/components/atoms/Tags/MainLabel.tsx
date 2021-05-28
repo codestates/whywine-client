@@ -55,7 +55,7 @@ const MainLabel = () => {
           <DrawerHeader>원하는 태그를 골라보세요</DrawerHeader>
 
           <DrawerBody>
-            <MainTypeTag wineType={["레드", "화이트", "로제", "스파클링"]} />
+            <MainTypeTag />
             <MainBodyTag />
           </DrawerBody>
 
