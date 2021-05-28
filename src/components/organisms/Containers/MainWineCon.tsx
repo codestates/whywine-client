@@ -3,19 +3,24 @@ import Main from "../../templates/Main";
 import MainSearchCategory from "../Categories/MainSearchCategory";
 import MainWineCategory from "../Categories/MainWineCategory";
 
-// interface Tags {
-//   tags: string;
-//   userTags: string;
-// }
+interface WineData {
+  randomWine: string[];
+}
 
 //! 와인 카테고리가 나뉘어서 들어와야함
-const MainWineCon = () => {
+const MainWineCon = ({ randomWine }: WineData) => {
   let categories = [`당신을 위한 \        완벽한 와인`];
 
   return (
     <div className="mainWineCon">
       {categories.map((category, index) => {
-        return <MainWineCategory key={index} category={category} />;
+        return (
+          <MainWineCategory
+            key={index}
+            category={category}
+            randomWine={randomWine}
+          />
+        );
       })}
       <MainSearchCategory />
     </div>

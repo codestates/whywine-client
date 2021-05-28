@@ -7,7 +7,9 @@ import MainTags from "../../atoms/Tags/MainTags";
 
 interface Tags {
   userMainTag: string[];
+  userTypeTag: string[];
   setUserMainTag: React.Dispatch<React.SetStateAction<string[]>>;
+  setTypeTag: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 let tags: any;
@@ -17,7 +19,12 @@ if (!localStorage.getItem("userTag")) {
 }
 tags = localStorage.getItem("userTag");
 
-const MainWineTags = ({ userMainTag, setUserMainTag }: Tags) => {
+const MainWineTags = ({
+  userMainTag,
+  setUserMainTag,
+  userTypeTag,
+  setTypeTag,
+}: Tags) => {
   const [userTags, setUserTags] = useState(JSON.parse(tags));
   return (
     <div>
@@ -28,7 +35,7 @@ const MainWineTags = ({ userMainTag, setUserMainTag }: Tags) => {
         <img src={wine} style={{ width: "300px" }} />
 
         <div className="typeTag">
-          <MainTypeTag />
+          <MainTypeTag userTypeTag={userTypeTag} setTypeTag={setTypeTag} />
         </div>
         <div className="bodyTanninTag">
           <MainTags
