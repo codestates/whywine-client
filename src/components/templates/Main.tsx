@@ -6,7 +6,8 @@ import MainSearchBar from "../organisms/Inputs/MainSearchBar";
 import Header from "../organisms/Header/Header";
 import Footer from "../organisms/Footer/Footer";
 import axios from "axios";
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
 //* 로컬스토리지에 담겨있는 태그 불러오기
@@ -16,11 +17,13 @@ if (!localStorage.getItem("userTag")) {
   tags = localStorage.getItem("userTag");
 }
 tags = localStorage.getItem("userTag");
-
 const Main: React.FC = () => {
   const [mainPage, setMainPage] = useState(false);
-  const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags));
+  const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags)); // 유저의 와인 맛 태그
+  const [userTypeTag, setTypeTag] = useState<string[]>([]); // 유저의 와인 타입 태그
+  const [randomWine, setRandomWine] = useState<string[]>([]);
   const Token: any = localStorage.getItem("token");
+  console.log(userTypeTag);
 
   // const socialToken = async () => {
   //   await axios
@@ -39,10 +42,13 @@ const Main: React.FC = () => {
   //   JSON.stringify(getAccessToken)
   // );
   // };
+  console.log(server);
 
   const getUserInfo = async () => {
     try {
-      const userInfo = await axios.get(`${server}/userinfo`, {withCredentials: true});
+      const userInfo = await axios.get(`${server}/userinfo`, {
+        withCredentials: true,
+      });
 
       console.log(userInfo);
       //localStorage.setItem("userInfo", JSON.stringify(userInfo.data.data));
@@ -56,7 +62,6 @@ const Main: React.FC = () => {
     await getUserInfo();
   };
 
-
   useEffect(() => {
     setMainPage(true);
     const HeaderEl: any = document.querySelector(".LandingHeader");
@@ -68,24 +73,29 @@ const Main: React.FC = () => {
   //* 태그 최신화
   useEffect(() => {
     postTags();
-  }, [userMainTag]);
+  }, [userMainTag, userTypeTag]);
 
   //* 서버에 태그 요청
-  const postTags = useCallback(() => {
+  const postTags = useCallback(async () => {
     if (userMainTag.length !== 0) {
-      axios
+      await axios
         .post(
           `${server}/main/tags`,
-          { tags: userMainTag.filter((el: string) => el !== "") },
+          {
+            tags: userMainTag.filter((el: string) => el !== ""),
+            sort: userTypeTag,
+          },
           // * (el: string) => el !== "") 빈문자열 제외하는 부분
           {
             headers: { "Content-Type": "application/json" },
             withCredentials: true,
           }
         )
-        .then((data) => console.log(data.data.data.wines.sorted));
+        .then((data) => {
+          setRandomWine(data.data.data.wines.sorted.random3);
+        });
     }
-  }, [userMainTag]);
+  }, [userMainTag, userTypeTag]);
 
   return (
     <div>
@@ -95,8 +105,10 @@ const Main: React.FC = () => {
         <MainWineTagCon
           userMainTag={userMainTag}
           setUserMainTag={setUserMainTag}
+          userTypeTag={userTypeTag}
+          setTypeTag={setTypeTag}
         />
-        <MainWineCon />
+        <MainWineCon randomWine={randomWine} />
       </div>
       <Footer />
     </div>
