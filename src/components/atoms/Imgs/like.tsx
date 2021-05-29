@@ -1,18 +1,14 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useMemo, useEffect } from "react";
 
-interface State {
-  handleLikeBtn: React.MouseEventHandler<SVGSVGElement>;
-}
+const Like = () => {
+  const [isLike, setIsLike] = useState(false);
 
-const Like = ({ handleLikeBtn }: State) => {
+  const handleLikeBtn = () => {
+    setIsLike(!isLike);
+  };
+
   return (
-    <FontAwesomeIcon
-      icon={faHeart}
-      size="2x"
-      style={{ width: "20px", margin: " 0 10px 0 0 ", cursor: "pointer" }}
-      onClick={handleLikeBtn}
-    />
+    <div onClick={handleLikeBtn} className={isLike ? "like" : "unlike"}></div>
   );
 };
 

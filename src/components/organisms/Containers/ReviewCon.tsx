@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import LikeBtn from "../../atoms/Buttons/LikeBtn";
+
 import ReplyBtn from "../../atoms/Buttons/ReplyBtn";
 import ReviewBtn from "../../atoms/Buttons/ReviewBtn";
 import ReviewLikeBtn from "../../atoms/Buttons/ReviewLikeBtn";
 import Like from "../../atoms/Imgs/like";
-import UnLike from "../../atoms/Imgs/unLike";
+
 import ReviewInput from "../../atoms/Inputs/ReviewInput";
 import ReviewTime from "../../atoms/Texts/ReviewTime";
 import ReviewWineName from "../../atoms/Texts/ReviewWineName";
@@ -64,11 +64,6 @@ const ReviewCon = () => {
       </ul>
 
       <div className="likeBox">
-        {isLike ? (
-          <Like handleLikeBtn={handleLikeBtn} />
-        ) : (
-          <UnLike handleLikeBtn={handleLikeBtn} />
-        )}
         <div style={{ display: "flex" }}>
           {[1, 2, 3, 4, 5].map((idx, index) => {
             return <Stars key={index} />;

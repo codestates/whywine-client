@@ -767,6 +767,19 @@ section {
   height: 100%;
   border: 2px solid black;
 }
+
+.unlike {
+  background-image: url("./img/heart-solid.svg");
+  width: 20px;
+  height: 20px;
+  color: red;
+}
+.like {
+  width: 20px;
+  height: 20px;
+  color: red;
+  background-image: url("./img/heart-regular.svg");
+}
 .wineimg {
   border: 1px solid;
   text-align: center;

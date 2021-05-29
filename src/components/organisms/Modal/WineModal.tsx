@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import LikeBtn from "../../atoms/Buttons/LikeBtn";
 import ReviewBtn from "../../atoms/Buttons/ReviewBtn";
 import Like from "../../atoms/Imgs/like";
-import UnLike from "../../atoms/Imgs/unLike";
 import ReviewInput from "../../atoms/Inputs/ReviewInput";
 import ReviewTime from "../../atoms/Texts/ReviewTime";
 import ReviewWineName from "../../atoms/Texts/ReviewWineName";
@@ -14,12 +12,6 @@ interface Props {
 }
 
 function WineModal({ ModalEl }: Props) {
-  const [isLike, setIsLike] = useState(false);
-
-  const handleLikeBtn = (): any => {
-    setIsLike(!isLike);
-  };
-
   return (
     <section ref={ModalEl} className="winemodal">
       <div className="likeBox">
@@ -27,11 +19,7 @@ function WineModal({ ModalEl }: Props) {
           <ReviewWineName />
         </div>
         <div className="wineimg">사진</div>
-        {isLike ? (
-          <Like handleLikeBtn={handleLikeBtn} />
-        ) : (
-          <UnLike handleLikeBtn={handleLikeBtn} />
-        )}
+        <Like />
         <div style={{ display: "flex" }}>
           {[1, 2, 3, 4, 5].map((idx, index) => {
             return <Stars key={index} />;
