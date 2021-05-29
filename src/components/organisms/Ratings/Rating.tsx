@@ -14,9 +14,7 @@ const Rating = () => {
           return <StarIconSolid key={index} />;
         })}
       </div>
-      <div className="mainWineRatingCounts">
-        <RatingCounts />
-      </div>
+      <div className="mainWineRatingCounts">{/* <RatingCounts /> */}</div>
     </div>
   );
 };

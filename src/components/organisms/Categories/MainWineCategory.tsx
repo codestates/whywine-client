@@ -3,16 +3,16 @@ import MainWineCard from "../Cards/MainWineCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 interface WineData {
-  category: string;
-  randomWine: string[];
+  randomWine: object[];
 }
 
-const MainWineCategory = ({ category, randomWine }: WineData) => {
-  let wineData = [
-    <MainWineCard randomWine={randomWine[0]} />,
-    <MainWineCard randomWine={randomWine[1]} />,
-    <MainWineCard randomWine={randomWine[2]} />,
-  ];
+const MainWineCategory = ({ randomWine }: WineData) => {
+  // let wineData = [
+  //   <MainWineCard randomWine={randomWine[0]} />,
+  //   <MainWineCard randomWine={randomWine[1]} />,
+  //   <MainWineCard randomWine={randomWine[2]} />,
+  // ];
+  console.log(randomWine[0]);
   const [isTagArr, setIsTagArr] = useState(true);
   const tags: any = localStorage.getItem("userTag");
   if (!tags) {
@@ -22,11 +22,15 @@ const MainWineCategory = ({ category, randomWine }: WineData) => {
     <div>
       {isTagArr ? (
         <div className="mainWineCategory">
-          <h2 className="mainCategoryName">{category}</h2>
+          <h2 className="mainCategoryName">
+            당신을 위한 <span>완벽한 와인</span>
+          </h2>
           <div className="mainWineCardBox">
             <ul className="mainWineCardList">
-              {wineData.map((data, index) => {
-                return data;
+              {[1, 2, 3].map((data, index) => {
+                return (
+                  <MainWineCard randomWine={randomWine[index]} key={index} />
+                );
               })}
             </ul>
           </div>
