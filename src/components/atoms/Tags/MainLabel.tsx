@@ -55,7 +55,7 @@ const MainLabel = () => {
           <DrawerHeader>원하는 태그를 골라보세요</DrawerHeader>
 
           <DrawerBody>
-            <MainTypeTag />
+            {/* <MainTypeTag /> */}
             <MainBodyTag />
           </DrawerBody>
 

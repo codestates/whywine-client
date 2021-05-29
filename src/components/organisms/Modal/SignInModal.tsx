@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import SocialLogin from "../../atoms/Buttons/SocialLogin";
 import axios from "axios";
 require("dotenv").config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000"
 
 interface Props {
   isOpen: Boolean;
@@ -27,7 +27,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
     if (e.key === "Enter" || e.type === "click") {
       await axios
         .post(
-          `https://localhost:4000/auth/signin`,
+          `${server}/auth/signin`,
           { email, password },
           {
             headers: { "Content-Type": "application/json" },
@@ -36,12 +36,11 @@ function SignInModal({ isOpen, closeModal }: Props) {
         )
         .then((res) => {
           loginHandler();
-          console.log(res.data.data);
-          localStorage.setItem("token", JSON.stringify(res.data.data));
+          console.log(res.data);
         })
         .catch((err) => {
           if (err) {
-            console.log(err);
+            console.error(err.message);
             setTimeout(() => {
               setIsNone(true);
               setIsNone(false);

@@ -6,15 +6,16 @@ import ClickWine from "../../atoms/Imgs/ClickWine";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
 
-interface wineData {
+interface WineData {
   // name: string;
   // photo: HTMLImageElement; //? 그냥 사진을 바로 불러와도 되려나
   // like: number;
   // tag: any;
   // onClick: () => void;
+  randomWine: string;
 }
 
-const MainWineCard: React.FC<wineData> = () => {
+const MainWineCard = ({ randomWine }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const ModalEl: any = useRef();

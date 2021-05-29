@@ -1,6 +1,10 @@
 import React, { useReducer, useState } from "react";
 
-const MainTypeTag = () => {
+interface Tags {
+  userTypeTag: string[];
+  setTypeTag: React.Dispatch<React.SetStateAction<string[]>>;
+}
+const MainTypeTag = ({ userTypeTag, setTypeTag }: Tags) => {
   const [red, setRed] = useState(false);
   const [white, setWhite] = useState(false);
   const [rose, setRose] = useState(false);
@@ -9,15 +13,57 @@ const MainTypeTag = () => {
     switch (e.target.textContent) {
       case "레드":
         setRed(!red);
+        if (userTypeTag.length === 0) {
+          setTypeTag([...userTypeTag, "red"]);
+        }
+        for (let i = 0; i < userTypeTag.length; i++) {
+          if (userTypeTag[i] !== "red") {
+            setTypeTag([...userTypeTag, "red"]);
+          } else if (userTypeTag[i] === "red") {
+            setTypeTag(userTypeTag.filter((tag: string) => tag !== "red"));
+          }
+        }
         break;
       case "화이트":
         setWhite(!white);
+        if (userTypeTag.length === 0) {
+          setTypeTag([...userTypeTag, "white"]);
+        }
+        for (let i = 0; i < userTypeTag.length; i++) {
+          if (userTypeTag[i] !== "white") {
+            setTypeTag([...userTypeTag, "white"]);
+          } else if (userTypeTag[i] === "white") {
+            setTypeTag(userTypeTag.filter((tag: string) => tag !== "white"));
+          }
+        }
         break;
       case "로제":
         setRose(!rose);
+        if (userTypeTag.length === 0) {
+          setTypeTag([...userTypeTag, "rose"]);
+        }
+        for (let i = 0; i < userTypeTag.length; i++) {
+          if (userTypeTag[i] !== "rose") {
+            setTypeTag([...userTypeTag, "rose"]);
+          } else if (userTypeTag[i] === "rose") {
+            setTypeTag(userTypeTag.filter((tag: string) => tag !== "rose"));
+          }
+        }
         break;
       case "스파클링":
         setSparkling(!sparkling);
+        if (userTypeTag.length === 0) {
+          setTypeTag([...userTypeTag, "sparkling"]);
+        }
+        for (let i = 0; i < userTypeTag.length; i++) {
+          if (userTypeTag[i] !== "sparkling") {
+            setTypeTag([...userTypeTag, "sparkling"]);
+          } else if (userTypeTag[i] === "sparkling") {
+            setTypeTag(
+              userTypeTag.filter((tag: string) => tag !== "sparkling")
+            );
+          }
+        }
         break;
 
       default:

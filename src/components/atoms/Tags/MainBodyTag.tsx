@@ -1,20 +1,24 @@
 import axios from "axios";
 import React, { useState, useEffect, useCallback } from "react";
 
+let tags: any;
 if (!localStorage.getItem("userTag")) {
   localStorage.setItem("userTag", JSON.stringify([]));
+  tags = localStorage.getItem("userTag");
 }
-const tags: any = localStorage.getItem("userTag");
-
+tags = localStorage.getItem("userTag");
 const MainBodyTag = () => {
   const [high, setHigh] = useState(false);
   const [mid, setMid] = useState(false);
   const [low, setLow] = useState(false);
-  const [userMainTag, setUserMainTag] = useState(JSON.parse(tags));
+  const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags));
   const handleBodyTagClick = (body: string) => {
     switch (body) {
       case "가벼운":
         setLow(!low);
+        if (userMainTag.length === 0) {
+          setUserMainTag([...userMainTag, "body_light"]);
+        }
         for (let i = 0; i < userMainTag.length; i++) {
           if (userMainTag[i] !== "body_light") {
             setUserMainTag([...userMainTag, "body_light"]);
@@ -24,38 +28,63 @@ const MainBodyTag = () => {
             );
           }
         }
-        postTags();
         break;
       case "적당한":
         setMid(!mid);
-
+        if (userMainTag.length === 0) {
+          setUserMainTag([...userMainTag, "body_medium"]);
+        }
+        for (let i = 0; i < userMainTag.length; i++) {
+          if (userMainTag[i] !== "body_medium") {
+            setUserMainTag([...userMainTag, "body_medium"]);
+          } else if (userMainTag[i] === "body_medium") {
+            setUserMainTag(
+              userMainTag.filter((tag: string) => tag !== "body_medium")
+            );
+          }
+        }
         break;
       case "무거운":
         setHigh(!high);
+        if (userMainTag.length === 0) {
+          setUserMainTag([...userMainTag, "body_bold"]);
+        }
+        for (let i = 0; i < userMainTag.length; i++) {
+          if (userMainTag[i] !== "body_bold") {
+            setUserMainTag([...userMainTag, "body_bold"]);
+          } else if (userMainTag[i] === "body_bold") {
+            setUserMainTag(
+              userMainTag.filter((tag: string) => tag !== "body_bold")
+            );
+          }
+        }
         break;
 
       default:
         break;
     }
   };
-  // const saveTags = useCallback(() => {
-  //   localStorage.setItem("userTag", JSON.stringify(userMainTag));
-  //   postTags();
-  // }, [userMainTag]);
+
+  //* 태그 최신화
+  useEffect(() => {
+    postTags();
+  }, [userMainTag]);
+  //* 서버에 태그 요청
   const postTags = useCallback(() => {
     console.log(userMainTag);
-
-    axios
-      .post(
-        "https://localhost:4000/main/tags",
-        { tags: userMainTag.filter((el: string) => el !== "") },
-        // * (el: string) => el !== "") 빈문자열 제외하는 부분
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      )
-      .then((data) => console.log(data));
+    if (userMainTag.length !== 0) {
+      axios
+        .post(
+          "https://localhost:4000/main/tags",
+          { tags: userMainTag.filter((el: string) => el !== "") },
+          // * (el: string) => el !== "") 빈문자열 제외하는 부분
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        )
+        .then((data) => console.log(data));
+    }
   }, [userMainTag]);
 
   //* 설문에서 받아온 기본 태그를 메인에 띄워줌
