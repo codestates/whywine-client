@@ -17,6 +17,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
   const [password, setPassword] = useState("");
   const [issueAccessToken, setIssueAccessToken] = useState();
   const [isNone, setIsNone] = useState(false);
+  const [message, setMessage] = useState("");
 
   const history = useHistory();
 
@@ -40,13 +41,11 @@ function SignInModal({ isOpen, closeModal }: Props) {
           console.log(res.data);
         })
         .catch((err) => {
-          if (err) {
-            console.error(err.message);
-            setTimeout(() => {
-              setIsNone(true);
-              setIsNone(false);
-            }, 2000);
-          }
+          setIsNone(false);
+          setMessage("이메일과 비밀번호를 확인해주세요.");
+          setTimeout(() => {
+            setIsNone(true);
+          }, 2000);
         });
     } else if (e.keyCode === 27) {
       close();
@@ -67,7 +66,9 @@ function SignInModal({ isOpen, closeModal }: Props) {
           <h2 className="login_h2">
             <span> whywine</span> | <span>Log in</span>
           </h2>
-
+          <div className="failed" style={{ opacity: isNone ? "0" : "1" }}>
+            {message}
+          </div>
           <input
             name="email"
             type="email"

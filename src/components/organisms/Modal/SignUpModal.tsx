@@ -40,14 +40,14 @@ function SignInModal({ isOpen, closeModal }: Props) {
             withCredentials: true,
           }
         );
-        close();
         console.log(data);
+        close();
       } catch (error) {
         setIsNone(false);
-        // setMessage(error.response.data.message);
         setTimeout(() => {
           setIsNone(true);
         }, 2000);
+        setMessage(error.response.data.message);
       }
     }
   };
@@ -57,8 +57,11 @@ function SignInModal({ isOpen, closeModal }: Props) {
       {isOpen ? (
         <div className="SignInModal">
           <h2 className="login_h2">
-            <span> whywine</span> | <span>Log in</span>
+            <span> whywine</span> | <span>Sign up</span>
           </h2>
+          <div className="failed" style={{ opacity: isNone ? "0" : "1" }}>
+            {message}
+          </div>
           <input
             name="email"
             className="signup_input"
