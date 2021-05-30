@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-
 import ReplyBtn from "../../atoms/Buttons/ReplyBtn";
 import ReviewBtn from "../../atoms/Buttons/ReviewBtn";
 import ReviewLikeBtn from "../../atoms/Buttons/ReviewLikeBtn";
 import Like from "../../atoms/Imgs/like";
-
 import ReviewInput from "../../atoms/Inputs/ReviewInput";
 import ReviewTime from "../../atoms/Texts/ReviewTime";
 import ReviewWineName from "../../atoms/Texts/ReviewWineName";

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import SocialLogin from "../../atoms/Buttons/SocialLogin";
+import Title from "../../atoms/Title/Title";
 import axios from "axios";
 require("dotenv").config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000"
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
 interface Props {
   isOpen: Boolean;
@@ -20,7 +21,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
   const history = useHistory();
 
   const loginHandler = () => {
-    history.push("/Waiting");
+    history.push("/main");
   };
 
   const loginRequestHandler = async (e: any) => {
@@ -63,13 +64,10 @@ function SignInModal({ isOpen, closeModal }: Props) {
     <div className={isOpen ? "openModal modal" : "modal"}>
       {isOpen ? (
         <div className="SignInModal">
-          <div
-            className="failed_signin"
-            style={{ opacity: isNone ? "1" : "0" }}
-          >
-            이메일과 비밀번호를 확인해주세요.
-          </div>
-          <div>로그인</div>
+          <h2 className="login_h2">
+            <span> whywine</span> | <span>Log in</span>
+          </h2>
+
           <input
             name="email"
             type="email"
@@ -77,6 +75,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
             onChange={emailInputValue}
             onKeyDown={loginRequestHandler}
           />
+
           <input
             name="password"
             type="password"
@@ -84,15 +83,24 @@ function SignInModal({ isOpen, closeModal }: Props) {
             onChange={passwordInputValue}
             onKeyDown={loginRequestHandler}
           />
-          <button type="submit" onClick={loginRequestHandler}>
-            로그인
-          </button>
+
+          <div>
+            <button
+              className="signin-button"
+              type="submit"
+              onClick={loginRequestHandler}
+            >
+              로그인
+            </button>
+          </div>
+          <div className="login_or">
+            <p>or</p>
+          </div>
+
           <div className="socialLogin">
             <SocialLogin />
           </div>
-          <div className="closeModal" onClick={closeModal}>
-            closeModal
-          </div>
+          <i className="fas fa-times" onClick={closeModal}></i>
         </div>
       ) : null}
     </div>
