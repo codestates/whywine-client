@@ -17,6 +17,7 @@ if (!localStorage.getItem("userTag")) {
   tags = localStorage.getItem("userTag");
 }
 tags = localStorage.getItem("userTag");
+
 const Main: React.FC = () => {
   const [mainPage, setMainPage] = useState(false);
   const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags)); // 유저의 와인 맛 태그
@@ -40,6 +41,24 @@ const Main: React.FC = () => {
     } catch (error) {}
   };
 
+  const userTagUpdata = async () => {
+    let tagsArr: any = localStorage.getItem("userTag");
+    // * 로컬 스토리지에 있는 선택한 태그들을 tagsArr에 할당
+    console.log("tags:", JSON.parse(tagsArr));
+    // ! 로컬스토리지에서 데이터 받을시에 꼭 JSON.parse으로 JSON형태로 저장된 데이터 배열로 바꿔줘야함
+
+    await axios
+      .post(
+        `${server}/user/update`,
+        { tags: JSON.parse(tagsArr).filter((el: string) => el !== "") },
+        // * (el: string) => el !== "") 빈문자열 제외하는 부분
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      )
+      .then((data) => console.log(data));
+  };
   useEffect(() => {
     setMainPage(true);
 
@@ -50,6 +69,7 @@ const Main: React.FC = () => {
     getUserInfo();
   }, []);
   //* 서버에 태그 요청
+
   const postTags = useCallback(async () => {
     if (userMainTag.length !== 0) {
       console.log("userTypeTag", userTypeTag, "userMainTag", userMainTag);

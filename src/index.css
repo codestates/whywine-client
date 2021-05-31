@@ -57,6 +57,17 @@ section {
   border: 2px solid rgb(109, 95, 95);
   justify-content: space-around;
 }
+.FirstPage_GoTomain {
+  font-size: 25px;
+  margin: 0px 6px;
+  cursor: pointer;
+}
+.FirstPage_GoTomain:hover {
+  color: rgb(240, 119, 88);
+}
+.FirstPage_route {
+  font-family: "Noto Sans KR", sans-serif;
+}
 .FirstPage {
   background-image: url("./img/wine-bottles-3623697_1920.png");
   background-size: cover;
@@ -66,13 +77,14 @@ section {
   justify-content: center;
 }
 .FirstPage > div {
-  margin: 0px 30px;
+  margin: 0px 50px;
 }
 .FirstPage_Summery h1 {
   margin: 0;
   font-size: 100px;
 }
 .FirstPage_Summery p {
+  color: white;
   font-size: 20px;
 }
 .FirstPage_InputSurvey {
