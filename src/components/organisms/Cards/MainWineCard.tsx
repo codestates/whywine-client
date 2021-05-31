@@ -14,6 +14,7 @@ interface WineData {
   randomWine: any;
 }
 let name: string,
+  id: number,
   likeCount: number,
   description: string,
   image: string,
@@ -34,6 +35,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
   // 확인 확인
   if (randomWine) {
     name = randomWine.name;
+    id = randomWine.id;
     likeCount = randomWine.likeCount;
     description = randomWine.description;
     image = process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image;
@@ -99,47 +101,43 @@ const MainWineCard = ({ randomWine }: WineData) => {
                 ? " #스파클링"
                 : null}
             </div>
-
             <div className="mainWineLikeTagBox">
-              <div className="mainWineTag">#레드 #씁쓸한 #인기있는</div>
+              <div className="mainWineTag">
+                {tags.map((tag: any) => {
+                  switch (tag.name) {
+                    case "body_light":
+                      return " #가벼운";
+                    case "body_medium":
+                      return "";
+                    case "body_bold":
+                      return " #무거운";
+                    case "tannins_smooth":
+                      return " #부드러운";
+                    case "tannins_medium":
+                      return "";
+                    case "tannins_tannic":
+                      return " #떫은";
+                    case "acidity_soft":
+                      return " #산미가 적은";
+                    case "acidity_medium":
+                      return "";
+                    case "acidity_acidic":
+                      return " #산미가 높은";
+                    case "sweetness_dry":
+                      return " #씁쓸한";
+                    case "sweetness_medium":
+                      return "";
+                    case "sweetness_sweet":
+                      return "#달달한";
+                    default:
+                      break;
+                  }
+                })}
+              </div>
             </div>
             <ClickWine isClicked={isClicked} />
           </div>
 
-          <div className="mainWineLikeTagBox">
-            <div className="mainWineTag">
-              {tags.map((tag: any) => {
-                switch (tag.name) {
-                  case "body_light":
-                    return " #가벼운";
-                  case "body_medium":
-                    return "";
-                  case "body_bold":
-                    return " #무거운";
-                  case "tannins_smooth":
-                    return " #부드러운";
-                  case "tannins_medium":
-                    return "";
-                  case "tannins_tannic":
-                    return " #떫은";
-                  case "acidity_soft":
-                    return " #산미가 적은";
-                  case "acidity_medium":
-                    return "";
-                  case "acidity_acidic":
-                    return " #산미가 높은";
-                  case "sweetness_dry":
-                    return " #씁쓸한";
-                  case "sweetness_medium":
-                    return "";
-                  case "sweetness_sweet":
-                    return "#달달한";
-                  default:
-                    break;
-                }
-              })}
-            </div>
-          </div>
           <ClickWine isClicked={isClicked} />
         </li>
       )}

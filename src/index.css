@@ -623,6 +623,7 @@ section {
 .mainSearchBar {
   display: flex;
   flex-direction: row;
+  z-index: 1;
 }
 .mainSearchBtn {
   margin: 0;
@@ -1072,8 +1073,12 @@ section {
   z-index: 1;
 }
 .mainSearchCategory {
+  display: flex;
   margin-top: 100px;
   margin-bottom: 100px;
+}
+.mainWineSearchList {
+  display: flex;
 }
 .mainWineCategory {
   display: flex;
