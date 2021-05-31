@@ -3,29 +3,25 @@ import MainSearchBtn from "../../atoms/Buttons/MainSearchBtn";
 import MainSearch from "../../atoms/Inputs/MainSearch";
 import axios from "axios";
 import dotenv from "dotenv";
+
+interface State {
+  handleSearchInput: (e: any) => void;
+  handleClickSearchBtn: () => void;
+}
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER;
 //${server}
 let word = "wine";
 
-const MainSearchBar = () => {
+const MainSearchBar = ({ handleSearchInput, handleClickSearchBtn }: State) => {
   const [search, setSearch] = useState("");
   const handleSearch = (e: any): void => {
     setSearch(e.target.value);
   };
-  const handleClickSearchBtn = () => {
-    console.log(search);
-    axios
-      .get(`${server}/main/search?word=${search}`, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      })
-      .then((data) => console.log(data));
-  };
 
   return (
     <div className="mainSearchBar">
-      <MainSearch handleSearch={handleSearch} />
+      <MainSearch handleSearchInput={handleSearchInput} />
       <MainSearchBtn handleClickSearchBtn={handleClickSearchBtn} />
     </div>
   );

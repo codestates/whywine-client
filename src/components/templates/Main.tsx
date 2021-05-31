@@ -22,6 +22,8 @@ const Main: React.FC = () => {
   const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags)); // 유저의 와인 맛 태그
   const [userTypeTag, setTypeTag] = useState<string[]>([]); // 유저의 와인 타입 태그
   const [randomWine, setRandomWine] = useState<object[]>([]);
+  const [search, setSearch] = useState("");
+  const [searchWine, setSearchWine] = useState<object[]>([]);
 
   const getUserInfo = async () => {
     try {
@@ -47,7 +49,7 @@ const Main: React.FC = () => {
 
     getUserInfo();
   }, []);
-
+  //* 서버에 태그 요청
   const postTags = useCallback(async () => {
     if (userMainTag.length !== 0) {
       console.log("userTypeTag", userTypeTag, "userMainTag", userMainTag);
@@ -76,12 +78,27 @@ const Main: React.FC = () => {
     postTags();
   }, [userMainTag, userTypeTag]);
 
-  //* 서버에 태그 요청
-
+  const handleSearchInput = (e: any) => {
+    setSearch(e.target.value);
+  };
+  const handleClickSearchBtn = () => {
+    console.log(search);
+    axios
+      .get(`${server}/main/search?word=${search}`, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
+      .then((data) => {
+        console.log(data.data.data.wines);
+        setSearchWine(data.data.data.wines);
+      });
+  };
   return (
     <div>
-      <Header />
-      <MainSearchBar />
+      <Header
+        handleSearchInput={handleSearchInput}
+        handleClickSearchBtn={handleClickSearchBtn}
+      />
       <div className="mainContainers">
         <MainWineTagCon
           userMainTag={userMainTag}
@@ -90,7 +107,7 @@ const Main: React.FC = () => {
           setTypeTag={setTypeTag}
           tags={tags}
         />
-        <MainWineCon randomWine={randomWine} />
+        <MainWineCon randomWine={randomWine} searchWine={searchWine} />
       </div>
       <Footer />
     </div>

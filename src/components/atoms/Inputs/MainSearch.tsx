@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
 interface State {
-  handleSearch: (e: any) => void;
+  handleSearchInput: (e: any) => void;
 }
 
-const MainSearch = ({ handleSearch }: State) => {
+const MainSearch = ({ handleSearchInput }: State) => {
   return (
     <form>
       <input
         className="mainSearch"
         placeholder="검색"
-        onChange={handleSearch}
+        onChange={handleSearchInput}
       />
     </form>
   );

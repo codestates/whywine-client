@@ -12,7 +12,7 @@ interface Handler {
 function Landing() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="container">
         <section className="FirstPage">
           <FirstPage />
