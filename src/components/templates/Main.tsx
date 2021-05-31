@@ -60,17 +60,13 @@ const Main: React.FC = () => {
       console.error();
     }
   };
-  const a = async () => {
-    // await socialToken();
-    await getUserInfo();
-  };
 
   useEffect(() => {
     setMainPage(true);
     const HeaderEl: any = document.querySelector(".LandingHeader");
     HeaderEl.className = "MainHeader";
     // * 해더 색깔 바꿔주는 부분
-    a();
+    getUserInfo();
   }, []);
 
   //* 태그 최신화
