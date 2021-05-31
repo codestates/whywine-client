@@ -11,13 +11,13 @@ function Reviews() {
   const token: any = localStorage.getItem("token");
   const [comments, setComments] = useState();
 
-  const data = axios.get(`${server}/comment?wineid=[와인아이디]`, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${JSON.parse(token)}`,
-    },
-    withCredentials: true,
-  });
+  // const data = axios.get(`${server}/comment?wineid=[와인아이디]`, {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization: `Bearer ${JSON.parse(token)}`,
+  //   },
+  //   withCredentials: true,
+  // });
 
   return (
     <ul className="reviewBox">
