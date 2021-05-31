@@ -10,7 +10,7 @@ interface Props {
 
 function FirstPage(props: Props) {
   const history = useHistory();
-  const animatedItem = UseScrollFadeIn("right", 2, 1);
+  const animatedItem = UseScrollFadeIn("up", 2, 1);
   const [openSurvey, setOpenSurvey] = useState<boolean>(false);
 
   function openSurveyModal() {
@@ -24,7 +24,7 @@ function FirstPage(props: Props) {
       <div className="FirstPage_Summery">
         <h1>Best Wine</h1>
         <h1>For You.</h1>
-        <p>와인을 처음 시작하는 당신을 위해</p>
+        <p {...animatedItem}>와인을 처음 시작하는 당신을 위해</p>
       </div>
 
       <div className="FirstPage_route">

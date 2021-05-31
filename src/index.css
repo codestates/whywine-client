@@ -59,7 +59,7 @@ section {
 }
 .FirstPage_GoTomain {
   font-size: 25px;
-  margin: 0px 6px;
+  margin: 5px 6px;
   cursor: pointer;
 }
 .FirstPage_GoTomain:hover {
