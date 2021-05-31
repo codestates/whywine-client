@@ -65,7 +65,7 @@ const Main: React.FC = () => {
     const HeaderEl: any = document.querySelector(".LandingHeader");
     HeaderEl.className = "MainHeader";
     // * 해더 색깔 바꿔주는 부분
-
+    userTagUpdata();
     getUserInfo();
   }, []);
   //* 서버에 태그 요청

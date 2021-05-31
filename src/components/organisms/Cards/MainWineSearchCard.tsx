@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import photo from "../../../img/whywine_redWine_sample.png";
-
-=======
 import React, { useState, useRef, useEffect } from "react";
->>>>>>> a5e002c3de372a9127beef669fa1d2586a3e922b
 import ClickWine from "../../atoms/Imgs/ClickWine";
 import WineModal from "../Modal/WineModal";
 
@@ -28,17 +22,11 @@ let name: string,
   tags: object[];
 const MainWineSearchCard = ({ searchWine }: wineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
-<<<<<<< HEAD
-=======
   const [isOpen, setIsOpen] = useState(true);
->>>>>>> a5e002c3de372a9127beef669fa1d2586a3e922b
 
   const ModalEl: any = useRef();
   const handleIsClicked = () => {
-<<<<<<< HEAD
-=======
     setIsOpen(true);
->>>>>>> a5e002c3de372a9127beef669fa1d2586a3e922b
     setIsClicked(true);
   };
   const handleClickOutside = (e: any) => {
@@ -83,20 +71,6 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
             </div>
           </div>
 
-<<<<<<< HEAD
-      <div className="mainWineSearchData">
-        <div className="mainWineSearchContent">
-          <h2>Lupi Rezerva</h2>
-          <span>2016</span>
-        </div>
-        {/* <div className="mainWineLikeTagBox">
-          <div className="mainWineTag">#레드 #씁쓸한 #인기있는</div>
-        </div> */}
-        <ClickWine isClicked={isClicked} />
-      </div>
-      <div className="wineReviewModal"></div>
-    </li>
-=======
           <div className="mainWineData">
             <div className="mainWineType">
               {sort === "red"
@@ -150,7 +124,6 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
         </li>
       )}
     </div>
->>>>>>> a5e002c3de372a9127beef669fa1d2586a3e922b
   );
 };
 

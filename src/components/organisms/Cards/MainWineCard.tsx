@@ -23,7 +23,7 @@ let name: string,
   tags: object[];
 const MainWineCard = ({ randomWine }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const ModalEl: any = useRef();
   const [openSurvey, setOpenSurvey] = useState<boolean>(false);
 
