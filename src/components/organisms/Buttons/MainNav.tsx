@@ -23,7 +23,7 @@ const MainNav = () => {
     <div className="mainNav">
       <div className="mainLogoSearchBox">
         <MainLogo />
-        <MainSearchBar />
+        {/* <MainSearchBar /> */}
       </div>
       <div className={menu ? "mainNavMenu active" : "mainNavMenu"}>
         <GoToSurveyBtn />
