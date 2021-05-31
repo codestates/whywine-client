@@ -10,7 +10,6 @@ function MyAccount() {
     if (manuOpen && !togleEl.current.contains(e.target)) {
       setMeunOpen(false);
     }
-    console.log("클릭됨?");
   };
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import photo from "../../../img/whywine_redWine_sample.png";
 import ReviewWineCon from "../Containers/ReviewWineCon";
 import ReviewCon from "../Containers/ReviewCon";
 import ClickWine from "../../atoms/Imgs/ClickWine";
-import UnLike from "../../atoms/Imgs/unLike";
+
 import Rating from "../Ratings/Rating";
 
 //* chakra-modal *//

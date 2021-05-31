@@ -1,7 +1,8 @@
 import axios from "axios";
-
 import { useHistory } from "react-router-dom";
 import dotenv from "dotenv";
+import { useEffect } from "react";
+
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 //${server}
@@ -18,14 +19,16 @@ function Logout({ setIslogin }: Props) {
       .get(`${server}/auth/logout`, { withCredentials: true })
       .then((res) => {
         console.log("쿠키삭제성공");
-        localStorage.removeItem("token");
+        let login: any = localStorage.getItem("login");
+        if (JSON.parse(login)) {
+          localStorage.setItem("login", JSON.stringify(false));
+        }
+        localStorage.removeItem("userInfo");
         history.push("/");
         setIslogin(false);
       })
       .catch((err) => {
-        if (err) {
-          console.error();
-        }
+        console.log(err);
       });
   };
 

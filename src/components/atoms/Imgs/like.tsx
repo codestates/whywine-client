@@ -1,18 +1,40 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useMemo, useEffect } from "react";
+import axios from "axios";
+require("dotenv").config();
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
-interface State {
-  handleLikeBtn: React.MouseEventHandler<SVGSVGElement>;
-}
+const Like = () => {
+  const [isLike, setIsLike] = useState(false);
 
-const Like = ({ handleLikeBtn }: State) => {
+  const handleLikeBtn = async () => {
+    setIsLike(!isLike);
+    if (isLike) {
+      await axios.post(
+        `${server}/user/like`,
+        {
+          /*wineid*/
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+    } else {
+      await axios.post(
+        `${server}/user/unlike`,
+        {
+          /*wineid*/
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+    }
+  };
+
   return (
-    <FontAwesomeIcon
-      icon={faHeart}
-      size="2x"
-      style={{ width: "20px", margin: " 0 10px 0 0 ", cursor: "pointer" }}
-      onClick={handleLikeBtn}
-    />
+    <div onClick={handleLikeBtn} className={isLike ? "like" : "unlike"}></div>
   );
 };
 

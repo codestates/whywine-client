@@ -63,7 +63,7 @@ const Survey4 = ({ animatedItem, userTag, setUserTag }: Props) => {
     <div id="survey4" className="surveyBox">
       <div className="question">
         <h1>와인성향테스트</h1>
-        <p>와인의 탄산를 물어보는 단계입니다.</p>
+        <p>와인의 당도를 물어보는 단계입니다.</p>
       </div>
       <hr className="hr"></hr>
       <SurMainText

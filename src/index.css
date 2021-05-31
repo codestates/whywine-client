@@ -211,6 +211,7 @@ section {
   padding: 0.75rem 1rem;
   line-height: 1.5;
   font-weight: 500;
+  font-family: "Noto Sans KR", sans-serif;
   cursor: pointer;
 }
 
@@ -220,30 +221,24 @@ section {
 .MyAccount :nth-child(2) {
   margin: 7px;
 }
-.SignInModal div {
-  font-size: 30px;
-}
+
 .SignInModal input {
   width: 40%;
-  height: 7%;
+  height: 5%;
+  margin: 10px 0px;
 }
 .closeModal {
   cursor: pointer;
 }
-.failed_signin {
-  position: absolute;
-  box-sizing: border-box;
-  text-align: center;
-  width: 400px;
-  height: 100px;
-  border: 5px solid #0f4d86;
-  border-radius: 15px;
-  padding: 35px;
-  background-color: #77acf1;
+.failed {
+  color: #ba1628;
+  display: block;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 400;
+  margin: 4px 0 0;
+  padding-bottom: 8px;
   transition: opacity 1.5s ease;
-  font-size: 20px;
-  color: white;
-  bottom: 500px;
 }
 /* *      랜딩페이지 두번째        */
 
@@ -283,15 +278,93 @@ section {
   align-content: center;
   justify-content: center;
 }
-
+.login_h2 {
+  font-size: 30px;
+  margin-bottom: 60px;
+}
+.login_h2:nth-child(1) {
+  color: rgb(170, 20, 20);
+}
 .SignInModal {
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 2px solid rgb(109, 95, 95);
-  justify-content: space-around;
   width: 400px;
-  height: 300px;
+  height: 650px;
+  font-family: "Noto Sans KR", sans-serif;
+  opacity: 0.9;
+  justify-content: center;
+}
+.signin-button {
+  width: 210px;
+  height: 40px;
+  margin-bottom: 40px;
+  border: none;
+  color: #fff;
+  background-color: #ba1628;
+  display: inline-block;
+  padding: 0 16px;
+  border-radius: 80px;
+  outline: none;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.signin-button:hover {
+  background-color: #ba16298f;
+}
+.login_or {
+  width: 80%;
+  border-top: 1px solid #eae0da;
+  color: #a8a5a3;
+  height: 0;
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 400;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.login_or p {
+  background-color: #fff;
+  margin: -12px auto 0;
+  width: 48px;
+}
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+.socialButtons {
+  display: flex;
+  align-items: center;
+  color: #a8a5a3;
+  background-color: #fff;
+  box-shadow: 0 1px 1px 1px #eee6df;
+  width: 210px;
+  height: 40px;
+  margin-bottom: 40px;
+  border: none;
+  padding: 0 16px;
+  border-radius: 80px;
+  outline: none;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.SignUpModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid rgb(109, 95, 95);
+  justify-content: space-around;
+  width: 600px;
+  height: 700px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.google-btn {
+  display: flex;
+}
+.google-btn div {
+  margin: 0px 10px;
+  font-size: 20px;
 }
 
 .modal {
@@ -306,12 +379,13 @@ section {
 }
 .modal > div {
   width: 100%;
-  max-width: 450px;
+
+  max-width: 500px;
   margin: 0 auto;
   border-radius: 0.5rem;
   background-color: #fff;
   animation: modal-show 0.3s;
-  /* overflow: hidden; */
+  color: black;
 }
 
 .modal.openModal {
@@ -515,7 +589,23 @@ section {
 }
 
 /**Main**/
-
+.hrDiv {
+  display: flex;
+  flex-direction: row;
+}
+.winemodal {
+  max-width: 850px;
+  height: 700px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  animation: modal-show 0.3s;
+  font-family: "Noto Sans KR", sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 .mainNav {
   display: flex;
   justify-content: space-between;
@@ -773,6 +863,29 @@ section {
   height: 100%;
   border: 2px solid black;
 }
+
+.unlike {
+  background-image: url("./img/heart-solid.svg");
+  width: 20px;
+  height: 20px;
+}
+.like {
+  width: 20px;
+  height: 20px;
+
+  background-image: url("./img/heart-regular.svg");
+}
+.wineimg {
+  border: 1px solid;
+  text-align: center;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.textarea {
+  resize: none;
+}
 .reviewBox {
   border: 2px solid black;
 }
@@ -781,8 +894,9 @@ section {
 }
 .reviewInputBox {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border: 2px solid black;
+  justify-content: center;
 }
 .reviewInput {
   display: flex;

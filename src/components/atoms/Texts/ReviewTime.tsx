@@ -1,9 +1,10 @@
 import React from "react";
+import moment from "moment";
 
 const ReviewTime = () => {
   return (
     <div>
-      <time dateTime="2021-05-20T10:10:10+09:00">시간</time>
+      <time>{moment(`${moment()}`).fromNow()}</time>
     </div>
   );
 };

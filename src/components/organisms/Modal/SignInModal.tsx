@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import SocialLogin from "../../atoms/Buttons/SocialLogin";
+import Title from "../../atoms/Title/Title";
 import axios from "axios";
 require("dotenv").config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000"
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
 interface Props {
   isOpen: Boolean;
@@ -14,14 +15,9 @@ interface Props {
 function SignInModal({ isOpen, closeModal }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [issueAccessToken, setIssueAccessToken] = useState();
+  const [userInfo, setUserInfo] = useState();
   const [isNone, setIsNone] = useState(false);
-
-  const history = useHistory();
-
-  const loginHandler = () => {
-    history.push("/Waiting");
-  };
+  const [message, setMessage] = useState("");
 
   const loginRequestHandler = async (e: any) => {
     if (e.key === "Enter" || e.type === "click") {
@@ -35,17 +31,16 @@ function SignInModal({ isOpen, closeModal }: Props) {
           }
         )
         .then((res) => {
-          loginHandler();
-          console.log(res.data);
+          closeModal(e);
+          setUserInfo(res.data.data);
+          localStorage.setItem("login", JSON.stringify(true));
         })
         .catch((err) => {
-          if (err) {
-            console.error(err.message);
-            setTimeout(() => {
-              setIsNone(true);
-              setIsNone(false);
-            }, 2000);
-          }
+          setIsNone(false);
+          setMessage("이메일과 비밀번호를 확인해주세요.");
+          setTimeout(() => {
+            setIsNone(true);
+          }, 2000);
         });
     } else if (e.keyCode === 27) {
       close();
@@ -63,13 +58,12 @@ function SignInModal({ isOpen, closeModal }: Props) {
     <div className={isOpen ? "openModal modal" : "modal"}>
       {isOpen ? (
         <div className="SignInModal">
-          <div
-            className="failed_signin"
-            style={{ opacity: isNone ? "1" : "0" }}
-          >
-            이메일과 비밀번호를 확인해주세요.
+          <h2 className="login_h2">
+            <span> whywine</span> | <span>Log in</span>
+          </h2>
+          <div className="failed" style={{ opacity: isNone ? "0" : "1" }}>
+            {message}
           </div>
-          <div>로그인</div>
           <input
             name="email"
             type="email"
@@ -77,6 +71,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
             onChange={emailInputValue}
             onKeyDown={loginRequestHandler}
           />
+
           <input
             name="password"
             type="password"
@@ -84,15 +79,24 @@ function SignInModal({ isOpen, closeModal }: Props) {
             onChange={passwordInputValue}
             onKeyDown={loginRequestHandler}
           />
-          <button type="submit" onClick={loginRequestHandler}>
-            로그인
-          </button>
+
+          <div>
+            <button
+              className="signin-button"
+              type="submit"
+              onClick={loginRequestHandler}
+            >
+              로그인
+            </button>
+          </div>
+          <div className="login_or">
+            <p>or</p>
+          </div>
+
           <div className="socialLogin">
             <SocialLogin />
           </div>
-          <div className="closeModal" onClick={closeModal}>
-            closeModal
-          </div>
+          <i className="fas fa-times" onClick={closeModal}></i>
         </div>
       ) : null}
     </div>

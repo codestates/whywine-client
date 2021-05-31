@@ -47,16 +47,15 @@ const Main: React.FC = () => {
         withCredentials: true,
       });
 
-      console.log(userInfo);
-      //localStorage.setItem("userInfo", JSON.stringify(userInfo.data.data));
+      console.log("userInfo", userInfo);
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify(userInfo.data.data.userInfo)
+      );
       // * 유저 정보 로컬스토리지 저장
     } catch (error) {
       console.error();
     }
-  };
-  const a = async () => {
-    // await socialToken();
-    await getUserInfo();
   };
 
   useEffect(() => {
@@ -64,7 +63,7 @@ const Main: React.FC = () => {
     const HeaderEl: any = document.querySelector(".LandingHeader");
     HeaderEl.className = "MainHeader";
     // * 해더 색깔 바꿔주는 부분
-    a();
+    getUserInfo();
   }, []);
 
   //* 태그 최신화

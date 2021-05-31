@@ -14,7 +14,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickName] = useState("");
-  const [isNone, setIsNone] = useState(true);
+  const [isNone, setIsNone] = useState(false);
   const [message, setMessage] = useState("");
 
   const emailInputValue = (e: any) => {
@@ -40,16 +40,14 @@ function SignInModal({ isOpen, closeModal }: Props) {
             withCredentials: true,
           }
         );
-        close();
         console.log(data);
+        closeModal(e);
       } catch (error) {
         setIsNone(false);
-        // setMessage(error.response.data.message);
         setTimeout(() => {
           setIsNone(true);
         }, 2000);
-        console.log("error");
-        console.log(error);
+        setMessage(error.response.data.message);
       }
     }
   };
@@ -58,10 +56,10 @@ function SignInModal({ isOpen, closeModal }: Props) {
     <div className={isOpen ? "openModal modal" : "modal"}>
       {isOpen ? (
         <div className="SignInModal">
-          <div
-            className="failed_signin"
-            style={{ opacity: isNone ? "0" : "1" }}
-          >
+          <h2 className="login_h2">
+            <span> whywine</span> | <span>Sign up</span>
+          </h2>
+          <div className="failed" style={{ opacity: isNone ? "0" : "1" }}>
             {message}
           </div>
           <input
@@ -88,15 +86,16 @@ function SignInModal({ isOpen, closeModal }: Props) {
             onChange={nickNameInputValue}
             onKeyDown={signUpHandler}
           />
-          <button onClick={signUpHandler} className="signup_btn">
+          <button onClick={signUpHandler} className="signin-button">
             회원가입
           </button>
+          <div className="login_or">
+            <p>or</p>
+          </div>
           <div className="socialLogin">
             <SocialLogin />
           </div>
-          <div className="closeModal" onClick={closeModal}>
-            closeModal
-          </div>
+          <i className="fas fa-times" onClick={closeModal}></i>
         </div>
       ) : null}
     </div>

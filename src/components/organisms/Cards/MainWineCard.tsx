@@ -1,22 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import photo from "../../../img/whywine_redWine_sample.png";
 import ReviewWineCon from "../Containers/ReviewWineCon";
 import ReviewCon from "../Containers/ReviewCon";
 import ClickWine from "../../atoms/Imgs/ClickWine";
-import UnLike from "../../atoms/Imgs/unLike";
 import Rating from "../Ratings/Rating";
-import "dotenv/config";
-//* chakra-modal *//
-import { useDisclosure, Button } from "@chakra-ui/react";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
-import { AnyARecord } from "dns";
+import WineModal from "../Modal/WineModal";
 
 interface WineData {
   // name: string;
@@ -35,7 +23,8 @@ let name: string,
   tags: object[];
 const MainWineCard = ({ randomWine }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isOpen, setIsOpen] = useState(false);
+  const ModalEl: any = useRef();
 
   if (randomWine !== undefined) {
     name = randomWine.name;
@@ -47,7 +36,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
     sort = randomWine.sort;
   }
   const handleIsClicked = () => {
-    onOpen();
+    setIsOpen(true);
     setIsClicked(true);
   };
   //* 이름에서 연도 추출
@@ -58,6 +47,18 @@ const MainWineCard = ({ randomWine }: WineData) => {
   // }
   const handleTagsName = (name: string) => {};
 
+  const handleClickOutside = (e: any) => {
+    if (isOpen && !ModalEl.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  });
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
   return (
     <div>
@@ -87,77 +88,50 @@ const MainWineCard = ({ randomWine }: WineData) => {
             </div>
 
             <div className="mainWineLikeTagBox">
-              <div className="mainWineTag">
-                {tags.map((tag: any) => {
-                  switch (tag.name) {
-                    case "body_light":
-                      return " #가벼운";
-                    case "body_medium":
-                      return "";
-                    case "body_bold":
-                      return " #무거운";
-                    case "tannins_smooth":
-                      return " #부드러운";
-                    case "tannins_medium":
-                      return "";
-                    case "tannins_tannic":
-                      return " #떫은";
-                    case "acidity_soft":
-                      return " #산미가 적은";
-                    case "acidity_medium":
-                      return "";
-                    case "acidity_acidic":
-                      return " #산미가 높은";
-                    case "sweetness_dry":
-                      return " #씁쓸한";
-                    case "sweetness_medium":
-                      return "";
-                    case "sweetness_sweet":
-                      return "#달달한";
-                    default:
-                      break;
-                  }
-                })}
-              </div>
+              <div className="mainWineTag">#레드 #씁쓸한 #인기있는</div>
             </div>
             <ClickWine isClicked={isClicked} />
           </div>
-          <div className="wineReviewModal">
-            <Modal onClose={onClose} isOpen={isOpen} isCentered>
-              <ModalOverlay
-                backgroundColor="rgb(138, 138, 138, 0.5)"
-                width="100%"
-                height="100%"
-                position="absolute"
-              />
-              <ModalCloseButton
-                width="30px"
-                height="30px"
-                position="absolute"
-                right="0"
-                top="0"
-                marginTop="80px"
-              />
-              <ModalContent
-                backgroundColor="wheat"
-                width="100%"
-                height="600px"
-                maxWidth="935px"
-                position="absolute"
-                margin="auto"
-                top="20%"
-                left="25%"
-              >
-                <ModalBody>
-                  <div className="reviewModal">
-                    <ReviewWineCon />
-                    <ReviewCon />
-                  </div>
-                </ModalBody>
-                <ModalFooter></ModalFooter>
-              </ModalContent>
-            </Modal>
+
+          <div className={isOpen ? "openModal modal" : "modal"}>
+            <WineModal ModalEl={ModalEl} />
           </div>
+
+          <div className="mainWineLikeTagBox">
+            <div className="mainWineTag">
+              {tags.map((tag: any) => {
+                switch (tag.name) {
+                  case "body_light":
+                    return " #가벼운";
+                  case "body_medium":
+                    return "";
+                  case "body_bold":
+                    return " #무거운";
+                  case "tannins_smooth":
+                    return " #부드러운";
+                  case "tannins_medium":
+                    return "";
+                  case "tannins_tannic":
+                    return " #떫은";
+                  case "acidity_soft":
+                    return " #산미가 적은";
+                  case "acidity_medium":
+                    return "";
+                  case "acidity_acidic":
+                    return " #산미가 높은";
+                  case "sweetness_dry":
+                    return " #씁쓸한";
+                  case "sweetness_medium":
+                    return "";
+                  case "sweetness_sweet":
+                    return "#달달한";
+                  default:
+                    break;
+                }
+              })}
+            </div>
+          </div>
+          <ClickWine isClicked={isClicked} />
         </li>
       )}
     </div>

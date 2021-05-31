@@ -22,7 +22,6 @@ const Survey5 = ({ animatedItem, userTag, setUserTag }: Props) => {
 
   const sparkling: any = {
     sparkling_fizzy: "톡톡 터져보자",
-    sparkling_medium: "나는 중간이요",
     sparkling_gentle: "마동석 무서워;;",
     "": "잘모르겠어요",
   };
@@ -63,7 +62,7 @@ const Survey5 = ({ animatedItem, userTag, setUserTag }: Props) => {
     <div id="survey5" className="surveyBox">
       <div className="question">
         <h1>와인성향테스트</h1>
-        <p>와인의 당도를 물어보는 단계입니다.</p>
+        <p>와인의 탄산를 물어보는 단계입니다.</p>
       </div>
       <hr className="hr"></hr>
       <SurMainText text1={"마동석 왈"} text2={"톡톡 터져볼래?"} />
