@@ -41,7 +41,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
           }
         );
         console.log(data);
-        close();
+        closeModal(e);
       } catch (error) {
         setIsNone(false);
         setTimeout(() => {

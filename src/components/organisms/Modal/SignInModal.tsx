@@ -15,15 +15,9 @@ interface Props {
 function SignInModal({ isOpen, closeModal }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [issueAccessToken, setIssueAccessToken] = useState();
+  const [userInfo, setUserInfo] = useState();
   const [isNone, setIsNone] = useState(false);
   const [message, setMessage] = useState("");
-
-  const history = useHistory();
-
-  const loginHandler = () => {
-    history.push("/main");
-  };
 
   const loginRequestHandler = async (e: any) => {
     if (e.key === "Enter" || e.type === "click") {
@@ -37,8 +31,9 @@ function SignInModal({ isOpen, closeModal }: Props) {
           }
         )
         .then((res) => {
-          loginHandler();
-          console.log(res.data);
+          closeModal(e);
+          setUserInfo(res.data.data);
+          localStorage.setItem("login", JSON.stringify(true));
         })
         .catch((err) => {
           setIsNone(false);

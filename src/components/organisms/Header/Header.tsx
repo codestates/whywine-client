@@ -7,6 +7,8 @@ import SingInModal from "../Modal/SignInModal";
 import SignUpModal from "../Modal/SignUpModal";
 import Logout from "../../atoms/Buttons/Logout";
 import MyAccount from "../../organisms/Togle/MyAccount";
+import { useHistory } from "react-router-dom";
+import { join } from "path/posix";
 
 function LandingHeader({}) {
   const [signInOpen, setSignInOpen] = useState<boolean>(false);
@@ -28,10 +30,13 @@ function LandingHeader({}) {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    let login: any = localStorage.getItem("login");
+    if (JSON.parse(login)) {
       setIslogin(true);
+    } else if (!JSON.parse(login)) {
+      setIslogin(false);
     }
-  });
+  }, [isLogin]);
 
   return (
     <>

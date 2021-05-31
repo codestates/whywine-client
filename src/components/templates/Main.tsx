@@ -50,8 +50,11 @@ const Main: React.FC = () => {
         withCredentials: true,
       });
 
-      console.log(userInfo);
-      //localStorage.setItem("userInfo", JSON.stringify(userInfo.data.data));
+      console.log("userInfo", userInfo);
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify(userInfo.data.data.userInfo)
+      );
       // * 유저 정보 로컬스토리지 저장
     } catch (error) {
       console.error();
