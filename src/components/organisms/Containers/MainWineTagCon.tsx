@@ -6,12 +6,14 @@ interface Tags {
   userTypeTag: string[];
   setUserMainTag: React.Dispatch<React.SetStateAction<string[]>>;
   setTypeTag: React.Dispatch<React.SetStateAction<string[]>>;
+  tags: any;
 }
 const MainWineTagCon = ({
   userMainTag,
   setUserMainTag,
   userTypeTag,
   setTypeTag,
+  tags,
 }: Tags) => {
   return (
     <div className="mainWineTagCon">
@@ -20,6 +22,7 @@ const MainWineTagCon = ({
         setUserMainTag={setUserMainTag}
         userTypeTag={userTypeTag}
         setTypeTag={setTypeTag}
+        tags={tags}
       />
     </div>
   );

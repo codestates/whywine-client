@@ -10,22 +10,18 @@ interface Tags {
   userTypeTag: string[];
   setUserMainTag: React.Dispatch<React.SetStateAction<string[]>>;
   setTypeTag: React.Dispatch<React.SetStateAction<string[]>>;
+  tags: any;
 }
-
-let tags: any;
-if (!localStorage.getItem("userTag")) {
-  localStorage.setItem("userTag", JSON.stringify([]));
-  tags = localStorage.getItem("userTag");
-}
-tags = localStorage.getItem("userTag");
 
 const MainWineTags = ({
   userMainTag,
   setUserMainTag,
   userTypeTag,
   setTypeTag,
+  tags,
 }: Tags) => {
   const [userTags, setUserTags] = useState(JSON.parse(tags));
+  console.log(userTags);
   return (
     <div>
       {/* <div className="mainLabelBox">

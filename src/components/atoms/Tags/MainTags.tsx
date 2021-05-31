@@ -81,28 +81,8 @@ const MainTags = ({
     }
   };
 
-  //   //* 태그 최신화
-  //   useEffect(() => {
-  //     postTags();
-  //   }, [userMainTag]);
-
-  //* 서버에 태그 요청
-  //   const postTags = useCallback(() => {
-  //     if (userMainTag.length !== 0) {
-  //       axios
-  //         .post(
-  //           "https://localhost:4000/main/tags",
-  //           { tags: userMainTag.filter((el: string) => el !== "") },
-  //           // * (el: string) => el !== "") 빈문자열 제외하는 부분
-  //           {
-  //             headers: { "Content-Type": "application/json" },
-  //             withCredentials: true,
-  //           }
-  //         )
-  //         .then((data) => console.log(data.data.data.wines.sorted));
-  //     }
-  //   }, [userMainTag]);
   //* 설문에서 받아온 기본 태그를 메인에 띄워줌
+  //! 중복된 태그가 배열에 들어감 마지막 당도만
   useEffect(() => {
     switch (userTags) {
       case degreeENG[0]:
@@ -129,7 +109,7 @@ const MainTags = ({
       </span>
 
       <div className="mainWineTags">
-        {degreeArr.map((degree: (string | boolean)[]) => {
+        {degreeArr.map((degree: (string | boolean)[], idx) => {
           return (
             <div
               className={
@@ -138,6 +118,7 @@ const MainTags = ({
               onClick={() => {
                 handleTagClick(degree[1]);
               }}
+              key={idx}
             >
               {degree[1]}
             </div>

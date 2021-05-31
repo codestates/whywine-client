@@ -21,9 +21,8 @@ const Main: React.FC = () => {
   const [mainPage, setMainPage] = useState(false);
   const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags)); // 유저의 와인 맛 태그
   const [userTypeTag, setTypeTag] = useState<string[]>([]); // 유저의 와인 타입 태그
-  const [randomWine, setRandomWine] = useState<string[]>([]);
+  const [randomWine, setRandomWine] = useState<object[]>([]);
   const Token: any = localStorage.getItem("token");
-  console.log(userTypeTag);
 
   // const socialToken = async () => {
   //   await axios
@@ -42,8 +41,6 @@ const Main: React.FC = () => {
   //   JSON.stringify(getAccessToken)
   // );
   // };
-  console.log(server);
-
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}/userinfo`, {
@@ -74,10 +71,10 @@ const Main: React.FC = () => {
   useEffect(() => {
     postTags();
   }, [userMainTag, userTypeTag]);
-
   //* 서버에 태그 요청
   const postTags = useCallback(async () => {
     if (userMainTag.length !== 0) {
+      console.log("userTypeTag", userTypeTag, "userMainTag", userMainTag);
       await axios
         .post(
           `${server}/main/tags`,
@@ -92,6 +89,7 @@ const Main: React.FC = () => {
           }
         )
         .then((data) => {
+          console.log(data.data.data.wines.sorted.random3);
           setRandomWine(data.data.data.wines.sorted.random3);
         });
     }
@@ -107,6 +105,7 @@ const Main: React.FC = () => {
           setUserMainTag={setUserMainTag}
           userTypeTag={userTypeTag}
           setTypeTag={setTypeTag}
+          tags={tags}
         />
         <MainWineCon randomWine={randomWine} />
       </div>

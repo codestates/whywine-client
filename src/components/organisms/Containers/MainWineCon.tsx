@@ -4,24 +4,14 @@ import MainSearchCategory from "../Categories/MainSearchCategory";
 import MainWineCategory from "../Categories/MainWineCategory";
 
 interface WineData {
-  randomWine: string[];
+  randomWine: object[];
 }
 
 //! 와인 카테고리가 나뉘어서 들어와야함
 const MainWineCon = ({ randomWine }: WineData) => {
-  let categories = [`당신을 위한 \        완벽한 와인`];
-
   return (
     <div className="mainWineCon">
-      {categories.map((category, index) => {
-        return (
-          <MainWineCategory
-            key={index}
-            category={category}
-            randomWine={randomWine}
-          />
-        );
-      })}
+      <MainWineCategory randomWine={randomWine} />
       <MainSearchCategory />
     </div>
   );
