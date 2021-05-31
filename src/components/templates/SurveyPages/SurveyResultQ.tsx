@@ -17,7 +17,7 @@ const SurveyResultQ = () => {
 
     axios
       .post(
-        `${server}/main/tags`,
+        `${server}/user/update`,
         { tags: JSON.parse(tagsArr).filter((el: string) => el !== "") },
         // * (el: string) => el !== "") 빈문자열 제외하는 부분
         {
@@ -25,7 +25,7 @@ const SurveyResultQ = () => {
           withCredentials: true,
         }
       )
-      .then((data) => console.log(data.data.data.wines));
+      .then((data) => console.log(data));
   }, []);
 
   return (

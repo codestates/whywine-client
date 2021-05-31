@@ -36,7 +36,7 @@ const MainWineCategory = ({ randomWine }: WineData) => {
           </div>
         </div>
       ) : (
-        <div>추천와인이 없습니다</div>
+        <div>추천와인이 없습니다 </div>
       )}
     </div>
   );

@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import photo from "../../../img/whywine_redWine_sample.png";
-import ReviewWineCon from "../Containers/ReviewWineCon";
-import ReviewCon from "../Containers/ReviewCon";
 import ClickWine from "../../atoms/Imgs/ClickWine";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
+import SurveyModal from "../../organisms/Modal/surveyModal";
 
 interface WineData {
   // name: string;
@@ -23,10 +22,17 @@ let name: string,
   tags: object[];
 const MainWineCard = ({ randomWine }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const ModalEl: any = useRef();
+  const [openSurvey, setOpenSurvey] = useState<boolean>(false);
+
+  function openSurveyModal() {
+    setOpenSurvey(true);
+    // * 설문조사 모달
+  }
+
   // 확인 확인
-  if (randomWine !== undefined) {
+  if (randomWine) {
     name = randomWine.name;
     likeCount = randomWine.likeCount;
     description = randomWine.description;
@@ -35,16 +41,19 @@ const MainWineCard = ({ randomWine }: WineData) => {
     tags = randomWine.tags;
     sort = randomWine.sort;
   }
+
   const handleIsClicked = () => {
     setIsOpen(true);
     setIsClicked(true);
   };
+
   //* 이름에서 연도 추출
   // let splitName = name.split(" ");
   // let year = "";
   // for (let i = splitName.length - 1; i < splitName.length; i++) {
   //   year = splitName[i];
   // }
+
   const handleTagsName = (name: string) => {};
 
   const handleClickOutside = (e: any) => {
@@ -60,8 +69,12 @@ const MainWineCard = ({ randomWine }: WineData) => {
     };
   });
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
+
   return (
     <div>
+      <div className={isOpen ? "openModal modal" : "modal"}>
+        <WineModal ModalEl={ModalEl} />
+      </div>
       {randomWine === undefined ? null : (
         <li className="mainWineCard" onClick={handleIsClicked}>
           <Rating />
@@ -91,10 +104,6 @@ const MainWineCard = ({ randomWine }: WineData) => {
               <div className="mainWineTag">#레드 #씁쓸한 #인기있는</div>
             </div>
             <ClickWine isClicked={isClicked} />
-          </div>
-
-          <div className={isOpen ? "openModal modal" : "modal"}>
-            <WineModal ModalEl={ModalEl} />
           </div>
 
           <div className="mainWineLikeTagBox">
