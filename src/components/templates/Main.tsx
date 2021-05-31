@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import MainNav from "../organisms/Buttons/MainNav";
 import MainWineCon from "../organisms/Containers/MainWineCon";
 import MainWineTagCon from "../organisms/Containers/MainWineTagCon";
@@ -22,25 +22,7 @@ const Main: React.FC = () => {
   const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags)); // 유저의 와인 맛 태그
   const [userTypeTag, setTypeTag] = useState<string[]>([]); // 유저의 와인 타입 태그
   const [randomWine, setRandomWine] = useState<object[]>([]);
-  const Token: any = localStorage.getItem("token");
 
-  // const socialToken = async () => {
-  //   await axios
-  //     .get(`${server}/auth/refreshTokenReq`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       withCredentials: true,
-  //     })
-  //     .then((deta) => {
-  //       console.log(deta);
-  //     });
-
-  // const saveToken = await localStorage.getItem(
-  //   "token",
-  //   JSON.stringify(getAccessToken)
-  // );
-  // };
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}/userinfo`, {
@@ -53,24 +35,19 @@ const Main: React.FC = () => {
         JSON.stringify(userInfo.data.data.userInfo)
       );
       // * 유저 정보 로컬스토리지 저장
-    } catch (error) {
-      console.error();
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
     setMainPage(true);
+
     const HeaderEl: any = document.querySelector(".LandingHeader");
     HeaderEl.className = "MainHeader";
     // * 해더 색깔 바꿔주는 부분
+
     getUserInfo();
   }, []);
 
-  //* 태그 최신화
-  useEffect(() => {
-    postTags();
-  }, [userMainTag, userTypeTag]);
-  //* 서버에 태그 요청
   const postTags = useCallback(async () => {
     if (userMainTag.length !== 0) {
       console.log("userTypeTag", userTypeTag, "userMainTag", userMainTag);
@@ -93,6 +70,13 @@ const Main: React.FC = () => {
         });
     }
   }, [userMainTag, userTypeTag]);
+
+  //* 태그 최신화
+  useEffect(() => {
+    postTags();
+  }, [userMainTag, userTypeTag]);
+
+  //* 서버에 태그 요청
 
   return (
     <div>
