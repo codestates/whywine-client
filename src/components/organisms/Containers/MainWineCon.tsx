@@ -5,14 +5,15 @@ import MainWineCategory from "../Categories/MainWineCategory";
 
 interface WineData {
   randomWine: object[];
+  searchWine: object[];
 }
 
 //! 와인 카테고리가 나뉘어서 들어와야함
-const MainWineCon = ({ randomWine }: WineData) => {
+const MainWineCon = ({ randomWine, searchWine }: WineData) => {
   return (
     <div className="mainWineCon">
       <MainWineCategory randomWine={randomWine} />
-      <MainSearchCategory />
+      <MainSearchCategory searchWine={searchWine} />
     </div>
   );
 };
