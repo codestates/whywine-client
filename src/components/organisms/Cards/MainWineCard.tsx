@@ -25,7 +25,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const ModalEl: any = useRef();
-
+  // 확인 확인
   if (randomWine !== undefined) {
     name = randomWine.name;
     likeCount = randomWine.likeCount;
