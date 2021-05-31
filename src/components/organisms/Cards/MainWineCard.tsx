@@ -12,18 +12,40 @@ interface WineData {
   // like: number;
   // tag: any;
   // onClick: () => void;
-  randomWine: string;
+  randomWine: any;
 }
-
+let name: string,
+  likeCount: number,
+  description: string,
+  image: string,
+  price: number,
+  sort: string,
+  tags: object[];
 const MainWineCard = ({ randomWine }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const ModalEl: any = useRef();
 
+  if (randomWine !== undefined) {
+    name = randomWine.name;
+    likeCount = randomWine.likeCount;
+    description = randomWine.description;
+    image = process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image;
+    price = randomWine.price;
+    tags = randomWine.tags;
+    sort = randomWine.sort;
+  }
   const handleIsClicked = () => {
     setIsOpen(true);
     setIsClicked(true);
   };
+  //* 이름에서 연도 추출
+  // let splitName = name.split(" ");
+  // let year = "";
+  // for (let i = splitName.length - 1; i < splitName.length; i++) {
+  //   year = splitName[i];
+  // }
+  const handleTagsName = (name: string) => {};
 
   const handleClickOutside = (e: any) => {
     if (isOpen && !ModalEl.current.contains(e.target)) {
@@ -39,36 +61,80 @@ const MainWineCard = ({ randomWine }: WineData) => {
   });
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
   return (
-    <li className="mainWineCard" onClick={handleIsClicked}>
-      <Rating />
-      <div className="mainWineProfile">
-        <img src={photo} alt="와인" />
-        <div className="mainWineContent">
-          <h2>Lupi Rezerva</h2>
-          <span>2016</span>
-          <p>
-            this is one of the finest wine blends of Moldova, yet one that is
-            still on the rise, as it has yet to reach the summit of its prime
-            form. This is a wine that requires a bit more time, as in its
-            current state it might feel a bit too tart and youthful, therefore
-            we would strongly suggest another 3 or 4 years of bottle ageing.{" "}
-          </p>
-        </div>
-      </div>
+    <div>
+      {randomWine === undefined ? null : (
+        <li className="mainWineCard" onClick={handleIsClicked}>
+          <Rating />
+          <div className="mainWineProfile">
+            <img src={image} alt="와인" />
+            <div className="mainWineContent">
+              <h2>{name}</h2>
+              {/* <span>{year}</span> */}
+              <p>{description}</p>
+            </div>
+          </div>
 
-      <div className="mainWineData">
-        <div className="mainWineNameBox"></div>
+          <div className="mainWineData">
+            <div className="mainWineType">
+              {sort === "red"
+                ? " #레드"
+                : sort === "white"
+                ? " #화이트"
+                : sort === "rose"
+                ? " #로제"
+                : sort === "sparkling"
+                ? " #스파클링"
+                : null}
+            </div>
 
-        <div className="mainWineLikeTagBox">
-          <div className="mainWineTag">#레드 #씁쓸한 #인기있는</div>
-        </div>
-        <ClickWine isClicked={isClicked} />
-      </div>
+            <div className="mainWineLikeTagBox">
+              <div className="mainWineTag">#레드 #씁쓸한 #인기있는</div>
+            </div>
+            <ClickWine isClicked={isClicked} />
+          </div>
 
-      <div className={isOpen ? "openModal modal" : "modal"}>
-        <WineModal ModalEl={ModalEl} />
-      </div>
-    </li>
+          <div className={isOpen ? "openModal modal" : "modal"}>
+            <WineModal ModalEl={ModalEl} />
+          </div>
+
+          <div className="mainWineLikeTagBox">
+            <div className="mainWineTag">
+              {tags.map((tag: any) => {
+                switch (tag.name) {
+                  case "body_light":
+                    return " #가벼운";
+                  case "body_medium":
+                    return "";
+                  case "body_bold":
+                    return " #무거운";
+                  case "tannins_smooth":
+                    return " #부드러운";
+                  case "tannins_medium":
+                    return "";
+                  case "tannins_tannic":
+                    return " #떫은";
+                  case "acidity_soft":
+                    return " #산미가 적은";
+                  case "acidity_medium":
+                    return "";
+                  case "acidity_acidic":
+                    return " #산미가 높은";
+                  case "sweetness_dry":
+                    return " #씁쓸한";
+                  case "sweetness_medium":
+                    return "";
+                  case "sweetness_sweet":
+                    return "#달달한";
+                  default:
+                    break;
+                }
+              })}
+            </div>
+          </div>
+          <ClickWine isClicked={isClicked} />
+        </li>
+      )}
+    </div>
   );
 };
 
