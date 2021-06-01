@@ -79,7 +79,6 @@ const Main: React.FC = () => {
           }
         )
         .then((data) => {
-          console.log(data.data.data.wines.sorted.random3);
           setRandomWine(data.data.data.wines.sorted.random3);
         });
     }

@@ -40,7 +40,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
             withCredentials: true,
           }
         );
-        console.log(data);
+
         closeModal(e);
       } catch (error) {
         setIsNone(false);

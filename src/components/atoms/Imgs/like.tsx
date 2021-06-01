@@ -13,9 +13,23 @@ const Like = ({ id }: Props) => {
   const handleLikeBtn = async () => {
     setIsLike(!isLike);
     if (isLike) {
-      await axios.post(`${server}/user/like`, { wineId: id });
+      await axios.post(
+        `${server}/user/like`,
+        { wineId: id },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
     } else {
-      await axios.post(`${server}/user/unlike`, { wineId: id });
+      await axios.post(
+        `${server}/user/unlike`,
+        { wineId: id },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
     }
   };
 
@@ -31,19 +45,20 @@ const Like = ({ id }: Props) => {
 
   useEffect(() => {
     getUserInfo();
-    let userInfo: any = localStorage.getItem("userInfo");
-    userInfo = JSON.parse(userInfo);
-    let { wines } = userInfo;
-    // * 유저 정보에서 찜한 와인 목록 구조분해할당
-
-    wines.forEach((el: number) => {
-      if (id === el) {
-        setIsLike(true);
-      } else {
-        setIsLike(false);
-      }
-    });
-    // * 유저가 찜한 와인 배열에서 같은 와인 id가 있으면 islike 상태를 true로 반환한다.
+    if (localStorage.getItem("userInfo")) {
+      let userInfo: any = localStorage.getItem("userInfo");
+      userInfo = JSON.parse(userInfo);
+      let { wines } = userInfo;
+      // * 유저 정보에서 찜한 와인 목록 구조분해할당
+      wines.forEach((el: number) => {
+        if (id === el) {
+          setIsLike(true);
+        } else {
+          setIsLike(false);
+        }
+      });
+      // * 유저가 찜한 와인 배열에서 같은 와인 id가 있으면 islike 상태를 true로 반환한다.
+    }
   }, []);
 
   return (

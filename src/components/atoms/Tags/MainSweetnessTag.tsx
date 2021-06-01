@@ -73,7 +73,6 @@ const MainSweetnessTag = () => {
   }, [userMainTag]);
   //* 서버에 태그 요청
   const postTags = useCallback(() => {
-    console.log(userMainTag);
     if (userMainTag.length !== 0) {
       axios
         .post(

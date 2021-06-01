@@ -12,7 +12,7 @@ const MainWineCategory = ({ randomWine }: WineData) => {
   //   <MainWineCard randomWine={randomWine[1]} />,
   //   <MainWineCard randomWine={randomWine[2]} />,
   // ];
-  console.log(randomWine[0]);
+
   const [isTagArr, setIsTagArr] = useState(true);
   const tags: any = localStorage.getItem("userTag");
   if (!tags) {

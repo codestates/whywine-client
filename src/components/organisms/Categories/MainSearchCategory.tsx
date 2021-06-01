@@ -5,7 +5,6 @@ interface State {
   searchWine: object[];
 }
 const MainSearchCategory = ({ searchWine }: State) => {
-  console.log(searchWine);
   return (
     <div className="mainSearchCategory">
       <h2 className="mainCategoryName">검색</h2>
