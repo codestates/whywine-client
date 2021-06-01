@@ -17,7 +17,7 @@ const SurveyResultQ = () => {
 
     axios
       .post(
-        `${server}/user/update`,
+        `https://localhost:4000/user/update`,
         { tags: JSON.parse(tagsArr).filter((el: string) => el !== "") },
         // * (el: string) => el !== "") 빈문자열 제외하는 부분
         {

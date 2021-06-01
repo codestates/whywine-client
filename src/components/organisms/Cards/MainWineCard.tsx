@@ -1,11 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import photo from "../../../img/whywine_redWine_sample.png";
-import ReviewWineCon from "../Containers/ReviewWineCon";
-import ReviewCon from "../Containers/ReviewCon";
 import ClickWine from "../../atoms/Imgs/ClickWine";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
-import SurveyModal from "../../organisms/Modal/surveyModal";
 
 interface WineData {
   // name: string;
@@ -25,14 +22,8 @@ let name: string,
   tags: object[];
 const MainWineCard = ({ randomWine }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const ModalEl: any = useRef();
-  const [openSurvey, setOpenSurvey] = useState<boolean>(false);
-
-  function openSurveyModal() {
-    setOpenSurvey(true);
-    // * 설문조사 모달
-  }
 
   // 확인 확인
   if (randomWine) {
@@ -77,7 +68,17 @@ const MainWineCard = ({ randomWine }: WineData) => {
   return (
     <div>
       <div className={isOpen ? "openModal modal" : "modal"}>
-        <WineModal ModalEl={ModalEl} />
+        <WineModal
+          price={price}
+          tags={tags}
+          id={id}
+          sort={sort}
+          likeCount={likeCount}
+          description={description}
+          image={image}
+          name={name}
+          ModalEl={ModalEl}
+        />
       </div>
       {randomWine === undefined ? null : (
         <li className="mainWineCard" onClick={handleIsClicked}>
@@ -139,8 +140,6 @@ const MainWineCard = ({ randomWine }: WineData) => {
             </div>
             <ClickWine isClicked={isClicked} />
           </div>
-
-          <ClickWine isClicked={isClicked} />
         </li>
       )}
     </div>
