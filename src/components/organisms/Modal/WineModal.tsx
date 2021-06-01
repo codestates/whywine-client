@@ -26,7 +26,8 @@ function WineModal({
   description,
   image,
 }: Props) {
-  useEffect(() => {});
+  const [rating, setRating] = useState<number>(0);
+  const [hoverRating, setHoverRating] = useState<number>(0);
 
   return (
     <section ref={ModalEl} className="winemodal">
@@ -42,8 +43,17 @@ function WineModal({
         <Like id={id} />
 
         <div style={{ display: "flex" }}>
-          {[1, 2, 3, 4, 5].map((idx, index) => {
-            return <Stars key={index} />;
+          {[1, 2, 3, 4, 5].map((idx) => {
+            return (
+              <Stars
+                key={idx}
+                idx={idx}
+                rating={rating}
+                hoverRating={hoverRating}
+                setRating={setRating}
+                setHoverRating={setHoverRating}
+              />
+            );
           })}
         </div>
 

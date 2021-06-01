@@ -605,6 +605,21 @@ section {
   display: flex;
   flex-direction: row;
 }
+.star {
+  width: 30px;
+  user-select: auto;
+  height: 30px;
+}
+.star-active {
+  background-image: url("./img/star-solid.svg");
+  margin-right: 5px;
+  cursor: pointer;
+}
+.star-no-active {
+  background-image: url("./img/star-regular.svg");
+  margin-right: 5px;
+  cursor: pointer;
+}
 .winemodal {
   max-width: 850px;
   height: 700px;
