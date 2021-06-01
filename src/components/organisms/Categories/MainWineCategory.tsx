@@ -36,6 +36,7 @@ const MainWineCategory = ({ randomWine }: WineData) => {
                 );
               })
             )}
+
           </ul>
         </div>
       ) : (

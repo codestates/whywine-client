@@ -19,7 +19,6 @@ if (!localStorage.getItem("userTag")) {
 tags = localStorage.getItem("userTag");
 
 const Main: React.FC = () => {
-  const [mainPage, setMainPage] = useState(false);
   const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags)); // 유저의 와인 맛 태그
   const [userTypeTag, setTypeTag] = useState<string[]>([]); // 유저의 와인 타입 태그
   const [randomWine, setRandomWine] = useState<object[]>([]);
@@ -47,20 +46,17 @@ const Main: React.FC = () => {
     console.log("tags:", JSON.parse(tagsArr));
     // ! 로컬스토리지에서 데이터 받을시에 꼭 JSON.parse으로 JSON형태로 저장된 데이터 배열로 바꿔줘야함
 
-    await axios
-      .post(
-        `${server}/user/update`,
-        { tags: JSON.parse(tagsArr).filter((el: string) => el !== "") },
-        // * (el: string) => el !== "") 빈문자열 제외하는 부분
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      )
-      .then((data) => console.log(data));
+    await axios.post(
+      `${server}/user/update`,
+      { tags: JSON.parse(tagsArr).filter((el: string) => el !== "") },
+      // * (el: string) => el !== "") 빈문자열 제외하는 부분
+      {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      }
+    );
   };
   useEffect(() => {
-    setMainPage(true);
     userTagUpdata();
     getUserInfo();
   }, []);
