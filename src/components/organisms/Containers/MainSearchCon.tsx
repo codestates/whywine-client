@@ -1,8 +1,16 @@
 import React from "react";
 import MainSearchCategory from "../Categories/MainSearchCategory";
 
-const MainSearchCon = () => {
-  return <div></div>;
+interface State {
+  searchWine: object[][];
+}
+
+const MainSearchCon = ({ searchWine }: State) => {
+  return (
+    <div>
+      <MainSearchCategory searchWine={searchWine} />
+    </div>
+  );
 };
 
 export default MainSearchCon;
