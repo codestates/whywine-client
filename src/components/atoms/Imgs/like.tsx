@@ -13,9 +13,23 @@ const Like = ({ id }: Props) => {
   const handleLikeBtn = async () => {
     setIsLike(!isLike);
     if (isLike) {
-      await axios.post(`${server}/user/like`, { wineId: id });
+      await axios.post(
+        `${server}/user/like`,
+        { wineId: id },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
     } else {
-      await axios.post(`${server}/user/unlike`, { wineId: id });
+      await axios.post(
+        `${server}/user/unlike`,
+        { wineId: id },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
     }
   };
 
