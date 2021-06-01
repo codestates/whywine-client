@@ -57,7 +57,17 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
   return (
     <div>
       <div className={isOpen ? "openModal modal" : "modal"}>
-        <WineModal ModalEl={ModalEl} />
+        <WineModal
+          price={price}
+          tags={tags}
+          id={id}
+          sort={sort}
+          likeCount={likeCount}
+          description={description}
+          image={image}
+          name={name}
+          ModalEl={ModalEl}
+        />
       </div>
       {searchWine === undefined ? null : (
         <li className="mainWineCard" onClick={handleIsClicked}>
