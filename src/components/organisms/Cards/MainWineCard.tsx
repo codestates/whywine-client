@@ -3,6 +3,7 @@ import photo from "../../../img/whywine_redWine_sample.png";
 import ClickWine from "../../atoms/Imgs/ClickWine";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
+import wineSample from "../../../img/wine_sample.webp";
 
 interface WineData {
   // name: string;
@@ -23,6 +24,7 @@ let name: string,
 const MainWineCard = ({ randomWine }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
 
   // 확인 확인
@@ -36,6 +38,16 @@ const MainWineCard = ({ randomWine }: WineData) => {
     tags = randomWine.tags;
     sort = randomWine.sort;
   }
+
+  const handleUploadImg = () => {
+    setTimeout(() => setIsUpload(true), 300);
+  };
+  useEffect(() => {
+    handleUploadImg();
+    return () => {
+      setIsUpload(false);
+    };
+  }, [tags]);
 
   const handleIsClicked = () => {
     setIsOpen(true);
@@ -84,7 +96,12 @@ const MainWineCard = ({ randomWine }: WineData) => {
         <div className="mainWineCard" onClick={handleIsClicked}>
           <Rating />
           <div className="mainWineProfile">
-            <img src={image} alt="와인" />
+            <img
+              src={image}
+              alt="와인"
+              className={isUpload ? "wineMainImg" : "wineMainSample"}
+            />
+
             <div className="mainWineContent">
               <h2>{name}</h2>
               {/* <span>{year}</span> */}
