@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import MainWineCard from "../Cards/MainWineCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 interface WineData {
   randomWine: object[];
 }
-
 const MainWineCategory = ({ randomWine }: WineData) => {
   // let wineData = [
   //   <MainWineCard randomWine={randomWine[0]} />,
@@ -27,15 +27,11 @@ const MainWineCategory = ({ randomWine }: WineData) => {
             당신을 위한 <span>완벽한 와인</span>
           </h2>
           <ul className="mainWineCardBox">
-            {randomWine.length === 0 ? (
-              <div style={{ width: "1260px" }}>Loading...</div>
-            ) : (
-              [1, 2, 3].map((data, index) => {
-                return (
-                  <MainWineCard randomWine={randomWine[index]} key={index} />
-                );
-              })
-            )}
+            {[1, 2, 3].map((data, index) => {
+              return (
+                <MainWineCard randomWine={randomWine[index]} key={index} />
+              );
+            })}
           </ul>
         </div>
       ) : (
