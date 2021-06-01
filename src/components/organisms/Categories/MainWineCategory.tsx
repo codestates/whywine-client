@@ -25,15 +25,13 @@ const MainWineCategory = ({ randomWine }: WineData) => {
           <h2 className="mainCategoryName">
             당신을 위한 <span>완벽한 와인</span>
           </h2>
-          <div className="mainWineCardBox">
-            <ul className="mainWineCardList">
-              {[1, 2, 3].map((data, index) => {
-                return (
-                  <MainWineCard randomWine={randomWine[index]} key={index} />
-                );
-              })}
-            </ul>
-          </div>
+          <ul className="mainWineCardBox">
+            {[1, 2, 3].map((data, index) => {
+              return (
+                <MainWineCard randomWine={randomWine[index]} key={index} />
+              );
+            })}
+          </ul>
         </div>
       ) : (
         <div>추천와인이 없습니다 </div>
