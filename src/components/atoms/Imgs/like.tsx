@@ -3,7 +3,11 @@ import axios from "axios";
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
-const Like = () => {
+interface Props {
+  id: number;
+}
+
+const Like = ({ id }: Props) => {
   const [isLike, setIsLike] = useState(false);
 
   const handleLikeBtn = async () => {

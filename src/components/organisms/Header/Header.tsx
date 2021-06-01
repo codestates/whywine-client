@@ -42,12 +42,12 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
     } else if (!JSON.parse(login)) {
       setIslogin(false);
     }
-  }, [isLogin]);
+  });
 
   return (
     <>
       {isLogin ? (
-        <div className="LandingHeader">
+        <div className="MainHeader ">
           <Title />
           <MainSearchBar
             handleSearchInput={handleSearchInput}
@@ -61,7 +61,7 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
           </div>
         </div>
       ) : (
-        <div className="LandingHeader">
+        <div className="MainHeader ">
           <Title />
           <MainSearchBar
             handleSearchInput={handleSearchInput}

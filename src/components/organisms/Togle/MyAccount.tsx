@@ -20,12 +20,12 @@ function MyAccount() {
   });
 
   return (
-    <div>
+    <div ref={togleEl}>
       {!manuOpen ? (
-        <MyAccountBtn setMeunOpen={setMeunOpen} />
+        <MyAccountBtn togleEl={togleEl} setMeunOpen={setMeunOpen} />
       ) : (
         <>
-          <MyAccountBtn setMeunOpen={setMeunOpen} />
+          <MyAccountBtn togleEl={togleEl} setMeunOpen={setMeunOpen} />
           <MyAccountMenu togleEl={togleEl} />
         </>
       )}

@@ -889,11 +889,11 @@ section {
   background-image: url("./img/heart-regular.svg");
 }
 .wineimg {
+  min-width: 400px;
   border: 1px solid;
   text-align: center;
   height: 400px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
 }
 .textarea {
@@ -906,6 +906,8 @@ section {
   border: 2px solid black;
 }
 .reviewInputBox {
+  width: 100%;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   border: 2px solid black;
