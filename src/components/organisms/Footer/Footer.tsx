@@ -12,7 +12,7 @@ const Footer = () => {
     window.open("https://twitter.com/", "_blank");
   };
   const handleOpenInstar = () => {
-    window.open("https://nstargram.com/", "_blank");
+    window.open("https://www.instagram.com/", "_blank");
   };
 
   return (
