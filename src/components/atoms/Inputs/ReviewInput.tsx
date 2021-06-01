@@ -1,4 +1,4 @@
-import React, { TextareaHTMLAttributes } from "react";
+import React, { TextareaHTMLAttributes, useState } from "react";
 
 const ReviewInput = ({
   cols,

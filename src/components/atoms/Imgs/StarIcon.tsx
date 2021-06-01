@@ -1,11 +1,17 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
+import Icon from "../../../img/star-regular.svg";
 
-export default function StarIcon() {
+interface IconProps {
+  isActive: boolean;
+}
+
+export default function StarIcon({ isActive }: IconProps) {
   return (
-    <div>
-      <FontAwesomeIcon icon={faStar} size="2x" />
-    </div>
+    <span>
+      <img
+        src={Icon}
+        className={isActive ? "star-active" : "star-no-active"}
+      ></img>
+    </span>
   );
 }

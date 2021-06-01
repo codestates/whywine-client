@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 ul {
   /* background-color: rgb(241, 237, 237); */
   margin: 0;
@@ -152,14 +157,21 @@ section {
   text-align: center;
 }
 
+
+/* main 페이지----------------------------- */
+.HeaderWrap{
+  width: 100%;
+  background-color: #f9f1e6;
+}
 .MainHeader {
-  margin: 0 auto;
   position: relative;
+  margin-left: 200px;
+  margin-right: 200px;
   top: 0;
   z-index: 1000;
   font-size: 40px;
   font-weight: bold;
-  line-height: 30px;
+  line-height: 40px;
   padding: 23px;
   display: flex;
   justify-content: space-between;
@@ -584,6 +596,21 @@ section {
   display: flex;
   flex-direction: row;
 }
+.star {
+  width: 35px;
+  user-select: auto;
+  height: 35px;
+}
+.star-active {
+  background-image: url("./img/star-solid.svg");
+  margin-right: 5px;
+  cursor: pointer;
+}
+.star-no-active {
+  background-image: url("./img/star-regular.svg");
+  margin-right: 5px;
+  cursor: pointer;
+}
 .winemodal {
   max-width: 850px;
   height: 700px;
@@ -649,7 +676,7 @@ section {
   color: rgb(255, 153, 0);
 }
 
-.mainWineCardBox {
+.mainWineCardList {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -799,7 +826,6 @@ section {
 .mainWineCon {
   display: flex;
   margin-top: 30px;
-  flex-direction: column;
   align-items: center;
   /* height: 750px;
   overflow-y: scroll;
@@ -807,12 +833,9 @@ section {
 }
 
 .mainContainers {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 0 48px;
-  min-width: 100%;
-  overflow: hidden;
+  margin-left: 200px;
+  margin-right: 200px;
+  position: relative;
 }
 .mainCategoryName {
   margin-bottom: 20px;
@@ -822,8 +845,7 @@ section {
   width: 200px;
   height: 100px;
   border-bottom: 2px solid;
-  display: flex;
-  flex-direction: column;
+  float: left;
 }
 
 .mainCategoryName span {
@@ -873,7 +895,6 @@ section {
 .like {
   width: 20px;
   height: 20px;
-
   background-image: url("./img/heart-regular.svg");
 }
 .wineimg {
@@ -1044,6 +1065,17 @@ section {
   background-color: #aa1414;
   color: white;
   transition: all 0.5s ease;
+<<<<<<< HEAD
+=======
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2.5em;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-position: center;
+>>>>>>> 55c2d8d6cae387dabfa901d176a0b90234d9d705
 }
 .mainWineTag {
   color: black;
@@ -1083,7 +1115,8 @@ section {
   display: flex;
 }
 .mainWineCategory {
-  display: flex;
+  width:100%;
+  overflow:hidden;
 }
 
 @keyframes fadeIn {
@@ -1160,13 +1193,6 @@ section {
   }
   .mainNavMenu.active {
     display: flex;
-  }
-
-  .mainCategoryName {
-    text-align: center;
-  }
-  .mainWineCategory {
-    width: 100%;
   }
 
   .mainWineProfile {

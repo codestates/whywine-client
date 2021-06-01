@@ -12,7 +12,7 @@ const MainWineCategory = ({ randomWine }: WineData) => {
   //   <MainWineCard randomWine={randomWine[1]} />,
   //   <MainWineCard randomWine={randomWine[2]} />,
   // ];
-  console.log(randomWine[0]);
+
   const [isTagArr, setIsTagArr] = useState(true);
   const tags: any = localStorage.getItem("userTag");
   if (!tags) {
@@ -27,11 +27,24 @@ const MainWineCategory = ({ randomWine }: WineData) => {
             당신을 위한 <span>완벽한 와인</span>
           </h2>
           <ul className="mainWineCardBox">
+<<<<<<< HEAD
             {[1, 2, 3].map((data, index) => {
               return (
                 <MainWineCard randomWine={randomWine[index]} key={index} />
               );
             })}
+=======
+            {randomWine.length === 0 ? (
+              <div style={{ width: "1260px" }}>Loading...</div>
+            ) : (
+              [1, 2, 3].map((data, index) => {
+                return (
+                  <MainWineCard randomWine={randomWine[index]} key={index} />
+                );
+              })
+            )}
+
+>>>>>>> 55c2d8d6cae387dabfa901d176a0b90234d9d705
           </ul>
         </div>
       ) : (
