@@ -16,7 +16,7 @@ function Logout({ setIslogin }: Props) {
   const handleLogout = async () => {
     console.log("로그아웃 작동");
     await axios
-      .get(`${server}/auth/logout`, { withCredentials: true })
+      .post(`${server}/auth/logout`, { withCredentials: true })
       .then((res) => {
         console.log("쿠키삭제성공");
         let login: any = localStorage.getItem("login");

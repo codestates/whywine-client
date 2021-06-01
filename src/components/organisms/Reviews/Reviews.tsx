@@ -8,8 +8,10 @@ require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER;
 
 function Reviews() {
-  let userInfo: any = localStorage.getItem("userInfo");
-  userInfo = JSON.parse(userInfo);
+  if (localStorage.getItem("userInfo")) {
+    let userInfo: any = localStorage.getItem("userInfo");
+    userInfo = JSON.parse(userInfo);
+  }
 
   // const data = axios.get(`${server}/comment?wineid=[와인아이디]`, {
   //   headers: {
@@ -24,7 +26,7 @@ function Reviews() {
       <li className="reviews">
         <div className="reviewContent">
           <a href="#" className="reviewWriter">
-            {userInfo.nickname}
+            {/* {userInfo.nickname} */}
           </a>
           <span className="wineReview">와인 리뷰</span>
           <ReviewTime />
