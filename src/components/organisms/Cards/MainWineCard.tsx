@@ -66,7 +66,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
 
   return (
-    <div>
+    <li>
       <div className={isOpen ? "openModal modal" : "modal"}>
         <WineModal
           price={price}
@@ -81,7 +81,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
         />
       </div>
       {randomWine === undefined ? null : (
-        <li className="mainWineCard" onClick={handleIsClicked}>
+        <div className="mainWineCard" onClick={handleIsClicked}>
           <Rating />
           <div className="mainWineProfile">
             <img src={image} alt="와인" />
@@ -140,9 +140,9 @@ const MainWineCard = ({ randomWine }: WineData) => {
             </div>
             <ClickWine isClicked={isClicked} />
           </div>
-        </li>
+        </div>
       )}
-    </div>
+    </li>
   );
 };
 
