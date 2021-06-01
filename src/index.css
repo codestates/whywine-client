@@ -606,9 +606,9 @@ section {
   flex-direction: row;
 }
 .star {
-  width: 30px;
+  width: 35px;
   user-select: auto;
-  height: 30px;
+  height: 35px;
 }
 .star-active {
   background-image: url("./img/star-solid.svg");

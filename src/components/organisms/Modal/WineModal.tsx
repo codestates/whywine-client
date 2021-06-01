@@ -28,6 +28,7 @@ function WineModal({
 }: Props) {
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
+  const [comments, setComments] = useState();
 
   return (
     <section ref={ModalEl} className="winemodal">
