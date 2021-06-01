@@ -157,9 +157,8 @@ section {
   text-align: center;
 }
 
-
 /* main 페이지----------------------------- */
-.HeaderWrap{
+.HeaderWrap {
   width: 100%;
   background-color: #f9f1e6;
 }
@@ -1065,17 +1064,6 @@ section {
   background-color: #aa1414;
   color: white;
   transition: all 0.5s ease;
-<<<<<<< HEAD
-=======
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2.5em;
-  text-decoration: none;
-  background-repeat: no-repeat;
-  background-position: center;
->>>>>>> 55c2d8d6cae387dabfa901d176a0b90234d9d705
 }
 .mainWineTag {
   color: black;
@@ -1115,8 +1103,8 @@ section {
   display: flex;
 }
 .mainWineCategory {
-  width:100%;
-  overflow:hidden;
+  width: 100%;
+  overflow: hidden;
 }
 
 @keyframes fadeIn {
