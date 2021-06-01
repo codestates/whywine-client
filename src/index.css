@@ -885,7 +885,6 @@ section {
 .like {
   width: 20px;
   height: 20px;
-
   background-image: url("./img/heart-regular.svg");
 }
 .wineimg {
@@ -1056,6 +1055,15 @@ section {
   border: 2px solid #aa1414;
   background-color: #aa1414;
   color: white;
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2.5em;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .mainWineTag {
   color: black;
