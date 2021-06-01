@@ -62,17 +62,6 @@ section {
   border: 2px solid rgb(109, 95, 95);
   justify-content: space-around;
 }
-.FirstPage_GoTomain {
-  font-size: 25px;
-  margin: 5px 6px;
-  cursor: pointer;
-}
-.FirstPage_GoTomain:hover {
-  color: rgb(240, 119, 88);
-}
-.FirstPage_route {
-  font-family: "Noto Sans KR", sans-serif;
-}
 .FirstPage {
   background-image: url("./img/wine-bottles-3623697_1920.png");
   background-size: cover;
@@ -82,14 +71,13 @@ section {
   justify-content: center;
 }
 .FirstPage > div {
-  margin: 0px 50px;
+  margin: 0px 30px;
 }
 .FirstPage_Summery h1 {
   margin: 0;
   font-size: 100px;
 }
 .FirstPage_Summery p {
-  color: white;
   font-size: 20px;
 }
 .FirstPage_InputSurvey {
@@ -168,22 +156,7 @@ section {
 .scrollDownImg img {
   text-align: center;
 }
-.LandingHeader {
-  color: white;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  font-size: 40px;
-  font-weight: bold;
-  line-height: 30px;
-  padding: 23px;
-  display: flex;
-  justify-content: space-between;
-  left: 25px;
-  top: 25px;
-  right: 25px;
-  border-bottom: 1px solid;
-}
+
 
 /* main 페이지----------------------------- */
 .HeaderWrap{
@@ -195,14 +168,15 @@ section {
   margin-left: 200px;
   margin-right: 200px;
   top: 0;
-  z-index: 1;
+  z-index: 1000;
   font-size: 40px;
   font-weight: bold;
   line-height: 40px;
   padding: 23px;
   display: flex;
   justify-content: space-between;
-
+  background-color: #f9f1e6;
+  width: 1216px;
 }
 
 .headerMeun {
@@ -613,6 +587,11 @@ section {
 }
 
 /**Main**/
+/* .main {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+} */
 .hrDiv {
   display: flex;
   flex-direction: row;
@@ -702,6 +681,7 @@ section {
   justify-content: center;
   align-items: center;
 }
+
 .mainWineCard {
   display: flex;
   flex-direction: column;
@@ -834,6 +814,7 @@ section {
   padding: 0;
 } */
 .mainWineCon {
+  display: flex;
   margin-top: 30px;
   align-items: center;
   /* height: 750px;
@@ -907,11 +888,11 @@ section {
   background-image: url("./img/heart-regular.svg");
 }
 .wineimg {
-  min-width: 400px;
   border: 1px solid;
   text-align: center;
   height: 400px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 .textarea {
@@ -924,8 +905,6 @@ section {
   border: 2px solid black;
 }
 .reviewInputBox {
-  width: 100%;
-  max-width: 350px;
   display: flex;
   flex-direction: column;
   border: 2px solid black;

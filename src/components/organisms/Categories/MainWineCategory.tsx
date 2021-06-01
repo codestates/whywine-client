@@ -18,6 +18,7 @@ const MainWineCategory = ({ randomWine }: WineData) => {
   if (!tags) {
     setIsTagArr(false);
   }
+  // TODO Loading에 이미지 파일 주기
   return (
     <div>
       {isTagArr ? (
@@ -25,12 +26,17 @@ const MainWineCategory = ({ randomWine }: WineData) => {
           <h2 className="mainCategoryName">
             당신을 위한 <span>완벽한 와인</span>
           </h2>
-          <ul className="mainWineCardList">
-            {[1, 2, 3].map((data, index) => {
-              return (
-                <MainWineCard randomWine={randomWine[index]} key={index} />
-              );
-              })}
+          <ul className="mainWineCardBox">
+            {randomWine.length === 0 ? (
+              <div style={{ width: "1260px" }}>Loading...</div>
+            ) : (
+              [1, 2, 3].map((data, index) => {
+                return (
+                  <MainWineCard randomWine={randomWine[index]} key={index} />
+                );
+              })
+            )}
+
           </ul>
         </div>
       ) : (
