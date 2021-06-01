@@ -64,8 +64,8 @@ const Main: React.FC = () => {
     userTagUpdata();
     getUserInfo();
   }, []);
-  //* 서버에 태그 요청
 
+  //* 서버에 태그 요청
   const postTags = useCallback(async () => {
     if (userMainTag.length !== 0) {
       console.log("userTypeTag", userTypeTag, "userMainTag", userMainTag);
