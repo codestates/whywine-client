@@ -45,7 +45,7 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
   });
 
   return (
-    <>
+    <div className='HeaderWrap'>
       {isLogin ? (
         <div className="MainHeader ">
           <Title />
@@ -77,7 +77,7 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
           <SignUpModal isOpen={signUpOpen} closeModal={closeSignUpModal} />
         </div>
       )}
-    </>
+    </div>
   );
 }
 
