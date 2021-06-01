@@ -10,8 +10,8 @@ const MainSearchCategory = ({ searchWine }: State) => {
       <h2 className="mainCategoryName">검색</h2>
       <ul className="mainWineSearchBox">
         {searchWine.map((wineArr: object[]) => {
-          return wineArr.map((wine) => {
-            return <MainWineSearchCard searchWine={wine} />;
+          return wineArr.map((wine, idx) => {
+            return <MainWineSearchCard searchWine={wine} key={idx} />;
           });
         })}
       </ul>
