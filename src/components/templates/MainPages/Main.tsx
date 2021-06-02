@@ -11,6 +11,7 @@ import axios from "axios";
 import dotenv from "dotenv";
 import { list } from "@chakra-ui/styled-system";
 import Loading from "../../atoms/Imgs/Loading";
+import GoBackBtn from "../../atoms/Imgs/GoBackBtn";
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
@@ -169,7 +170,7 @@ const Main = () => {
         <Loading />
       ) : isSearch ? (
         <div>
-          <button onClick={goBack}>뒤로가기</button>
+          <GoBackBtn goBack={goBack} />
           <Search searchWine={searchWine} hasData={hasData} />
         </div>
       ) : (

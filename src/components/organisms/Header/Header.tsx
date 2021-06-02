@@ -49,12 +49,12 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
       {isLogin ? (
         <div className="MainHeader ">
           <Title />
-          <MainSearchBar
-            handleSearchInput={handleSearchInput}
-            handleClickSearchBtn={handleClickSearchBtn}
-          />
 
           <div className="headerMeun">
+            <MainSearchBar
+              handleSearchInput={handleSearchInput}
+              handleClickSearchBtn={handleClickSearchBtn}
+            />
             <GoToMainBtn />
             <Logout setIslogin={setIslogin} />
             <MyAccount />
@@ -63,12 +63,12 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
       ) : (
         <div className="MainHeader ">
           <Title />
-          <MainSearchBar
-            handleSearchInput={handleSearchInput}
-            handleClickSearchBtn={handleClickSearchBtn}
-          />
 
           <div className="headerMeun">
+            <MainSearchBar
+              handleSearchInput={handleSearchInput}
+              handleClickSearchBtn={handleClickSearchBtn}
+            />
             <SignIn openModal={openSignInModal} />
             <SignUp openModal={openSignUpModal} />
             <GoToMainBtn />
