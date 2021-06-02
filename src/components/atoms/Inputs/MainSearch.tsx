@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 interface State {
-  handleSearchInput: (e: any) => void;
-  handleClickSearchBtn: (e: any) => void;
+  handleSearchInput?: (e: any) => void;
+  handleClickSearchBtn?: (e: any) => void;
 }
 
 const MainSearch = ({ handleSearchInput, handleClickSearchBtn }: State) => {
