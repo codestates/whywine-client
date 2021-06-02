@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 ul {
@@ -654,13 +655,33 @@ section {
   width: 50%;
   justify-content: space-between;
 }
+.mainSearch {
+  border: 1px solid #dedede;
+  border-radius: 32px;
+  width: 50px;
+  height: 40px;
+  outline: none;
+  padding: 5px 0 5px 48px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+  font-weight: 400;
+  color: #333;
+  background-image: url(./img/search.svg);
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 15px;
+  transition: all 0.5s;
+}
+.mainSearch:hover {
+  width: 250px;
+  transition: all 0.5s;
+}
 .mainSearchBar {
-  display: flex;
-  flex-direction: row;
   z-index: 1;
 }
-.mainSearchBtn {
-  margin: 0;
+.goBackBtn {
+  background-image: url(./components/atoms/Imgs/GoBackBtn.tsx);
 }
 
 .likeHover {
