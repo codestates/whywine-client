@@ -2,17 +2,19 @@ import React, { useState } from "react";
 
 interface State {
   handleSearchInput: (e: any) => void;
+  handleClickSearchBtn: (e: any) => void;
 }
 
-const MainSearch = ({ handleSearchInput }: State) => {
+const MainSearch = ({ handleSearchInput, handleClickSearchBtn }: State) => {
   return (
-    <form>
+    <div>
       <input
         className="mainSearch"
-        placeholder="검색"
+        placeholder="와인 이름으로 검색해보세요"
         onChange={handleSearchInput}
+        onKeyDown={handleClickSearchBtn}
       />
-    </form>
+    </div>
   );
 };
 

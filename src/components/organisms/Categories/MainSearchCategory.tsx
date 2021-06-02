@@ -2,19 +2,19 @@ import React from "react";
 import MainWineSearchCard from "../Cards/MainWineSearchCard";
 
 interface State {
-  searchWine: object[];
+  searchWine: object[][];
 }
 const MainSearchCategory = ({ searchWine }: State) => {
   return (
     <div className="mainSearchCategory">
       <h2 className="mainCategoryName">검색</h2>
-      <div className="mainWineSearchBox">
-        <ul className="mainWineSearchList">
-          {searchWine.map((wine) => {
-            return <MainWineSearchCard searchWine={wine} />;
-          })}
-        </ul>
-      </div>
+      <ul className="mainWineSearchBox">
+        {searchWine.map((wineArr: object[]) => {
+          return wineArr.map((wine, idx) => {
+            return <MainWineSearchCard searchWine={wine} key={idx} />;
+          });
+        })}
+      </ul>
     </div>
   );
 };

@@ -13,7 +13,7 @@ import MainSearchBar from "../Inputs/MainSearchBar";
 
 interface State {
   handleSearchInput: (e: any) => void;
-  handleClickSearchBtn: () => void;
+  handleClickSearchBtn: (e: any) => void;
 }
 
 function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
@@ -45,7 +45,7 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
   });
 
   return (
-    <div className='HeaderWrap'>
+    <div className="HeaderWrap">
       {isLogin ? (
         <div className="MainHeader ">
           <Title />

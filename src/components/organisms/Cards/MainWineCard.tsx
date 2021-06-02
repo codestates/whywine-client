@@ -50,6 +50,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
   }, [tags]);
 
   const handleIsClicked = () => {
+    console.log(randomWine);
     setIsOpen(true);
     setIsClicked(true);
   };
