@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import MainNav from "../../organisms/Buttons/MainNav";
 import MainWineCon from "../../organisms/Containers/MainWineCon";
 import MainWineTagCon from "../../organisms/Containers/MainWineTagCon";
-import MainSearchBar from "../../organisms/Inputs/MainSearchBar";
 import Header from "../../organisms/Header/Header";
 import Search from "./Search";
 import Footer from "../../organisms/Footer/Footer";

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Landing from "../components/templates/Landing";
 import Main from "../components/templates/MainPages/Main";
 import Mypage from "../components/templates/Mypage";
+import LikeList from "../components/templates/LikeList";
 import Survey from "../components/templates/Survey";
 import result from "../components/templates/SurveyPages/SurveyResultQ";
 
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Route path="/main" component={Main} />
         <Route path="/survey" exact component={Survey} />
         <Route path="/userInfo" component={Mypage} />
+        <Route path="/likeList" component={LikeList} />
         <Route path="/survey/result" component={result}></Route>
         <Redirect path="*" to="/" />
         {/* </Suspense> */}

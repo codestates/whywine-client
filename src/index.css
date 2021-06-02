@@ -190,16 +190,16 @@ section {
   width: 1216px;
 }
 
-.headerMeun {
+.headerMenu {
   font-size: 15px;
   cursor: pointer;
   display: flex;
   font-family: "Noto Sans KR", sans-serif;
 }
-.headerMeun > div {
+.headerMenu > div {
   margin: 0px 40px;
 }
-.headerMeun :nth-child(3) {
+.headerMenu :nth-child(3) {
   margin-right: 10px;
 }
 .togle {
@@ -899,14 +899,15 @@ section {
 }
 
 .unlike {
-  background-image: url("./img/heart-solid.svg");
+  background-image: url("./img/heart-regular.svg");
+
   width: 20px;
   height: 20px;
 }
 .like {
   width: 20px;
   height: 20px;
-  background-image: url("./img/heart-regular.svg");
+  background-image: url("./img/heart-solid.svg");
 }
 .wineimg {
   min-width: 200px;
