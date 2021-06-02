@@ -36,7 +36,7 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
   };
 
   useEffect(() => {
-    let login: any = localStorage.getItem("login");
+    let login: any = sessionStorage.getItem("login");
     if (JSON.parse(login)) {
       setIslogin(true);
     } else if (!JSON.parse(login)) {
@@ -49,15 +49,12 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
       {isLogin ? (
         <div className="MainHeader ">
           <Title />
-\
+          \
           <MainSearch
             handleSearchInput={handleSearchInput}
             handleClickSearchBtn={handleClickSearchBtn}
           />
-
           <div className="headerMenu">
-
-
             <GoToMainBtn />
             <Logout setIslogin={setIslogin} />
             <MyAccount />
@@ -66,15 +63,13 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
       ) : (
         <div className="MainHeader ">
           <Title />
-\
+          \
           <MainSearch
             handleSearchInput={handleSearchInput}
             handleClickSearchBtn={handleClickSearchBtn}
           />
-
           <div className="headerMenu">
-
-\
+            \
             <SignIn openModal={openSignInModal} />
             <SignUp openModal={openSignUpModal} />
             <GoToMainBtn />

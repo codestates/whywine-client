@@ -19,11 +19,11 @@ function Logout({ setIslogin }: Props) {
       .get(`${server}/auth/logout`, { withCredentials: true })
       .then((res) => {
         console.log("쿠키삭제성공");
-        let login: any = localStorage.getItem("login");
+        let login: any = sessionStorage.getItem("login");
         if (JSON.parse(login)) {
-          localStorage.setItem("login", JSON.stringify(false));
+          sessionStorage.setItem("login", JSON.stringify(false));
         }
-        localStorage.removeItem("userInfo");
+        sessionStorage.removeItem("userInfo");
         history.push("/");
         setIslogin(false);
       })

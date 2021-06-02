@@ -13,13 +13,13 @@ import GoBackBtn from "../../atoms/Imgs/GoBackBtn";
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
-//* 로컬스토리지에 담겨있는 태그 불러오기
+//* 세션 스토리지에 담겨있는 태그 불러오기
 let tags: any;
-if (!localStorage.getItem("userTag")) {
-  localStorage.setItem("userTag", JSON.stringify([]));
-  tags = localStorage.getItem("userTag");
+if (!sessionStorage.getItem("userTag")) {
+  sessionStorage.setItem("userTag", JSON.stringify([]));
+  tags = sessionStorage.getItem("userTag");
 }
-tags = localStorage.getItem("userTag");
+tags = sessionStorage.getItem("userTag");
 
 let wineDataArr: any = [];
 
@@ -36,19 +36,19 @@ const Main = () => {
       });
 
       console.log("userInfo", userInfo);
-      localStorage.setItem(
+      sessionStorage.setItem(
         "userInfo",
         JSON.stringify(userInfo.data.data.userInfo)
       );
-      // * 유저 정보 로컬스토리지 저장
+      // * 유저 정보 세션스토리지 저장
     } catch (error) {}
   };
 
   const userTagUpdata = async () => {
-    let tagsArr: any = localStorage.getItem("userTag");
+    let tagsArr: any = sessionStorage.getItem("userTag");
     // * 로컬 스토리지에 있는 선택한 태그들을 tagsArr에 할당
     console.log("tags:", JSON.parse(tagsArr));
-    // ! 로컬스토리지에서 데이터 받을시에 꼭 JSON.parse으로 JSON형태로 저장된 데이터 배열로 바꿔줘야함
+    // ! 세션 스토리지에서 데이터 받을시에 꼭 JSON.parse으로 JSON형태로 저장된 데이터 배열로 바꿔줘야함
 
     await axios.post(
       `${server}/user/update`,

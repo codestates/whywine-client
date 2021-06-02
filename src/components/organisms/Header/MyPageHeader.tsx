@@ -28,7 +28,7 @@ function MyPageHeader() {
   };
 
   useEffect(() => {
-    let login: any = localStorage.getItem("login");
+    let login: any = sessionStorage.getItem("login");
     if (JSON.parse(login)) {
       setIslogin(true);
     } else if (!JSON.parse(login)) {

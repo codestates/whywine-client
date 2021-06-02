@@ -34,7 +34,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
         .then((res) => {
           closeModal(e);
           setUserInfo(res.data.data);
-          localStorage.setItem("login", JSON.stringify(true));
+          sessionStorage.setItem("login", JSON.stringify(true));
           history.push("/main");
         })
         .catch((err) => {
