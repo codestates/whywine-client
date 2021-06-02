@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
-import WineIcon from "../Imgs/WineIcon";
+import WineIcon from "../Imgs/Wine";
 
 // interface Props {
 //   goBack: () => void;
