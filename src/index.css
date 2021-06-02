@@ -27,6 +27,11 @@ li {
 h2 {
   margin-bottom: 0;
 }
+.loadingBackGround {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(206, 191, 191, 0.452);
+}
 .surResultContainer {
   display: flex;
   flex-direction: column;
@@ -49,11 +54,16 @@ section {
   scroll-snap-align: center;
 }
 .title {
+  position: relative;
+}
+.title h4 {
+  position: absolute;
   cursor: pointer;
+  width: 200px;
   margin: 0px 10px;
 }
 .title:hover {
-  color: rgb(240, 119, 88);
+  color: rgb(226, 90, 55);
 }
 /* *      랜딩페이지 첫번째        */
 .SurveyModal {
@@ -172,14 +182,16 @@ section {
 
 /* main 페이지----------------------------- */
 .HeaderWrap {
+  display: flex;
+  justify-content: center;
   width: 100%;
   background-color: #f9f1e6;
 }
 .MainHeader {
   position: relative;
-  margin-left: 200px;
-  margin-right: 200px;
-  top: 0;
+  /* margin-left: 200px;
+  margin-right: 200px; */
+  /* top: 0; */
   z-index: 1000;
   font-size: 40px;
   font-weight: bold;
@@ -683,6 +695,10 @@ section {
   width: 250px;
   transition: all 0.5s;
 }
+.mainSearch.active {
+  width: 250px;
+  transition: all 0.5s;
+}
 .mainSearchBar {
   z-index: 1;
 }
@@ -719,10 +735,6 @@ section {
   color: rgb(255, 153, 0);
 }
 
-.mainWineCategory {
-  display: flex;
-}
-
 .mainWineCardBox {
   display: flex;
   justify-content: center;
@@ -737,12 +749,15 @@ section {
   width: 400px;
   cursor: pointer;
   background-color: #faf1e6;
-  border-radius: 5px;
+  border-radius: 15px;
   position: relative;
   margin: 0 10px;
   transition: all 0.4s;
   flex-shrink: 0;
+  box-shadow: 0 0 7px 0 rgb(0 0 0 / 6%);
+  margin-top: 3px;
 }
+
 .mainWineCard:hover {
   background-color: rgba(0, 0, 0, 0.6);
   width: 500px;
@@ -751,7 +766,7 @@ section {
 }
 .mainWineCard:hover .mainWineData {
   background-color: #fdfaf6a8;
-
+  border-radius: 0;
   width: 500px;
   transition: all 0.4s;
 }
@@ -762,7 +777,7 @@ section {
 .mainWineCard:hover .mainWineRatingAvg {
   font-size: 40px;
   margin-left: 50px;
-  top: 10px;
+  top: 50px;
   color: rgb(238, 199, 24);
   transition: all 0.4s;
 }
@@ -772,8 +787,14 @@ section {
   transition: all 0.4s;
 }
 
-.mainWineCard:hover .mainWineContent h2 {
-  margin-bottom: 170px;
+.mainWineCard:hover .lessThan30 {
+  margin-bottom: 180px;
+  width: 350px;
+  color: #f9f9f9;
+  transition: margin 0.4s;
+}
+.mainWineCard:hover .moreThan30 {
+  margin-bottom: 180px;
   width: 350px;
   color: #f9f9f9;
   transition: margin 0.4s;
@@ -797,7 +818,10 @@ section {
   flex-direction: column;
   align-items: center;
   color: black;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
+
 .wineMainImg {
   width: 82px;
   height: 300px;
@@ -813,7 +837,7 @@ section {
   position: absolute;
   margin-top: 20px;
   margin-left: 70px;
-  animation: fadeIn 0.3s alternate;
+  animation: fadeIn 0.6s alternate;
 }
 .mainWineContent {
   position: absolute;
@@ -840,12 +864,19 @@ section {
 
   max-height: 200px;
 }
-.mainWineContent h2 {
-  font-size: 28px;
+.lessThan30 {
+  font-size: 26px;
   width: 200px;
   color: rgb(170, 20, 20);
   margin-left: 10px;
   margin-bottom: 220px;
+}
+.moreThan30 {
+  font-size: 24px;
+  width: 200px;
+  color: rgb(170, 20, 20);
+  margin-left: 10px;
+  margin-bottom: 210px;
 }
 .mainWineProfile span {
   font-size: 30px;
@@ -853,9 +884,70 @@ section {
   color: rgb(170, 20, 20);
   margin-left: 10px;
 }
-.mainWineContent h2 span {
+/* .mainWineContent h2 span {
   display: block;
+} */
+/**SearchCard**/
+.mainSearchCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 400px;
+  width: 300px;
+  cursor: pointer;
+  background-color: #faf1e6;
+  border-radius: 15px;
+  position: relative;
+  margin: 0 10px;
+  transition: all 0.4s;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px 0 rgb(50 50 50 / 10%);
+
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
+.mainSearchData {
+  display: flex;
+  justify-content: center;
+  background-color: #fdfaf6;
+  width: 300px;
+  height: 100px;
+  margin-top: 300px;
+  line-height: 30px;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+/* .mainSearchContent {
+} */
+.mainSearchContent div {
+  position: absolute;
+  left: 0;
+  font-size: 24px;
+  width: 150px;
+  color: rgb(170, 20, 20);
+  margin-left: 20px;
+  margin-top: 100px;
+}
+.mainSearchContent p {
+  position: absolute;
+  font-size: 13px;
+  min-width: 230px;
+  width: 90%;
+  color: #000000;
+  padding-top: 10px;
+  height: 60px;
+  padding: 0 10px;
+  border-top: 1px solid #afa9a9;
+  left: 15px;
+  bottom: 10px;
+}
+.mainSearchProfile img {
+  margin-left: 30px;
+}
+
 .navBars {
   width: 30px;
   height: 30px;
@@ -871,17 +963,20 @@ section {
   padding: 0;
 } */
 .mainWineCon {
-  display: flex;
+  /* display: flex; */
   margin-top: 30px;
-  align-items: center;
+  /* align-items: center; */
   /* height: 750px;
   overflow-y: scroll;
   overflow-x: hidden; */
 }
+/* .mainWineTagCon {
+  display: flex;
+} */
 
 .mainContainers {
-  margin-left: 200px;
-  margin-right: 200px;
+  /* margin-left: 200px;
+  margin-right: 200px; */
   position: relative;
 }
 .mainCategoryName {
@@ -890,6 +985,7 @@ section {
   margin-right: 30px;
   padding-bottom: 10px;
   width: 200px;
+  min-width: 200px;
   height: 100px;
   border-bottom: 2px solid;
   float: left;
@@ -981,11 +1077,11 @@ section {
   width: 100%;
   height: 100%;
 }
-.clickWine {
+.clickSearch {
   animation: fadeIn 0.5s infinite alternate;
   position: absolute;
-  top: 20px;
-  margin-left: 20px;
+  top: 35px;
+  margin-left: 40px;
 }
 .mainWineNameBox {
   display: flex;
@@ -1097,6 +1193,8 @@ section {
   margin-bottom: 20px;
 }
 .mainWineTypeTag {
+  display: flex;
+  justify-content: center;
   border: 2px solid #aa1414;
   border-radius: 15px;
   padding: 0 5px 0 5px;
@@ -1104,7 +1202,9 @@ section {
   font-weight: 1000;
   color: black;
   margin-right: 10px;
-  transition: all 0.5s ease;
+  transition: all 0.1s ease;
+  min-width: 80px;
+  min-height: 28px;
 }
 /* .mainWineTypeTag:hover {
   border: 2px solid #aa1414;
@@ -1115,12 +1215,13 @@ section {
   border: 2px solid #aa1414;
   background-color: #aa1414;
   color: white;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 .mainWineTag {
   color: black;
 }
 .toolTip {
+  color: #000;
   font-weight: bold;
   font-size: 25px;
   position: relative;
@@ -1150,13 +1251,16 @@ section {
   display: flex;
   margin-top: 100px;
   margin-bottom: 100px;
+  min-height: 460px;
 }
 .mainWineSearchList {
   display: flex;
 }
 .mainWineCategory {
+  display: flex;
   width: 100%;
   overflow: hidden;
+  justify-content: center;
 }
 .mainWineSearchBox {
   display: flex;
@@ -1199,12 +1303,6 @@ section {
     opacity: 1;
   }
 }
-@media screen and (max-width: 1900px) {
-  .clickWine {
-    display: none;
-  }
-}
-
 @media screen and (max-width: 800px) {
   body {
     overflow: hidden;
@@ -1270,7 +1368,6 @@ section {
 
 /**slick-slider**/
 
-
 /* ---------------------------------------------마이페이지(MyPage.css)-------------------------------- */
 .MyPageWrap {
   margin-left: 200px;
@@ -1293,7 +1390,7 @@ section {
 .userImage {
   height: 200px;
   width: 200px;
-  border-radius:  50%;
+  border-radius: 50%;
   background-color: blueviolet;
 }
 /* -------------------------------------------------------------------------------------- */
