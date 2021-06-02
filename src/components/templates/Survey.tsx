@@ -20,42 +20,44 @@ function Survey() {
   });
 
   return (
-    <div className="container">
-      <section className="survey">
-        <Survey1
-          animatedItem={animatedItem}
-          userTag={userTag}
-          setUserTag={setUserTag}
-        />
-      </section>
-      <section className="survey">
-        <Survey2
-          animatedItem={animatedItem}
-          userTag={userTag}
-          setUserTag={setUserTag}
-        />
-      </section>
-      <section className="survey">
-        <Survey3
-          animatedItem={animatedItem}
-          userTag={userTag}
-          setUserTag={setUserTag}
-        />
-      </section>
-      <section className="survey">
-        <Survey4
-          animatedItem={animatedItem}
-          userTag={userTag}
-          setUserTag={setUserTag}
-        />
-      </section>
-      <section className="survey">
-        <Survey5
-          animatedItem={animatedItem}
-          userTag={userTag}
-          setUserTag={setUserTag}
-        />
-      </section>
+    <div className="SurveyWrap">
+      <div className="container">
+        <section className="survey">
+          <Survey1
+            animatedItem={animatedItem}
+            userTag={userTag}
+            setUserTag={setUserTag}
+          />
+        </section>
+        <section className="survey">
+          <Survey2
+            animatedItem={animatedItem}
+            userTag={userTag}
+            setUserTag={setUserTag}
+          />
+        </section>
+        <section className="survey">
+          <Survey3
+            animatedItem={animatedItem}
+            userTag={userTag}
+            setUserTag={setUserTag}
+          />
+        </section>
+        <section className="survey">
+          <Survey4
+            animatedItem={animatedItem}
+            userTag={userTag}
+            setUserTag={setUserTag}
+          />
+        </section>
+        <section className="survey">
+          <Survey5
+            animatedItem={animatedItem}
+            userTag={userTag}
+            setUserTag={setUserTag}
+          />
+        </section>
+      </div>
     </div>
   );
 }
