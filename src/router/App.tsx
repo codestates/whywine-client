@@ -13,9 +13,9 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Landing} />
-        <Suspense fallback={<div>Loading...</div>}>
+        {/* <Suspense fallback={<div>Loading...</div>}> */}
           <Route path="/main" component={Main} />
-        </Suspense>
+        {/* </Suspense> */}
 
         <Route path="/survey" exact component={Survey} />
         <Route path="/userInfo" component={Mypage} />
