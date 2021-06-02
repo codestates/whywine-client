@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 
 interface State {
   handleSearchInput: (e: any) => void;
-  handleClickSearchBtn: () => void;
+  handleClickSearchBtn: (e: any) => void;
 }
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER;
@@ -21,8 +21,11 @@ const MainSearchBar = ({ handleSearchInput, handleClickSearchBtn }: State) => {
 
   return (
     <div className="mainSearchBar">
-      <MainSearch handleSearchInput={handleSearchInput} />
-      <MainSearchBtn handleClickSearchBtn={handleClickSearchBtn} />
+      <MainSearch
+        handleSearchInput={handleSearchInput}
+        handleClickSearchBtn={handleClickSearchBtn}
+      />
+      {/* <MainSearchBtn handleClickSearchBtn={handleClickSearchBtn} /> */}
     </div>
   );
 };

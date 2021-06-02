@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MainWineCard from "../Cards/MainWineCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Loading from "../../atoms/Imgs/Loading";
+
 interface WineData {
   randomWine: object[];
 }
-
 const MainWineCategory = ({ randomWine }: WineData) => {
   // let wineData = [
   //   <MainWineCard randomWine={randomWine[0]} />,
@@ -14,10 +15,12 @@ const MainWineCategory = ({ randomWine }: WineData) => {
   // ];
 
   const [isTagArr, setIsTagArr] = useState(true);
+
   const tags: any = localStorage.getItem("userTag");
   if (!tags) {
     setIsTagArr(false);
   }
+
   // TODO Loading에 이미지 파일 주기
   return (
     <div>
@@ -27,16 +30,11 @@ const MainWineCategory = ({ randomWine }: WineData) => {
             당신을 위한 <span>완벽한 와인</span>
           </h2>
           <ul className="mainWineCardBox">
-            {randomWine.length === 0 ? (
-              <div style={{ width: "1260px" }}>Loading...</div>
-            ) : (
-              [1, 2, 3].map((data, index) => {
-                return (
-                  <MainWineCard randomWine={randomWine[index]} key={index} />
-                );
-              })
-            )}
-
+            {[1, 2, 3].map((data, index) => {
+              return (
+                <MainWineCard randomWine={randomWine[index]} key={index} />
+              );
+            })}
           </ul>
         </div>
       ) : (

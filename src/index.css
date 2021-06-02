@@ -719,7 +719,7 @@ section {
   width: 500px;
   transition: all 0.4s;
 }
-.mainWineCard:hover .mainWineProfile img {
+.mainWineCard:hover .wineMainImg {
   margin-left: 130px;
   transition: all 0.4s;
 }
@@ -738,7 +738,7 @@ section {
 
 .mainWineCard:hover .mainWineContent h2 {
   margin-bottom: 170px;
-  width: 400px;
+  width: 350px;
   color: #f9f9f9;
   transition: margin 0.4s;
 }
@@ -762,12 +762,22 @@ section {
   align-items: center;
   color: black;
 }
-.mainWineProfile img {
+.wineMainImg {
   width: 82px;
   height: 300px;
   position: absolute;
   margin-top: 20px;
   margin-left: 70px;
+  /* background-image: url(./img/wine_sample.webp); */
+  /* transition: background-image 0.25s ease-in-out 0s; */
+}
+.wineMainSample {
+  width: 82px;
+  height: 300px;
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 70px;
+  animation: fadeIn 0.3s alternate;
 }
 .mainWineContent {
   position: absolute;
@@ -1056,6 +1066,7 @@ section {
   font-weight: 1000;
   color: black;
   margin-right: 10px;
+  transition: all 0.5s ease;
 }
 /* .mainWineTypeTag:hover {
   border: 2px solid #aa1414;
@@ -1067,14 +1078,6 @@ section {
   background-color: #aa1414;
   color: white;
   transition: all 0.5s ease;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2.5em;
-  text-decoration: none;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 .mainWineTag {
   color: black;
@@ -1116,6 +1119,11 @@ section {
 .mainWineCategory {
   width: 100%;
   overflow: hidden;
+}
+.mainWineSearchBox {
+  display: flex;
+  overflow-x: scroll;
+  max-width: 1260px;
 }
 
 @keyframes fadeIn {
