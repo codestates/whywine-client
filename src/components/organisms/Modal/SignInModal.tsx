@@ -18,6 +18,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
   const [userInfo, setUserInfo] = useState();
   const [isNone, setIsNone] = useState(false);
   const [message, setMessage] = useState("");
+  const history = useHistory();
 
   const loginRequestHandler = async (e: any) => {
     if (e.key === "Enter" || e.type === "click") {
@@ -34,6 +35,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
           closeModal(e);
           setUserInfo(res.data.data);
           localStorage.setItem("login", JSON.stringify(true));
+          history.push("/main");
         })
         .catch((err) => {
           setIsNone(false);

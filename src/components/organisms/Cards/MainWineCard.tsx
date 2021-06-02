@@ -38,6 +38,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
   }
 
   const handleIsClicked = () => {
+    console.log(randomWine);
     setIsOpen(true);
     setIsClicked(true);
   };

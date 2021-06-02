@@ -915,7 +915,7 @@ section {
 .likeBox {
   border: 2px solid black;
 }
-.reviewInputBox {
+.review {
   width: 100%;
   max-width: 350px;
   display: flex;
