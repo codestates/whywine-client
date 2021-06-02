@@ -141,7 +141,6 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
               })}
             </div>
           </div>
-          <ClickWine isClicked={isClicked} />
         </div>
       </div>
     </li>

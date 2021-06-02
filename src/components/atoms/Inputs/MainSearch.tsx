@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SearchImg from "../Imgs/SearchImg";
 
 interface State {
   handleSearchInput: (e: any) => void;
