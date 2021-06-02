@@ -98,13 +98,13 @@ const LikeCard = ({ userLikeWines }: WineData) => {
           <div className="mainWineData">
             <div className="mainWineType">
               {sort === "red"
-                ? " #레드"
+                ? " 레드"
                 : sort === "white"
-                ? " #화이트"
+                ? " 화이트"
                 : sort === "rose"
-                ? " #로제"
+                ? " 로제"
                 : sort === "sparkling"
-                ? " #스파클링"
+                ? " 스파클링"
                 : null}
             </div>
             <div className="mainWineLikeTagBox">
