@@ -2,8 +2,7 @@ import React,{ useState, useEffect, useCallback, useMemo } from "react";
 import Header from "../organisms/Header/Header";
 import axios from 'axios'
 import dotenv from "dotenv";
-import EditIcon from '../atoms/Imgs/EditIcon'
-import CameraIcon from '../atoms/Imgs/CameraIcon'
+
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
