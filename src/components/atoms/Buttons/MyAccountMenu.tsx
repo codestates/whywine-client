@@ -4,11 +4,10 @@ import { useHistory } from "react-router-dom";
 import Logout from "../../atoms/Buttons/Logout";
 
 export interface Props {
-  togleEl: any;
   setMeunOpen: any;
 }
 
-function MyAccountMenu({ togleEl, setMeunOpen }: Props) {
+function MyAccountMenu({ setMeunOpen }: Props) {
   const history = useHistory();
   const [isLogin, setIslogin] = useState<boolean>(false);
 
@@ -26,7 +25,7 @@ function MyAccountMenu({ togleEl, setMeunOpen }: Props) {
 
   return (
     <div className="togle">
-      <div className="menuWrapper">
+      <div className="menuWrapper ">
         <div onClick={() => history.push("userInfo")}>마이페이지</div>
         <div onClick={() => history.push("likeList")}>내 찜 목록</div>
         <div>장바구니</div>

@@ -1270,7 +1270,6 @@ section {
 
 /**slick-slider**/
 
-
 /* ---------------------------------------------마이페이지(MyPage.css)-------------------------------- */
 .MyPageWrap {
   margin-left: 200px;
@@ -1293,7 +1292,7 @@ section {
 .userImage {
   height: 200px;
   width: 200px;
-  border-radius:  50%;
+  border-radius: 50%;
   background-color: blueviolet;
 }
 /* -------------------------------------------------------------------------------------- */
