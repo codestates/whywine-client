@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import ReviewBtn from "../../atoms/Buttons/ReviewBtn";
 import Like from "../../atoms/Imgs/like";
 import ReviewInput from "../../atoms/Inputs/ReviewInput";
@@ -38,7 +38,7 @@ function WineModal({
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
   const [userName, setUserName] = useState("게스트");
-  const [comments, setComments] = useState([]);
+  const [commentList, setCommentList] = useState<any[]>([]);
   // ! 랜더링 될 코멘트들 [{},{},{}....]
   const [comment, setComment] = useState<Comment>({
     // ! 현재 코멘트 상태
@@ -52,10 +52,9 @@ function WineModal({
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });
-
-    console.log("댓글 서버요청 :", JSON.stringify(data.data.data.comments));
-    setComments(data.data.data.comments);
-    console.log(comments[0]);
+    setCommentList(data.data.data.comments);
+    console.log(data.data.data.comments);
+    console.log("마지막에 없어져??", commentList);
   };
 
   const handleTextArea = (e: any) => {
@@ -83,7 +82,10 @@ function WineModal({
           withCredentials: true,
         }
       )
-      .then((data) => console.log("성공적 요청"))
+      .then((data) => {
+        console.log("성공적 요청");
+        handleComments();
+      })
       .catch((err) => console.dir(err));
 
     if (comment.text !== "") {
@@ -115,7 +117,10 @@ function WineModal({
       // * 로컬스토리지 유저인포가 없으면 유저이름을 "게스트"값으로 돌린다.
     }
   }, []);
+
   // * 랜딩될떄 로컬스토리지에 있는 유저인포에서 유저 닉네임 가져옴
+
+  // const RendigComment = useMemo(() => handleComments, [comments]);
 
   return (
     <section ref={ModalEl} className="winemodal">
@@ -153,16 +158,19 @@ function WineModal({
       </div>
 
       <div className="review">
-        <div className="reviewInput" onSubmit={(e) => e.preventDefault()}>
+        <div className="reviewInput">
           <ReviewInput handleTextArea={handleTextArea} comment={comment} />
           <ReviewBtn handleClick={handleClick} />
         </div>
-        <ul>
-          {comments.map((el: any, idx) => {
-            <>
-              <div>랜딩안되냐???</div>
-              <Reviews id={id} comment={el} key={idx} />
-            </>;
+        <ul className="reviewUl">
+          {commentList.reverse().map((el: any) => {
+            return (
+              <Reviews
+                commentText={el.text}
+                commentRating={el.rating}
+                key={el.id}
+              />
+            );
           })}
         </ul>
       </div>

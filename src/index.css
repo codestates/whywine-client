@@ -635,6 +635,12 @@ section {
   flex-direction: row;
   justify-content: space-around;
 }
+
+.reviewUl {
+  scroll-snap-type: y mandatory;
+  overflow: scroll;
+  max-height: 300px;
+}
 .mainNav {
   display: flex;
   justify-content: space-between;

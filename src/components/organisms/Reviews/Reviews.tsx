@@ -19,11 +19,12 @@ interface UserInfoPrpos {
   wines: [];
 }
 interface ReviewsProps {
-  id: number;
-  comment: string;
+  commentText: string;
+  commentRating: number;
+  key: number;
 }
 
-function Reviews({ id, comment }: ReviewsProps) {
+function Reviews({ commentText, commentRating, key }: ReviewsProps) {
   const [userInfo, setUserInfo] = useState<UserInfoPrpos>({
     bad: [],
     email: "",
@@ -35,33 +36,37 @@ function Reviews({ id, comment }: ReviewsProps) {
     tags: [],
     wines: [],
   });
-  // const [comment, setComment] = useState({
-  //   text: "",
-  // });
+  const [deleteReview, setDeleteReview] = useState(true);
 
-  useEffect(() => {
-    if (localStorage.getItem("userInfo")) {
-      let userInfo: any = localStorage.getItem("userInfo");
-      userInfo = JSON.parse(userInfo);
-      setUserInfo(userInfo);
-    }
-    console.log("랜딩이 안되니???: ", comment);
-  }, []);
+  const handleDeleteRewiew = async () => {
+    setDeleteReview(false);
+
+    // await axios.delete(`${server}/comment`,data:{"commentId":key});
+  };
 
   return (
-    <li className="reviews">
-      <div className="reviewContent">
-        <div className="reviewWriter">{userInfo.nickname}</div>
-        <span className="wineReview">{comment}</span>
-        <ReviewTime />
-      </div>
+    <>
+      {deleteReview ? (
+        <li className="reviews">
+          <div className="reviewContent">
+            <div className="reviewWriter">{userInfo.nickname}</div>
+            <span className="wineReview">{commentText}</span>
+            <div>별점: {commentRating}</div>
+            <ReviewTime />
+          </div>
 
-      <div className="reviewBtns">
-        <ReviewLikeBtn />
-        <ReplyBtn />
-      </div>
-    </li>
+          <div className="reviewBtns">
+            <ReviewLikeBtn />
+            <ReplyBtn />
+            <button onClick={() => handleDeleteRewiew()}>삭제하기</button>
+          </div>
+        </li>
+      ) : null}
+    </>
   );
 }
 
 export default Reviews;
+function data(arg0: string, data: any, arg2: {}) {
+  throw new Error("Function not implemented.");
+}
