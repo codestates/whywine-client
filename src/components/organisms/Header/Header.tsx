@@ -51,29 +51,27 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
   return (
     <div className="HeaderWrap">
       {isLogin ? (
-        <div className="MainHeader ">
+        <div className="MainHeader">
           <Title />
-          \
           <MainSearch
             handleSearchInput={handleSearchInput}
             handleClickSearchBtn={handleClickSearchBtn}
           />
           <div className="headerMenu">
             <GoToMainBtn />
-            <Logout setIslogin={setIslogin} />
+
             <MyAccount />
           </div>
         </div>
       ) : (
-        <div className="MainHeader ">
+        <div className="MainHeader">
           <Title />
-          \
+
           <MainSearch
             handleSearchInput={handleSearchInput}
             handleClickSearchBtn={handleClickSearchBtn}
           />
           <div className="headerMenu">
-            \
             <SignIn openModal={openSignInModal} />
             <SignUp openModal={openSignUpModal} />
             <GoToMainBtn />

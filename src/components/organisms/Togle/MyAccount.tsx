@@ -26,7 +26,7 @@ function MyAccount() {
       ) : (
         <>
           <MyAccountBtn togleEl={togleEl} setMeunOpen={setMeunOpen} />
-          <MyAccountMenu togleEl={togleEl} />
+          <MyAccountMenu togleEl={togleEl} setMeunOpen={setMeunOpen} />
         </>
       )}
     </div>
