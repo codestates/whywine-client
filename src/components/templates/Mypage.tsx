@@ -150,7 +150,7 @@ function Mypage() {
     const formData = new FormData();
     formData.append('file', ImageUpload.file);
 
-    return axios.post(`${server}/userinfo//profileimage`, formData).then(res => {
+    return axios.post(`${server}/userinfo//profileimage`, formData,{ withCredentials: true }).then(res => {
       console.log(res)
       alert('성공')
     }).catch(err => {
