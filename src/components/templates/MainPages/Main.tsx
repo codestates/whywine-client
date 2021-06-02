@@ -163,6 +163,13 @@ const Main = () => {
         handleSearchInput={handleSearchInput}
         handleClickSearchBtn={handleClickSearchBtn}
       />
+      <MainWineTagCon
+        userMainTag={userMainTag}
+        setUserMainTag={setUserMainTag}
+        userTypeTag={userTypeTag}
+        setTypeTag={setTypeTag}
+        tags={tags}
+      />
       {isLoading ? (
         <Loading />
       ) : isSearch ? (
@@ -172,13 +179,6 @@ const Main = () => {
         </div>
       ) : (
         <div className="mainContainers">
-          <MainWineTagCon
-            userMainTag={userMainTag}
-            setUserMainTag={setUserMainTag}
-            userTypeTag={userTypeTag}
-            setTypeTag={setTypeTag}
-            tags={tags}
-          />
           <MainWineCon randomWine={randomWine} />
         </div>
       )}
