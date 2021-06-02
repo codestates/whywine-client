@@ -602,6 +602,11 @@ section {
   flex-direction: column;
   width: 70%;
 } */
+.loading {
+  text-align: center;
+  width: 100%;
+  height: 500px;
+}
 .hrDiv {
   display: flex;
   flex-direction: row;
@@ -687,10 +692,14 @@ section {
   color: rgb(255, 153, 0);
 }
 
-.mainWineCardList {
+.mainWineCategory {
+  display: flex;
+}
+
+.mainWineCardBox {
   display: flex;
   justify-content: center;
-  align-items: center;
+  min-height: 500px;
 }
 
 .mainWineCard {
@@ -963,6 +972,7 @@ section {
   flex-direction: column;
   align-items: center;
   font-family: "Noto Sans KR", sans-serif;
+  bottom: 0;
 }
 .footerTitle {
   display: flex;
