@@ -1252,3 +1252,31 @@ section {
 }
 
 /**slick-slider**/
+
+
+/* ---------------------------------------------마이페이지(MyPage.css)-------------------------------- */
+.MyPageWrap {
+  margin-left: 200px;
+  margin-right: 200px;
+  height: 550px;
+  padding-top: 100px;
+  background-color: #22b836;
+}
+.MyPageWrap ul {
+  background-color: blue;
+  text-align: center;
+}
+.MyPageWrap ul li:first-child {
+  margin-right: 30px;
+}
+.MyPageWrap ul li {
+  width: 40%;
+  background-color: #ffffff;
+}
+.userImage {
+  height: 200px;
+  width: 200px;
+  border-radius:  50%;
+  background-color: blueviolet;
+}
+/* -------------------------------------------------------------------------------------- */
