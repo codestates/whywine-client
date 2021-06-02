@@ -10,6 +10,19 @@ interface Props {
 const Like = ({ id }: Props) => {
   const [isLike, setIsLike] = useState(false);
 
+  const getUserInfo = async () => {
+    try {
+      let data = await axios.get(`${server}/userinfo`, {
+        withCredentials: true,
+      });
+      sessionStorage.setItem(
+        "userInfo",
+        JSON.stringify(data.data.data.userInfo)
+      );
+      // * 유저 정보 세션 스토리지 저장
+    } catch (error) {}
+  };
+
   const handleLikeBtn = useCallback(async () => {
     setIsLike(!isLike);
 
@@ -35,20 +48,8 @@ const Like = ({ id }: Props) => {
         }
       );
     }
+    getUserInfo();
   }, [isLike]);
-
-  const getUserInfo = async () => {
-    try {
-      let data = await axios.get(`${server}/userinfo`, {
-        withCredentials: true,
-      });
-      sessionStorage.setItem(
-        "userInfo",
-        JSON.stringify(data.data.data.userInfo)
-      );
-      // * 유저 정보 세션 스토리지 저장
-    } catch (error) {}
-  };
 
   useEffect(() => {
     getUserInfo();
