@@ -66,7 +66,7 @@ const Like = ({ id }: Props) => {
 
       // * 유저가 찜한 와인 배열에서 같은 와인 id가 있으면 islike 상태를 true로 반환한다.
     }
-  }, [isLike]);
+  }, []);
 
   return (
     <div onClick={handleLikeBtn} className={isLike ? "like" : "unlike"}></div>
