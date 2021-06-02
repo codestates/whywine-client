@@ -9,11 +9,11 @@ import Logout from "../../atoms/Buttons/Logout";
 import MyAccount from "../../organisms/Togle/MyAccount";
 import { useHistory } from "react-router-dom";
 import { join } from "path/posix";
-import MainSearchBar from "../Inputs/MainSearchBar";
+import MainSearch from "../../atoms/Inputs/MainSearch";
 
 interface State {
-  handleSearchInput: (e: any) => void;
-  handleClickSearchBtn: (e: any) => void;
+  handleSearchInput?: (e: any) => void;
+  handleClickSearchBtn?: (e: any) => void;
 }
 
 function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
@@ -49,12 +49,12 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
       {isLogin ? (
         <div className="MainHeader ">
           <Title />
-          <MainSearchBar
+          <MainSearch
             handleSearchInput={handleSearchInput}
             handleClickSearchBtn={handleClickSearchBtn}
           />
 
-          <div className="headerMeun">
+          <div className="headerMenu">
             <GoToMainBtn />
             <Logout setIslogin={setIslogin} />
             <MyAccount />
@@ -63,12 +63,12 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
       ) : (
         <div className="MainHeader ">
           <Title />
-          <MainSearchBar
+          <MainSearch
             handleSearchInput={handleSearchInput}
             handleClickSearchBtn={handleClickSearchBtn}
           />
 
-          <div className="headerMeun">
+          <div className="headerMenu">
             <SignIn openModal={openSignInModal} />
             <SignUp openModal={openSignUpModal} />
             <GoToMainBtn />
