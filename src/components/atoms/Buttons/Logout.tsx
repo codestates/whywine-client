@@ -14,7 +14,6 @@ function Logout({ setIslogin }: Props) {
   const history = useHistory();
 
   const handleLogout = async () => {
-    console.log("로그아웃 작동");
     await axios
       .get(`${server}/auth/logout`, { withCredentials: true })
       .then((res) => {
@@ -22,8 +21,9 @@ function Logout({ setIslogin }: Props) {
         let login: any = sessionStorage.getItem("login");
         if (JSON.parse(login)) {
           sessionStorage.setItem("login", JSON.stringify(false));
+          sessionStorage.removeItem("userInfo");
         }
-        sessionStorage.removeItem("userInfo");
+
         history.push("/");
         setIslogin(false);
       })
