@@ -1,14 +1,20 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
+import WineIcon from "../Imgs/WineIcon";
 
-interface Props {}
+// interface Props {
+//   goBack: () => void;
+// }
 
 function Title(params: any) {
   const history = useHistory();
 
   return (
-    <div className="title" onClick={() => history.push("/main")}>
-      whywine
+    <div className="title">
+      <h4 onClick={() => history.push("/main")}>
+        whywine
+        <WineIcon />
+      </h4>
     </div>
   );
 }
