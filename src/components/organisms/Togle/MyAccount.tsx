@@ -7,8 +7,10 @@ function MyAccount() {
   const togleEl: any = useRef();
 
   const handleClickOutside = (e: any) => {
-    if (manuOpen && !togleEl.current.contains(e.target)) {
-      setMeunOpen(false);
+    if (e.target) {
+      if (manuOpen && !togleEl.current.contains(e.target)) {
+        setMeunOpen(false);
+      }
     }
   };
 
