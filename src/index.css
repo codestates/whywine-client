@@ -14,6 +14,16 @@ ul {
 body {
   font-family: "Prata", "Noto Serif KR", serif;
   color: rgb(170, 20, 20);
+  /* line-height: 1.6;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden; */
+}
+.SurveyWrap,.LandingWrap {
+  font-family: "Prata", "Noto Serif KR", serif;
+  color: rgb(170, 20, 20);
   /* line-height: 1.6; */
   height: 100vh;
   margin: 0;
@@ -99,11 +109,11 @@ section {
 }
 .fa,
 .fas {
-  font-weight: 900;
+  /* font-weight: 900;
   display: flex;
   align-items: center;
   flex-direction: row;
-  margin: 0px 7px;
+  margin: 0px 7px; */
   cursor: pointer;
 }
 
@@ -1273,22 +1283,73 @@ section {
 
 /* ---------------------------------------------마이페이지(MyPage.css)-------------------------------- */
 .MyPageWrap {
-  margin-left: 200px;
-  margin-right: 200px;
-  height: 550px;
+  box-sizing: content-box;
+  margin: 0 200px;
   padding-top: 100px;
-  background-color: #22b836;
+  /* background-color: #22b836; */
 }
-.MyPageWrap ul {
-  background-color: blue;
+.MyPageWrap > ul {
+  background-color: #f9f1e6;
+  width: 400px;
+  height: 300px;
   text-align: center;
+  margin: 50px auto 0px;
+  border: rgba(102, 98, 98, 0.582)  solid 2px;
+  border-radius: 15px;
+  position: relative;
 }
-.MyPageWrap ul li:first-child {
-  margin-right: 30px;
+.MyPageWrap > ul > li:first-child {
+  position: relative;
 }
-.MyPageWrap ul li {
-  width: 40%;
-  background-color: #ffffff;
+.MyPageWrap > ul > li:last-child {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+.MyPageWrap .fa-check, .fa-times {
+  width: 20px;;
+} 
+.MyPageWrap ul li > div:nth-child(2), .MyPageWrap ul li ul {
+  padding-top: 120px;
+}
+.MyPageWrap ul li .profile{
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.MyPageWrap ul li ul li {
+  line-height: 30px;
+}
+.MyPageWrap ul li ul .fa-times{
+  position: absolute;
+  right: 40px;
+  top: 100px
+}
+.MyPageWrap ul li ul .fa-check{
+  position: absolute;
+  right: 80px;
+  height: 20;
+}
+.MyPageWrap .fa-camera {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+/* .MyPageWrap .fa-edit{
+  position: absolute;
+  right: 40px;
+  bottom: 15px;
+} */
+.MyPageWrap .userNickName{
+  margin-bottom: 5px;
+}
+.MyPageWrap .fa-user-slash,.fa-edit, .fa-camera{
+  font-size: 25px;
+}
+.onChangeImage{
+  display: none;
 }
 .userImage {
   height: 200px;
