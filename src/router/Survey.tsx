@@ -7,7 +7,7 @@ import SurveyThirdQ from "../components/templates/SurveyPages/Survey3";
 import SurveyResultQ from "../components/templates/SurveyPages/SurveyResultQ";
 import result from "../components/templates/SurveyPages/SurveyResultQ";
 
-import Main from "../components/templates/Main";
+import Main from "../components/templates/MainPages/Main";
 
 const Survey: React.FC = () => {
   return (

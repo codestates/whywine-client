@@ -1106,6 +1106,11 @@ section {
   width: 100%;
   overflow: hidden;
 }
+.mainWineSearchBox {
+  display: flex;
+  overflow-x: scroll;
+  max-width: 1260px;
+}
 
 @keyframes fadeIn {
   from {

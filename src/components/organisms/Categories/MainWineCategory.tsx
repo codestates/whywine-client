@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MainWineCard from "../Cards/MainWineCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Loading from "../../atoms/Imgs/Loading";
 
 interface WineData {
   randomWine: object[];
@@ -14,10 +15,12 @@ const MainWineCategory = ({ randomWine }: WineData) => {
   // ];
 
   const [isTagArr, setIsTagArr] = useState(true);
+
   const tags: any = localStorage.getItem("userTag");
   if (!tags) {
     setIsTagArr(false);
   }
+
   // TODO Loading에 이미지 파일 주기
   return (
     <div>
