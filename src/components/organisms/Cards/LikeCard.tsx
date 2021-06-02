@@ -6,7 +6,8 @@ import WineModal from "../Modal/WineModal";
 import wineSample from "../../../img/wine_sample.webp";
 
 interface WineData {
-  randomWine: any;
+  userLikeWines: any;
+  key: number;
 }
 let name: string,
   id: number,
@@ -16,24 +17,23 @@ let name: string,
   price: number,
   sort: string,
   tags: object[];
-const MainWineCard = ({ randomWine }: WineData) => {
+const LikeCard = ({ userLikeWines }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
 
   // 확인 확인
-  if (randomWine) {
-    name = randomWine.name;
-    id = randomWine.id;
-    likeCount = randomWine.likeCount;
-    description = randomWine.description;
-    image = process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image;
-    price = randomWine.price;
-    tags = randomWine.tags;
-    sort = randomWine.sort;
+  if (userLikeWines) {
+    name = userLikeWines.name;
+    id = userLikeWines.id;
+    likeCount = userLikeWines.likeCount;
+    description = userLikeWines.description;
+    image = process.env.REACT_APP_WINE_IMAGE_URL + userLikeWines.image;
+    price = userLikeWines.price;
+    tags = userLikeWines.tags;
+    sort = userLikeWines.sort;
   }
-
   const handleUploadImg = () => {
     setTimeout(() => setIsUpload(true), 300);
   };
@@ -45,7 +45,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
   }, [tags]);
 
   const handleIsClicked = () => {
-    console.log(randomWine);
+    console.log(userLikeWines);
     setIsOpen(true);
     setIsClicked(true);
   };
@@ -79,7 +79,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
           ModalEl={ModalEl}
         />
       </div>
-      {randomWine === undefined ? null : (
+      {
         <div className="mainWineCard" onClick={handleIsClicked}>
           <Rating />
           <div className="mainWineProfile">
@@ -109,7 +109,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
             </div>
             <div className="mainWineLikeTagBox">
               <div className="mainWineTag">
-                {tags.map((tag: any) => {
+                {/* {tags.map((tag: any) => {
                   switch (tag.name) {
                     case "body_light":
                       return " #가벼운";
@@ -138,17 +138,17 @@ const MainWineCard = ({ randomWine }: WineData) => {
                     default:
                       break;
                   }
-                })}
+                })} */}
               </div>
             </div>
             <ClickWine isClicked={isClicked} />
           </div>
         </div>
-      )}
+      }
     </li>
   );
 };
 
-export default MainWineCard;
+export default LikeCard;
 
 // TODO: 와인 뿌려주는 props에 따라 사진과 설명 별점 등을 다르게 설정

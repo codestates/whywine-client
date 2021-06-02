@@ -7,7 +7,7 @@ function Title(params: any) {
   const history = useHistory();
 
   return (
-    <div className="title" onClick={() => history.push("/")}>
+    <div className="title" onClick={() => history.push("/main")}>
       whywine
     </div>
   );

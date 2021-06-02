@@ -5,11 +5,6 @@ import WineModal from "../Modal/WineModal";
 import Rating from "../Ratings/Rating";
 
 interface wineData {
-  // name: string;
-  // photo: HTMLImageElement; //? 그냥 사진을 바로 불러와도 되려나
-  // like: number;
-  // tag: any;
-  // onClick: () => void;
   searchWine: any;
 }
 let name: string,
@@ -90,7 +85,6 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
           />
           <div className="mainWineContent">
             <h2>{name}</h2>
-            {/* <span>{year}</span> */}
             <p>{description}</p>
           </div>
         </div>
@@ -98,13 +92,13 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
         <div className="mainWineData">
           <div className="mainWineType">
             {sort === "red"
-              ? " #레드"
+              ? " 레드"
               : sort === "white"
-              ? " #화이트"
+              ? " 화이트"
               : sort === "rose"
-              ? " #로제"
+              ? " 로제"
               : sort === "sparkling"
-              ? " #스파클링"
+              ? " 스파클링"
               : null}
           </div>
           <div className="mainWineLikeTagBox">

@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import GoToSurveyBtn from "../../atoms/Buttons/GoToSurveyBtn";
 import MainMyPageBtn from "../../atoms/Buttons/MainMyPageBtn";
 import MainLogo from "../../atoms/Logos/MainLogo";
-import MainSearchBar from "../Inputs/MainSearchBar";
 import navBars from "../../../img/bars-solid.svg";
 
 const MainNav = () => {
@@ -23,7 +22,6 @@ const MainNav = () => {
     <div className="mainNav">
       <div className="mainLogoSearchBox">
         <MainLogo />
-        {/* <MainSearchBar /> */}
       </div>
       <div className={menu ? "mainNavMenu active" : "mainNavMenu"}>
         <GoToSurveyBtn />

@@ -13,7 +13,9 @@ function MyAccountMenu({ togleEl }: Props) {
         <div ref={togleEl} onClick={() => history.push("userInfo")}>
           마이페이지
         </div>
-        <div>내찜목록</div>
+        <div ref={togleEl} onClick={() => history.push("likeList")}>
+          내 찜 목록
+        </div>
         <div>장바구니</div>
       </div>
     </div>
