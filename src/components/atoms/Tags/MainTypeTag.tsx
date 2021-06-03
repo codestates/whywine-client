@@ -80,7 +80,6 @@ const MainTypeTag = ({ userTypeTag, setTypeTag }: Tags) => {
         <div className="redWhite">
           <div
             className={red ? `mainWineTypeTag active` : `mainWineTypeTag`}
-            style={{ marginRight: "15px" }}
             onClick={handleTypeTagClick}
           >
             레드
@@ -96,7 +95,6 @@ const MainTypeTag = ({ userTypeTag, setTypeTag }: Tags) => {
         <div className="roseSparkling">
           <div
             className={rose ? `mainWineTypeTag active` : `mainWineTypeTag`}
-            style={{ marginRight: "15px" }}
             onClick={handleTypeTagClick}
           >
             로제

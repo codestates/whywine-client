@@ -12,7 +12,7 @@ function Title(params: any) {
   return (
     <div className="title">
       <h4 onClick={() => history.push("/main")}>
-        whywine
+        whywine&nbsp;
         <WineIcon />
       </h4>
     </div>
