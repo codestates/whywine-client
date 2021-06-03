@@ -800,7 +800,7 @@ section {
   background-color: #fdfaf6a8;
   border-radius: 0;
   width: 500px;
-  margin-top: 250px;
+  margin-top: 260px;
   transition: all 0.4s;
 }
 .mainWineCard:hover .wineMainImg {
@@ -821,13 +821,13 @@ section {
 }
 
 .mainWineCard:hover .lessThan30 {
-  margin-bottom: 180px;
+  margin-bottom: 170px;
   width: 350px;
   color: #f9f9f9;
   transition: margin 0.4s;
 }
 .mainWineCard:hover .moreThan30 {
-  margin-bottom: 180px;
+  margin-bottom: 170px;
   width: 350px;
   color: #f9f9f9;
   transition: margin 0.4s;
