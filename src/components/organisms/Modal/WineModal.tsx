@@ -6,6 +6,7 @@ import ReviewWineName from "../../atoms/Texts/ReviewWineName";
 import Stars from "../../atoms/Imgs/Stars";
 import Reviews from "../Reviews/Reviews";
 import axios from "axios";
+import SignInModal from "../Modal/SignInModal";
 
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
@@ -41,6 +42,8 @@ function WineModal({
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
   const [userName, setUserName] = useState("게스트");
+  const [signInOpen, setsSignIn] = useState(false);
+  const [commentUpdate, setCommentUpdate] = useState(false);
   const [commentList, setCommentList] = useState<any[]>([]);
   // ! 랜더링 될 코멘트들 [{},{},{}....]
   const [comment, setComment] = useState<Comment>({
@@ -69,7 +72,7 @@ function WineModal({
   };
   // * TextArea 값 상태
 
-  const handleClick = async () => {
+  const handleSubmitClick = async () => {
     // * comment 상태 초기화
 
     await axios
@@ -125,13 +128,13 @@ function WineModal({
 
   useEffect(() => {
     let login: any = sessionStorage.getItem("login");
-    if (JSON.parse(login)) {
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
       let userInfo: any = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
       setUserName(`${userInfo.nickname}`);
     } else if (!JSON.parse(login)) {
       setUserName("게스트");
-      // * 세션 스토리지 유저인포가 없으면 유저이름을 "게스트"값으로 돌린다.
+      // * 세션 스토리지 로그인 상태가 거짓이면 유저이름을 "게스트"값으로 돌린다.
     }
   });
 
@@ -152,21 +155,6 @@ function WineModal({
 
         <Like id={id} />
 
-        <div style={{ display: "flex" }}>
-          {[1, 2, 3, 4, 5].map((idx) => {
-            return (
-              <Stars
-                key={idx}
-                idx={idx}
-                rating={rating}
-                hoverRating={hoverRating}
-                setRating={setRating}
-                setHoverRating={setHoverRating}
-              />
-            );
-          })}
-        </div>
-
         <div>{likeCount}명이 찜한 와인입니다!</div>
       </div>
 
@@ -179,29 +167,12 @@ function WineModal({
           <div className="guestLoginModal">
             댓글을 작성하려면 로그인을 하셔야합니다.
           </div>
-          <ul className="reviewUl">
-            {commentList.reverse().map((el: any) => {
-              return (
-                <Reviews
-                  commentText={el.text}
-                  commentRating={el.rating}
-                  key={el.id}
-                  commentId={el.id}
-                  bad_count={el.bad_count}
-                  good_count={el.good_count}
-                  createdAt={el.createdAt}
-                  user={el.user}
-                  handleComments={handleComments}
-                />
-              );
-            })}
-          </ul>
-        </div>
-      ) : (
-        <div className="review">
-          <div className="reviewInput">
-            <ReviewInput handleTextArea={handleTextArea} comment={comment} />
-            <ReviewBtn handleClick={handleClick} />
+          <SignInModal
+            isOpen={signInOpen}
+            closeModal={() => setsSignIn(false)}
+          />
+          <div onClick={() => setsSignIn(true)} style={{ cursor: "pointer" }}>
+            로그인
           </div>
           <ul className="reviewUl">
             {commentList.reverse().map((el: any) => {
@@ -216,6 +187,46 @@ function WineModal({
                   createdAt={el.createdAt}
                   user={el.user}
                   handleComments={handleComments}
+                  setCommentUpdate={setCommentUpdate}
+                />
+              );
+            })}
+          </ul>
+        </div>
+      ) : (
+        <div className="review">
+          <div className="reviewInput">
+            <div style={{ display: "flex" }}>
+              {[1, 2, 3, 4, 5].map((idx) => {
+                return (
+                  <Stars
+                    key={idx}
+                    idx={idx}
+                    rating={rating}
+                    hoverRating={hoverRating}
+                    setRating={setRating}
+                    setHoverRating={setHoverRating}
+                  />
+                );
+              })}
+            </div>
+            <ReviewInput handleTextArea={handleTextArea} comment={comment} />
+            <ReviewBtn handleClick={handleSubmitClick} />
+          </div>
+          <ul className="reviewUl">
+            {commentList.reverse().map((el: any) => {
+              return (
+                <Reviews
+                  commentText={el.text}
+                  commentRating={el.rating}
+                  key={el.id}
+                  commentId={el.id}
+                  bad_count={el.bad_count}
+                  good_count={el.good_count}
+                  createdAt={el.createdAt}
+                  user={el.user}
+                  handleComments={handleComments}
+                  setCommentUpdate={setCommentUpdate}
                 />
               );
             })}
