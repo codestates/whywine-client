@@ -1,11 +1,12 @@
 import React,{ useState, useEffect, useCallback, useRef } from "react";
 import Header from "../organisms/Header/Header";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import dotenv from "dotenv";
 
 dotenv.config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
-
+const server = process.env.REACT_APP_SERVER || "https://localhost:4000";
+const imgserver = process.env.REACT_APP_USER_IMAGE_URL || "https://whywine-image.s3.us-east-2.amazonaws.com/user/"
 // interface User {
 //   id: number
 //   email: string
@@ -65,7 +66,7 @@ function Mypage() {
       userInfo = sessionStorage.getItem("userInfo");
 
       userInfo = JSON.parse(userInfo);
-      setUser(userInfo);
+      setUser({...userInfo, image:"https://whywine-image.s3.us-east-2.amazonaws.com/user/"+userInfo.image});
     }
 
     console.log(IsOpen)
@@ -135,27 +136,35 @@ function Mypage() {
   };
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const [ImageUpload, setImageUpload] = useState({
-    file: "",
-    previewURL: "",
-  });
+  
   const onButtonClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     inputRef.current?.click();
   };
-  const onChangeImage = (event:any) => {
+  const onChangeImage = async (event:any) => {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append('file', ImageUpload.file);
-
-    return axios.post(`${server}/userinfo//profileimage`, formData,{ withCredentials: true }).then(res => {
+    const img = event.target.files[0]
+    console.log(img)
+    const formData = await new FormData();
+    formData.append('image', event.target.files[0]);
+    console.log(formData)
+    return axios.post(`${server}/userinfo/profileimage`, formData,
+      {
+        headers: { "Content-Type": 'multipart/form-data' },
+        withCredentials: true,
+      }).then(res => {
       console.log(res)
+      const newimg = `${imgserver}` + res.data.data.user.image
+      console.log(newimg)
+      setUser({ ...user, image : newimg} )
+
       alert('성공')
+      
     }).catch(err => {
       alert('실패')
     })
   };
-  
+  console.log(user.image)
   /* const handleFileInput=(e:any)=>{
     setImageUpload({
       file: e.target.files[0],
@@ -181,7 +190,7 @@ function Mypage() {
                   className="onChangeImage"
                   type="file"
                   accept="image/*"
-                  name="img"
+                  name="image"
                   onChange={e => onChangeImage(e)}
                   ref = {inputRef}
                 />

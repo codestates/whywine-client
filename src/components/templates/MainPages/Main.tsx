@@ -29,18 +29,12 @@ const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const history = useHistory();
-  // const getUserInfo = async () => {
-  //   try {
-  //     const userInfo = await axios.get(`${server}/userinfo`, {
-  //       withCredentials: true,
-  //     });
 
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}/userinfo`, {
         withCredentials: true,
       });
-
       console.log("userInfo", userInfo);
       sessionStorage.setItem(
         "userInfo",

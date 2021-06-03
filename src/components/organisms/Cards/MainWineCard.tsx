@@ -58,7 +58,6 @@ const MainWineCard = ({ randomWine }: WineData) => {
       window.removeEventListener("click", handleClickOutside);
     };
   });
-  //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
   return (
     <li>
       <div className={isOpen ? "openModal modal" : "modal"}>
