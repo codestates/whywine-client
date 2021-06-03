@@ -28,7 +28,7 @@ const MainWineTags = ({
         <MainLabel />
       </div> */}
       <div className={"mainTagBox"}>
-        <img src={wine} style={{ width: "300px" }} />
+        <img src={wine} />
 
         <div className="typeTag">
           <MainTypeTag userTypeTag={userTypeTag} setTypeTag={setTypeTag} />

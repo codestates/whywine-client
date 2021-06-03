@@ -29,28 +29,26 @@ const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const history = useHistory();
-  const getUserInfo = async () => {
-    try {
-      const userInfo = await axios.get(`${server}/userinfo`, {
-        withCredentials: true,
-      });
-
-
   // const getUserInfo = async () => {
   //   try {
   //     const userInfo = await axios.get(`${server}/userinfo`, {
   //       withCredentials: true,
   //     });
 
+  const getUserInfo = async () => {
+    try {
+      const userInfo = await axios.get(`${server}/userinfo`, {
+        withCredentials: true,
+      });
 
-  //     console.log("userInfo", userInfo);
-  //     sessionStorage.setItem(
-  //       "userInfo",
-  //       JSON.stringify(userInfo.data.data.userInfo)
-  //     );
-  //     // * 유저 정보 세션스토리지 저장
-  //   } catch (error) {}
-  // };
+      console.log("userInfo", userInfo);
+      sessionStorage.setItem(
+        "userInfo",
+        JSON.stringify(userInfo.data.data.userInfo)
+      );
+      // * 유저 정보 세션스토리지 저장
+    } catch (error) {}
+  };
 
   const userTagUpdata = async () => {
     let tagsArr: any = sessionStorage.getItem("userTag");
@@ -196,6 +194,7 @@ const Main = () => {
         </div>
       ) : (
         <div className="mainContainers">
+          <MainWineCon randomWine={randomWine} />
           <MainWineTagCon
             userMainTag={userMainTag}
             setUserMainTag={setUserMainTag}
@@ -203,7 +202,6 @@ const Main = () => {
             setTypeTag={setTypeTag}
             tags={tags}
           />
-          <MainWineCon randomWine={randomWine} />
         </div>
       )}
       <Footer />
