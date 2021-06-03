@@ -8,7 +8,7 @@ import Reviews from "../Reviews/Reviews";
 import axios from "axios";
 
 require("dotenv").config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface Props {
   ModalEl: any;
@@ -48,7 +48,7 @@ function WineModal({
   });
 
   const handleComments = async () => {
-    const data: any = await axios.get(`${server}/comment?wineid=${id}`, {
+    const data: any = await axios.get(`${server}comment?wineid=${id}`, {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });
@@ -71,7 +71,7 @@ function WineModal({
 
     await axios
       .post(
-        `${server}/comment`,
+        `${server}comment`,
         {
           rating: comment.rating,
           wineId: id,

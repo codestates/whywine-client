@@ -76,7 +76,7 @@ const MainSweetnessTag = () => {
     if (userMainTag.length !== 0) {
       axios
         .post(
-          `${server}/main/tags`,
+          `${server}main/tags`,
           { tags: userMainTag.filter((el: string) => el !== "") },
           // * (el: string) => el !== "") 빈문자열 제외하는 부분
           {
