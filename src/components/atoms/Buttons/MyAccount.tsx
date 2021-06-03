@@ -1,13 +1,12 @@
 import { useState } from "react";
 
 export interface Props {
-  setMeunOpen: any;
-  togleEl: any;
+  maunState: () => void;
 }
 
-function MyAccount({ setMeunOpen, togleEl }: Props) {
+function MyAccount({ maunState }: Props) {
   return (
-    <div ref={togleEl} className="MyAccount" onClick={() => setMeunOpen(true)}>
+    <div className="MyAccount" onClick={() => maunState()}>
       <i className="fas fa-user-circle fa-2x"></i>
       <i className="fas fa-caret-down"></i>
     </div>

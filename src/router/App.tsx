@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import Landing from "../components/templates/Landing";
@@ -7,6 +7,9 @@ import Mypage from "../components/templates/Mypage";
 import LikeList from "../components/templates/LikeList";
 import Survey from "../components/templates/Survey";
 import result from "../components/templates/SurveyPages/SurveyResultQ";
+import axios from "axios";
+require("dotenv").config();
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
 // const Main = lazy(() => import("../components/templates/MainPages/Main"));
 const App: React.FC = () => {
