@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import photo from "../../../img/whywine_redWine_sample.png";
-import ClickWine from "../../atoms/Imgs/ClickWine";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
 import wineSample from "../../../img/wine_sample.webp";
@@ -17,7 +15,6 @@ let name: string,
   sort: string,
   tags: object[];
 const MainWineCard = ({ randomWine }: WineData) => {
-  const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
@@ -47,7 +44,6 @@ const MainWineCard = ({ randomWine }: WineData) => {
   const handleIsClicked = () => {
     console.log(randomWine);
     setIsOpen(true);
-    setIsClicked(true);
   };
 
   const handleClickOutside = (e: any) => {
@@ -63,7 +59,8 @@ const MainWineCard = ({ randomWine }: WineData) => {
     };
   });
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
-
+  if (name.length >= 30) {
+  }
   return (
     <li>
       <div className={isOpen ? "openModal modal" : "modal"}>
@@ -90,7 +87,11 @@ const MainWineCard = ({ randomWine }: WineData) => {
             />
 
             <div className="mainWineContent">
-              <h2>{name}</h2>
+              {name.length >= 30 ? (
+                <div className="moreThan30">{name}</div>
+              ) : (
+                <div className="lessThan30">{name}</div>
+              )}
               <p>{description}</p>
             </div>
           </div>
@@ -141,7 +142,6 @@ const MainWineCard = ({ randomWine }: WineData) => {
                 })}
               </div>
             </div>
-            <ClickWine isClicked={isClicked} />
           </div>
         </div>
       )}

@@ -1,6 +1,6 @@
 import React,{ useState, useEffect, useCallback, useRef } from "react";
 import Header from "../organisms/Header/Header";
-import axios from 'axios'
+import axios from "axios";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -23,21 +23,21 @@ function Mypage() {
   const handleClickSearchBtn = () => {};
   const [user, setUser] = useState({
     id: 0,
-    email: '',
-    nickname: '',
-    image: '',
+    email: "",
+    nickname: "",
+    image: "",
     good: [],
     bad: [],
     likes: 0,
     tags: [],
     wines: [],
   });
-  const [IsOpen,setIsOpen] = useState(false)
-  const [MemberOut,setMemberOut] = useState(false)
-  const [OldPassword, setOldPassword] = useState("")
-  const [NewPassword, setNewPassword] = useState("")
-  const [NewNickName, setNewNickName] = useState("")
-  const [Password, setPassword] = useState("")
+  const [IsOpen, setIsOpen] = useState(false);
+  const [MemberOut, setMemberOut] = useState(false);
+  const [OldPassword, setOldPassword] = useState("");
+  const [NewPassword, setNewPassword] = useState("");
+  const [NewNickName, setNewNickName] = useState("");
+  const [Password, setPassword] = useState("");
 
 
 
@@ -56,15 +56,18 @@ function Mypage() {
   const NewNickNameInputValue = (e: any) => {
     setNewNickName(e.target.value);
   };
-  
-  let userInfo:any
-  
+
+  let userInfo: any;
+
   useEffect(() => {
-    if(localStorage.getItem("userInfo")) {
-      userInfo = localStorage.getItem("userInfo")
-      userInfo = JSON.parse(userInfo)
-      setUser(userInfo)
+
+    if (sessionStorage.getItem("userInfo")) {
+      userInfo = sessionStorage.getItem("userInfo");
+
+      userInfo = JSON.parse(userInfo);
+      setUser(userInfo);
     }
+
     console.log(IsOpen)
   },[])
 
@@ -77,7 +80,7 @@ function Mypage() {
       }
       setMemberOut(true)
     }
-  }
+  };
 
   const EditClick = () => {
     if(IsOpen){
@@ -92,49 +95,44 @@ function Mypage() {
 
 
   const MemberOutAxios = async () => {
-    console.log(Password)
+    console.log(Password);
     try {
-      const leave = await axios
-      .delete(
-        `${server}/userinfo/leave`,
-        { data: {password: Password}, withCredentials: true }
-      )
-      console.log(leave)
-      if(leave.data.massege === 'ok'){
+      const leave = await axios.delete(`${server}/userinfo/leave`, {
+        data: { password: Password },
+        withCredentials: true,
+      });
+      console.log(leave);
+      if (leave.data.massege === "ok") {
         //로그아웃
         //탈퇴 완료 메세지
         //페이지 이동
       }
     } catch (error) {
-      console.error(error.massege)
+      console.error(error.massege);
     }
-  }
+  };
   const EditNickNameAxios = async () => {
     try {
-      await axios
-        .post(
-          `${server}/userinfo/nickname`,
-          { newNickname : NewNickName },
-          { withCredentials: true }
-        )
+      await axios.post(
+        `${server}/userinfo/nickname`,
+        { newNickname: NewNickName },
+        { withCredentials: true }
+      );
     } catch (error) {
-      console.error(error.massege)
+      console.error(error.massege);
     }
-    
-  }
+  };
   const EditPasswordAxios = async () => {
     try {
-      await axios
-        .post(
-          `${server}/userinfo/password`,
-          { oldPassword : OldPassword, newPassword : NewPassword },
-          { withCredentials: true }
-        )
+      await axios.post(
+        `${server}/userinfo/password`,
+        { oldPassword: OldPassword, newPassword: NewPassword },
+        { withCredentials: true }
+      );
     } catch (error) {
-      console.error(error.massege)
+      console.error(error.massege);
     }
-    
-  }
+  };
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [ImageUpload, setImageUpload] = useState({
@@ -234,10 +232,10 @@ function Mypage() {
             <li>
               <p>탈퇴 하시겠습니까?</p>
               <input
-              type="password" 
-              name="password"
-              placeholder="비밀번호"
-              onChange={PasswordInputValue}
+                type="password"
+                name="password"
+                placeholder="비밀번호"
+                onChange={PasswordInputValue}
               />
               <i className="fas fa-check"onClick={MemberOutAxios}></i>
               <i className="fas fa-times" onClick={MemberOutClick} ></i>
@@ -246,8 +244,8 @@ function Mypage() {
             <li>
               <i className="fas fa-user-slash" onClick={MemberOutClick}></i>
             </li>
+
           )}
-          
         </ul>
       </div>
     </>

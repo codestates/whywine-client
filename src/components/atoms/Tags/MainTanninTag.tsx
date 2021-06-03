@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 let tags: any;
-if (!localStorage.getItem("userTag")) {
-  localStorage.setItem("userTag", JSON.stringify([]));
-  tags = localStorage.getItem("userTag");
+if (!sessionStorage.getItem("userTag")) {
+  sessionStorage.setItem("userTag", JSON.stringify([]));
+  tags = sessionStorage.getItem("userTag");
 }
-tags = localStorage.getItem("userTag");
+tags = sessionStorage.getItem("userTag");
 
 const MainTanninTag = () => {
   const [high, setHigh] = useState(false);

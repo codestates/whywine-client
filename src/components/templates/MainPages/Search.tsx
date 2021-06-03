@@ -7,13 +7,6 @@ interface State {
 }
 
 const Search = ({ searchWine, hasData }: State) => {
-  const handleLoading = () => {
-    return <div>loading..</div>;
-  };
-  useEffect(() => {
-    handleLoading();
-  }, []);
-
   return (
     <div>
       {hasData ? (

@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import photo from "../../../img/whywine_redWine_sample.png";
-import ClickWine from "../../atoms/Imgs/ClickWine";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
 import wineSample from "../../../img/wine_sample.webp";
@@ -141,7 +139,6 @@ const LikeCard = ({ userLikeWines }: WineData) => {
                 })} */}
               </div>
             </div>
-            <ClickWine isClicked={isClicked} />
           </div>
         </div>
       }
