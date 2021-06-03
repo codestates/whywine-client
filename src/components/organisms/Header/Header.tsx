@@ -8,6 +8,7 @@ import SignUpModal from "../Modal/SignUpModal";
 import Logout from "../../atoms/Buttons/Logout";
 import MyAccount from "../../organisms/Togle/MyAccount";
 import MainSearch from "../../atoms/Inputs/MainSearch";
+import userEvent from "@testing-library/user-event";
 
 interface State {
   handleSearchInput?: (e: any) => void;
@@ -34,39 +35,46 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
   };
 
   useEffect(() => {
-    let login: any = localStorage.getItem("login");
+    let login: any = sessionStorage.getItem("login");
     if (JSON.parse(login)) {
       setIslogin(true);
-    } else if (!JSON.parse(login)) {
+    } else if (!JSON.parse(login) && !login) {
       setIslogin(false);
+      if (!isLogin) {
+        sessionStorage.removeItem("userInfo");
+      }
     }
   });
 
   return (
     <div className="HeaderWrap">
       {isLogin ? (
-        <div className="MainHeader ">
+        <div className="MainHeader">
           <Title />
+
 
           <div className="headerMenu">
             <MainSearch
               handleSearchInput={handleSearchInput}
               handleClickSearchBtn={handleClickSearchBtn}
             />
+
             <GoToMainBtn />
-            <Logout setIslogin={setIslogin} />
+
             <MyAccount />
           </div>
         </div>
       ) : (
-        <div className="MainHeader ">
+        <div className="MainHeader">
           <Title />
+
 
           <div className="headerMenu">
             <MainSearch
               handleSearchInput={handleSearchInput}
               handleClickSearchBtn={handleClickSearchBtn}
             />
+
             <SignIn openModal={openSignInModal} />
             <SignUp openModal={openSignUpModal} />
             <GoToMainBtn />

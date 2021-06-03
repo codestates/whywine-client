@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Loading from "../components/atoms/Imgs/Loading";
 import Header from "../components/organisms/Header/Header";
@@ -9,6 +9,7 @@ import Header from "../components/organisms/Header/Header";
 // import Survey from "../components/templates/Survey";
 // import result from "../components/templates/SurveyPages/SurveyResultQ";
 
+
 const Landing = lazy(() => import("../components/templates/Landing"));
 const Main = lazy(() => import("../components/templates/MainPages/Main"));
 const Mypage = lazy(() => import("../components/templates/Mypage"));
@@ -17,6 +18,7 @@ const Survey = lazy(() => import("../components/templates/Survey"));
 const result = lazy(
   () => import("../components/templates/SurveyPages/SurveyResultQ")
 );
+
 
 const App: React.FC = () => {
   return (

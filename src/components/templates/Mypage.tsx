@@ -58,8 +58,10 @@ function Mypage() {
   let userInfo: any;
 
   useEffect(() => {
-    if (localStorage.getItem("userInfo")) {
-      userInfo = localStorage.getItem("userInfo");
+
+    if (sessionStorage.getItem("userInfo")) {
+      userInfo = sessionStorage.getItem("userInfo");
+
       userInfo = JSON.parse(userInfo);
       setUser(userInfo);
     }

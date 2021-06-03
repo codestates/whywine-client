@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect, useCallback } from "react";
 let tags: any;
-if (!localStorage.getItem("userTag")) {
-  localStorage.setItem("userTag", JSON.stringify([]));
-  tags = localStorage.getItem("userTag");
+if (!sessionStorage.getItem("userTag")) {
+  sessionStorage.setItem("userTag", JSON.stringify([]));
+  tags = sessionStorage.getItem("userTag");
 }
-tags = localStorage.getItem("userTag");
+tags = sessionStorage.getItem("userTag");
 const MainAcidityTag = () => {
   const [high, setHigh] = useState(false);
   const [mid, setMid] = useState(false);
