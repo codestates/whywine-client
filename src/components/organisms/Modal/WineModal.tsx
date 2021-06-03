@@ -51,17 +51,13 @@ function WineModal({
   });
 
   const handleComments = async () => {
-    const data: any = await axios
+    await axios
       .get(`${server}comment?wineid=${id}`, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       })
-      .then((dataa) => dataa)
+      .then((data) => setCommentList(data.data.data.comments))
       .catch((err) => console.dir(err));
-
-    setCommentList(data.data.data.comments);
-    console.log(data.data.data.comments);
-    console.log("마지막에 없어져??", commentList);
   };
 
   const handleTextArea = (e: any) => {
@@ -108,22 +104,29 @@ function WineModal({
         rating: 0,
         // ! 댓글을 작성해달라는 문구 필요
       });
-      console.log("nowComment: ", comment.text);
     }
   };
   // * 댓글 작성버튼을 누르면 랜딩시켜줄 comments에 작성된 comment가 들어감
 
   useEffect(() => {
     handleComments();
-    if (sessionStorage.getItem("userInfo")) {
+    let login: any = sessionStorage.getItem("login");
+    if (JSON.parse(login)) {
+      // ! 로그인 상태여야 랜딩해줌
+    }
+  }, []);
+
+  useEffect(() => {
+    let login: any = sessionStorage.getItem("login");
+    if (JSON.parse(login)) {
       let userInfo: any = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
       setUserName(`${userInfo.nickname}`);
-    } else {
+    } else if (!JSON.parse(login)) {
       setUserName("게스트");
       // * 세션 스토리지 유저인포가 없으면 유저이름을 "게스트"값으로 돌린다.
     }
-  }, []);
+  });
 
   // * 랜딩될떄 세션 스토리지에 있는 유저인포에서 유저 닉네임 가져옴
 
@@ -165,8 +168,27 @@ function WineModal({
       </div>
 
       {userName === "게스트" ? (
-        <div className="guestLoginModal">
-          댓글을 작성하려면 로그인을 하셔야합니다.
+        <div className="guestReview">
+          <div className="guestLoginModal">
+            댓글을 작성하려면 로그인을 하셔야합니다.
+          </div>
+          <ul className="reviewUl">
+            {commentList.reverse().map((el: any) => {
+              return (
+                <Reviews
+                  commentText={el.text}
+                  commentRating={el.rating}
+                  key={el.id}
+                  commentId={el.id}
+                  bad_count={el.bad_count}
+                  good_count={el.good_count}
+                  createdAt={el.createdAt}
+                  user={el.user}
+                  handleComments={handleComments}
+                />
+              );
+            })}
+          </ul>
         </div>
       ) : (
         <div className="review">
@@ -181,6 +203,12 @@ function WineModal({
                   commentText={el.text}
                   commentRating={el.rating}
                   key={el.id}
+                  commentId={el.id}
+                  bad_count={el.bad_count}
+                  good_count={el.good_count}
+                  createdAt={el.createdAt}
+                  user={el.user}
+                  handleComments={handleComments}
                 />
               );
             })}

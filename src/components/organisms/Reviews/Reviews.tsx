@@ -22,37 +22,61 @@ interface ReviewsProps {
   commentText: string;
   commentRating: number;
   key: number;
+  commentId: number;
+  bad_count: number;
+  good_count: number;
+  createdAt?: string;
+  user: {
+    id: number;
+    image: string;
+    nickname: string;
+  };
+  handleComments: () => void;
 }
 
-function Reviews({ commentText, commentRating, key }: ReviewsProps) {
-  const [deleteReview, setDeleteReview] = useState(true);
+function Reviews({
+  commentText,
+  commentRating,
+  commentId,
+  bad_count,
+  good_count,
+  createdAt,
+  user,
+  handleComments,
+}: ReviewsProps) {
+  const [deleteReview, setDeleteReview] = useState(false);
 
   const handleDeleteRewiew = async () => {
-    setDeleteReview(false);
-
-    // await axios.delete(`${server}comment`,data:{"commentId":key});
+    setDeleteReview(true);
+    await axios
+      .delete(`${server}comment`, {
+        data: { commentId: commentId },
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
+      .then((data) => handleComments())
+      .catch((err) => {
+        console.dir(err);
+        console.log(commentId);
+      });
   };
 
   return (
-    <>
-      {deleteReview ? (
-        <li className="reviews">
-          <div className="reviewContent">
-            <div className="reviewWriter">{}</div>
-            <span className="wineReview">{commentText}</span>
-            <div>별점: {commentRating}</div>
-            <ReviewTime />
-          </div>
+    <li className="reviews" style={{ opacity: deleteReview ? "0" : "1" }}>
+      <div className="reviewContent">
+        <div className="reviewWriter">{user.nickname}</div>
+        <span className="wineReview">{commentText}</span>
+        <div>별점: {commentRating}</div>
+        <div>작성시간: {createdAt}</div>
+      </div>
 
-          <div className="reviewBtns">
-            <ReviewLikeBtn like={true} unLike={false} />
-            <ReviewLikeBtn like={false} unLike={true} />
-            <ReplyBtn />
-            <button onClick={() => handleDeleteRewiew()}>삭제하기</button>
-          </div>
-        </li>
-      ) : null}
-    </>
+      <div className="reviewBtns">
+        <ReviewLikeBtn like={true} />
+        <ReviewLikeBtn like={false} />
+        <ReplyBtn />
+        <button onClick={() => handleDeleteRewiew()}>삭제하기</button>
+      </div>
+    </li>
   );
 }
 
