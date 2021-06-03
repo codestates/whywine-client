@@ -28,12 +28,15 @@ type Comment = {
 };
 
 function WineModal({
-  ModalEl,
-  name,
+  price,
+  tags,
   id,
+  sort,
   likeCount,
   description,
   image,
+  name,
+  ModalEl,
 }: Props) {
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
@@ -48,13 +51,17 @@ function WineModal({
   });
 
   const handleComments = async () => {
-    const data: any = await axios.get(`${server}comment?wineid=${id}`, {
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    });
+    const data: any = await axios
+      .get(`${server}comment?wineid=${id}`, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
+      .then((dataa) => dataa)
+      .catch((err) => console.dir(err));
+
     setCommentList(data.data.data.comments);
     console.log(data.data.data.comments);
-    // console.log("마지막에 없어져??", commentList);
+    console.log("마지막에 없어져??", commentList);
   };
 
   const handleTextArea = (e: any) => {
@@ -157,23 +164,29 @@ function WineModal({
         <hr className="hr2"></hr>
       </div>
 
-      <div className="review">
-        <div className="reviewInput">
-          <ReviewInput handleTextArea={handleTextArea} comment={comment} />
-          <ReviewBtn handleClick={handleClick} />
+      {userName === "게스트" ? (
+        <div className="guestLoginModal">
+          댓글을 작성하려면 로그인을 하셔야합니다.
         </div>
-        <ul className="reviewUl">
-          {commentList.reverse().map((el: any) => {
-            return (
-              <Reviews
-                commentText={el.text}
-                commentRating={el.rating}
-                key={el.id}
-              />
-            );
-          })}
-        </ul>
-      </div>
+      ) : (
+        <div className="review">
+          <div className="reviewInput">
+            <ReviewInput handleTextArea={handleTextArea} comment={comment} />
+            <ReviewBtn handleClick={handleClick} />
+          </div>
+          <ul className="reviewUl">
+            {commentList.reverse().map((el: any) => {
+              return (
+                <Reviews
+                  commentText={el.text}
+                  commentRating={el.rating}
+                  key={el.id}
+                />
+              );
+            })}
+          </ul>
+        </div>
+      )}
     </section>
   );
 }

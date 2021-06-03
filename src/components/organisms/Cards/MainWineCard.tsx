@@ -6,6 +6,7 @@ import wineSample from "../../../img/wine_sample.webp";
 interface WineData {
   randomWine: any;
 }
+
 let name: string,
   id: number,
   likeCount: number,
@@ -14,6 +15,7 @@ let name: string,
   price: number,
   sort: string,
   tags: object[];
+
 const MainWineCard = ({ randomWine }: WineData) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
@@ -54,6 +56,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
 
   useEffect(() => {
     window.addEventListener("click", handleClickOutside);
+
     return () => {
       window.removeEventListener("click", handleClickOutside);
     };
@@ -64,14 +67,14 @@ const MainWineCard = ({ randomWine }: WineData) => {
     <li>
       <div className={isOpen ? "openModal modal" : "modal"}>
         <WineModal
-          price={price}
-          tags={tags}
-          id={id}
-          sort={sort}
-          likeCount={likeCount}
-          description={description}
-          image={image}
-          name={name}
+          price={randomWine.price}
+          tags={randomWine.tags}
+          id={randomWine.id}
+          sort={randomWine.sort}
+          likeCount={randomWine.likeCount}
+          description={randomWine.description}
+          image={randomWine.image}
+          name={randomWine.name}
           ModalEl={ModalEl}
         />
       </div>

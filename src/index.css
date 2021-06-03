@@ -673,7 +673,11 @@ section {
   flex-direction: row;
   justify-content: space-around;
 }
-
+.guestLoginModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .reviewUl {
   scroll-snap-type: y mandatory;
   overflow: scroll;
