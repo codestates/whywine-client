@@ -58,7 +58,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
       window.removeEventListener("click", handleClickOutside);
     };
   });
-  
+
   return (
     <li>
       <div className={isOpen ? "openModal modal" : "modal"}>

@@ -4,8 +4,10 @@ import GoogleLogin from "../../atoms/Buttons/GoogleSocialLogin";
 import KakaoLogin from "../../atoms/Buttons/KakaoSocialLogin";
 import Title from "../../atoms/Title/Title";
 import axios from "axios";
+
 require("dotenv").config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
+
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface Props {
   isOpen: Boolean;
@@ -19,10 +21,10 @@ function SignInModal({ isOpen, closeModal }: Props) {
   const [isNone, setIsNone] = useState(false);
   const [message, setMessage] = useState("");
   const history = useHistory();
-
+  console.log(server);
   const getUserInfo = async () => {
     try {
-      const userInfo = await axios.get(`${server}/userinfo`, {
+      const userInfo = await axios.get(`${server}userinfo`, {
         withCredentials: true,
       });
 
@@ -39,7 +41,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
     if (e.key === "Enter" || e.type === "click") {
       await axios
         .post(
-          `${server}/auth/signin`,
+          `${server}auth/signin`,
           { email, password },
           {
             headers: { "Content-Type": "application/json" },

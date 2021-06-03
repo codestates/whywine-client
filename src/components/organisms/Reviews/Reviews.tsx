@@ -25,23 +25,12 @@ interface ReviewsProps {
 }
 
 function Reviews({ commentText, commentRating, key }: ReviewsProps) {
-  const [userInfo, setUserInfo] = useState<UserInfoPrpos>({
-    bad: [],
-    email: "",
-    good: [],
-    id: 999,
-    image: "",
-    likes: 0,
-    nickname: "게스트",
-    tags: [],
-    wines: [],
-  });
   const [deleteReview, setDeleteReview] = useState(true);
 
   const handleDeleteRewiew = async () => {
     setDeleteReview(false);
 
-    // await axios.delete(`${server}/comment`,data:{"commentId":key});
+    // await axios.delete(`${server}comment`,data:{"commentId":key});
   };
 
   return (
@@ -49,14 +38,15 @@ function Reviews({ commentText, commentRating, key }: ReviewsProps) {
       {deleteReview ? (
         <li className="reviews">
           <div className="reviewContent">
-            <div className="reviewWriter">{userInfo.nickname}</div>
+            <div className="reviewWriter">{}</div>
             <span className="wineReview">{commentText}</span>
             <div>별점: {commentRating}</div>
             <ReviewTime />
           </div>
 
           <div className="reviewBtns">
-            <ReviewLikeBtn />
+            <ReviewLikeBtn like={true} unLike={false} />
+            <ReviewLikeBtn like={false} unLike={true} />
             <ReplyBtn />
             <button onClick={() => handleDeleteRewiew()}>삭제하기</button>
           </div>
