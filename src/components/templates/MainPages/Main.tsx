@@ -188,7 +188,6 @@ const Main = () => {
         </div>
       ) : (
         <div className="mainContainers">
-          <MainWineCon randomWine={randomWine} />
           <MainWineTagCon
             userMainTag={userMainTag}
             setUserMainTag={setUserMainTag}
@@ -196,6 +195,7 @@ const Main = () => {
             setTypeTag={setTypeTag}
             tags={tags}
           />
+          <MainWineCon randomWine={randomWine} />
         </div>
       )}
       <Footer />

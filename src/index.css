@@ -841,7 +841,7 @@ section {
 }
 
 .mainWineData {
-  font-family: "MapoGoldenPier";
+  font-family: "Nanum Myeongjo", serif;
   display: flex;
   justify-content: center;
   background-color: #fdfaf6;
@@ -857,6 +857,8 @@ section {
 }
 .mainWineType {
   font-size: 18px;
+  font-weight: 600;
+  /* font-family: 'Nanum Myeongjo', serif; */
 }
 
 .wineMainImg {
