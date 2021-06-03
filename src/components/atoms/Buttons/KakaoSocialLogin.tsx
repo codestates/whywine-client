@@ -1,12 +1,8 @@
-import * as React from "react";
-import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import KakaoIcon from "../../../img/kakao.png"
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
-export default function SocialLogin() {
-  const googleLoginHandler = () => {
-    //window.location.assign(GoogleLoginUrl);
+export default function KakaoLogin() {
+  const KakaoLoginHandler = () => {
     window.location.assign(`${server}/auth/kakao`);
   };
 
@@ -18,12 +14,12 @@ export default function SocialLogin() {
           type="text/css"
           href="//fonts.googleapis.com/css?family=Open+Sans"
         />
-        <div className="google-btn" onClick={googleLoginHandler}>
+        <div className="Kakao-btn" onClick={KakaoLoginHandler}>
           <img
             className="google-icon"
-            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+            src={KakaoIcon}
           />
-          <div>Google Login</div>
+          <div>Kakao Login</div>
         </div>
       </div>
     </button>
