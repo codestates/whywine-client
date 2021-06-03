@@ -41,7 +41,9 @@ const Main = () => {
         JSON.stringify(userInfo.data.data.userInfo)
       );
       // * 유저 정보 세션스토리지 저장
-    } catch (error) {}
+    } catch (error) {
+      sessionStorage.setItem("login", JSON.stringify(false));
+    }
   };
 
   const userTagUpdata = async () => {
@@ -64,6 +66,9 @@ const Main = () => {
     userTagUpdata();
     // getUserInfo();
     handleLoading();
+    if(!sessionStorage.getItem("userInfo") || sessionStorage.getItem("login")){
+      getUserInfo()
+    }
     if (!sessionStorage.getItem("login")) {
       sessionStorage.removeItem("userInfo");
     }

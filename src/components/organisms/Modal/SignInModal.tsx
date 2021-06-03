@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import SocialLogin from "../../atoms/Buttons/SocialLogin";
+import GoogleLogin from "../../atoms/Buttons/GoogleSocialLogin";
+import KakaoLogin from "../../atoms/Buttons/KakaoSocialLogin";
 import Title from "../../atoms/Title/Title";
 import axios from "axios";
 
@@ -112,7 +113,8 @@ function SignInModal({ isOpen, closeModal }: Props) {
           </div>
 
           <div className="socialLogin">
-            <SocialLogin />
+            <GoogleLogin />
+            <KakaoLogin />
           </div>
           <i className="fas fa-times" onClick={closeModal}></i>
         </div>

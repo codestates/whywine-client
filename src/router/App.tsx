@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect, useHistory } from "react-router-dom";
 import Loading from "../components/atoms/Imgs/Loading";
 import Header from "../components/organisms/Header/Header";
 require("dotenv").config();
@@ -9,6 +9,10 @@ require("dotenv").config();
 // import LikeList from "../components/templates/LikeList";
 // import Survey from "../components/templates/Survey";
 // import result from "../components/templates/SurveyPages/SurveyResultQ";
+import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 
 const Landing = lazy(() => import("../components/templates/Landing"));
 const Main = lazy(() => import("../components/templates/MainPages/Main"));
@@ -20,6 +24,24 @@ const result = lazy(
 );
 
 const App: React.FC = () => {
+  const LogInCheck = async () => {
+      try {
+        const userInfo = await axios.get(`${server}/userinfo`, {
+          withCredentials: true,
+        });
+        sessionStorage.setItem("login", JSON.stringify(true));
+        sessionStorage.setItem(
+          "userInfo",
+          JSON.stringify(userInfo.data.data.userInfo)
+        );
+        // * 유저 정보 세션스토리지 저장
+      } catch (error) {
+        sessionStorage.setItem("login", JSON.stringify(false));
+      }
+  }
+  useEffect(() => {
+    LogInCheck()
+  }, []);
   return (
     <BrowserRouter>
       <Switch>

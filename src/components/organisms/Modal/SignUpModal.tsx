@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SocialLogin from "../../atoms/Buttons/SocialLogin";
+// import SocialLogin from "../../atoms/Buttons/GoogleSocialLogin";
 import axios from "axios";
 import dotenv from "dotenv";
 require("dotenv").config();
@@ -92,9 +92,9 @@ function SignInModal({ isOpen, closeModal }: Props) {
           <div className="login_or">
             <p>or</p>
           </div>
-          <div className="socialLogin">
+{/*           <div className="socialLogin">
             <SocialLogin />
-          </div>
+          </div> */}
           <i className="fas fa-times" onClick={closeModal}></i>
         </div>
       ) : null}
