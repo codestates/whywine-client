@@ -89,7 +89,14 @@ function WineModal({
         console.log("성공적 요청");
         handleComments();
       })
-      .catch((err) => console.dir(err));
+      .catch((err) => {
+        switch (err.response.data.message) {
+          case "rating is empty":
+            return alert("평점을 입력해주세요");
+          case "text is empty":
+            return alert("리뷰가 비어있습니다");
+        }
+      });
 
     if (comment.text !== "") {
       setComment({
