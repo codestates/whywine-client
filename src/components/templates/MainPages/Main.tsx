@@ -4,10 +4,9 @@ import MainWineTagCon from "../../organisms/Containers/MainWineTagCon";
 import Header from "../../organisms/Header/Header";
 import Search from "./Search";
 import Footer from "../../organisms/Footer/Footer";
-
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import dotenv from "dotenv";
-import { list } from "@chakra-ui/styled-system";
 import Loading from "../../atoms/Imgs/Loading";
 import GoBackBtn from "../../atoms/Imgs/GoBackBtn";
 dotenv.config();
@@ -29,11 +28,20 @@ const Main = () => {
   const [randomWine, setRandomWine] = useState<object[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const history = useHistory();
+  const getUserInfo = async () => {
+    try {
+      const userInfo = await axios.get(`${server}/userinfo`, {
+        withCredentials: true,
+      });
+
+
   // const getUserInfo = async () => {
   //   try {
   //     const userInfo = await axios.get(`${server}/userinfo`, {
   //       withCredentials: true,
   //     });
+
 
   //     console.log("userInfo", userInfo);
   //     sessionStorage.setItem(
@@ -146,6 +154,7 @@ const Main = () => {
             let wineNum = Math.ceil(data.data.data.wines.length / 3);
             getWineData2(wineNum, data.data.data.wines);
           }
+          history.push("/main/search");
         })
         .then(() => {
           e.target.value = "";
@@ -161,21 +170,25 @@ const Main = () => {
   const goBack = () => {
     setIsSearch(false);
   };
+  console.log(isSearch);
   return (
     <div>
       <Header
         handleSearchInput={handleSearchInput}
         handleClickSearchBtn={handleClickSearchBtn}
       />
-      <MainWineTagCon
-        userMainTag={userMainTag}
-        setUserMainTag={setUserMainTag}
-        userTypeTag={userTypeTag}
-        setTypeTag={setTypeTag}
-        tags={tags}
-      />
+
       {isLoading ? (
-        <Loading />
+        <div>
+          <MainWineTagCon
+            userMainTag={userMainTag}
+            setUserMainTag={setUserMainTag}
+            userTypeTag={userTypeTag}
+            setTypeTag={setTypeTag}
+            tags={tags}
+          />
+          <Loading />
+        </div>
       ) : isSearch ? (
         <div>
           <GoBackBtn goBack={goBack} />
@@ -183,6 +196,13 @@ const Main = () => {
         </div>
       ) : (
         <div className="mainContainers">
+          <MainWineTagCon
+            userMainTag={userMainTag}
+            setUserMainTag={setUserMainTag}
+            userTypeTag={userTypeTag}
+            setTypeTag={setTypeTag}
+            tags={tags}
+          />
           <MainWineCon randomWine={randomWine} />
         </div>
       )}

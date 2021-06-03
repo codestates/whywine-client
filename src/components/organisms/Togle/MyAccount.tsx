@@ -5,8 +5,10 @@ import MyAccountMenu from "../../atoms/Buttons/MyAccountMenu";
 function MyAccount() {
   const [manuOpen, setMeunOpen] = useState<boolean>(false);
 
+
   const maunState = () => {
     setMeunOpen(!manuOpen);
+
   };
   return (
     <div>
