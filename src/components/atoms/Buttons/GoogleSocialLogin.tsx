@@ -1,4 +1,4 @@
-import GoogleIcon from "../../../img/google.png"
+import GoogleIcon from "../../../img/google.png";
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 export default function GoogleLogin() {
@@ -17,7 +17,7 @@ export default function GoogleLogin() {
         <div className="google-btn" onClick={googleLoginHandler}>
           <img
             className="google-icon"
-            src={GoogleIcon}
+            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
           />
           <div>Google Login</div>
         </div>
