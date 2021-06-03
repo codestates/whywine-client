@@ -3,6 +3,8 @@ import ReviewTime from "../../atoms/Texts/ReviewTime";
 import ReviewLikeBtn from "../../atoms/Buttons/ReviewLikeBtn";
 import ReplyBtn from "../../atoms/Buttons/ReplyBtn";
 import axios from "axios";
+import moment from "moment";
+
 require("dotenv").config();
 
 const server = process.env.REACT_APP_API_SERVER;
@@ -67,7 +69,7 @@ function Reviews({
         <div className="reviewWriter">{user.nickname}</div>
         <span className="wineReview">{commentText}</span>
         <div>별점: {commentRating}</div>
-        <div>작성시간: {createdAt}</div>
+        <div>작성시간: {createdAt?.slice(0, 10)}</div>
       </div>
 
       <div className="reviewBtns">
