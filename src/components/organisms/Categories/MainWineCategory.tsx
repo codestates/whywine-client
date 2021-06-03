@@ -26,9 +26,7 @@ const MainWineCategory = ({ randomWine }: WineData) => {
     <div>
       {isTagArr ? (
         <div className="mainWineCategory">
-          <h2 className="mainCategoryName">
-            당신을 위한 <span>완벽한 와인</span>
-          </h2>
+          {/* <div style={{ width: "240px" }}></div> */}
           <ul className="mainWineCardBox">
             {[1, 2, 3].map((data, index) => {
               return (

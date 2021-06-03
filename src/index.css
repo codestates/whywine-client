@@ -53,11 +53,11 @@ li {
 h2 {
   margin-bottom: 0;
 }
-.loadingBackGround {
+/* .loadingBackGround {
   width: 100vw;
   height: 100vh;
   background-color: rgba(206, 191, 191, 0.452);
-}
+} */
 .surResultContainer {
   display: flex;
   flex-direction: column;
@@ -83,6 +83,11 @@ section {
   position: relative;
   display: flex;
   align-items: center;
+}
+.title img {
+  margin-left: 11.5rem;
+  margin-bottom: 1rem;
+  height: 6rem;
 }
 .title h4 {
   position: absolute;
@@ -658,6 +663,7 @@ section {
 } */
 .loading {
   text-align: center;
+  margin-top: 20rem;
   width: 100%;
   height: 500px;
 }
@@ -714,6 +720,15 @@ section {
   width: 50%;
   justify-content: space-between;
 }
+.searchEmpty {
+  display: flex;
+  justify-content: center;
+}
+.searchEmpty img {
+  margin-top: 4rem;
+  margin-bottom: 8.9rem;
+  width: 30rem;
+}
 .mainSearch {
   border: 1px solid #dedede;
   border-radius: 16px;
@@ -732,6 +747,17 @@ section {
   background-position: 15px;
   background-color: ghostwhite;
   transition: all 0.5s;
+}
+.searchGoBack {
+  display: flex;
+  position: fixed;
+  top: 16rem;
+  left: 19.5rem;
+}
+.searchGoBack span {
+  font-size: 20px;
+  vertical-align: middle;
+  margin-left: 5px;
 }
 /* .mainSearch:hover {
   width: 250px;
@@ -781,6 +807,7 @@ section {
   display: flex;
   justify-content: center;
   min-height: 450px;
+  margin-left: 16rem;
 }
 
 .mainWineCard {
@@ -944,7 +971,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 400px;
+  height: 450px;
   width: 300px;
   cursor: pointer;
   background-color: #faf1e6;
@@ -953,12 +980,17 @@ section {
   margin: 0 10px;
   transition: all 0.4s;
   flex-shrink: 0;
-  box-shadow: 0 0 6px 0 rgb(50 50 50 / 10%);
-
   margin-top: 3px;
-  margin-bottom: 3px;
+  margin-bottom: 20px;
 }
-.mainSearchData {
+.mainSearchCard:hover {
+  box-shadow: 0 0 6px 0 rgb(50 50 50 / 10%);
+  height: 453px;
+  margin-bottom: 17px;
+
+  transition: all 0.3s;
+}
+/* .mainSearchData {
   display: flex;
   justify-content: center;
   background-color: #fdfaf6;
@@ -971,33 +1003,50 @@ section {
   color: black;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-}
+} */
 /* .mainSearchContent {
 } */
 .mainSearchContent div {
+  font-family: "Brygada 1918", serif;
   position: absolute;
   left: 0;
   font-size: 24px;
   width: 150px;
   color: rgb(170, 20, 20);
   margin-left: 20px;
-  margin-top: 100px;
+  margin-top: 80px;
 }
-.mainSearchContent p {
+.moreThanDes {
+  position: absolute;
+  font-size: 12px;
+  min-width: 230px;
+  color: #000000;
+  height: 105px;
+  padding: 10px 10px;
+  border-top: 1px solid #afa9a98e;
+  left: 0px;
+  bottom: 0px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #fdfaf6;
+}
+.lessThanDes {
   position: absolute;
   font-size: 13px;
   min-width: 230px;
-  width: 90%;
   color: #000000;
-  padding-top: 10px;
-  height: 60px;
-  padding: 0 10px;
-  border-top: 1px solid #afa9a9;
-  left: 15px;
-  bottom: 10px;
+  height: 105px;
+  padding: 10px 10px;
+  border-top: 1px solid #afa9a98e;
+  left: 0px;
+  bottom: 0px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: #fdfaf6;
 }
 .mainSearchProfile img {
   margin-left: 30px;
+  margin-top: 10px;
 }
 
 .navBars {
@@ -1032,6 +1081,31 @@ section {
   position: relative;
 }
 .mainCategoryName {
+  width: 200px;
+  min-width: 200px;
+  margin-bottom: 20px;
+  margin: 0 20px;
+  padding-bottom: 10px;
+}
+.mainCategoryName h2 {
+  width: 200px;
+  min-width: 200px;
+  height: 100px;
+  border-bottom: 2px solid;
+}
+.mainCategoryName p {
+  color: black;
+  font-size: 15px;
+  width: 11rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+.mainCategoryName span {
+  display: block;
+  margin-left: 70px;
+}
+.mainSearchName {
   margin-bottom: 20px;
   margin: 0 20px;
   padding-bottom: 10px;
@@ -1039,12 +1113,6 @@ section {
   min-width: 200px;
   height: 100px;
   border-bottom: 2px solid;
-  float: left;
-}
-
-.mainCategoryName span {
-  display: block;
-  margin-left: 70px;
 }
 .mainLabelBox {
   display: none;
@@ -1201,15 +1269,19 @@ section {
   text-align: center;
   color: gray;
 }
-
+.mainTags {
+  display: flex;
+  margin-left: 20px;
+}
 .mainTagBox {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
+  margin-top: 4rem;
 }
 
 .mainWineTypeBox {
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 .redWhite {
   display: flex;
@@ -1219,7 +1291,7 @@ section {
 .redWhite div {
   display: flex;
   width: 120px;
-  margin-right: 40px;
+  margin-right: 20px;
   padding: 8px;
   height: 35px;
   line-height: normal;
@@ -1231,18 +1303,19 @@ section {
 .roseSparkling div {
   display: flex;
   width: 120px;
-  margin-right: 40px;
+  margin-right: 20px;
   padding: 8px;
   height: 35px;
   line-height: normal;
 }
-.mainTagBox img {
+/* .mainTagBox img {
   width: 240px;
-}
+} */
 .typeTag {
   display: flex;
   align-items: center;
-  margin: 0 10px;
+  margin-right: 10px;
+  margin-left: 10px;
   width: 400px;
   /* border-right: 1px solid #f3f3f3; */
 }
@@ -1282,7 +1355,7 @@ section {
   cursor: pointer;
   font-weight: 1000;
   color: black;
-  margin-right: 1.5rem;
+  margin-right: 1rem;
   transition: all 0.1s ease;
   min-width: 80px;
   width: 90px;
@@ -1332,9 +1405,11 @@ section {
 }
 .mainSearchCategory {
   display: flex;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  min-height: 460px;
+  margin-top: 3rem;
+  margin-bottom: 6.3rem;
+  min-height: 33.5rem;
+  justify-content: center;
+  margin-left: 13rem;
 }
 .mainWineSearchList {
   display: flex;
@@ -1344,12 +1419,13 @@ section {
   width: 100%;
   overflow: hidden;
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 .mainWineSearchBox {
   display: flex;
-  overflow-x: scroll;
-  max-width: 1260px;
+  flex-wrap: wrap;
+  min-width: 92rem;
 }
 
 @keyframes fadeIn {
