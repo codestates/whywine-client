@@ -17,7 +17,7 @@ let name: string,
   tags: object[];
 const MainWineSearchCard = ({ searchWine }: wineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
 
   const ModalEl: any = useRef();
