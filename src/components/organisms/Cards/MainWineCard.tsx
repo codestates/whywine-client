@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
 import wineSample from "../../../img/wine_sample.webp";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 interface WineData {
   randomWine: any;
@@ -72,7 +75,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
           sort={randomWine.sort}
           likeCount={randomWine.likeCount}
           description={randomWine.description}
-          image={randomWine.image}
+          image={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
           name={randomWine.name}
           ModalEl={ModalEl}
         />

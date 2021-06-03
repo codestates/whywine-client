@@ -21,7 +21,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
   const [isNone, setIsNone] = useState(false);
   const [message, setMessage] = useState("");
   const history = useHistory();
-  console.log(server);
+
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}userinfo`, {

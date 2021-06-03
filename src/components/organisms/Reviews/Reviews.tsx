@@ -57,10 +57,7 @@ function Reviews({
         withCredentials: true,
       })
       .then((data) => handleComments())
-      .catch((err) => {
-        console.dir(err);
-        console.log(commentId);
-      });
+      .catch((err) => {});
   };
 
   return (

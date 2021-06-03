@@ -72,17 +72,15 @@ const MainTanninTag = () => {
   //* 서버에 태그 요청
   const postTags = useCallback(() => {
     if (userMainTag.length !== 0) {
-      axios
-        .post(
-          "https://localhost:4000/main/tags",
-          { tags: userMainTag.filter((el: string) => el !== "") },
-          // * (el: string) => el !== "") 빈문자열 제외하는 부분
-          {
-            headers: { "Content-Type": "application/json" },
-            withCredentials: true,
-          }
-        )
-        .then((data) => console.log(data));
+      axios.post(
+        "https://localhost:4000/main/tags",
+        { tags: userMainTag.filter((el: string) => el !== "") },
+        // * (el: string) => el !== "") 빈문자열 제외하는 부분
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
     }
   }, [userMainTag]);
   //* 설문에서 받아온 기본 태그를 메인에 띄워줌
