@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ClickSearch from "../Imgs/ClickSearch";
-import SearchImg from "../Imgs/SearchImg";
 
 interface State {
   handleSearchInput?: (e: any) => void;
@@ -17,10 +16,11 @@ const MainSearch = ({ handleSearchInput, handleClickSearchBtn }: State) => {
     <div>
       <input
         className={isClicked ? "mainSearch active" : "mainSearch"}
-        placeholder="와인 이름으로 검색해보세요"
+        placeholder="와인 이름을 검색해보세요"
         onChange={handleSearchInput}
         onKeyDown={handleClickSearchBtn}
         onMouseOver={handleIsClicked}
+        // onMouseLeave={handleIsClicked}
       />
       <ClickSearch isClicked={isClicked} />
     </div>

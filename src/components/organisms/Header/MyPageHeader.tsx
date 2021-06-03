@@ -43,7 +43,7 @@ function MyPageHeader() {
           <Title />
 
           <div className="headerMenu">
-            <GoToMainBtn />
+            {/* <GoToMainBtn /> */}
             <Logout setIslogin={setIslogin} />
             <MyAccount />
           </div>
@@ -55,7 +55,7 @@ function MyPageHeader() {
           <div className="headerMenu">
             <SignIn openModal={openSignInModal} />
             <SignUp openModal={openSignUpModal} />
-            <GoToMainBtn />
+            {/* <GoToMainBtn /> */}
           </div>
           <SingInModal isOpen={signInOpen} closeModal={closeSignInModal} />
           <SignUpModal isOpen={signUpOpen} closeModal={closeSignUpModal} />

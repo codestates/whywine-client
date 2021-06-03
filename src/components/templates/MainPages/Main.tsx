@@ -35,8 +35,6 @@ const Main = () => {
       const userInfo = await axios.get(`${server}userinfo`, {
         withCredentials: true,
       });
-
-
       console.log("userInfo", userInfo);
       sessionStorage.setItem(
         "userInfo",

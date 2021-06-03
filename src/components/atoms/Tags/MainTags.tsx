@@ -9,6 +9,7 @@ interface TagTypes {
   userTags: string;
   userMainTag: string[];
   setUserMainTag: React.Dispatch<React.SetStateAction<string[]>>;
+  wineFlavor: string;
 }
 
 const MainTags = ({
@@ -19,6 +20,7 @@ const MainTags = ({
   userTags,
   userMainTag,
   setUserMainTag,
+  wineFlavor,
 }: TagTypes) => {
   const [high, setHigh] = useState(false);
   const [mid, setMid] = useState(false);
@@ -102,10 +104,7 @@ const MainTags = ({
     <div className="mainWineTagBox">
       <span className="toolTip">
         {tagTitle}
-        <span className="toolTipText">
-          와인에서 말하는 바디란 와인을 마실 때 입안에서 느껴지는 무게감을
-          뜻합니다.
-        </span>
+        <span className="toolTipText">{wineFlavor}</span>
       </span>
 
       <div className="mainWineTags">
