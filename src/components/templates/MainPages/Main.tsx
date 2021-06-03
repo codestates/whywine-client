@@ -49,7 +49,7 @@ const Main = () => {
   const userTagUpdata = async () => {
     let tagsArr: any = sessionStorage.getItem("userTag");
     // * 로컬 스토리지에 있는 선택한 태그들을 tagsArr에 할당
-    console.log("tags:", JSON.parse(tagsArr));
+
     // ! 세션 스토리지에서 데이터 받을시에 꼭 JSON.parse으로 JSON형태로 저장된 데이터 배열로 바꿔줘야함
 
     await axios.post(
@@ -66,8 +66,11 @@ const Main = () => {
     userTagUpdata();
     // getUserInfo();
     handleLoading();
-    if(!sessionStorage.getItem("userInfo") || sessionStorage.getItem("login")){
-      getUserInfo()
+    if (
+      !sessionStorage.getItem("userInfo") ||
+      sessionStorage.getItem("login")
+    ) {
+      getUserInfo();
     }
     if (!sessionStorage.getItem("login")) {
       sessionStorage.removeItem("userInfo");
