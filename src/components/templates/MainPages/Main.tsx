@@ -10,7 +10,7 @@ import dotenv from "dotenv";
 import Loading from "../../atoms/Imgs/Loading";
 import GoBackBtn from "../../atoms/Imgs/GoBackBtn";
 dotenv.config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 //* 세션 스토리지에 담겨있는 태그 불러오기
 let tags: any;
@@ -32,7 +32,7 @@ const Main = () => {
 
   const getUserInfo = async () => {
     try {
-      const userInfo = await axios.get(`${server}/userinfo`, {
+      const userInfo = await axios.get(`${server}userinfo`, {
         withCredentials: true,
       });
 
@@ -52,7 +52,7 @@ const Main = () => {
     // ! 세션 스토리지에서 데이터 받을시에 꼭 JSON.parse으로 JSON형태로 저장된 데이터 배열로 바꿔줘야함
 
     await axios.post(
-      `${server}/user/update`,
+      `${server}user/update`,
       { tags: JSON.parse(tagsArr).filter((el: string) => el !== "") },
       // * (el: string) => el !== "") 빈문자열 제외하는 부분
       {
@@ -76,7 +76,7 @@ const Main = () => {
       console.log("userTypeTag", userTypeTag, "userMainTag", userMainTag);
       await axios
         .post(
-          `${server}/main/tags`,
+          `${server}main/tags`,
           {
             tags: userMainTag.filter((el: string) => el !== ""),
             sort: userTypeTag,
@@ -132,7 +132,7 @@ const Main = () => {
   const handleClickSearchBtn = (e: any) => {
     if (e.key === "Enter" || e.type === "click") {
       axios
-        .get(`${server}/main/search?word=${searchWord}`, {
+        .get(`${server}main/search?word=${searchWord}`, {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         })

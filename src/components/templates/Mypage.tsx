@@ -4,7 +4,7 @@ import axios from "axios";
 import dotenv from "dotenv";
 
 dotenv.config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 // interface User {
 //   id: number
@@ -93,7 +93,7 @@ function Mypage() {
   const MemberOutAxios = async () => {
     console.log(Password);
     try {
-      const leave = await axios.delete(`${server}/userinfo/leave`, {
+      const leave = await axios.delete(`${server}userinfo/leave`, {
         data: { password: Password },
         withCredentials: true,
       });
@@ -110,7 +110,7 @@ function Mypage() {
   const EditNickNameAxios = async () => {
     try {
       await axios.post(
-        `${server}/userinfo/nickname`,
+        `${server}userinfo/nickname`,
         { newNickname: NewNickName },
         { withCredentials: true }
       );
@@ -121,7 +121,7 @@ function Mypage() {
   const EditPasswordAxios = async () => {
     try {
       await axios.post(
-        `${server}/userinfo/password`,
+        `${server}userinfo/password`,
         { oldPassword: OldPassword, newPassword: NewPassword },
         { withCredentials: true }
       );
@@ -145,7 +145,7 @@ function Mypage() {
     formData.append("file", ImageUpload.file);
 
     return axios
-      .post(`${server}/userinfo//profileimage`, formData, {
+      .post(`${server}userinfo//profileimage`, formData, {
         withCredentials: true,
       })
       .then((res) => {

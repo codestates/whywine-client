@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect, useCallback } from "react";
 import axios from "axios";
 require("dotenv").config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface Props {
   id: number;
@@ -12,7 +12,7 @@ const Like = ({ id }: Props) => {
 
   const getUserInfo = async () => {
     try {
-      let data = await axios.get(`${server}/userinfo`, {
+      let data = await axios.get(`${server}userinfo`, {
         withCredentials: true,
       });
       sessionStorage.setItem(
@@ -29,7 +29,7 @@ const Like = ({ id }: Props) => {
     if (!isLike) {
       console.log(1);
       await axios.post(
-        `${server}/user/like`,
+        `${server}user/like`,
         { wineId: id },
         {
           headers: { "Content-Type": "application/json" },
@@ -40,7 +40,7 @@ const Like = ({ id }: Props) => {
       console.log(2);
 
       await axios.post(
-        `${server}/user/unlike`,
+        `${server}user/unlike`,
         { wineId: id },
         {
           headers: { "Content-Type": "application/json" },

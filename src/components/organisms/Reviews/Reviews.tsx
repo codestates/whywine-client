@@ -30,7 +30,7 @@ function Reviews({ commentText, commentRating, key }: ReviewsProps) {
   const handleDeleteRewiew = async () => {
     setDeleteReview(false);
 
-    // await axios.delete(`${server}/comment`,data:{"commentId":key});
+    // await axios.delete(`${server}comment`,data:{"commentId":key});
   };
 
   return (
