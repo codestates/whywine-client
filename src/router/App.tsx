@@ -2,13 +2,13 @@ import React, { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Loading from "../components/atoms/Imgs/Loading";
 import Header from "../components/organisms/Header/Header";
+require("dotenv").config();
 // import Landing from "../components/templates/Landing";
 // import Main from "../components/templates/MainPages/Main";
 // import Mypage from "../components/templates/Mypage";
 // import LikeList from "../components/templates/LikeList";
 // import Survey from "../components/templates/Survey";
 // import result from "../components/templates/SurveyPages/SurveyResultQ";
-
 
 const Landing = lazy(() => import("../components/templates/Landing"));
 const Main = lazy(() => import("../components/templates/MainPages/Main"));
@@ -18,7 +18,6 @@ const Survey = lazy(() => import("../components/templates/Survey"));
 const result = lazy(
   () => import("../components/templates/SurveyPages/SurveyResultQ")
 );
-
 
 const App: React.FC = () => {
   return (

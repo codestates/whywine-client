@@ -1,9 +1,15 @@
 import React from "react";
 
-const ReviewLikeBtn = () => {
+interface Props {
+  like: boolean;
+  unLike: boolean;
+}
+
+const ReviewLikeBtn = ({ like, unLike }: Props) => {
   return (
     <div>
-      <button className="reviewLikeBtn">좋아요</button>
+      {/* <button className="reviewLikeBtn">좋아요</button> */}
+      {like}
     </div>
   );
 };

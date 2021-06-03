@@ -20,6 +20,7 @@ body {
   box-sizing: border-box;
   overflow: hidden; */
 }
+
 @font-face {
   font-family: "MapoGoldenPier";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff")
@@ -34,6 +35,7 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
 .SurveyWrap,
 .LandingWrap {
   font-family: "Prata", "Noto Serif KR", serif;
@@ -110,6 +112,15 @@ section {
 .FirstPage_route {
   font-family: "Noto Sans KR", sans-serif;
 }
+.fa-arrow-alt-circle-right {
+  margin-bottom: 7px;
+  display: flex;
+  user-select: auto;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-left: 10px;
+}
+
 .FirstPage {
   background-image: url("./img/wine-bottles-3623697_1920.png");
   background-size: cover;
@@ -127,7 +138,7 @@ section {
 }
 .FirstPage_Summery p {
   color: white;
-  font-size: 20px;
+  font-size: 33px;
 }
 .FirstPage_InputSurvey {
   display: flex;

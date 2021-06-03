@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import { useEffect } from "react";
 
 dotenv.config();
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 //${server}
 interface Props {
   setIslogin: any;
@@ -15,7 +15,7 @@ function Logout({ setIslogin }: Props) {
 
   const handleLogout = async () => {
     await axios
-      .get(`${server}/auth/logout`, { withCredentials: true })
+      .get(`${server}auth/logout`, { withCredentials: true })
       .then((res) => {
         console.log("쿠키삭제성공");
         let login: any = sessionStorage.getItem("login");

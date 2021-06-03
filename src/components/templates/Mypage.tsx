@@ -1,12 +1,14 @@
-import React,{ useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Header from "../organisms/Header/Header";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import dotenv from "dotenv";
 
 dotenv.config();
-const server = process.env.REACT_APP_SERVER || "https://localhost:4000";
+
+const server = process.env.REACT_APP_SERVER || "https://localhost:4000/";
 const imgserver = process.env.REACT_APP_USER_IMAGE_URL || "https://whywine-image.s3.us-east-2.amazonaws.com/user/"
+
 // interface User {
 //   id: number
 //   email: string
@@ -40,8 +42,6 @@ function Mypage() {
   const [NewNickName, setNewNickName] = useState("");
   const [Password, setPassword] = useState("");
 
-
-
   const PasswordInputValue = (e: any) => {
     setPassword(e.target.value);
   };
@@ -61,7 +61,6 @@ function Mypage() {
   let userInfo: any;
 
   useEffect(() => {
-
     if (sessionStorage.getItem("userInfo")) {
       userInfo = sessionStorage.getItem("userInfo");
 
@@ -69,36 +68,35 @@ function Mypage() {
       setUser({...userInfo, image:"https://whywine-image.s3.us-east-2.amazonaws.com/user/"+userInfo.image});
     }
 
-    console.log(IsOpen)
-  },[])
+    console.log(IsOpen);
+  }, []);
 
-  const MemberOutClick =()=>{
-    if(MemberOut){
-      setMemberOut(false)
-    }else{
-      if(IsOpen){
-        setIsOpen(false)
+  const MemberOutClick = () => {
+    if (MemberOut) {
+      setMemberOut(false);
+    } else {
+      if (IsOpen) {
+        setIsOpen(false);
       }
-      setMemberOut(true)
+      setMemberOut(true);
     }
   };
 
   const EditClick = () => {
-    if(IsOpen){
-      setIsOpen(false)
-    }else{
-      if(MemberOut){
-        setMemberOut(false)
+    if (IsOpen) {
+      setIsOpen(false);
+    } else {
+      if (MemberOut) {
+        setMemberOut(false);
       }
-      setIsOpen(true)
+      setIsOpen(true);
     }
-  }
-
+  };
 
   const MemberOutAxios = async () => {
     console.log(Password);
     try {
-      const leave = await axios.delete(`${server}/userinfo/leave`, {
+      const leave = await axios.delete(`${server}userinfo/leave`, {
         data: { password: Password },
         withCredentials: true,
       });
@@ -115,7 +113,7 @@ function Mypage() {
   const EditNickNameAxios = async () => {
     try {
       await axios.post(
-        `${server}/userinfo/nickname`,
+        `${server}userinfo/nickname`,
         { newNickname: NewNickName },
         { withCredentials: true }
       );
@@ -126,7 +124,7 @@ function Mypage() {
   const EditPasswordAxios = async () => {
     try {
       await axios.post(
-        `${server}/userinfo/password`,
+        `${server}userinfo/password`,
         { oldPassword: OldPassword, newPassword: NewPassword },
         { withCredentials: true }
       );
@@ -141,6 +139,7 @@ function Mypage() {
     event.preventDefault();
     inputRef.current?.click();
   };
+
   const onChangeImage = async (event:any) => {
     event.preventDefault();
     const img = event.target.files[0]
@@ -165,6 +164,7 @@ function Mypage() {
     })
   };
   console.log(user.image)
+
   /* const handleFileInput=(e:any)=>{
     setImageUpload({
       file: e.target.files[0],
@@ -182,7 +182,23 @@ function Mypage() {
       />
       <div className="MyPageWrap">
         <ul>
+          <li>
+            <div className="profile">
+              <img className="userImage" src={user.image}></img>
+              <i className="fas fa-camera" onClick={onButtonClick}></i>
+              <input
+                className="onChangeImage"
+                type="file"
+                accept="image/*"
+                name="img"
+                onChange={(e) => onChangeImage(e)}
+                ref={inputRef}
+              />
+            </div>
+          </li>
+          {IsOpen ? (
             <li>
+
               <div className="profile">
                 <img className="userImage" src={user.image}></img>
                 <i className="fas fa-camera" onClick={onButtonClick}></i>
@@ -198,17 +214,17 @@ function Mypage() {
             </li>
               {IsOpen ? (
               <li>
+
               <ul>
-                <i className="fas fa-times" onClick={EditClick} ></i>
+                <i className="fas fa-times" onClick={EditClick}></i>
                 <li>
                   <input
-                    type="text" 
+                    type="text"
                     name="newNickName"
                     placeholder="변경할 닉네임"
                     onChange={NewNickNameInputValue}
                   />
                   <i className="fas fa-check" onClick={EditNickNameAxios}></i>
-                  
                 </li>
                 <li>
                   <input
@@ -246,14 +262,13 @@ function Mypage() {
                 placeholder="비밀번호"
                 onChange={PasswordInputValue}
               />
-              <i className="fas fa-check"onClick={MemberOutAxios}></i>
-              <i className="fas fa-times" onClick={MemberOutClick} ></i>
+              <i className="fas fa-check" onClick={MemberOutAxios}></i>
+              <i className="fas fa-times" onClick={MemberOutClick}></i>
             </li>
           ) : (
             <li>
               <i className="fas fa-user-slash" onClick={MemberOutClick}></i>
             </li>
-
           )}
         </ul>
       </div>
