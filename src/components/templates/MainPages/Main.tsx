@@ -29,6 +29,7 @@ const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const history = useHistory();
+
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}/userinfo`, {
@@ -36,21 +37,14 @@ const Main = () => {
       });
 
 
-  // const getUserInfo = async () => {
-  //   try {
-  //     const userInfo = await axios.get(`${server}/userinfo`, {
-  //       withCredentials: true,
-  //     });
-
-
-  //     console.log("userInfo", userInfo);
-  //     sessionStorage.setItem(
-  //       "userInfo",
-  //       JSON.stringify(userInfo.data.data.userInfo)
-  //     );
-  //     // * 유저 정보 세션스토리지 저장
-  //   } catch (error) {}
-  // };
+      console.log("userInfo", userInfo);
+      sessionStorage.setItem(
+        "userInfo",
+        JSON.stringify(userInfo.data.data.userInfo)
+      );
+      // * 유저 정보 세션스토리지 저장
+    } catch (error) {}
+  };
 
   const userTagUpdata = async () => {
     let tagsArr: any = sessionStorage.getItem("userTag");
