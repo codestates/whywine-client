@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-// import SocialLogin from "../../atoms/Buttons/GoogleSocialLogin";
+import GoogleLogin from "../../atoms/Buttons/GoogleSocialLogin";
+import KakaoLogin from "../../atoms/Buttons/KakaoSocialLogin";
 import axios from "axios";
 import dotenv from "dotenv";
 require("dotenv").config();
@@ -10,7 +11,7 @@ interface Props {
   closeModal: React.MouseEventHandler<HTMLDivElement>;
 }
 
-function SignInModal({ isOpen, closeModal }: Props) {
+function SignUpModal({ isOpen, closeModal }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickName] = useState("");
@@ -86,15 +87,20 @@ function SignInModal({ isOpen, closeModal }: Props) {
             onChange={nickNameInputValue}
             onKeyDown={signUpHandler}
           />
-          <button onClick={signUpHandler} className="signin-button">
+          <button onClick={signUpHandler} className="signup-button">
             회원가입
           </button>
           <div className="login_or">
             <p>or</p>
           </div>
-{/*           <div className="socialLogin">
+          {/*           <div className="socialLogin">
             <SocialLogin />
           </div> */}
+
+          <div className="socialLogin">
+            <GoogleLogin />
+            <KakaoLogin />
+          </div>
           <i className="fas fa-times" onClick={closeModal}></i>
         </div>
       ) : null}
@@ -102,4 +108,4 @@ function SignInModal({ isOpen, closeModal }: Props) {
   );
 }
 
-export default SignInModal;
+export default SignUpModal;
