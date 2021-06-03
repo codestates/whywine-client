@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import GoBackBtn from "../../atoms/Imgs/GoBackBtn";
 import MainWineSearchCard from "../Cards/MainWineSearchCard";
 
 interface State {
-  searchWine: object[][];
+  searchWine: object[];
+  goBack: () => void;
 }
-const MainSearchCategory = ({ searchWine }: State) => {
+const MainSearchCategory = ({ searchWine, goBack }: State) => {
   return (
     <div className="mainSearchCategory">
-      <h2 className="mainCategoryName">검색</h2>
+      <div className="mainSearchName">
+        <h2>검색</h2>
+        <GoBackBtn goBack={goBack} />
+      </div>
+
       <ul className="mainWineSearchBox">
-        {searchWine.map((wineArr: object[]) => {
-          return wineArr.map((wine, idx) => {
-            return <MainWineSearchCard searchWine={wine} key={idx} />;
-          });
+        {searchWine.map((wine: object, idx) => {
+          return <MainWineSearchCard searchWine={wine} key={idx} />;
         })}
       </ul>
     </div>
