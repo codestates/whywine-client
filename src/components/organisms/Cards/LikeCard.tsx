@@ -77,23 +77,22 @@ const LikeCard = ({ userLikeWines }: WineData) => {
           ModalEl={ModalEl}
         />
       </div>
-      {
-        <div className="mainWineCard" onClick={handleIsClicked}>
-          <Rating />
-          <div className="mainWineProfile">
-            <img
-              src={image}
-              alt="와인"
-              className={isUpload ? "wineMainImg" : "wineMainSample"}
-            />
 
-            <div className="mainWineContent">
-              <h2>{name}</h2>
-              <p>{description}</p>
-            </div>
+      <div className="mainLikeCard" onClick={handleIsClicked}>
+        <div className="mainWineProfile">
+          <div className="mainLikeContent">
+            <h2>{name}</h2>
+            <p>{description}</p>
           </div>
+        </div>
 
-          <div className="mainWineData">
+        <div className="wineLikeImgBox">
+          <img
+            src={image}
+            alt="와인"
+            className={isUpload ? "wineLikeImg" : "wineLikeImgSample"}
+          />
+          <div className="wineLikeData">
             <div className="mainWineType">
               {sort === "red"
                 ? " 레드"
@@ -141,7 +140,7 @@ const LikeCard = ({ userLikeWines }: WineData) => {
             </div>
           </div>
         </div>
-      }
+      </div>
     </li>
   );
 };

@@ -153,7 +153,6 @@ const Main = () => {
             setIsSearch(true);
             setHasData(true);
           }
-          history.push("/main/search");
         });
 
       //로딩 이미지 보여줬다가 사라짐..너무야매..

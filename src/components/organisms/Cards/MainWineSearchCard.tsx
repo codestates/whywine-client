@@ -22,17 +22,17 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
     setIsOpen(true);
     setIsClicked(true);
   };
-  // const handleClickOutside = (e: any) => {
-  //   if (isOpen && !ModalEl.current.contains(e.target)) {
-  //     setIsOpen(false);
-  //   }
-  // };
-  // useEffect(() => {
-  //   window.addEventListener("click", handleClickOutside);
-  //   return () => {
-  //     window.removeEventListener("click", handleClickOutside);
-  //   };
-  // });
+  const handleClickOutside = (e: any) => {
+    if (isOpen && !ModalEl.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  });
 
   if (searchWine) {
     name = searchWine.name;
