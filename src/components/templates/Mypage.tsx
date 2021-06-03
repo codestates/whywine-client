@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useEffect, useCallback, useMemo } from "react";
+=======
+import React,{ useState, useEffect, useCallback, useRef } from "react";
+>>>>>>> b7b638fe5c18d3d8c401d716e5e740e4fbffc183
 import Header from "../organisms/Header/Header";
 import axios from "axios";
 import dotenv from "dotenv";
@@ -38,6 +42,11 @@ function Mypage() {
   const [NewPassword, setNewPassword] = useState("");
   const [NewNickName, setNewNickName] = useState("");
   const [Password, setPassword] = useState("");
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> b7b638fe5c18d3d8c401d716e5e740e4fbffc183
 
   const PasswordInputValue = (e: any) => {
     setPassword(e.target.value);
@@ -58,6 +67,7 @@ function Mypage() {
   let userInfo: any;
 
   useEffect(() => {
+<<<<<<< HEAD
     if (localStorage.getItem("userInfo")) {
       userInfo = localStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
@@ -71,10 +81,32 @@ function Mypage() {
       setMemberOut(false);
     } else {
       setMemberOut(true);
+=======
+
+    if (sessionStorage.getItem("userInfo")) {
+      userInfo = sessionStorage.getItem("userInfo");
+
+      userInfo = JSON.parse(userInfo);
+      setUser(userInfo);
+    }
+
+    console.log(IsOpen)
+  },[])
+
+  const MemberOutClick =()=>{
+    if(MemberOut){
+      setMemberOut(false)
+    }else{
+      if(IsOpen){
+        setIsOpen(false)
+      }
+      setMemberOut(true)
+>>>>>>> b7b638fe5c18d3d8c401d716e5e740e4fbffc183
     }
   };
 
   const EditClick = () => {
+<<<<<<< HEAD
     if (IsOpen) {
       setIsOpen(false);
     } else {
@@ -82,6 +114,19 @@ function Mypage() {
     }
   };
   const ImgEditAxios = async () => {};
+=======
+    if(IsOpen){
+      setIsOpen(false)
+    }else{
+      if(MemberOut){
+        setMemberOut(false)
+      }
+      setIsOpen(true)
+    }
+  }
+
+
+>>>>>>> b7b638fe5c18d3d8c401d716e5e740e4fbffc183
   const MemberOutAxios = async () => {
     console.log(Password);
     try {
@@ -121,6 +166,40 @@ function Mypage() {
       console.error(error.massege);
     }
   };
+<<<<<<< HEAD
+=======
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [ImageUpload, setImageUpload] = useState({
+    file: "",
+    previewURL: "",
+  });
+  const onButtonClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    inputRef.current?.click();
+  };
+  const onChangeImage = (event:any) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('file', ImageUpload.file);
+
+    return axios.post(`${server}/userinfo//profileimage`, formData,{ withCredentials: true }).then(res => {
+      console.log(res)
+      alert('성공')
+    }).catch(err => {
+      alert('실패')
+    })
+  };
+  
+  /* const handleFileInput=(e:any)=>{
+    setImageUpload({
+      file: e.target.files[0],
+    })
+  } */
+  /* const handlePost=()=>{
+    
+  } */
+>>>>>>> b7b638fe5c18d3d8c401d716e5e740e4fbffc183
 
   return (
     <>
@@ -130,8 +209,8 @@ function Mypage() {
       />
       <div className="MyPageWrap">
         <ul>
-          {IsOpen ? (
             <li>
+<<<<<<< HEAD
               <i className="fas fa-times" onClick={EditClick}></i>
               <div className="profile">
                 <img className="userImage" src={user.image}></img>
@@ -155,35 +234,72 @@ function Mypage() {
               />
 
               <div>
+=======
+              <div className="profile">
+                <img className="userImage" src={user.image}></img>
+                <i className="fas fa-camera" onClick={onButtonClick}></i>
+>>>>>>> b7b638fe5c18d3d8c401d716e5e740e4fbffc183
                 <input
-                  type="password"
-                  name="newPassword"
-                  placeholder="새 비밀번호"
-                  onChange={NewPasswordInputValue}
+                  className="onChangeImage"
+                  type="file"
+                  accept="image/*"
+                  name="img"
+                  onChange={e => onChangeImage(e)}
+                  ref = {inputRef}
                 />
-                <i className="fas fa-check" onClick={EditPasswordAxios}></i>
               </div>
+            </li>
+              {IsOpen ? (
+              <li>
+              <ul>
+                <i className="fas fa-times" onClick={EditClick} ></i>
+                <li>
+                  <input
+                    type="text" 
+                    name="newNickName"
+                    placeholder="변경할 닉네임"
+                    onChange={NewNickNameInputValue}
+                  />
+                  <i className="fas fa-check" onClick={EditNickNameAxios}></i>
+                  
+                </li>
+                <li>
+                  <input
+                    type="password"
+                    name="oldPassword"
+                    placeholder="이전 비밀번호"
+                    onChange={OldPasswordInputValue}
+                  />
+                </li>
+                <li>
+                  <input
+                    type="password"
+                    name="newPassword"
+                    placeholder="새 비밀번호"
+                    onChange={NewPasswordInputValue}
+                  />
+                  <i className="fas fa-check" onClick={EditPasswordAxios}></i>
+                </li>
+              </ul>
             </li>
           ) : (
             <li>
-              <div className="profile">
-                <img className="userImage" src={user.image}></img>
-                <i className="fas fa-camera" onClick={ImgEditAxios}></i>
-              </div>
               <div className="userNickName">{user.nickname}</div>
-              <div>이메일 : {user.email}</div>
+              <div>{user.email}</div>
               <i className="fas fa-edit" onClick={EditClick}></i>
             </li>
           )}
 
           {MemberOut ? (
-            <div>
+            <li>
+              <p>탈퇴 하시겠습니까?</p>
               <input
                 type="password"
                 name="password"
                 placeholder="비밀번호"
                 onChange={PasswordInputValue}
               />
+<<<<<<< HEAD
               <p>탈퇴 하시겠습니까?</p>
               <i className="fas fa-check" onClick={MemberOutAxios}></i>
               <i className="fas fa-times" onClick={MemberOutClick}></i>
@@ -192,6 +308,16 @@ function Mypage() {
             <i className="fas fa-user-slash" onClick={MemberOutClick}>
               회원탈퇴 호버로 띄우기
             </i>
+=======
+              <i className="fas fa-check"onClick={MemberOutAxios}></i>
+              <i className="fas fa-times" onClick={MemberOutClick} ></i>
+            </li>
+          ) : (
+            <li>
+              <i className="fas fa-user-slash" onClick={MemberOutClick}></i>
+            </li>
+
+>>>>>>> b7b638fe5c18d3d8c401d716e5e740e4fbffc183
           )}
         </ul>
       </div>

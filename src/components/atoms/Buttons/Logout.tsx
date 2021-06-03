@@ -14,16 +14,16 @@ function Logout({ setIslogin }: Props) {
   const history = useHistory();
 
   const handleLogout = async () => {
-    console.log("로그아웃 작동");
     await axios
       .get(`${server}/auth/logout`, { withCredentials: true })
       .then((res) => {
         console.log("쿠키삭제성공");
-        let login: any = localStorage.getItem("login");
+        let login: any = sessionStorage.getItem("login");
         if (JSON.parse(login)) {
-          localStorage.setItem("login", JSON.stringify(false));
+          sessionStorage.setItem("login", JSON.stringify(false));
+          sessionStorage.removeItem("userInfo");
         }
-        localStorage.removeItem("userInfo");
+
         history.push("/");
         setIslogin(false);
       })

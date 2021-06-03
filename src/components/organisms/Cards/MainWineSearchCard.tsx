@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import ClickWine from "../../atoms/Imgs/ClickWine";
 import WineModal from "../Modal/WineModal";
 
 import Rating from "../Ratings/Rating";
@@ -25,17 +24,17 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
     setIsOpen(true);
     setIsClicked(true);
   };
-  const handleClickOutside = (e: any) => {
-    if (isOpen && !ModalEl.current.contains(e.target)) {
-      setIsOpen(false);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("click", handleClickOutside);
-    return () => {
-      window.removeEventListener("click", handleClickOutside);
-    };
-  });
+  // const handleClickOutside = (e: any) => {
+  //   if (isOpen && !ModalEl.current.contains(e.target)) {
+  //     setIsOpen(false);
+  //   }
+  // };
+  // useEffect(() => {
+  //   window.addEventListener("click", handleClickOutside);
+  //   return () => {
+  //     window.removeEventListener("click", handleClickOutside);
+  //   };
+  // });
 
   if (searchWine) {
     name = searchWine.name;
@@ -75,21 +74,21 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
         />
       </div>
 
-      <div className="mainWineCard" onClick={handleIsClicked}>
-        <Rating />
-        <div className="mainWineProfile">
+      <div className="mainSearchCard" onClick={handleIsClicked}>
+        {/* <Rating /> */}
+        <div className="mainSearchProfile">
           <img
             src={image}
             alt="와인"
             className={isUpload ? "wineMainImg" : "wineMainSample"}
           />
-          <div className="mainWineContent">
-            <h2>{name}</h2>
+          <div className="mainSearchContent">
+            <div>{name}</div>
             <p>{description}</p>
           </div>
         </div>
 
-        <div className="mainWineData">
+        {/* <div className="mainSearchData">
           <div className="mainWineType">
             {sort === "red"
               ? " 레드"
@@ -133,9 +132,9 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
                     break;
                 }
               })}
-            </div>
-          </div>
-        </div>
+            </div> */}
+        {/* </div> */}
+        {/* </div> */}
       </div>
     </li>
   );

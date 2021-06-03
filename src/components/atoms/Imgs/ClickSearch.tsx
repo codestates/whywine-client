@@ -4,11 +4,11 @@ import clickPng from "../../../img/click_pointer.png";
 interface state {
   isClicked: boolean;
 }
-const ClickWine: React.FC<state> = ({ isClicked }) => {
+const ClickSearch: React.FC<state> = ({ isClicked }) => {
   return (
     <div>
       <img
-        className="clickWine"
+        className="clickSearch"
         src={clickPng}
         alt="클릭"
         style={{ display: isClicked ? "none" : "block" }}
@@ -17,4 +17,4 @@ const ClickWine: React.FC<state> = ({ isClicked }) => {
   );
 };
 
-export default ClickWine;
+export default ClickSearch;

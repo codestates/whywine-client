@@ -15,10 +15,24 @@ interface Props {
 function SignInModal({ isOpen, closeModal }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userInfo, setUserInfo] = useState();
   const [isNone, setIsNone] = useState(false);
   const [message, setMessage] = useState("");
   const history = useHistory();
+
+  const getUserInfo = async () => {
+    try {
+      const userInfo = await axios.get(`${server}/userinfo`, {
+        withCredentials: true,
+      });
+
+      console.log("userInfo", userInfo);
+      sessionStorage.setItem(
+        "userInfo",
+        JSON.stringify(userInfo.data.data.userInfo)
+      );
+      // * 유저 정보 세션스토리지 저장
+    } catch (error) {}
+  };
 
   const loginRequestHandler = async (e: any) => {
     if (e.key === "Enter" || e.type === "click") {
@@ -33,8 +47,8 @@ function SignInModal({ isOpen, closeModal }: Props) {
         )
         .then((res) => {
           closeModal(e);
-          setUserInfo(res.data.data);
-          localStorage.setItem("login", JSON.stringify(true));
+          getUserInfo();
+          sessionStorage.setItem("login", JSON.stringify(true));
           history.push("/main");
         })
         .catch((err) => {

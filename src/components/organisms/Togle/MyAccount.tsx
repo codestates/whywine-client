@@ -1,32 +1,23 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, createRef } from "react";
 import MyAccountBtn from "../../atoms/Buttons/MyAccount";
 import MyAccountMenu from "../../atoms/Buttons/MyAccountMenu";
 
 function MyAccount() {
   const [manuOpen, setMeunOpen] = useState<boolean>(false);
-  const togleEl: any = useRef();
 
-  const handleClickOutside = (e: any) => {
-    if (manuOpen && !togleEl.current.contains(e.target)) {
-      setMeunOpen(false);
-    }
+
+  const maunState = () => {
+    setMeunOpen(!manuOpen);
+
   };
-
-  useEffect(() => {
-    window.addEventListener("click", handleClickOutside);
-    return () => {
-      window.removeEventListener("click", handleClickOutside);
-    };
-  });
-
   return (
-    <div ref={togleEl}>
+    <div>
       {!manuOpen ? (
-        <MyAccountBtn togleEl={togleEl} setMeunOpen={setMeunOpen} />
+        <MyAccountBtn maunState={maunState} />
       ) : (
         <>
-          <MyAccountBtn togleEl={togleEl} setMeunOpen={setMeunOpen} />
-          <MyAccountMenu togleEl={togleEl} />
+          <MyAccountBtn maunState={maunState} />
+          <MyAccountMenu setMeunOpen={setMeunOpen} />
         </>
       )}
     </div>

@@ -14,48 +14,50 @@ function Survey() {
   useEffect(() => {
     console.log("배열", userTag);
     if (userTag.length === 5) {
-      localStorage.setItem("userTag", JSON.stringify(userTag));
-      // * 선택한 답변의 갯수가 5개가 되면 로컬스토리지에 "userTag"으로 태그들을 저장함
+      sessionStorage.setItem("userTag", JSON.stringify(userTag));
+      // * 선택한 답변의 갯수가 5개가 되면 세션스토리지에 "userTag"으로 태그들을 저장함
     }
   });
 
   return (
-    <div className="container">
-      <section className="survey">
-        <Survey1
-          animatedItem={animatedItem}
-          userTag={userTag}
-          setUserTag={setUserTag}
-        />
-      </section>
-      <section className="survey">
-        <Survey2
-          animatedItem={animatedItem}
-          userTag={userTag}
-          setUserTag={setUserTag}
-        />
-      </section>
-      <section className="survey">
-        <Survey3
-          animatedItem={animatedItem}
-          userTag={userTag}
-          setUserTag={setUserTag}
-        />
-      </section>
-      <section className="survey">
-        <Survey4
-          animatedItem={animatedItem}
-          userTag={userTag}
-          setUserTag={setUserTag}
-        />
-      </section>
-      <section className="survey">
-        <Survey5
-          animatedItem={animatedItem}
-          userTag={userTag}
-          setUserTag={setUserTag}
-        />
-      </section>
+    <div className="SurveyWrap">
+      <div className="container">
+        <section className="survey">
+          <Survey1
+            animatedItem={animatedItem}
+            userTag={userTag}
+            setUserTag={setUserTag}
+          />
+        </section>
+        <section className="survey">
+          <Survey2
+            animatedItem={animatedItem}
+            userTag={userTag}
+            setUserTag={setUserTag}
+          />
+        </section>
+        <section className="survey">
+          <Survey3
+            animatedItem={animatedItem}
+            userTag={userTag}
+            setUserTag={setUserTag}
+          />
+        </section>
+        <section className="survey">
+          <Survey4
+            animatedItem={animatedItem}
+            userTag={userTag}
+            setUserTag={setUserTag}
+          />
+        </section>
+        <section className="survey">
+          <Survey5
+            animatedItem={animatedItem}
+            userTag={userTag}
+            setUserTag={setUserTag}
+          />
+        </section>
+      </div>
     </div>
   );
 }

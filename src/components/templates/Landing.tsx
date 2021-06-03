@@ -11,7 +11,7 @@ interface Handler {
 
 function Landing() {
   return (
-    <>
+    <div className="LandingWrap">
       {/* <Header /> */}
       <div className="container">
         <section className="FirstPage">
@@ -27,7 +27,7 @@ function Landing() {
           <FourthPage />
         </section>
       </div>
-    </>
+    </div>
   );
 }
 export default Landing;

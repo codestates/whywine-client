@@ -16,7 +16,7 @@ const MainWineCategory = ({ randomWine }: WineData) => {
 
   const [isTagArr, setIsTagArr] = useState(true);
 
-  const tags: any = localStorage.getItem("userTag");
+  const tags: any = sessionStorage.getItem("userTag");
   if (!tags) {
     setIsTagArr(false);
   }

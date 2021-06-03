@@ -54,7 +54,7 @@ function WineModal({
     });
     setCommentList(data.data.data.comments);
     console.log(data.data.data.comments);
-    console.log("마지막에 없어져??", commentList);
+    // console.log("마지막에 없어져??", commentList);
   };
 
   const handleTextArea = (e: any) => {
@@ -108,17 +108,17 @@ function WineModal({
 
   useEffect(() => {
     handleComments();
-    if (localStorage.getItem("userInfo")) {
-      let userInfo: any = localStorage.getItem("userInfo");
+    if (sessionStorage.getItem("userInfo")) {
+      let userInfo: any = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
       setUserName(`${userInfo.nickname}`);
     } else {
       setUserName("게스트");
-      // * 로컬스토리지 유저인포가 없으면 유저이름을 "게스트"값으로 돌린다.
+      // * 세션 스토리지 유저인포가 없으면 유저이름을 "게스트"값으로 돌린다.
     }
   }, []);
 
-  // * 랜딩될떄 로컬스토리지에 있는 유저인포에서 유저 닉네임 가져옴
+  // * 랜딩될떄 세션 스토리지에 있는 유저인포에서 유저 닉네임 가져옴
 
   // const RendigComment = useMemo(() => handleComments, [comments]);
 
