@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 ul {
@@ -212,6 +213,7 @@ section {
   text-align: center;
   opacity: 1;
 }
+
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -405,6 +407,17 @@ section {
   flex-direction: column;
   align-content: center;
   justify-content: center;
+}
+.landingGoToTop > a {
+  position: absolute;
+  top: 380%;
+  left: 90%;
+  font-size: 40px;
+  background-color: black;
+  width: 5rem;
+  height: 5rem;
+  border: none;
+  border-radius: 50%;
 }
 .login_h2 {
   color: #b42332;
@@ -944,14 +957,20 @@ section {
 }
 .searchGoBack {
   display: flex;
-  position: fixed;
-  top: 17rem;
-  left: 19.5rem;
+  margin-top: 4.3rem;
+  margin-left: 5rem;
 }
 .searchGoBack span {
   font-size: 20px;
   vertical-align: middle;
   margin-left: 5px;
+}
+.goToTop {
+  position: fixed;
+  font-size: 25px;
+  left: 93vw;
+  top: 77vh;
+  cursor: pointer;
 }
 /* .mainSearch:hover {
   width: 250px;
@@ -962,7 +981,7 @@ section {
   transition: all 0.5s;
 }
 .goBackBtn {
-  background-image: url(./components/atoms/Imgs/GoBackBtn.tsx);
+  background-image: url(./components/atoms/Icons/GoBackBtn.tsx);
 }
 
 .likeHover {
@@ -977,21 +996,25 @@ section {
   color: white;
   line-height: 170%;
 }
+
 .mainWineRatingAvg {
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 150px;
-  top: 200px;
+  left: 143px;
+  top: 196px;
   color: rgb(196, 118, 1);
   font-size: 25px;
 }
 .mainWineRatingStars {
   display: flex;
   position: absolute;
-  left: 130px;
-  top: 250px;
+  left: 81px;
+  top: 245px;
   color: rgb(255, 153, 0);
+}
+.rating {
+  margin-left: 74px;
 }
 
 .mainWineCardBox {
@@ -1136,14 +1159,20 @@ section {
 }
 .mainWineCard:hover .mainWineRatingAvg {
   font-size: 35px;
-  margin-left: 45px;
-  top: 30px;
+  margin-left: 12px;
+  top: 40px;
   color: rgb(238, 199, 24);
   transition: all 0.4s;
 }
 .mainWineCard:hover .mainWineRatingStars {
-  top: 100px;
-  font-size: 35px;
+  top: 110px;
+  font-size: 20px;
+  transition: all 0.4s;
+}
+.mainWineCard:hover .rating {
+  top: 110px;
+  font-size: 20px;
+  margin-left: 92px;
   transition: all 0.4s;
 }
 
@@ -1570,7 +1599,6 @@ section {
 .mainTagBox {
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
   margin-top: 3rem;
 }
 
@@ -1584,10 +1612,10 @@ section {
 }
 .redWhite div {
   display: flex;
-  width: 120px;
+  width: 145px;
   margin-right: 20px;
   padding: 8px;
-  height: 35px;
+  height: 36px;
   line-height: normal;
 }
 .roseSparkling {
@@ -1596,10 +1624,10 @@ section {
 }
 .roseSparkling div {
   display: flex;
-  width: 120px;
+  width: 145px;
   margin-right: 20px;
   padding: 8px;
-  height: 35px;
+  height: 36px;
   line-height: normal;
 }
 /* .mainTagBox img {
@@ -1665,6 +1693,19 @@ section {
   border: 2px solid rgb(133, 49, 28);
   background-color: #aa1414;
   color: white;
+
+  transition: all 0.3s ease;
+}
+.mainWineTypeTag.diagonal {
+  border: 2px solid rgb(133, 49, 28);
+
+  background: repeating-linear-gradient(
+    135deg,
+    #f5c0c0,
+    #f5c0c0 10px,
+    #fdfaf6 0,
+    #fdfaf6 20px
+  );
   transition: all 0.3s ease;
 }
 .mainWineTag {
@@ -1755,6 +1796,68 @@ section {
   to {
     opacity: 1;
   }
+}
+.mainEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mainEmpty > div {
+}
+.mainEmpty div {
+  text-align: center;
+  position: relative;
+}
+.scroll-down-main {
+  font-family: "Noto Sans KR", sans-serif;
+  position: absolute;
+  bottom: 3rem;
+  font-size: 30px;
+  width: 100%;
+}
+
+.mainEmpty p {
+  font-size: 20px;
+}
+/* .mainEmptyDes :nth-child(2) {
+} */
+.mainEmptyDes :nth-child(3) {
+  line-height: 30px;
+  font-size: 50px;
+}
+.mainEmptyDes :nth-child(4) {
+  line-height: 30px;
+  font-size: 50px;
+}
+.mainEmptyDes :nth-child(5) {
+  line-height: 30px;
+  font-size: 50px;
+  margin-bottom: 2rem;
+}
+.mainEmptyDes :nth-child(7) {
+  margin-top: 0.5rem;
+  line-height: 30px;
+  font-size: 50px;
+}
+.mainEmptyDes :nth-child(8) {
+  line-height: 30px;
+  font-size: 50px;
+}
+.mainEmptyDes :nth-child(9) {
+  line-height: 30px;
+  font-size: 50px;
+}
+
+.goToSurveyFromMain {
+  height: 40px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 2rem 0;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: rgb(240, 119, 88);
+  font-family: "Noto Sans KR", sans-serif;
 }
 @media screen and (max-width: 800px) {
   body {
