@@ -64,7 +64,7 @@ const LikeCard = ({ userLikeWines }: WineData) => {
 
   return (
     <li>
-      <div className={isOpen ? "openModal modal" : "modal"}>
+      <div className={isOpen ? "openWineModal modal" : "modal"}>
         <WineModal
           price={price}
           tags={tags}
