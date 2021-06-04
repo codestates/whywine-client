@@ -3,7 +3,7 @@ require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 export default function GoogleLogin() {
   const googleLoginHandler = () => {
-    window.location.assign(`${server}/auth/google`);
+    window.location.assign(`${server}auth/google`);
   };
 
   return (

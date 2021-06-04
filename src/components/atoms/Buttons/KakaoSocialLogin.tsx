@@ -3,7 +3,7 @@ require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000";
 export default function KakaoLogin() {
   const KakaoLoginHandler = () => {
-    window.location.assign(`${server}/auth/kakao`);
+    window.location.assign(`${server}auth/kakao`);
   };
 
   return (

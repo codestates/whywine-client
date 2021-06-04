@@ -21,7 +21,7 @@ const SurveyResultQ = () => {
   const updateUserTags = async () => {
     await axios
       .post(
-        `https://localhost:4000/user/update`,
+        `${server}user/update`,
         { tags: tagsArr.filter((el: string) => el !== "") },
         // * (el: string) => el !== "") 빈문자열 제외하는 부분
         {
