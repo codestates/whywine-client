@@ -3,7 +3,9 @@ import { useHistory } from "react-router-dom";
 import GoogleLogin from "../../atoms/Buttons/GoogleSocialLogin";
 import KakaoLogin from "../../atoms/Buttons/KakaoSocialLogin";
 import Title from "../../atoms/Title/Title";
+import SignUpModal from "../../organisms/Modal/SignUpModal";
 import axios from "axios";
+import SignUpBtn from "../../atoms/Buttons/SignUpBtn";
 
 require("dotenv").config();
 
@@ -20,8 +22,24 @@ function SignInModal({ isOpen, closeModal }: Props) {
   const [password, setPassword] = useState("");
   const [isNone, setIsNone] = useState(false);
   const [message, setMessage] = useState("");
+
   const history = useHistory();
 
+
+  //로그인 모달에서도 회원가입 모달 띄워주기
+  const [signUpOpen, setSignUpOpen] = useState<boolean>(false);
+  const [isSignUp, setIsSignUp] = useState(false);
+  const openSignUpModal: React.MouseEventHandler<HTMLDivElement> = () => {
+    setSignUpOpen(true);
+  };
+  const closeSignUpModal: React.MouseEventHandler<HTMLDivElement> = () => {
+    setSignUpOpen(false);
+  };
+  const handleSignUpModal = () => {
+    setIsSignUp(true);
+  };
+  console.log(isSignUp);
+  console.log(server);
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}userinfo`, {
@@ -76,11 +94,11 @@ function SignInModal({ isOpen, closeModal }: Props) {
   return (
     <div className={isOpen ? "openModal modal" : "modal"}>
       {isOpen ? (
-        <div className="SignInModal">
+        <div className="SignInModal" style={{ backgroundColor: "white" }}>
           <h2 className="login_h2">
             <span> whywine</span> | <span>Log in</span>
           </h2>
-          <div className="failed" style={{ opacity: isNone ? "0" : "1" }}>
+          <div className={"failed "} style={{ opacity: isNone ? "0" : "1" }}>
             {message}
           </div>
           <input
@@ -99,7 +117,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
             onKeyDown={loginRequestHandler}
           />
 
-          <div>
+          <div className="siginBox">
             <button
               className="signin-button"
               type="submit"
@@ -108,6 +126,8 @@ function SignInModal({ isOpen, closeModal }: Props) {
               로그인
             </button>
           </div>
+          <SignUpBtn openModal={openSignUpModal} />
+          <SignUpModal isOpen={signUpOpen} closeModal={closeSignUpModal} />
           <div className="login_or">
             <p>or</p>
           </div>

@@ -5,7 +5,9 @@ export interface Props {
 function SignUp({ openModal }: Props) {
   return (
     <div>
-      <div onClick={openModal}>회원가입</div>
+      <div onClick={openModal} style={{ marginRight: "10px" }}>
+        회원가입
+      </div>
     </div>
   );
 }

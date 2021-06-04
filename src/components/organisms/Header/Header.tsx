@@ -54,7 +54,9 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
               handleSearchInput={handleSearchInput}
               handleClickSearchBtn={handleClickSearchBtn}
             />
-            <MyAccount />
+
+            <MyAccount isLogin={isLogin} openModal={openSignInModal} />
+
           </div>
         </div>
       ) : (
@@ -67,8 +69,11 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
               handleClickSearchBtn={handleClickSearchBtn}
             />
 
-            <SignIn openModal={openSignInModal} />
-            <SignUp openModal={openSignUpModal} />
+            <MyAccount isLogin={isLogin} openModal={openSignInModal} />
+            {/* <SignIn openModal={openSignInModal} />
+            <SignUp openModal={openSignUpModal} /> */}
+            {/* <GoToMainBtn /> */}
+
           </div>
           <SignInModal isOpen={signInOpen} closeModal={closeSignInModal} />
           <SignUpModal isOpen={signUpOpen} closeModal={closeSignUpModal} />

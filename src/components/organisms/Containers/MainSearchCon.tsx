@@ -2,13 +2,14 @@ import React from "react";
 import MainSearchCategory from "../Categories/MainSearchCategory";
 
 interface State {
-  searchWine: object[][];
+  searchWine: object[];
+  goBack: () => void;
 }
 
-const MainSearchCon = ({ searchWine }: State) => {
+const MainSearchCon = ({ searchWine, goBack }: State) => {
   return (
     <div>
-      <MainSearchCategory searchWine={searchWine} />
+      <MainSearchCategory searchWine={searchWine} goBack={goBack} />
     </div>
   );
 };

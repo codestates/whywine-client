@@ -155,7 +155,8 @@ function Mypage() {
     formData.append("image", event.target.files[0]);
     console.log(formData);
     return axios
-      .post(`${server}/userinfo/profileimage`, formData, {
+      .post(`${server}userinfo/profileimage`, formData, {
+
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       })

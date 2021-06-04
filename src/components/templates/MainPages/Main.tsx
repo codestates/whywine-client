@@ -112,29 +112,29 @@ const Main = () => {
 
   //* 검색
   const [hasData, setHasData] = useState(true);
-  const [searchWine, setSearchWine] = useState<object[][]>([]);
+  const [searchWine, setSearchWine] = useState<object[]>([]);
   const [isSearch, setIsSearch] = useState(false);
   const [searchWord, setSearchWord] = useState("");
   //* 와인 데이터 이중배열
-  const getWineData2 = (row: number, data: object[]) => {
-    wineDataArr = Array(row).fill([]);
-    getWineDataArr(data);
-  };
-  const getWineDataArr = useCallback(
-    (data: object[]) => {
-      let i = 0;
-      while (data.length > 0) {
-        wineDataArr[i].push(data.shift());
-        if (wineDataArr[i].length === 3) {
-          i++;
-        }
-      }
-      console.log(wineDataArr);
-      setSearchWine(wineDataArr);
-      setIsSearch(true);
-    },
-    [searchWine]
-  );
+  // const getWineData2 = (row: number, data: object[]) => {
+  //   wineDataArr = Array(row).fill([]);
+  //   getWineDataArr(data);
+  // };
+  // const getWineDataArr = useCallback(
+  //   (data: object[]) => {
+  //     let i = 0;
+  //     while (data.length > 0) {
+  //       wineDataArr[i].push(data.shift());
+  //       if (wineDataArr[i].length === 3) {
+  //         i++;
+  //       }
+  //     }
+  //     console.log(wineDataArr);
+  //     setSearchWine(wineDataArr);
+  //     setIsSearch(true);
+  //   },
+  //   [searchWine]
+  // );
   //* 서버에 검색 요청
   const handleClickSearchBtn = (e: any) => {
     if (e.key === "Enter" || e.type === "click") {
@@ -148,17 +148,13 @@ const Main = () => {
             setIsSearch(true);
             setHasData(false);
           } else {
-            // setSearchWine(data.data.data.wines);
-            // setIsSearch(true);
+            console.log(data.data.data.wines);
+            setSearchWine(data.data.data.wines);
+            setIsSearch(true);
             setHasData(true);
-            let wineNum = Math.ceil(data.data.data.wines.length / 3);
-            getWineData2(wineNum, data.data.data.wines);
           }
-          history.push("/main/search");
-        })
-        .then(() => {
-          e.target.value = "";
         });
+
       //로딩 이미지 보여줬다가 사라짐..너무야매..
       setIsLoading(true);
       handleLoading();
@@ -170,7 +166,6 @@ const Main = () => {
   const goBack = () => {
     setIsSearch(false);
   };
-  console.log(isSearch);
   return (
     <div>
       <Header
@@ -180,19 +175,12 @@ const Main = () => {
 
       {isLoading ? (
         <div>
-          <MainWineTagCon
-            userMainTag={userMainTag}
-            setUserMainTag={setUserMainTag}
-            userTypeTag={userTypeTag}
-            setTypeTag={setTypeTag}
-            tags={tags}
-          />
           <Loading />
         </div>
       ) : isSearch ? (
         <div>
-          <GoBackBtn goBack={goBack} />
-          <Search searchWine={searchWine} hasData={hasData} />
+          {/* <GoBackBtn goBack={goBack} /> */}
+          <Search searchWine={searchWine} hasData={hasData} goBack={goBack} />
         </div>
       ) : (
         <div className="mainContainers">

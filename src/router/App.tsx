@@ -55,7 +55,6 @@ const App: React.FC = () => {
         <Suspense
           fallback={
             <div className="loadingBackGround">
-              <Header />
               <Loading />
             </div>
           }

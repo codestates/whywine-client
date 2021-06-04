@@ -16,7 +16,7 @@ const MainSearch = ({ handleSearchInput, handleClickSearchBtn }: State) => {
     <div>
       <input
         className={isClicked ? "mainSearch active" : "mainSearch"}
-        placeholder="와인 이름을 검색해보세요"
+        placeholder="wine을 검색해보세요"
         onChange={handleSearchInput}
         onKeyDown={handleClickSearchBtn}
         onMouseOver={handleIsClicked}
