@@ -38,6 +38,7 @@ const MainWineCategory = ({ randomWine }: WineData) => {
 
   const handleIsTagArr = () => {
     setIsTagArr(true);
+    history.push("/survey");
     window.location.reload();
   };
   // useEffect(() => {

@@ -351,6 +351,7 @@ section {
 /* *      랜딩페이지 두번째        */
 
 .SecondPage {
+  color: #fdfaf6;
   background-image: url("./img/KakaoTalk_Photo_2021-05-20-00-28-15.jpeg");
   background-size: cover;
   display: flex;
@@ -369,7 +370,6 @@ section {
 /* *      랜딩페이지 세번째        */
 
 .ThirdPage {
-  background-image: url("./img/KakaoTalk_Photo_2021-05-20-00-28-22.jpeg");
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -379,7 +379,6 @@ section {
 /* *      랜딩페이지 네번째        */
 
 .FourthPage {
-  background-image: url("./img/KakaoTalk_Photo_2021-05-20-00-28-22.jpeg");
   background-size: cover;
   display: flex;
   flex-direction: column;
