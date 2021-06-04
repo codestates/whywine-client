@@ -6,25 +6,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-<<<<<<< HEAD
 const server = process.env.REACT_APP_SERVER || "https://localhost:4000/";
 const imgserver = process.env.REACT_APP_USER_IMAGE_URL
-=======
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
-const imgserver = process.env.REACT_APP_USER_IMAGE_URL
-
-// interface User {
-//   id: number
-//   email: string
-//   nickname: string
-//   image: string
-//   good: number[]
-//   bad: number[]
-//   likes: number
-//   tags: number[]
-//   wines: number[]
-// }
->>>>>>> e0993e83cf15841f0f3c6d2d15a26daf87b44938
 
 function Mypage() {
   const handleSearchInput = (e: any) => {};
@@ -66,18 +49,28 @@ function Mypage() {
   let userInfo: any;
 
   useEffect(() => {
+    if(sessionStorage.getItem("login")){
+      getUserInfo()
+      if (sessionStorage.getItem("userInfo")) {
+        userInfo = sessionStorage.getItem("userInfo");
+        userInfo = JSON.parse(userInfo);
+        setUser({
+          ...userInfo,
+          image:
+            `${imgserver}` +
+            userInfo.image,
+        });
+      }
+    }else{
+      history.push("/main")
+    }
     if (sessionStorage.getItem("userInfo")) {
       userInfo = sessionStorage.getItem("userInfo");
-
       userInfo = JSON.parse(userInfo);
       setUser({
         ...userInfo,
         image:
-<<<<<<< HEAD
           `${imgserver}` +
-=======
-        imgserver +
->>>>>>> e0993e83cf15841f0f3c6d2d15a26daf87b44938
           userInfo.image,
       });
     }else{
@@ -86,6 +79,22 @@ function Mypage() {
 
     console.log(IsOpen);
   }, []);
+  
+  const getUserInfo = async () => {
+    try {
+      const userInfo = await axios.get(`${server}userinfo`, {
+        withCredentials: true,
+      });
+      console.log("userInfo", userInfo);
+      sessionStorage.setItem(
+        "userInfo",
+        JSON.stringify(userInfo.data.data.userInfo)
+      );
+      // * 유저 정보 세션스토리지 저장
+    } catch (error) {
+      sessionStorage.setItem("login", JSON.stringify(false));
+    }
+  };
 
   const MemberOutClick = () => {
     if (MemberOut) {
@@ -184,15 +193,6 @@ function Mypage() {
   };
   console.log(user.image);
 
-  /* const handleFileInput=(e:any)=>{
-    setImageUpload({
-      file: e.target.files[0],
-    })
-  } */
-  /* const handlePost=()=>{
-    
-  } */
-
   return (
     <>
       <Header
@@ -215,18 +215,20 @@ function Mypage() {
               />
             </div>
           </li>
+
           {IsOpen ? (
             <li>
-              <ul>
+              <ul className="EditInfo">
                 <i className="fas fa-times" onClick={EditClick}></i>
                 <li>
+                  <div>회원 정보 변경</div>
                   <input
                     type="text"
                     name="newNickName"
                     placeholder="변경할 닉네임"
                     onChange={NewNickNameInputValue}
                   />
-                  <i className="fas fa-check" onClick={EditNickNameAxios}></i>
+                  <i className="fas fa-check" onClick={EditNickNameAxios}>ok</i>
                 </li>
                 <li>
                   <input
@@ -243,20 +245,19 @@ function Mypage() {
                     placeholder="새 비밀번호"
                     onChange={NewPasswordInputValue}
                   />
-                  <i className="fas fa-check" onClick={EditPasswordAxios}></i>
+                  <i className="fas fa-check" onClick={EditPasswordAxios}>ok</i>
                 </li>
               </ul>
             </li>
           ) : (
-            <li>
-              <div className="userNickName">{user.nickname}</div>
-              <div>{user.email}</div>
-              <i className="fas fa-edit" onClick={EditClick}></i>
+            <li className ="MyInfo">
+              <div>{user.nickname}</div>
+              <div>email: {user.email}</div>
             </li>
           )}
 
           {MemberOut ? (
-            <li>
+            <li className="MemberOut">
               <p>탈퇴 하시겠습니까?</p>
               <input
                 type="password"
@@ -268,8 +269,9 @@ function Mypage() {
               <i className="fas fa-times" onClick={MemberOutClick}></i>
             </li>
           ) : (
-            <li>
+            <li className="MemberOut">
               <i className="fas fa-user-slash" onClick={MemberOutClick}></i>
+              <i className="fas fa-edit" onClick={EditClick}></i>
             </li>
           )}
         </ul>

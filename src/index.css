@@ -1824,73 +1824,34 @@ section {
 /* ---------------------------------------------마이페이지(MyPage.css)-------------------------------- */
 .MyPageWrap {
   box-sizing: content-box;
-  margin: 0 200px;
+  margin: 0 30px;
   padding-top: 100px;
   /* background-color: #22b836; */
+  color: #000;
 }
 .MyPageWrap > ul {
   background-color: #f9f1e6;
-  width: 400px;
-  height: 300px;
+  width: 40%;
+  min-width: 400px;
+  height: 400px;
   text-align: center;
   margin: 50px auto 0px;
   border: rgba(102, 98, 98, 0.582) solid 2px;
   border-radius: 15px;
   position: relative;
 }
-.MyPageWrap > ul > li:first-child {
-  position: relative;
-}
-.MyPageWrap > ul > li:last-child {
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-.MyPageWrap .fa-check,
-.fa-times {
-  width: 20px;
-}
-.MyPageWrap ul li > div:nth-child(2),
-.MyPageWrap ul li ul {
-  padding-top: 120px;
-}
+
 .MyPageWrap ul li .profile {
   position: absolute;
   top: 0px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.MyPageWrap ul li ul li {
-  line-height: 30px;
-}
-.MyPageWrap ul li ul .fa-times {
-  position: absolute;
-  right: 40px;
-  top: 100px;
-}
-.MyPageWrap ul li ul .fa-check {
-  position: absolute;
-  right: 80px;
-  height: 20;
-}
 .MyPageWrap .fa-camera {
   position: absolute;
-  bottom: 10px;
-  right: 20px;
-}
-/* .MyPageWrap .fa-edit{
-  position: absolute;
-  right: 40px;
+  font-size: 23px;
   bottom: 15px;
-} */
-.MyPageWrap .userNickName {
-  margin-bottom: 5px;
-}
-.MyPageWrap .fa-user-slash,
-.fa-edit,
-.fa-camera {
-  font-size: 25px;
+  right: 20px;
 }
 .onChangeImage {
   display: none;
@@ -1899,6 +1860,51 @@ section {
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  background-color: blueviolet;
+  background-image: url(./img/basicImg.png);
+}
+.MyPageWrap .EditInfo, .MyInfo{
+  position: absolute;
+  top: 170px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 50px;
+  font-size: 20px;
+}
+.MyPageWrap .MemberOut {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.MyPageWrap .MemberOut input {
+  line-height: 30px;
+}
+.MyPageWrap .MemberOut .fas{
+  font-size: 23px;
+  position: unset;
+  width: 30px;
+}
+.EditInfo {
+  transition: all 0.5s;
+  margin-top: 20px;
+  width: 240px;
+  text-align: center;
+}
+.EditInfo input{
+  float: left;
+  line-height: 30px;
+  margin-bottom: 5px;
+}
+.EditInfo .fas{
+  position: unset;
+  float: right;
+}
+.EditInfo .fa-times{
+  float: left;
+  font-size: 20px;
+}
+.MyPageWrap .fa-edit{
+  margin-left: 100px;
+  text-align: right;
 }
 /* -------------------------------------------------------------------------------------- */
