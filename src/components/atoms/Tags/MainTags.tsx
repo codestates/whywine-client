@@ -31,6 +31,7 @@ const MainTags = ({
     [high, degreeKOR[2]],
   ];
   const handleTagClick = (degree: string | boolean) => {
+    sessionStorage.setItem("selectTags", "true");
     switch (degree) {
       case degreeKOR[0]:
         setLow(!low);

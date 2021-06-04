@@ -16,6 +16,7 @@ const MainSweetnessTag = () => {
   const [low, setLow] = useState(false);
   const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags));
   const handleSweetnessTagClick = (sweetness: string) => {
+    sessionStorage.setItem("selectTags", "true");
     switch (sweetness) {
       case "씁쓸한":
         setLow(!low);

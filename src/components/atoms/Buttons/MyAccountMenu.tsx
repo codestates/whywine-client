@@ -28,7 +28,7 @@ function MyAccountMenu({ setMeunOpen }: Props) {
       <div className="menuWrapper ">
         <div onClick={() => history.push("userInfo")}>마이페이지</div>
         <div onClick={() => history.push("likeList")}>내 찜 목록</div>
-        <div>장바구니</div>
+        <div>관리자 와인 등록</div>
         <div>
           <Logout setIslogin={setIslogin} />
         </div>

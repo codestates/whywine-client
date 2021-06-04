@@ -14,6 +14,7 @@ const MainTanninTag = () => {
   const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags));
 
   const handleTanninTagClick = (e: any) => {
+    sessionStorage.setItem("selectTags", "true");
     switch (e.target.textContent) {
       case "부드러운":
         setLow(!low);
