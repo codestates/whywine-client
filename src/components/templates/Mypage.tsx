@@ -6,10 +6,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const server = process.env.REACT_APP_SERVER || "https://localhost:4000/";
-const imgserver =
-  process.env.REACT_APP_USER_IMAGE_URL ||
-  "https://whywine-image.s3.us-east-2.amazonaws.com/user/";
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
+const imgserver = process.env.REACT_APP_USER_IMAGE_URL
 
 // interface User {
 //   id: number
@@ -43,7 +41,7 @@ function Mypage() {
   const [NewPassword, setNewPassword] = useState("");
   const [NewNickName, setNewNickName] = useState("");
   const [Password, setPassword] = useState("");
-
+  const history = useHistory();
   const PasswordInputValue = (e: any) => {
     setPassword(e.target.value);
   };
@@ -70,9 +68,11 @@ function Mypage() {
       setUser({
         ...userInfo,
         image:
-          "https://whywine-image.s3.us-east-2.amazonaws.com/user/" +
+        imgserver +
           userInfo.image,
       });
+    }else{
+      history.push("/main")
     }
 
     console.log(IsOpen);
@@ -112,6 +112,7 @@ function Mypage() {
         //로그아웃
         //탈퇴 완료 메세지
         //페이지 이동
+        history.push("/main")
       }
     } catch (error) {
       console.error(error.massege);
