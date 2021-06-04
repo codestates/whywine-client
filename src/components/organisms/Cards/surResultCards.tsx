@@ -3,13 +3,17 @@ import SurResultCardCenter from "../../atoms/Cards/SurResultCardCenter";
 import SurResultCardLeft from "../../atoms/Cards/SurResultCardLeft";
 import SurResultCardRight from "../../atoms/Cards/SurResultCardRight";
 
-const surResultCards = () => {
+interface WineData {
+  randomWine: object[];
+}
+
+const surResultCards = ({ randomWine }: WineData) => {
   return (
     <div>
       <div className="resultCardBox">
-        <SurResultCardLeft />
-        <SurResultCardCenter />
-        <SurResultCardRight />
+        <SurResultCardLeft randomWine={randomWine[0]} />
+        <SurResultCardCenter randomWine={randomWine[1]} />
+        <SurResultCardRight randomWine={randomWine[2]} />
       </div>
     </div>
   );

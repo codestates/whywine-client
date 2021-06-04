@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
-import wineSample from "../../../img/wine_sample.webp";
 import dotenv from "dotenv";
 
 dotenv.config();
