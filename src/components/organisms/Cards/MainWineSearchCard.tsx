@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import WineModal from "../Modal/WineModal";
-
-import Rating from "../Ratings/Rating";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface wineData {
   searchWine: any;
@@ -18,23 +17,22 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
-
   const ModalEl: any = useRef();
   const handleIsClicked = () => {
     setIsOpen(true);
     setIsClicked(true);
   };
-  // const handleClickOutside = (e: any) => {
-  //   if (isOpen && !ModalEl.current.contains(e.target)) {
-  //     setIsOpen(false);
-  //   }
-  // };
-  // useEffect(() => {
-  //   window.addEventListener("click", handleClickOutside);
-  //   return () => {
-  //     window.removeEventListener("click", handleClickOutside);
-  //   };
-  // });
+  const handleClickOutside = (e: any) => {
+    if (isOpen && !ModalEl.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  });
 
   if (searchWine) {
     name = searchWine.name;
@@ -75,16 +73,21 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
       </div>
 
       <div className="mainSearchCard" onClick={handleIsClicked}>
-        {/* <Rating /> */}
         <div className="mainSearchProfile">
-          <img
+          <LazyLoadImage
             src={image}
+            effect="blur"
+            // scrollPosition={scrollPosition}
             alt="와인"
             className={isUpload ? "wineMainImg" : "wineMainSample"}
           />
           <div className="mainSearchContent">
             <div>{name}</div>
-            <p>{description}</p>
+            {description.length > 120 ? (
+              <p className="moreThanDes">{description}</p>
+            ) : (
+              <p className="lessThanDes">{description}</p>
+            )}
           </div>
         </div>
 

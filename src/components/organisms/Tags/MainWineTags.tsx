@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import MainResetTagBtn from "../../atoms/Buttons/MainResetTagBtn";
 import MainTypeTag from "../../atoms/Tags/MainTypeTag";
-import MainLabel from "../../atoms/Tags/MainLabel";
-import wine from "../../../img/wine_main.png";
 import MainTags from "../../atoms/Tags/MainTags";
 
 interface Tags {
@@ -37,54 +34,69 @@ const MainWineTags = ({
         <MainLabel />
       </div> */}
       <div className={"mainTagBox"}>
-        <img src={wine} />
+        {/* <img src={wine} /> */}
+        <div className="mainCategoryName">
+          <h2>
+            당신을 위한 <span>완벽한 와인</span>
+          </h2>
+          <p>
+            태그를 선택하시면 당신을 위한 최적의 와인 3개를 <br></br>랜덤으로
+            추천해드립니다.
+          </p>
+        </div>
 
-        <div className="typeTag">
-          <MainTypeTag userTypeTag={userTypeTag} setTypeTag={setTypeTag} />
-        </div>
-        <div className="bodyTanninTag">
-          <MainTags
-            tags={tags}
-            userTags={userTags[0]}
-            tagTitle="바디."
-            degreeENG={["body_light", "body_medium", "body_bold"]}
-            degreeKOR={["가벼운", "적당한", "무거운"]}
-            userMainTag={userMainTag}
-            setUserMainTag={setUserMainTag}
-            wineFlavor={wineFlavor[0]}
-          />
-          <MainTags
-            tags={tags}
-            userTags={userTags[1]}
-            tagTitle="탄닌."
-            degreeENG={["tannins_smooth", "tannins_medium", "tannins_tannic"]}
-            degreeKOR={["부드러운", "적당한", "떫은"]}
-            userMainTag={userMainTag}
-            setUserMainTag={setUserMainTag}
-            wineFlavor={wineFlavor[1]}
-          />
-        </div>
-        <div className="aciditySweetnessTag">
-          <MainTags
-            tags={tags}
-            userTags={userTags[2]}
-            tagTitle="산미."
-            degreeENG={["acidity_soft", "acidity_medium", "acidity_acidic"]}
-            degreeKOR={["낮은", "적당한", "높은"]}
-            userMainTag={userMainTag}
-            setUserMainTag={setUserMainTag}
-            wineFlavor={wineFlavor[2]}
-          />
-          <MainTags
-            tags={tags}
-            userTags={userTags[3]}
-            tagTitle="당도."
-            degreeENG={["sweetness_dry", "sweetness_medium", "sweetness_sweet"]}
-            degreeKOR={["씁쓸한", "적당한", "달달한"]}
-            userMainTag={userMainTag}
-            setUserMainTag={setUserMainTag}
-            wineFlavor={wineFlavor[3]}
-          />
+        <div className="mainTags">
+          <div className="typeTag">
+            <MainTypeTag userTypeTag={userTypeTag} setTypeTag={setTypeTag} />
+          </div>
+          <div className="bodyTanninTag">
+            <MainTags
+              tags={tags}
+              userTags={userTags[0]}
+              tagTitle="바디."
+              degreeENG={["body_light", "body_medium", "body_bold"]}
+              degreeKOR={["가벼운", "적당한", "무거운"]}
+              userMainTag={userMainTag}
+              setUserMainTag={setUserMainTag}
+              wineFlavor={wineFlavor[0]}
+            />
+            <MainTags
+              tags={tags}
+              userTags={userTags[1]}
+              tagTitle="탄닌."
+              degreeENG={["tannins_smooth", "tannins_medium", "tannins_tannic"]}
+              degreeKOR={["부드러운", "적당한", "떫은"]}
+              userMainTag={userMainTag}
+              setUserMainTag={setUserMainTag}
+              wineFlavor={wineFlavor[1]}
+            />
+          </div>
+          <div className="aciditySweetnessTag">
+            <MainTags
+              tags={tags}
+              userTags={userTags[2]}
+              tagTitle="산미."
+              degreeENG={["acidity_soft", "acidity_medium", "acidity_acidic"]}
+              degreeKOR={["낮은", "적당한", "높은"]}
+              userMainTag={userMainTag}
+              setUserMainTag={setUserMainTag}
+              wineFlavor={wineFlavor[2]}
+            />
+            <MainTags
+              tags={tags}
+              userTags={userTags[3]}
+              tagTitle="당도."
+              degreeENG={[
+                "sweetness_dry",
+                "sweetness_medium",
+                "sweetness_sweet",
+              ]}
+              degreeKOR={["씁쓸한", "적당한", "달달한"]}
+              userMainTag={userMainTag}
+              setUserMainTag={setUserMainTag}
+              wineFlavor={wineFlavor[3]}
+            />
+          </div>
         </div>
       </div>
     </div>

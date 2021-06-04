@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LikeListCon from "../organisms/Containers/LikeListCon";
 import MyPageHeader from "../organisms/Header/MyPageHeader";
 
@@ -11,7 +11,6 @@ if (!sessionStorage.getItem("userInfo")) {
 userInfo = sessionStorage.getItem("userInfo");
 // * 유저인포에서 찜 된 와인 리스트 가져오기
 let likeWines = JSON.parse(userInfo).wines;
-
 const LikeList = () => {
   const [userLikeWines, setUserLikeWines] = useState<object[]>(likeWines);
 
