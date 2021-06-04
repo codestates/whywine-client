@@ -20,19 +20,18 @@ function FirstPage(props: Props) {
   return (
     <div className="firstPageCon">
       <div className="FirstPage_Summery">
-        <h1>Best Wine</h1>
-        <h1>For You.</h1>
         <p {...animatedItem}>와인을 처음 시작하는 당신을 위해</p>
+        <h1>Best Wine For You.</h1>
       </div>
       <SurveyModal isOpen={openSurvey} />
 
       <div className="FirstPage_route">
-        <div className="FirstPage_InputSurvey">
-          <div>설문하기</div>
-          <i
-            className="fas fa-arrow-alt-circle-right"
-            onClick={() => openSurveyModal()}
-          ></i>
+        <div
+          className="FirstPage_InputSurvey"
+          onClick={() => openSurveyModal()}
+        >
+          <div>내 취향 와인 찾으러가기</div>
+          <i className="fas fa-arrow-alt-circle-right"></i>
         </div>
         <div className="FirstPage_GoTomain">
           <GoToMainBtn />
