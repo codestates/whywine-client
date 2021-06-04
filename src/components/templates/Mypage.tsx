@@ -6,8 +6,25 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+<<<<<<< HEAD
 const server = process.env.REACT_APP_SERVER || "https://localhost:4000/";
 const imgserver = process.env.REACT_APP_USER_IMAGE_URL
+=======
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
+const imgserver = process.env.REACT_APP_USER_IMAGE_URL
+
+// interface User {
+//   id: number
+//   email: string
+//   nickname: string
+//   image: string
+//   good: number[]
+//   bad: number[]
+//   likes: number
+//   tags: number[]
+//   wines: number[]
+// }
+>>>>>>> e0993e83cf15841f0f3c6d2d15a26daf87b44938
 
 function Mypage() {
   const handleSearchInput = (e: any) => {};
@@ -29,7 +46,7 @@ function Mypage() {
   const [NewPassword, setNewPassword] = useState("");
   const [NewNickName, setNewNickName] = useState("");
   const [Password, setPassword] = useState("");
-
+  const history = useHistory();
   const PasswordInputValue = (e: any) => {
     setPassword(e.target.value);
   };
@@ -56,9 +73,15 @@ function Mypage() {
       setUser({
         ...userInfo,
         image:
+<<<<<<< HEAD
           `${imgserver}` +
+=======
+        imgserver +
+>>>>>>> e0993e83cf15841f0f3c6d2d15a26daf87b44938
           userInfo.image,
       });
+    }else{
+      history.push("/main")
     }
 
     console.log(IsOpen);
@@ -98,6 +121,7 @@ function Mypage() {
         //로그아웃
         //탈퇴 완료 메세지
         //페이지 이동
+        history.push("/main")
       }
     } catch (error) {
       console.error(error.massege);
@@ -191,7 +215,6 @@ function Mypage() {
               />
             </div>
           </li>
-
           {IsOpen ? (
             <li>
               <ul>
