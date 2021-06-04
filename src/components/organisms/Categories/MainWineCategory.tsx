@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MainWineCard from "../Cards/MainWineCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Loading from "../../atoms/Imgs/Loading";
+import Loading from "../../atoms/Icons/Loading";
 import { useHistory } from "react-router-dom";
 
 interface WineData {
@@ -37,14 +37,6 @@ const MainWineCategory = ({ randomWine }: WineData) => {
               );
             })}
           </ul>
-          <div
-            onClick={() => history.push("/survey")}
-            className="guestNoSurvey"
-            style={{ opacity: isTagArr ? "1" : "0" }}
-          >
-            추천와인이 없습니다. {"   "}
-            <div>나에게 맞는 와인 찾으러 가기</div>
-          </div>
         </div>
       ) : (
         <div>추천와인이 없습니다 </div>

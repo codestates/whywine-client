@@ -4,13 +4,13 @@ import MainWineTags from "../Tags/MainWineTags";
 interface Tags {
   userMainTag: string[];
   userTypeTag: string[];
-  setUserMainTag: React.Dispatch<React.SetStateAction<string[]>>;
+  handleSetUserTag: (userTag: string[]) => void;
   setTypeTag: React.Dispatch<React.SetStateAction<string[]>>;
   tags: any;
 }
 const MainWineTagCon = ({
   userMainTag,
-  setUserMainTag,
+  handleSetUserTag,
   userTypeTag,
   setTypeTag,
   tags,
@@ -19,7 +19,7 @@ const MainWineTagCon = ({
     <div className="mainWineTagCon">
       <MainWineTags
         userMainTag={userMainTag}
-        setUserMainTag={setUserMainTag}
+        handleSetUserTag={handleSetUserTag}
         userTypeTag={userTypeTag}
         setTypeTag={setTypeTag}
         tags={tags}
