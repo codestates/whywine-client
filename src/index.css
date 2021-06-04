@@ -102,8 +102,8 @@ section {
   justify-content: space-around;
 }
 .FirstPage_GoTomain {
-  font-size: 25px;
-  margin: 0px 6px;
+  font-size: 31px;
+  margin: 5px 3px;
   cursor: pointer;
 }
 .FirstPage_GoTomain:hover {
@@ -111,6 +111,7 @@ section {
 }
 .FirstPage_route {
   font-family: "Noto Sans KR", sans-serif;
+  color: #fdfaf6;
 }
 .fa-arrow-alt-circle-right {
   margin-bottom: 7px;
@@ -137,12 +138,17 @@ section {
   font-size: 100px;
 }
 .FirstPage_Summery p {
-  color: white;
+  color: #fdfaf6;
   font-size: 33px;
 }
 .FirstPage_InputSurvey {
+  cursor: pointer;
+  margin-top: 30px;
   display: flex;
   font-size: 50px;
+}
+.FirstPage_InputSurvey:hover {
+  color: rgb(240, 119, 88);
 }
 .fa,
 .fas {
@@ -671,12 +677,12 @@ section {
   user-select: auto;
   height: 35px;
 }
-.star-active {
+.starActive {
   background-image: url("./img/star-solid.svg");
   margin-right: 5px;
   cursor: pointer;
 }
-.star-no-active {
+.starNoActive {
   background-image: url("./img/star-regular.svg");
   margin-right: 5px;
   cursor: pointer;
@@ -694,7 +700,11 @@ section {
   flex-direction: row;
   justify-content: space-around;
 }
-
+.guestLoginModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .reviewUl {
   scroll-snap-type: y mandatory;
   overflow: scroll;
@@ -1083,14 +1093,14 @@ section {
 
 .unlike {
   background-image: url("./img/heart-regular.svg");
-
   width: 20px;
   height: 20px;
 }
 .like {
+  background-image: url("./img/heart-solid.svg");
+
   width: 20px;
   height: 20px;
-  background-image: url("./img/heart-solid.svg");
 }
 .wineimg {
   min-width: 200px;
