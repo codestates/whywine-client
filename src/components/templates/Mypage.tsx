@@ -7,21 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const server = process.env.REACT_APP_SERVER || "https://localhost:4000/";
-const imgserver =
-  process.env.REACT_APP_USER_IMAGE_URL ||
-  "https://whywine-image.s3.us-east-2.amazonaws.com/user/";
-
-// interface User {
-//   id: number
-//   email: string
-//   nickname: string
-//   image: string
-//   good: number[]
-//   bad: number[]
-//   likes: number
-//   tags: number[]
-//   wines: number[]
-// }
+const imgserver = process.env.REACT_APP_USER_IMAGE_URL
 
 function Mypage() {
   const handleSearchInput = (e: any) => {};
@@ -70,7 +56,7 @@ function Mypage() {
       setUser({
         ...userInfo,
         image:
-          "https://whywine-image.s3.us-east-2.amazonaws.com/user/" +
+          `${imgserver}` +
           userInfo.image,
       });
     }
