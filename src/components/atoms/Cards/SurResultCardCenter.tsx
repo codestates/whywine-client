@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import card from "../../../img/wine_sample.png";
 import ReactCardFlip from "react-card-flip";
 import Rating from "../../organisms/Ratings/Rating";
-import ClickSearch from "../Imgs/ClickSearch";
+import ClickSearch from "../Icons/ClickSearch";
 
 interface WineData {
   randomWine: any;
@@ -14,7 +14,8 @@ let name: string,
   image: string,
   price: number,
   sort: string,
-  tags: object[];
+  tags: object[],
+  rating_avg: number;
 const SurResultCardCenter = ({ randomWine }: WineData) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isOpacity, setIsOpacity] = useState<boolean>(false);
@@ -29,6 +30,7 @@ const SurResultCardCenter = ({ randomWine }: WineData) => {
     price = randomWine.price;
     tags = randomWine.tags;
     sort = randomWine.sort;
+    rating_avg = randomWine.rating_avg;
   }
 
   const rotateCard = (e: any) => {
@@ -64,7 +66,7 @@ const SurResultCardCenter = ({ randomWine }: WineData) => {
 
       <div className="backCard">
         <div className="resultWineCard" onClick={rotateCard}>
-          <Rating />
+          <Rating rating_avg={rating_avg} />
           <div className="mainWineProfile">
             {image ? (
               <img src={image} alt="와인" className={"wineMainImg"} />

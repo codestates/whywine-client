@@ -13,7 +13,8 @@ let name: string,
   image: string,
   price: number,
   sort: string,
-  tags: object[];
+  tags: object[],
+  rating_avg: number;
 const SurResultCardRight = ({ randomWine }: WineData) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isOpacity, setIsOpacity] = useState<boolean>(false);
@@ -28,6 +29,7 @@ const SurResultCardRight = ({ randomWine }: WineData) => {
     price = randomWine.price;
     tags = randomWine.tags;
     sort = randomWine.sort;
+    rating_avg = randomWine.rating_avg;
   }
 
   const rotateCard = (e: any) => {
@@ -63,7 +65,7 @@ const SurResultCardRight = ({ randomWine }: WineData) => {
 
       <div className="backCard">
         <div className="resultWineCard" onClick={rotateCard}>
-          <Rating />
+          <Rating rating_avg={rating_avg} />
           <div className="mainWineProfile">
             {image ? (
               <img src={image} alt="와인" className={"wineMainImg"} />
