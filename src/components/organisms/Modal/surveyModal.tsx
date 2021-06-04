@@ -2,18 +2,23 @@ import * as React from "react";
 import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn";
 import GoToSurveyBtn from "../../atoms/Buttons/GoToSurveyBtn";
 import UseScrollFadeIn from "../../atoms/Scroll/UseScrollFadeIn";
-
 interface Props {
   isOpen: Boolean;
+  animatedItem: {
+    ref: any;
+    style: {
+      opacity: number;
+      transform: string | undefined;
+    };
+  };
 }
 
-function SurveyModal({ isOpen }: Props) {
-  const animatedItem = UseScrollFadeIn("up", 1, 1);
+function SurveyModal({ isOpen, animatedItem }: Props) {
   return (
     // <div className={isOpen ? "openModal modal" : "modal"}>
     <div>
       {isOpen ? (
-        <div className="SurveyModal">
+        <div {...animatedItem} className="SurveyModal ">
           <h1>나의 와인 성향 테스트</h1>
           <br></br>
           <h1>어떤 와인을 고를지 고민이시군요 ! </h1>
@@ -26,8 +31,6 @@ function SurveyModal({ isOpen }: Props) {
         </div>
       ) : null}
     </div>
-
-    // </div>
   );
 }
 

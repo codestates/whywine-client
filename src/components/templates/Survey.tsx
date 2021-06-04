@@ -12,7 +12,6 @@ function Survey() {
   const [userTag, setUserTag] = useState<string[]>([]);
 
   useEffect(() => {
-    console.log("배열", userTag);
     if (userTag.length === 5) {
       sessionStorage.setItem("userTag", JSON.stringify(userTag));
       // * 선택한 답변의 갯수가 5개가 되면 세션스토리지에 "userTag"으로 태그들을 저장함
