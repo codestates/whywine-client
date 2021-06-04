@@ -48,6 +48,7 @@ const App: React.FC = () => {
   useEffect(() => {
     LogInCheck();
   }, []);
+
   return (
     <BrowserRouter>
       <Switch>

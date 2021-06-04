@@ -27,6 +27,7 @@ const MainWineTags = ({
   tags,
 }: Tags) => {
   const [userTags, setUserTags] = useState(JSON.parse(tags));
+
   return (
     <div>
       {/* <div className="mainLabelBox">

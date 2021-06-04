@@ -25,6 +25,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
 
   const history = useHistory();
 
+
   //로그인 모달에서도 회원가입 모달 띄워주기
   const [signUpOpen, setSignUpOpen] = useState<boolean>(false);
   const [isSignUp, setIsSignUp] = useState(false);

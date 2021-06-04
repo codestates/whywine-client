@@ -60,14 +60,14 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
     <li>
       <div className={isOpen ? "openModal modal" : "modal"}>
         <WineModal
-          price={price}
-          tags={tags}
-          id={id}
-          sort={sort}
-          likeCount={likeCount}
-          description={description}
-          image={image}
-          name={name}
+          price={searchWine.price}
+          tags={searchWine.tags}
+          id={searchWine.id}
+          sort={searchWine.sort}
+          likeCount={searchWine.likeCount}
+          description={searchWine.description}
+          image={searchWine.image}
+          name={searchWine.name}
           ModalEl={ModalEl}
         />
       </div>

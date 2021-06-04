@@ -156,6 +156,7 @@ function Mypage() {
     console.log(formData);
     return axios
       .post(`${server}userinfo/profileimage`, formData, {
+
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       })
@@ -204,6 +205,7 @@ function Mypage() {
               />
             </div>
           </li>
+
           {IsOpen ? (
             <li>
               <ul>

@@ -10,7 +10,7 @@ export default function StarIcon({ isActive }: IconProps) {
     <span>
       <img
         src={Icon}
-        className={isActive ? "star-active" : "star-no-active"}
+        className={isActive ? "starActive" : "starNoActive"}
       ></img>
     </span>
   );

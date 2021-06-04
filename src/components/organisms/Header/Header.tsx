@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Title from "../../atoms/Title/Title";
-import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn";
 import SignIn from "../../atoms/Buttons/SignIn";
 import SignUp from "../../atoms/Buttons/SignUp";
-import SingInModal from "../Modal/SignInModal";
+import SignInModal from "../Modal/SignInModal";
 import SignUpModal from "../Modal/SignUpModal";
-import Logout from "../../atoms/Buttons/Logout";
 import MyAccount from "../../organisms/Togle/MyAccount";
 import MainSearch from "../../atoms/Inputs/MainSearch";
-import userEvent from "@testing-library/user-event";
 
 interface State {
   handleSearchInput?: (e: any) => void;
@@ -58,9 +55,8 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
               handleClickSearchBtn={handleClickSearchBtn}
             />
 
-            {/* <GoToMainBtn /> */}
-
             <MyAccount isLogin={isLogin} openModal={openSignInModal} />
+
           </div>
         </div>
       ) : (
@@ -72,12 +68,14 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
               handleSearchInput={handleSearchInput}
               handleClickSearchBtn={handleClickSearchBtn}
             />
+
             <MyAccount isLogin={isLogin} openModal={openSignInModal} />
             {/* <SignIn openModal={openSignInModal} />
             <SignUp openModal={openSignUpModal} /> */}
             {/* <GoToMainBtn /> */}
+
           </div>
-          <SingInModal isOpen={signInOpen} closeModal={closeSignInModal} />
+          <SignInModal isOpen={signInOpen} closeModal={closeSignInModal} />
           <SignUpModal isOpen={signUpOpen} closeModal={closeSignUpModal} />
         </div>
       )}
