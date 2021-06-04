@@ -82,7 +82,10 @@ const Like = ({ id }: Props) => {
   }, []);
 
   return (
-    <div onClick={handleLikeBtn} className={isLike ? "like" : "unlike"}></div>
+    <i
+      onClick={handleLikeBtn}
+      className={isLike ? "like icon-red" : "unlike icon-black"}
+    ></i>
   );
 };
 
