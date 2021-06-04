@@ -205,7 +205,6 @@ function Mypage() {
               />
             </div>
           </li>
-
           {IsOpen ? (
             <li>
               <ul>
