@@ -112,11 +112,12 @@ function WineModal({
         text: "",
         user: `${userName}`,
         rating: 0,
-        // ! 댓글을 작성해달라는 문구 필요
       });
     }
   };
   // * 댓글 작성버튼을 누르면 랜딩시켜줄 comments에 작성된 comment가 들어감
+
+  const handleCommentUpdate = async () => {};
 
   useEffect(() => {
     handleComments();
@@ -210,9 +211,11 @@ function WineModal({
                 );
               })}
             </div>
+
             <ReviewInput handleTextArea={handleTextArea} comment={comment} />
             <ReviewBtn handleClick={handleSubmitClick} />
           </div>
+
           <ul className="reviewUl">
             {commentList.reverse().map((el: any) => {
               return (
