@@ -47,6 +47,19 @@ function Reviews({
   setCommentUpdate,
 }: ReviewsProps) {
   const [deleteReview, setDeleteReview] = useState(false);
+  const [isGuset, setIsGuest] = useState(false);
+
+  let login: any = sessionStorage.getItem("login");
+  let userInfo: any = sessionStorage.getItem("userInfo");
+
+  if (!JSON.parse(login)) {
+    // * 로그인 상태가 아니면 게스트
+    setIsGuest(true);
+  }
+  if (user.id !== JSON.parse(userInfo).id) {
+    // * 유저아이디와 댓글을 작성한 유저아이다가 다르면 각 리뷰에선 게스트 취급
+    setIsGuest(true);
+  }
 
   // * 댓글 삭제 함수
   const handleDeleteRewiew = async () => {
@@ -76,7 +89,13 @@ function Reviews({
         <ReviewLikeBtn like={false} />
         <ReplyBtn />
         <button onClick={() => handleDeleteRewiew()}>삭제하기</button>
-        <button onClick={() => setCommentUpdate(true)}>수정하기</button>
+        <button
+          onClick={() => setCommentUpdate(true)}
+          // * 게스트 이면 수정하기 버튼 노출 안됨
+          style={{ opacity: isGuset ? "0" : "1" }}
+        >
+          수정하기
+        </button>
       </div>
     </li>
   );

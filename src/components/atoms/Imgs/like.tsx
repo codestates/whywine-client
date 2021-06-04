@@ -68,9 +68,11 @@ const Like = ({ id }: Props) => {
       if (wines) {
         wines.forEach((el: any) => {
           if (id === el.id) {
+            console.log("isLike 1111: ", isLike);
             return setIsLike(false);
           } else {
-            return setIsLike(true);
+            console.log("isLike 2222 : ", isLike);
+            return setIsLike(false);
           }
         });
       }

@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 interface WineData {
-  randomWine: any;
+  randomWine?: any;
 }
 
 let name: string,
@@ -67,19 +67,22 @@ const MainWineCard = ({ randomWine }: WineData) => {
 
   return (
     <li>
-      <div className={isOpen ? "openModal modal" : "modal"}>
-        <WineModal
-          price={randomWine.price}
-          tags={randomWine.tags}
-          id={randomWine.id}
-          sort={randomWine.sort}
-          likeCount={randomWine.likeCount}
-          description={randomWine.description}
-          image={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
-          name={randomWine.name}
-          ModalEl={ModalEl}
-        />
-      </div>
+      {randomWine === undefined ? null : (
+        <div className={isOpen ? "openModal modal" : "modal"}>
+          <WineModal
+            price={randomWine.price}
+            tags={randomWine.tags}
+            id={randomWine.id}
+            sort={randomWine.sort}
+            likeCount={randomWine.likeCount}
+            description={randomWine.description}
+            image={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
+            name={randomWine.name}
+            ModalEl={ModalEl}
+          />
+        </div>
+      )}
+
       {randomWine === undefined ? null : (
         <div className="mainWineCard" onClick={handleIsClicked}>
           <Rating />

@@ -669,6 +669,17 @@ section {
   width: 200px;
   text-decoration: none;
 }
+.guestNoSurvey {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+.guestNoSurvey:hover {
+  color: rgb(240, 119, 88);
+}
 .wineTypeTag button {
   background-color: transparent;
   border: 1px solid black;
