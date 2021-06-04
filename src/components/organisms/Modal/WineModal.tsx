@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import ReviewBtn from "../../atoms/Buttons/ReviewBtn";
-import Like from "../../atoms/Imgs/like";
+import Like from "../../atoms/Icons/like";
 import ReviewInput from "../../atoms/Inputs/ReviewInput";
 import ReviewWineName from "../../atoms/Texts/ReviewWineName";
-import Stars from "../../atoms/Imgs/Stars";
+import Stars from "../../atoms/Icons/Stars";
 import Reviews from "../Reviews/Reviews";
 import axios from "axios";
 import SignInModal from "../Modal/SignInModal";

@@ -6,7 +6,7 @@ import {
   Redirect,
   useHistory,
 } from "react-router-dom";
-import Loading from "../components/atoms/Imgs/Loading";
+import Loading from "../components/atoms/Icons/Loading";
 import Header from "../components/organisms/Header/Header";
 require("dotenv").config();
 // import Landing from "../components/templates/Landing";
