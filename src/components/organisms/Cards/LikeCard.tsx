@@ -4,11 +4,16 @@ import WineModal from "../Modal/WineModal";
 import wineSample from "../../../img/wine_sample.webp";
 import axios from "axios";
 import dotenv from "dotenv";
+import Image from "../../atoms/Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
 
 require("dotenv").config();
 
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
+
+
+
 
 interface WineData {
   userLikeWines: any;
@@ -112,10 +117,11 @@ const LikeCard = ({ userLikeWines }: WineData) => {
         </div>
 
         <div className="wineLikeImgBox">
-          <img
+          <Image
             src={image}
             alt="와인"
             className={isUpload ? "wineLikeImg" : "wineLikeImgSample"}
+            placeholderImg={wineSample}
           />
           <div className="wineLikeData">
             <div className="mainWineType">

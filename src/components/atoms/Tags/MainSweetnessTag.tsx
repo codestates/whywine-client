@@ -10,24 +10,31 @@ if (!sessionStorage.getItem("userTag")) {
   tags = sessionStorage.getItem("userTag");
 }
 tags = sessionStorage.getItem("userTag");
-const MainSweetnessTag = () => {
+
+interface TagTypes {
+  userMainTag: string[];
+  handleSetUserTag: (userTag: string[]) => void;
+  // wineFlavor: string;
+}
+
+const MainSweetnessTag = ({ userMainTag, handleSetUserTag }: TagTypes) => {
   const [high, setHigh] = useState(false);
   const [mid, setMid] = useState(false);
   const [low, setLow] = useState(false);
-  const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags));
+  // const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags));
   const handleSweetnessTagClick = (sweetness: string) => {
     sessionStorage.setItem("selectTags", "true");
     switch (sweetness) {
       case "씁쓸한":
         setLow(!low);
         if (userMainTag.length === 0) {
-          setUserMainTag([...userMainTag, "sweetness_dry"]);
+          handleSetUserTag([...userMainTag, "sweetness_dry"]);
         }
         for (let i = 0; i < userMainTag.length; i++) {
           if (userMainTag[i] !== "sweetness_dry") {
-            setUserMainTag([...userMainTag, "sweetness_dry"]);
+            handleSetUserTag([...userMainTag, "sweetness_dry"]);
           } else if (userMainTag[i] === "sweetness_dry") {
-            setUserMainTag(
+            handleSetUserTag(
               userMainTag.filter((tag: string) => tag !== "sweetness_dry")
             );
           }
@@ -36,13 +43,13 @@ const MainSweetnessTag = () => {
       case "적당한":
         setMid(!mid);
         if (userMainTag.length === 0) {
-          setUserMainTag([...userMainTag, "sweetness_medium"]);
+          handleSetUserTag([...userMainTag, "sweetness_medium"]);
         }
         for (let i = 0; i < userMainTag.length; i++) {
           if (userMainTag[i] !== "sweetness_medium") {
-            setUserMainTag([...userMainTag, "sweetness_medium"]);
+            handleSetUserTag([...userMainTag, "sweetness_medium"]);
           } else if (userMainTag[i] === "sweetness_medium") {
-            setUserMainTag(
+            handleSetUserTag(
               userMainTag.filter((tag: string) => tag !== "sweetness_medium")
             );
           }
@@ -51,13 +58,13 @@ const MainSweetnessTag = () => {
       case "달달한":
         setHigh(!high);
         if (userMainTag.length === 0) {
-          setUserMainTag([...userMainTag, "sweetness_sweet"]);
+          handleSetUserTag([...userMainTag, "sweetness_sweet"]);
         }
         for (let i = 0; i < userMainTag.length; i++) {
           if (userMainTag[i] !== "sweetness_sweet") {
-            setUserMainTag([...userMainTag, "sweetness_sweet"]);
+            handleSetUserTag([...userMainTag, "sweetness_sweet"]);
           } else if (userMainTag[i] === "sweetness_sweet") {
-            setUserMainTag(
+            handleSetUserTag(
               userMainTag.filter((tag: string) => tag !== "sweetness_sweet")
             );
           }
@@ -87,21 +94,21 @@ const MainSweetnessTag = () => {
     }
   }, [userMainTag]);
   //* 설문에서 받아온 기본 태그를 메인에 띄워줌
-  useEffect(() => {
-    switch (userMainTag[3]) {
-      case "sweetness_dry":
-        handleSweetnessTagClick("씁쓸한");
-        break;
-      case "sweetness_medium":
-        handleSweetnessTagClick("적당한");
-        break;
-      case "sweetness_sweet":
-        handleSweetnessTagClick("달달한");
-        break;
-      default:
-        break;
-    }
-  }, []);
+  // useEffect(() => {
+  //   switch (userMainTag[3]) {
+  //     case "sweetness_dry":
+  //       handleSweetnessTagClick("씁쓸한");
+  //       break;
+  //     case "sweetness_medium":
+  //       handleSweetnessTagClick("적당한");
+  //       break;
+  //     case "sweetness_sweet":
+  //       handleSweetnessTagClick("달달한");
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }, []);
   return (
     <div className="mainWineSweetnessBox">
       <span className="toolTip">

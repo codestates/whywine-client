@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MainTypeTag from "../../atoms/Tags/MainTypeTag";
 import MainTags from "../../atoms/Tags/MainTags";
+import MainSweetnessTag from "../../atoms/Tags/MainSweetnessTag";
 
 interface Tags {
   userMainTag: string[];
@@ -82,6 +83,10 @@ const MainWineTags = ({
               handleSetUserTag={handleSetUserTag}
               wineFlavor={wineFlavor[2]}
             />
+            {/* <MainSweetnessTag
+              userMainTag={userMainTag}
+              handleSetUserTag={handleSetUserTag}
+            /> */}
             <MainTags
               tags={tags}
               userTags={userMainTag[3]}

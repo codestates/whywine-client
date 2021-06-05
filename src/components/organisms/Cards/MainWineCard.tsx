@@ -8,8 +8,11 @@ import React, {
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
 import dotenv from "dotenv";
+import Image from "../../atoms/Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+
 require("dotenv").config();
 
 dotenv.config();
@@ -100,6 +103,8 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
     };
   });
 
+  console.log(tags);
+
   return (
     <li>
       {randomWine === undefined ? null : (
@@ -125,19 +130,35 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
         <div className="mainWineCard" onClick={() => handleIsClicked()}>
           <Rating rating_avg={randomWine.rating_avg} />
           <div className="mainWineProfile">
-            <img
+            {/* <img
+              src={image}
+              alt="와인"
+              className={isUpload ? "wineMainImg" : "wineMainSample"}
+            /> */}
+            <Image
               src={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
               alt="와인"
+              placeholderImg={wineSample}
               className={isUpload ? "wineMainImg" : "wineMainSample"}
             />
 
             <div className="mainWineContent">
-              {randomWine.name.length >= 30 ? (
+
+<!--               {randomWine.name.length >= 30 ? (
                 <div className="moreThan30">{randomWine.name}</div>
               ) : (
                 <div className="lessThan30">{randomWine.name}</div>
               )}
-              <p>{randomWine.description}</p>
+              <p>{randomWine.description}</p> -->
+
+              {name ? (
+                name.length >= 30 ? (
+                  <div className="moreThan30">{name}</div>
+                ) : (
+                  <div className="lessThan30">{name}</div>
+                )
+              ) : null}
+              <p>{description}</p>
             </div>
           </div>
 

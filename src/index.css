@@ -749,6 +749,32 @@ section {
   cursor: pointer;
   display: inline-block;
 }
+.noSurvey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.noSurvey p {
+  text-align: center;
+}
+.noSurvey div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.goToMainFromRes {
+  text-decoration: underline;
+  color: #000;
+  margin: 3rem 0;
+  margin-bottom: 1.8rem;
+  cursor: pointer;
+}
+.noSurvey img {
+  width: 50%;
+  margin-top: -90px;
+}
+
 .wineTypeTag button:hover {
   box-shadow: 0 0 5px 0 skyblue inset, 0 0 10px 1px skyblue;
   border: 1px solid skyblue;
@@ -1058,9 +1084,6 @@ section {
 .mainSearch.active {
   width: 250px;
   transition: all 0.5s;
-}
-.goBackBtn {
-  background-image: url(./components/atoms/Icons/GoBackBtn.tsx);
 }
 
 .likeHover {
@@ -1685,19 +1708,21 @@ section {
   flex-direction: row;
   width: 95%;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 .footerCORK {
   margin-left: 0px;
 }
 .footerCrews {
-  margin: 20px 0px;
+  padding: 20px 0px;
   display: flex;
   line-height: 35px;
   cursor: pointer;
   flex-direction: row;
   width: 95%;
   justify-content: space-between;
+  border-bottom: 1px solid #dad5d5;
 }
 .footerCrews span {
   margin: 0px 10px;
@@ -1713,10 +1738,12 @@ section {
   display: flex;
   user-select: auto;
   flex-direction: row;
+  align-items: center;
 }
 .creator img {
   border-radius: 20px;
   width: 30px;
+  height: 30px;
   margin: 0px 5px;
 }
 .footerGitHub {
@@ -1885,6 +1912,20 @@ section {
   justify-content: center;
   margin-left: 13rem;
 }
+.mainSubCategory {
+  display: flex;
+  margin-top: 3rem;
+  margin-bottom: 6.3rem;
+  min-height: 33.5rem;
+  justify-content: center;
+  margin-left: 13rem;
+}
+/* .mainSubCategory img {
+  width: 80%;
+  position: absolute;
+  left: 0;
+  margin-bottom: 4rem;
+} */
 .mainWineSearchList {
   display: flex;
 }
@@ -1900,7 +1941,11 @@ section {
   flex-wrap: wrap;
   min-width: 92rem;
 }
-
+.mainSubWineBox {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 92rem;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1961,10 +2006,9 @@ section {
 /* .mainEmptyDes :nth-child(2) {
 } */
 .mainEmptyDes :nth-child(3) {
-  line-height: 30px;
-  font-size: 50px;
+  margin-top: 3rem;
 }
-.mainEmptyDes :nth-child(4) {
+/* .mainEmptyDes :nth-child(4) {
   line-height: 30px;
   font-size: 50px;
 }
@@ -1985,18 +2029,33 @@ section {
 .mainEmptyDes :nth-child(9) {
   line-height: 30px;
   font-size: 50px;
-}
+} */
 
 .goToSurveyFromMain {
   height: 40px;
   border-radius: 15px;
   cursor: pointer;
-  margin: 2rem 0;
+  margin: 5rem 0;
   background: none;
   border: none;
   font-size: 30px;
   color: rgb(240, 119, 88);
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "Prata", "Noto Serif KR", serif;
+  animation: light 2s infinite alternate;
+}
+@keyframes light {
+  0% {
+    filter: drop-shadow(0 0 5px rgb(230, 131, 131));
+  }
+  25% {
+    filter: drop-shadow(0 0 0);
+  }
+  50% {
+    filter: drop-shadow(0 0 5px rgb(230, 131, 131));
+  }
+  100% {
+    filter: drop-shadow(0 0 0);
+  }
 }
 @media screen and (max-width: 800px) {
   body {
