@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
-import wineSample from "../../../img/wine_sample.webp";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -17,7 +16,8 @@ let name: string,
   image: string,
   price: number,
   sort: string,
-  tags: object[];
+  tags: object[],
+  rating_avg: number;
 
 const MainWineCard = ({ randomWine }: WineData) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +34,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
     price = randomWine.price;
     tags = randomWine.tags;
     sort = randomWine.sort;
+    rating_avg = randomWine.rating_avg;
   }
 
   const handleUploadImg = () => {
@@ -47,7 +48,6 @@ const MainWineCard = ({ randomWine }: WineData) => {
   }, [tags]);
 
   const handleIsClicked = () => {
-    console.log(randomWine);
     setIsOpen(true);
   };
 
@@ -64,7 +64,6 @@ const MainWineCard = ({ randomWine }: WineData) => {
       window.removeEventListener("click", handleClickOutside);
     };
   });
-
   return (
     <li>
       {randomWine === undefined ? null : (
@@ -85,7 +84,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
 
       {randomWine === undefined ? null : (
         <div className="mainWineCard" onClick={handleIsClicked}>
-          <Rating />
+          <Rating rating_avg={randomWine.rating_avg} />
           <div className="mainWineProfile">
             <img
               src={image}

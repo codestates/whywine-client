@@ -44,7 +44,6 @@ function SignInModal({ isOpen, closeModal }: Props) {
         withCredentials: true,
       });
 
-      console.log("userInfo", userInfo);
       sessionStorage.setItem(
         "userInfo",
         JSON.stringify(userInfo.data.data.userInfo)

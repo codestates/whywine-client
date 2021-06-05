@@ -8,28 +8,36 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import dotenv from "dotenv";
 import Loading from "../../atoms/Icons/Loading";
-import GoBackBtn from "../../atoms/Icons/GoBackBtn";
+
+import MainEmptyCon from "../../organisms/Containers/MainEmptyCon";
+
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 //* 세션 스토리지에 담겨있는 태그 불러오기
-let tags: any;
+let userTags: any;
 if (!sessionStorage.getItem("userTag")) {
   sessionStorage.setItem("userTag", JSON.stringify([]));
-  tags = sessionStorage.getItem("userTag");
+  userTags = sessionStorage.getItem("userTag");
 }
-tags = sessionStorage.getItem("userTag");
-
-let wineDataArr: any = [];
+userTags = sessionStorage.getItem("userTag");
 
 const Main = () => {
-  const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags)); // 유저의 와인 맛 태그
+  const [userMainTag, setUserMainTag] = useState<string[]>(
+    JSON.parse(userTags)
+  ); // 유저의 와인 맛 태그
   const [userTypeTag, setTypeTag] = useState<string[]>([]); // 유저의 와인 타입 태그
   const [randomWine, setRandomWine] = useState<object[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isEmpty, setIsEmpty] = useState(false);
 
-  const history = useHistory();
-
+  const handleSetUserTag = useCallback(
+    (userTag: string[]) => {
+      console.log("userTag123123123123123", userTag);
+      setUserMainTag(userTag);
+    },
+    [userMainTag]
+  );
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}userinfo`, {
@@ -62,6 +70,7 @@ const Main = () => {
       }
     );
   };
+
   useEffect(() => {
     userTagUpdata();
     // getUserInfo();
@@ -80,7 +89,6 @@ const Main = () => {
   //* 서버에 태그 요청
   const postTags = useCallback(async () => {
     if (userMainTag.length !== 0) {
-      console.log("userTypeTag", userTypeTag, "userMainTag", userMainTag);
       await axios
         .post(
           `${server}main/tags`,
@@ -95,7 +103,12 @@ const Main = () => {
           }
         )
         .then((data) => {
-          setRandomWine(data.data.data.wines.sorted.random3);
+          if (data.status !== 204) {
+            setRandomWine(data.data.data.wines.sorted.random3);
+          } else {
+            console.log(data);
+            setIsEmpty(true);
+          }
         });
     }
   }, [userMainTag, userTypeTag]);
@@ -109,32 +122,12 @@ const Main = () => {
   useEffect(() => {
     postTags();
   }, [userMainTag, userTypeTag]);
-
   //* 검색
   const [hasData, setHasData] = useState(true);
   const [searchWine, setSearchWine] = useState<object[]>([]);
   const [isSearch, setIsSearch] = useState(false);
   const [searchWord, setSearchWord] = useState("");
-  //* 와인 데이터 이중배열
-  // const getWineData2 = (row: number, data: object[]) => {
-  //   wineDataArr = Array(row).fill([]);
-  //   getWineDataArr(data);
-  // };
-  // const getWineDataArr = useCallback(
-  //   (data: object[]) => {
-  //     let i = 0;
-  //     while (data.length > 0) {
-  //       wineDataArr[i].push(data.shift());
-  //       if (wineDataArr[i].length === 3) {
-  //         i++;
-  //       }
-  //     }
-  //     console.log(wineDataArr);
-  //     setSearchWine(wineDataArr);
-  //     setIsSearch(true);
-  //   },
-  //   [searchWine]
-  // );
+
   //* 서버에 검색 요청
   const handleClickSearchBtn = (e: any) => {
     if (e.key === "Enter" || e.type === "click") {
@@ -155,7 +148,7 @@ const Main = () => {
           }
         });
 
-      //로딩 이미지 보여줬다가 사라짐..너무야매..
+      //로딩 이미지 보여줬다가 사라짐
       setIsLoading(true);
       handleLoading();
     }
@@ -166,6 +159,7 @@ const Main = () => {
   const goBack = () => {
     setIsSearch(false);
   };
+
   return (
     <div>
       <Header
@@ -186,12 +180,12 @@ const Main = () => {
         <div className="mainContainers">
           <MainWineTagCon
             userMainTag={userMainTag}
-            setUserMainTag={setUserMainTag}
+            handleSetUserTag={handleSetUserTag}
             userTypeTag={userTypeTag}
             setTypeTag={setTypeTag}
-            tags={tags}
+            tags={userTags}
           />
-          <MainWineCon randomWine={randomWine} />
+          {isEmpty ? <MainEmptyCon /> : <MainWineCon randomWine={randomWine} />}
         </div>
       )}
       <Footer />
