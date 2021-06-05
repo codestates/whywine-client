@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import MainSearchCon from "../../organisms/Containers/MainSearchCon";
 import empty from "../../../img/wine_empty_search.png";
-import GoBackBtn from "../../atoms/Imgs/GoBackBtn";
+import GoBackBtn from "../../atoms/Icons/GoBackBtn";
 
 interface State {
   searchWine: object[];

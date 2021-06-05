@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MainWineCard from "../Cards/MainWineCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Loading from "../../atoms/Imgs/Loading";
+import Loading from "../../atoms/Icons/Loading";
 import { useHistory } from "react-router-dom";
 
 interface WineData {

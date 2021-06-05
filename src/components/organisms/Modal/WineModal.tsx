@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import ReviewBtn from "../../atoms/Buttons/ReviewBtn";
-import Like from "../../atoms/Imgs/like";
+import Like from "../../atoms/Icons/like";
 import ReviewInput from "../../atoms/Inputs/ReviewInput";
 import ReviewWineName from "../../atoms/Texts/ReviewWineName";
-import Stars from "../../atoms/Imgs/Stars";
+import Stars from "../../atoms/Icons/Stars";
 import Reviews from "../Reviews/Reviews";
 import axios from "axios";
 import SignInModal from "../Modal/SignInModal";
@@ -53,15 +53,17 @@ function WineModal({
     rating: rating,
   });
 
-  const handleComments = async () => {
+  const handleComments = useCallback(async () => {
     await axios
       .get(`${server}comment?wineid=${id}`, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       })
-      .then((data) => setCommentList(data.data.data.comments))
+      .then((data) => {
+        return setCommentList(data.data.data.comments);
+      })
       .catch((err) => console.dir(err));
-  };
+  }, [comment]);
 
   const handleTextArea = (e: any) => {
     setComment({
@@ -184,7 +186,7 @@ function WineModal({
                   good_count={el.good_count}
                   createdAt={el.createdAt}
                   user={el.user}
-                  handleComments={handleComments}
+                  handleComments={() => handleComments}
                   setCommentUpdate={setCommentUpdate}
                 />
               );
@@ -228,7 +230,7 @@ function WineModal({
                   good_count={el.good_count}
                   createdAt={el.createdAt}
                   user={el.user}
-                  handleComments={handleComments}
+                  handleComments={() => handleComments}
                   setCommentUpdate={setCommentUpdate}
                 />
               );

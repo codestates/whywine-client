@@ -1,7 +1,7 @@
 import React from "react";
 import RatingAvg from "../../atoms/Texts/RatingAvg";
 import RatingCounts from "../../atoms/Texts/RatingCounts";
-import StarIconSolid from "../../atoms/Imgs/StarIconSolid";
+import StarIconSolid from "../../atoms/Icons/StarIconSolid";
 
 const Rating = () => {
   return (

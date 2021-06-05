@@ -7,8 +7,8 @@ import Footer from "../../organisms/Footer/Footer";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import dotenv from "dotenv";
-import Loading from "../../atoms/Imgs/Loading";
-import GoBackBtn from "../../atoms/Imgs/GoBackBtn";
+import Loading from "../../atoms/Icons/Loading";
+import GoBackBtn from "../../atoms/Icons/GoBackBtn";
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
