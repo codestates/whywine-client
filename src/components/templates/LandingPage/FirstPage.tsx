@@ -9,7 +9,7 @@ interface Props {
 }
 
 function FirstPage(props: Props) {
-  const animatedItem = UseScrollFadeIn("up", 1, 0.5);
+  const animatedItem = UseScrollFadeIn("down", 1, 0.5);
   const [openSurvey, setOpenSurvey] = useState<boolean>(false);
 
   function openSurveyModal() {
@@ -27,7 +27,7 @@ function FirstPage(props: Props) {
         animationOut="fadeOut"
         isVisible={true}
       >
-        <SurveyModal animatedItem={animatedItem} isOpen={openSurvey} />
+        <SurveyModal isOpen={openSurvey} />
       </Animated>
 
       <div className="FirstPage_route">

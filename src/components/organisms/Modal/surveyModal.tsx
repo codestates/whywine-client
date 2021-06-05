@@ -4,21 +4,13 @@ import GoToSurveyBtn from "../../atoms/Buttons/GoToSurveyBtn";
 import UseScrollFadeIn from "../../atoms/Scroll/UseScrollFadeIn";
 interface Props {
   isOpen: Boolean;
-  animatedItem: {
-    ref: any;
-    style: {
-      opacity: number;
-      transform: string | undefined;
-    };
-  };
 }
 
-function SurveyModal({ isOpen, animatedItem }: Props) {
+function SurveyModal({ isOpen }: Props) {
   return (
-    // <div className={isOpen ? "openModal modal" : "modal"}>
-    <div>
+    <div className={isOpen ? "" : ""}>
       {isOpen ? (
-        <div {...animatedItem} className="SurveyModal ">
+        <div className="SurveyModal Modal ">
           <h1>나의 와인 성향 테스트</h1>
           <br></br>
           <h1>어떤 와인을 고를지 고민이시군요 ! </h1>

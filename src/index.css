@@ -111,18 +111,7 @@ section {
   color: rgb(226, 90, 55);
 }
 /* *      랜딩페이지 첫번째        */
-.SurveyModal {
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  color: #fdfaf6;
-  right: 11rem;
-  bottom: 16rem;
-  font-size: 23px;
-  font-family: "Noto Sans KR", sans-serif;
-}
+
 .goToSurveyBtn {
   height: 40px;
   border-radius: 15px;
@@ -561,7 +550,35 @@ section {
 .kakao-icon {
   width: 40px;
 }
+.SurveyModal_Back {
+  display: none;
+  position: fixed;
 
+  background-color: rgba(100, 100, 100, 0.8);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 3;
+    transform: none;
+  }
+}
+.SurveyModal {
+  animation: fadeIn 0.5s ease-in-out;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: #fdfaf6;
+  right: 4rem;
+  bottom: 22rem;
+  font-size: 23px;
+  font-family: "Noto Sans KR", sans-serif;
+}
 .modal {
   display: none;
   position: fixed;
