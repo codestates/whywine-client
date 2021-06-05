@@ -9,11 +9,9 @@ interface Rating {
 
 const Rating = ({ rating_avg }: Rating) => {
   let ratingArr: number[] = [];
-  for (let i = 0; i < rating_avg; i++) {
+  for (let i = 0; i < rating_avg - 0.5; i++) {
     ratingArr.push(1);
   }
-
-  
 
   return (
     <div className="mainWineRating">

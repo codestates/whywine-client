@@ -2,22 +2,18 @@ import React, { useEffect, useState } from "react";
 import LikeCard from "../Cards/LikeCard";
 import LikeEmpty from "../../../img/wine_like_empty.png";
 import Footer from "../Footer/Footer";
+import GoBackBtnFromLikeList from "../../atoms/Buttons/GoBackBtnFromLikeList";
 interface State {
   userLikeWines: object[];
+  scroll: boolean;
+  handleScrollDown: () => void;
 }
 //! className 하나도 변경 안되어 있음. 변경 필요
-const LikeListCategory = ({ userLikeWines }: State) => {
-  const [scroll, setScroll] = useState(false);
-  const handleScrollDown = () => {
-    setScroll(true);
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", handleScrollDown);
-
-    return () => {
-      window.removeEventListener("scroll", handleScrollDown);
-    };
-  });
+const LikeListCategory = ({
+  userLikeWines,
+  scroll,
+  handleScrollDown,
+}: State) => {
   return (
     <div>
       {userLikeWines.length === 0 ? (
@@ -28,6 +24,7 @@ const LikeListCategory = ({ userLikeWines }: State) => {
         <div className="mainSearchCategory">
           <div className="mainCategoryName">
             <h2>내 찜 목록</h2>
+            <GoBackBtnFromLikeList />
           </div>
           <ul className="mainWineLikeBox">
             {userLikeWines.map((wine, idx) => {

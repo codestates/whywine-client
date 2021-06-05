@@ -4,30 +4,23 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Loading from "../../atoms/Icons/Loading";
 import { useHistory } from "react-router-dom";
+import MainEmptyCon from "../Containers/MainEmptyCon";
+import MainWineSearchCard from "../Cards/MainWineSearchCard";
+import ScrollDown from "../../atoms/Scroll/ScrollDown";
 
 interface WineData {
   randomWine: object[];
 }
 const MainWineCategory = ({ randomWine }: WineData) => {
-  // let wineData = [
-  //   <MainWineCard randomWine={randomWine[0]} />,
-  //   <MainWineCard randomWine={randomWine[1]} />,
-  //   <MainWineCard randomWine={randomWine[2]} />,
-  // ];
   const history = useHistory();
   const [isTagArr, setIsTagArr] = useState(true);
-
-  // let tags: any = sessionStorage.getItem("userTag");
-  // console.log("이전: ", tags);
-  // tags = JSON.parse(tags);
-  // console.log("들어와 ???", tags);
 
   useEffect(() => {
     if (sessionStorage.getItem("userTag")) {
       let tags: any = sessionStorage.getItem("userTag");
       tags = JSON.parse(tags);
       setIsTagArr(false);
-      if (tags.length === 5) {
+      if (tags.length === 4) {
         setIsTagArr(true);
       }
       if (sessionStorage.getItem("selectTags")) {
@@ -41,14 +34,7 @@ const MainWineCategory = ({ randomWine }: WineData) => {
     history.push("/survey");
     window.location.reload();
   };
-  // useEffect(() => {
-  //   effect
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [input])
-
-  // TODO Loading에 이미지 파일 주기
+  console.log(isTagArr);
   return (
     <div>
       {isTagArr ? (
@@ -63,14 +49,7 @@ const MainWineCategory = ({ randomWine }: WineData) => {
           </ul>
         </div>
       ) : (
-        <div
-          onClick={() => handleIsTagArr()}
-          className="guestNoSurvey"
-          style={{ opacity: isTagArr ? "0" : "1" }}
-        >
-          추천와인이 없습니다.
-          <div>나에게 맞는 와인 찾으러 가기</div>
-        </div>
+        <MainEmptyCon />
       )}
     </div>
   );

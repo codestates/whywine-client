@@ -52,17 +52,16 @@ function Reviews({
   let login: any = sessionStorage.getItem("login");
   let userInfo: any = sessionStorage.getItem("userInfo");
 
-  if (!JSON.parse(login)) {
-    // * 로그인 상태가 아니면 게스트
-    setIsGuest(true);
-  }
-  //! 메인페이지 처음 입장시 id null 오류
-  if (user.id) {
-    if (user.id !== JSON.parse(userInfo).id) {
+  useEffect(() => {
+    if (user.id == null) {
       // * 유저아이디와 댓글을 작성한 유저아이다가 다르면 각 리뷰에선 게스트 취급
       setIsGuest(true);
     }
-  }
+    if (!JSON.parse(login)) {
+      // * 로그인 상태가 아니면 게스트
+      setIsGuest(true);
+    }
+  }, []);
 
   // * 댓글 삭제 함수
   const handleDeleteRewiew = async () => {

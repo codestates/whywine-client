@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MainSearchCon from "../../organisms/Containers/MainSearchCon";
 import empty from "../../../img/wine_empty_search.png";
-import GoBackBtn from "../../atoms/Icons/GoBackBtn";
+import GoBackBtn from "../../atoms/Buttons/GoBackBtn";
 
 import GoToTop from "../../atoms/Buttons/GoToTop";
-
 
 interface State {
   searchWine: object[];
@@ -13,14 +12,30 @@ interface State {
 }
 
 const Search = ({ searchWine, hasData, goBack }: State) => {
-  console.log(searchWine);
+  const [scroll, setScroll] = useState(false);
+  const handleScrollDown = () => {
+    setScroll(true);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScrollDown);
 
+    return () => {
+      window.removeEventListener("scroll", handleScrollDown);
+    };
+  });
   return (
     <div>
       {hasData ? (
         <div>
           <MainSearchCon searchWine={searchWine} goBack={goBack} />
-          <GoToTop />
+          <div
+            style={{
+              opacity: scroll ? "1" : "0",
+            }}
+            onScroll={handleScrollDown}
+          >
+            <GoToTop />
+          </div>
         </div>
       ) : (
         <div className="searchEmpty">
