@@ -54,6 +54,8 @@ function WineModal({
   });
 
   const handleComments = useCallback(async () => {
+    console.log("id", id);
+
     await axios
       .get(`${server}comment?wineid=${id}`, {
         headers: { "Content-Type": "application/json" },
@@ -122,6 +124,7 @@ function WineModal({
   const handleCommentUpdate = async () => {};
 
   useEffect(() => {
+    setCommentList([]);
     handleComments();
     let login: any = sessionStorage.getItem("login");
     if (JSON.parse(login)) {

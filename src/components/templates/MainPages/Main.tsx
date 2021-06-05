@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import MainWineCon from "../../organisms/Containers/MainWineCon";
 import MainWineTagCon from "../../organisms/Containers/MainWineTagCon";
 import Header from "../../organisms/Header/Header";
@@ -8,8 +8,9 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import dotenv from "dotenv";
 import Loading from "../../atoms/Icons/Loading";
-
+import WineModal from "../../organisms/Modal/WineModal";
 import MainEmptyCon from "../../organisms/Containers/MainEmptyCon";
+import GoToTop from "../../atoms/Buttons/GoToTop";
 
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
@@ -22,18 +23,24 @@ if (!sessionStorage.getItem("userTag")) {
 }
 userTags = sessionStorage.getItem("userTag");
 
+type SubWine = {
+  1: any[];
+  2: any[];
+  3: any[];
+  4: any[];
+};
 const Main = () => {
   const [userMainTag, setUserMainTag] = useState<string[]>(
     JSON.parse(userTags)
   ); // 유저의 와인 맛 태그
   const [userTypeTag, setTypeTag] = useState<string[]>([]); // 유저의 와인 타입 태그
-  const [randomWine, setRandomWine] = useState<object[]>([]);
+  const [randomWine, setRandomWine] = useState<any>([]);
+  const [subWine, setSubWine] = useState<any>({});
   const [isLoading, setIsLoading] = useState(true);
   const [isEmpty, setIsEmpty] = useState(false);
 
   const handleSetUserTag = useCallback(
     (userTag: string[]) => {
-      console.log("userTag123123123123123", userTag);
       setUserMainTag(userTag);
     },
     [userMainTag]
@@ -104,7 +111,10 @@ const Main = () => {
         )
         .then((data) => {
           if (data.status !== 204) {
+            setIsEmpty(false);
             setRandomWine(data.data.data.wines.sorted.random3);
+            setSubWine(data.data.data.wines.sorted);
+            console.log(subWine);
           } else {
             console.log(data);
             setIsEmpty(true);
@@ -112,6 +122,7 @@ const Main = () => {
         });
     }
   }, [userMainTag, userTypeTag]);
+  console.log(randomWine);
 
   //* 로딩
   const handleLoading = () => {
@@ -160,6 +171,18 @@ const Main = () => {
     setIsSearch(false);
   };
 
+  //* 스크롤 내리면 스크롤다운 사라짐, 맨 위로가기 생김
+  const [scroll, setScroll] = useState(false);
+  const handleScrollDown = () => {
+    setScroll(true);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScrollDown);
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollDown);
+    };
+  });
   return (
     <div>
       <Header
@@ -185,9 +208,21 @@ const Main = () => {
             setTypeTag={setTypeTag}
             tags={userTags}
           />
-          {isEmpty ? <MainEmptyCon /> : <MainWineCon randomWine={randomWine} />}
+          {isEmpty || randomWine.length === 0 ? (
+            <MainEmptyCon />
+          ) : (
+            <MainWineCon randomWine={randomWine} subWine={subWine} />
+          )}
         </div>
       )}
+      <div
+        style={{
+          opacity: scroll ? "1" : "0",
+        }}
+        onScroll={handleScrollDown}
+      >
+        <GoToTop />
+      </div>
       <Footer />
     </div>
   );

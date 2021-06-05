@@ -64,6 +64,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
       window.removeEventListener("click", handleClickOutside);
     };
   });
+  console.log(tags);
   return (
     <li>
       {randomWine === undefined ? null : (
@@ -93,11 +94,13 @@ const MainWineCard = ({ randomWine }: WineData) => {
             />
 
             <div className="mainWineContent">
-              {name.length >= 30 ? (
-                <div className="moreThan30">{name}</div>
-              ) : (
-                <div className="lessThan30">{name}</div>
-              )}
+              {name ? (
+                name.length >= 30 ? (
+                  <div className="moreThan30">{name}</div>
+                ) : (
+                  <div className="lessThan30">{name}</div>
+                )
+              ) : null}
               <p>{description}</p>
             </div>
           </div>
