@@ -3,6 +3,8 @@ import card from "../../../img/wine_sample.png";
 import ReactCardFlip from "react-card-flip";
 import Rating from "../../organisms/Ratings/Rating";
 import ClickSearch from "../Icons/ClickSearch";
+import Image from "../Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
 
 interface WineData {
   randomWine: any;
@@ -52,7 +54,7 @@ const SurResultCardCenter = ({ randomWine }: WineData) => {
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       <div className="frontCard">
-        <img
+        <Image
           style={{
             opacity: isOpacity ? "1" : "0",
             width: "300px",
@@ -61,6 +63,7 @@ const SurResultCardCenter = ({ randomWine }: WineData) => {
           src={card}
           alt="추천 와인 카드"
           onClick={rotateCard}
+          placeholderImg={wineSample}
         />
       </div>
 
@@ -69,7 +72,12 @@ const SurResultCardCenter = ({ randomWine }: WineData) => {
           <Rating rating_avg={rating_avg} />
           <div className="mainWineProfile">
             {image ? (
-              <img src={image} alt="와인" className={"wineMainImg"} />
+              <Image
+                src={image}
+                alt="와인"
+                className={"wineMainImg"}
+                placeholderImg={wineSample}
+              />
             ) : null}
 
             <div className="mainWineContent">

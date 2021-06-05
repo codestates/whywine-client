@@ -7,7 +7,8 @@ import Stars from "../../atoms/Icons/Stars";
 import Reviews from "../Reviews/Reviews";
 import axios from "axios";
 import SignInModal from "../Modal/SignInModal";
-
+import Image from "../../atoms/Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
@@ -158,7 +159,7 @@ function WineModal({
       </div>
       <div className="likeBox">
         <div className="wineimg">
-          <img src={image} alt="와인" />
+          <Image src={image} alt="와인" placeholderImg={wineSample} />
           <Like id={id} />
         </div>
 

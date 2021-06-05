@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
 import dotenv from "dotenv";
+import Image from "../../atoms/Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
 
 dotenv.config();
 
@@ -87,9 +89,15 @@ const MainWineCard = ({ randomWine }: WineData) => {
         <div className="mainWineCard" onClick={handleIsClicked}>
           <Rating rating_avg={randomWine.rating_avg} />
           <div className="mainWineProfile">
-            <img
+            {/* <img
               src={image}
               alt="와인"
+              className={isUpload ? "wineMainImg" : "wineMainSample"}
+            /> */}
+            <Image
+              src={image}
+              alt="와인"
+              placeholderImg={wineSample}
               className={isUpload ? "wineMainImg" : "wineMainSample"}
             />
 
