@@ -1,5 +1,4 @@
 import { MouseEventHandler, useState } from "react";
-import { useHistory } from "react-router-dom";
 import UseScrollFadeIn from "../../atoms/Scroll/UseScrollFadeIn";
 import SurveyModal from "../../organisms/Modal/surveyModal";
 import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn";
@@ -10,7 +9,6 @@ interface Props {
 }
 
 function FirstPage(props: Props) {
-  const history = useHistory();
   const animatedItem = UseScrollFadeIn("up", 1, 0.5);
   const [openSurvey, setOpenSurvey] = useState<boolean>(false);
 

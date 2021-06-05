@@ -1,6 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import WineModal from "../Modal/WineModal";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import axios from "axios";
+import dotenv from "dotenv";
+require("dotenv").config();
+
+dotenv.config();
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface wineData {
   searchWine: any;
@@ -18,6 +24,22 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
+  const [commentList, setCommentList] = useState<any[]>([]);
+
+  const landingHandleComments = async () => {
+    if (searchWine) {
+      await axios
+        .get(`${server}comment?wineid=${searchWine.id}`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        })
+        .then((data) => {
+          return setCommentList(data.data.data.comments);
+        })
+        .catch((err) => console.dir(err));
+    }
+  };
+
   const handleIsClicked = () => {
     setIsOpen(true);
     setIsClicked(true);
@@ -60,6 +82,9 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
     <li>
       <div className={isOpen ? "openWineModal modal" : "modal"}>
         <WineModal
+          handleComments={landingHandleComments}
+          landingCommentList={commentList}
+          randomWine={searchWine}
           price={searchWine.price}
           tags={searchWine.tags}
           id={searchWine.id}

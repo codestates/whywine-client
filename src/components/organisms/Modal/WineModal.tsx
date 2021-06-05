@@ -21,6 +21,9 @@ interface Props {
   price: number;
   sort: string;
   tags: object[];
+  randomWine: any;
+  landingCommentList: any;
+  handleComments: () => void;
 }
 type Comment = {
   user: string;
@@ -38,6 +41,9 @@ function WineModal({
   image,
   name,
   ModalEl,
+  randomWine,
+  landingCommentList,
+  handleComments,
 }: Props) {
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
@@ -52,18 +58,6 @@ function WineModal({
     text: "",
     rating: rating,
   });
-
-  const handleComments = useCallback(async () => {
-    await axios
-      .get(`${server}comment?wineid=${id}`, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      })
-      .then((data) => {
-        return setCommentList(data.data.data.comments);
-      })
-      .catch((err) => console.dir(err));
-  }, [comment]);
 
   const handleTextArea = (e: any) => {
     setComment({
@@ -121,6 +115,13 @@ function WineModal({
 
   const handleCommentUpdate = async () => {};
 
+  // useEffect(() => {
+  //   window.location.reload(); // 새로고침
+  // }, [isOpen]);
+  // useEffect(() => {
+  //   handleComments();
+  // }, [randomWine]);
+
   useEffect(() => {
     handleComments();
     let login: any = sessionStorage.getItem("login");
@@ -130,15 +131,7 @@ function WineModal({
   }, []);
 
   useEffect(() => {
-    let login: any = sessionStorage.getItem("login");
-    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
-      let userInfo: any = sessionStorage.getItem("userInfo");
-      userInfo = JSON.parse(userInfo);
-      setUserName(`${userInfo.nickname}`);
-    } else if (!JSON.parse(login)) {
-      setUserName("게스트");
-      // * 세션 스토리지 로그인 상태가 거짓이면 유저이름을 "게스트"값으로 돌린다.
-    }
+    setCommentList(() => landingCommentList);
   });
 
   // * 랜딩될떄 세션 스토리지에 있는 유저인포에서 유저 닉네임 가져옴

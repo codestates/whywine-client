@@ -7,31 +7,11 @@ interface Props {
   id: number;
 }
 
-
-
 // const active = useMemo(() => Active(boolean), [isLike]);
 
 function Like({ id }: Props) {
   const [isLike, setIsLike] = useState<boolean>();
   const [noLike, setNoLike] = useState(false);
-
-
-  const getUserInfo = async () => {
-    try {
-      let data = await axios.get(`${server}userinfo`, {
-        withCredentials: true,
-      });
-      sessionStorage.setItem(
-        "userInfo",
-        JSON.stringify(data.data.data.userInfo)
-      );
-      // * 유저 정보 세션 스토리지 저장
-
-    } catch (error) {
-      console.dir(error);
-    }
-  };
-
 
   const handleLikeBtn = useCallback(async () => {
     setIsLike(!isLike);
@@ -48,10 +28,7 @@ function Like({ id }: Props) {
             withCredentials: true,
           }
         )
-        .then(() => {
-
-          getUserInfo();
-        });
+        .then(() => {});
     } else {
       console.log(2);
       await axios
@@ -65,18 +42,14 @@ function Like({ id }: Props) {
           }
         )
         .then(() => {
-
           // getUserInfo();
         })
         .catch((err) => console.dir(err));
       console.log("isLike 싫어요 요청", isLike);
     }
-  };
-
+  }, [isLike]);
 
   useEffect(() => {
-
-    getUserInfo();
     if (sessionStorage.getItem("userInfo")) {
       let userInfo: any = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
@@ -84,13 +57,10 @@ function Like({ id }: Props) {
 
       // * 유저 정보에서 찜한 와인 목록 구조분해할당
       if (wines) {
-
         wines.map((el: any) => {
           if (id === el.id) {
             return setNoLike(true);
           } else {
-
-     
             return setIsLike(false);
           }
         });
@@ -101,13 +71,11 @@ function Like({ id }: Props) {
   }, []);
 
   return (
-
     <i
       onClick={() => handleLikeBtn()}
       className={isLike ? "like icon-red" : "unlike icon-black"}
     ></i>
   );
 }
-
 
 export default Like;

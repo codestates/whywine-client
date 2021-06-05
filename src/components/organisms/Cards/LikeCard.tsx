@@ -2,6 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
 import wineSample from "../../../img/wine_sample.webp";
+import axios from "axios";
+import dotenv from "dotenv";
+
+require("dotenv").config();
+
+dotenv.config();
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface WineData {
   userLikeWines: any;
@@ -19,6 +26,7 @@ const LikeCard = ({ userLikeWines }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
+  const [commentList, setCommentList] = useState<any[]>([]);
   const ModalEl: any = useRef();
 
   // 확인 확인
@@ -32,6 +40,20 @@ const LikeCard = ({ userLikeWines }: WineData) => {
     tags = userLikeWines.tags;
     sort = userLikeWines.sort;
   }
+
+  const landingHandleComments = async () => {
+    if (userLikeWines) {
+      await axios
+        .get(`${server}comment?wineid=${userLikeWines.id}`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        })
+        .then((data) => {
+          return setCommentList(data.data.data.comments);
+        })
+        .catch((err) => console.dir(err));
+    }
+  };
   const handleUploadImg = () => {
     setTimeout(() => setIsUpload(true), 300);
   };
@@ -66,6 +88,9 @@ const LikeCard = ({ userLikeWines }: WineData) => {
     <li>
       <div className={isOpen ? "openWineModal modal" : "modal"}>
         <WineModal
+          handleComments={landingHandleComments}
+          landingCommentList={commentList}
+          randomWine={userLikeWines}
           price={price}
           tags={tags}
           id={id}

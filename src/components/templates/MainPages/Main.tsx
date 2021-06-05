@@ -38,6 +38,7 @@ const Main = () => {
     },
     [userMainTag]
   );
+
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}userinfo`, {
@@ -71,21 +72,6 @@ const Main = () => {
     );
   };
 
-  useEffect(() => {
-    userTagUpdata();
-    // getUserInfo();
-    handleLoading();
-    if (
-      !sessionStorage.getItem("userInfo") ||
-      sessionStorage.getItem("login")
-    ) {
-      getUserInfo();
-    }
-    if (!sessionStorage.getItem("login")) {
-      sessionStorage.removeItem("userInfo");
-    }
-  }, []);
-
   //* 서버에 태그 요청
   const postTags = useCallback(async () => {
     if (userMainTag.length !== 0) {
@@ -118,11 +104,28 @@ const Main = () => {
     setTimeout(() => setIsLoading(false), 500);
   };
 
+  useEffect(() => {
+    userTagUpdata();
+    handleLoading();
+    // getUserInfo();
+
+    // if (
+    //   !sessionStorage.getItem("userInfo") ||
+    //   sessionStorage.getItem("login")
+    // ) {
+    //   getUserInfo();
+    // }
+    // if (!sessionStorage.getItem("login")) {
+    //   sessionStorage.removeItem("userInfo");
+    // }
+  }, []);
+
   //* 태그 최신화
   useEffect(() => {
     postTags();
   }, [userMainTag, userTypeTag]);
   //* 검색
+
   const [hasData, setHasData] = useState(true);
   const [searchWine, setSearchWine] = useState<object[]>([]);
   const [isSearch, setIsSearch] = useState(false);
