@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
-import wineSample from "../../../img/wine_sample.webp";
-
+import Image from "../../atoms/Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
 interface WineData {
   userLikeWines: any;
   key: number;
@@ -87,10 +87,11 @@ const LikeCard = ({ userLikeWines }: WineData) => {
         </div>
 
         <div className="wineLikeImgBox">
-          <img
+          <Image
             src={image}
             alt="와인"
             className={isUpload ? "wineLikeImg" : "wineLikeImgSample"}
+            placeholderImg={wineSample}
           />
           <div className="wineLikeData">
             <div className="mainWineType">

@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import WineModal from "../Modal/WineModal";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import wineSample from "../../../img/wine_sample.png";
+import Image from "../../atoms/Imgs/Image";
 
 interface wineData {
   searchWine: any;
@@ -80,13 +82,21 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
 
       <div className="mainSearchCard" onClick={handleIsClicked}>
         <div className="mainSearchProfile">
-          <LazyLoadImage
+          {/* <LazyLoadImage
             src={image}
             effect="blur"
+            placeholderSrc={wineSample}
             // scrollPosition={scrollPosition}
             alt="와인"
             className={isUpload ? "wineMainImg" : "wineMainSample"}
+          /> */}
+          <Image
+            src={image}
+            className={isUpload ? "wineMainImg" : "wineMainSample"}
+            alt="와인"
+            placeholderImg={wineSample}
           />
+
           <div className="mainSearchContent">
             <div>{name}</div>
             {description.length > 120 ? (

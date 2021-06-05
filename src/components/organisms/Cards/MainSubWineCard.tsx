@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
+import wineSample from "../../../img/wine_sample.png";
 import dotenv from "dotenv";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Image from "../../atoms/Imgs/Image";
 
 dotenv.config();
 
@@ -85,9 +87,17 @@ const MainSubWineCard = ({ subWine }: WineData) => {
       )}
       <div className="mainSearchCard" onClick={handleIsClicked}>
         <div className="mainSearchProfile">
-          <LazyLoadImage
+          {/* <LazyLoadImage
             src={image}
             effect="blur"
+            placeholderSrc={wineSample}
+            // scrollPosition={scrollPosition}
+            alt="와인"
+            className={isUpload ? "wineMainImg" : "wineMainSample"}
+          /> */}
+          <Image
+            src={image}
+            placeholderImg={wineSample}
             // scrollPosition={scrollPosition}
             alt="와인"
             className={isUpload ? "wineMainImg" : "wineMainSample"}
