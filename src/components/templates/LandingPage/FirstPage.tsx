@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import UseScrollFadeIn from "../../atoms/Scroll/UseScrollFadeIn";
 import SurveyModal from "../../organisms/Modal/surveyModal";
 import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn";
+import { Animated } from "react-animated-css";
 
 interface Props {
   openSurveyModal?: MouseEventHandler<HTMLElement>;
@@ -23,7 +24,13 @@ function FirstPage(props: Props) {
         <p {...animatedItem}>와인을 처음 시작하는 당신을 위해</p>
         <h1>Best Wine For You.</h1>
       </div>
-      <SurveyModal isOpen={openSurvey} />
+      <Animated
+        animationIn="fadeInRight"
+        animationOut="fadeOut"
+        isVisible={true}
+      >
+        <SurveyModal animatedItem={animatedItem} isOpen={openSurvey} />
+      </Animated>
 
       <div className="FirstPage_route">
         <div

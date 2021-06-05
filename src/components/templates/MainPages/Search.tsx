@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import MainSearchCon from "../../organisms/Containers/MainSearchCon";
 import empty from "../../../img/wine_empty_search.png";
-import GoBackBtn from "../../atoms/Imgs/GoBackBtn";
+import GoBackBtn from "../../atoms/Icons/GoBackBtn";
+import GoToTop from "../../atoms/Buttons/GoToTop";
 
 interface State {
   searchWine: object[];
@@ -15,7 +16,10 @@ const Search = ({ searchWine, hasData, goBack }: State) => {
   return (
     <div>
       {hasData ? (
-        <MainSearchCon searchWine={searchWine} goBack={goBack} />
+        <div>
+          <MainSearchCon searchWine={searchWine} goBack={goBack} />
+          <GoToTop />
+        </div>
       ) : (
         <div className="searchEmpty">
           <GoBackBtn goBack={goBack} />

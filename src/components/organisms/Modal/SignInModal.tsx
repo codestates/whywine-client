@@ -25,7 +25,6 @@ function SignInModal({ isOpen, closeModal }: Props) {
 
   const history = useHistory();
 
-
   //로그인 모달에서도 회원가입 모달 띄워주기
   const [signUpOpen, setSignUpOpen] = useState<boolean>(false);
   const [isSignUp, setIsSignUp] = useState(false);
@@ -38,15 +37,12 @@ function SignInModal({ isOpen, closeModal }: Props) {
   const handleSignUpModal = () => {
     setIsSignUp(true);
   };
-  console.log(isSignUp);
-  console.log(server);
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}userinfo`, {
         withCredentials: true,
       });
 
-      console.log("userInfo", userInfo);
       sessionStorage.setItem(
         "userInfo",
         JSON.stringify(userInfo.data.data.userInfo)
