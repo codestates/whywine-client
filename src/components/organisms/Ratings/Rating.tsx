@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import RatingAvg from "../../atoms/Texts/RatingAvg";
+
 import StarIconSolid from "../../atoms/Icons/StarIconSolid";
 import StarIconRegular from "../../atoms/Icons/StarIconRegular";
 interface Rating {
@@ -12,24 +13,7 @@ const Rating = ({ rating_avg }: Rating) => {
     ratingArr.push(1);
   }
 
-  // const [ratingArrState, setRatingArrState] = useState<number[]>(ratingArr);
-  // console.log("rating_avg", rating_avg);
-  // console.log("ratingArr", ratingArr);
-
-  // useEffect(() => {
-  //   makeRatingArr(rating_avg);
-  // }, [rating_avg]);
-  // const makeRatingArr = useCallback(
-  //   (time: number) => {
-  //     for (let i = 0; i < time; i++) {
-  //       ratingArr.push(1);
-  //     }
-  //   },
-  //   [ratingArr]
-  // );
-  // useEffect(() => {
-  //   setRatingArrState(ratingArrState);
-  // }, [ratingArrState]);
+  
 
   return (
     <div className="mainWineRating">

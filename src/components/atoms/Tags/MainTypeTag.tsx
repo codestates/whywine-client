@@ -10,6 +10,7 @@ const MainTypeTag = ({ userTypeTag, setTypeTag }: Tags) => {
   const [rose, setRose] = useState(false);
   const [sparkling, setSparkling] = useState(false);
   const handleTypeTagClick = (e: any) => {
+    sessionStorage.setItem("selectTags", "true");
     switch (e.target.textContent) {
       case "레드":
         setRed(!red);

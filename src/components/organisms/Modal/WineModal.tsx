@@ -53,15 +53,17 @@ function WineModal({
     rating: rating,
   });
 
-  const handleComments = async () => {
+  const handleComments = useCallback(async () => {
     await axios
       .get(`${server}comment?wineid=${id}`, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       })
-      .then((data) => setCommentList(data.data.data.comments))
+      .then((data) => {
+        return setCommentList(data.data.data.comments);
+      })
       .catch((err) => console.dir(err));
-  };
+  }, [comment]);
 
   const handleTextArea = (e: any) => {
     setComment({
@@ -145,22 +147,19 @@ function WineModal({
 
   return (
     <section ref={ModalEl} className="winemodal">
-      <div className="likeBox">
-        <div className="reviewHeader">
-          <ReviewWineName name={name} />
-        </div>
-
-        <div className="wineimg">
-          <img src={image} alt="와인" />
-        </div>
-
-        <Like id={id} />
-
-        <div>{likeCount}명이 찜한 와인입니다!</div>
+      <div className="reviewHeader">
+        <ReviewWineName name={name} />
       </div>
-
       <div className="hrDiv">
         <hr className="hr2"></hr>
+      </div>
+      <div className="likeBox">
+        <div className="wineimg">
+          <img src={image} alt="와인" />
+          <Like id={id} />
+        </div>
+
+        <div>{likeCount}명이 찜한 와인입니다!</div>
       </div>
 
       {userName === "게스트" ? (
@@ -187,7 +186,7 @@ function WineModal({
                   good_count={el.good_count}
                   createdAt={el.createdAt}
                   user={el.user}
-                  handleComments={handleComments}
+                  handleComments={() => handleComments}
                   setCommentUpdate={setCommentUpdate}
                 />
               );
@@ -197,23 +196,26 @@ function WineModal({
       ) : (
         <div className="review">
           <div className="reviewInput">
-            <div style={{ display: "flex" }}>
-              {[1, 2, 3, 4, 5].map((idx) => {
-                return (
-                  <Stars
-                    key={idx}
-                    idx={idx}
-                    rating={rating}
-                    hoverRating={hoverRating}
-                    setRating={setRating}
-                    setHoverRating={setHoverRating}
-                  />
-                );
-              })}
+            <div>
+              <ReviewInput handleTextArea={handleTextArea} comment={comment} />
+              <div className="stars_btn">
+                <div style={{ display: "flex" }}>
+                  {[1, 2, 3, 4, 5].map((idx) => {
+                    return (
+                      <Stars
+                        key={idx}
+                        idx={idx}
+                        rating={rating}
+                        hoverRating={hoverRating}
+                        setRating={setRating}
+                        setHoverRating={setHoverRating}
+                      />
+                    );
+                  })}
+                </div>
+                <ReviewBtn handleClick={handleSubmitClick} />
+              </div>
             </div>
-
-            <ReviewInput handleTextArea={handleTextArea} comment={comment} />
-            <ReviewBtn handleClick={handleSubmitClick} />
           </div>
 
           <ul className="reviewUl">
@@ -228,7 +230,7 @@ function WineModal({
                   good_count={el.good_count}
                   createdAt={el.createdAt}
                   user={el.user}
-                  handleComments={handleComments}
+                  handleComments={() => handleComments}
                   setCommentUpdate={setCommentUpdate}
                 />
               );

@@ -73,7 +73,7 @@ function Reviews({
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       })
-      .then((data) => handleComments())
+      .then((data) => () => handleComments())
       // * 댓글 삭제 후 handleComments 함수 실행으로 commentsList 상태 변경해 재랜딩
       .catch((err) => {});
   };
@@ -81,24 +81,29 @@ function Reviews({
   return (
     <li className="reviews" style={{ opacity: deleteReview ? "0" : "1" }}>
       <div className="reviewContent">
-        <div className="reviewWriter">{user.nickname}</div>
-        <span className="wineReview">{commentText}</span>
-        <div>별점: {commentRating}</div>
-        <div>작성시간: {createdAt?.slice(0, 10)}</div>
+        <div>
+          <div className="reviewWriter">작성자: {user.nickname}</div>
+          <div className="review_date">{createdAt?.slice(0, 10)}</div>
+        </div>
+
+        <div className="reviewContent_btn">
+          <div
+            onClick={() => setCommentUpdate(true)}
+            // * 게스트 이면 수정하기 버튼 노출 안됨
+            style={{ opacity: isGuset ? "0" : "1" }}
+          >
+            수정하기
+          </div>
+          <div onClick={() => handleDeleteRewiew()}>삭제하기</div>
+        </div>
       </div>
+      <div className="wineReview">{commentText}</div>
 
       <div className="reviewBtns">
+        <div className="review_star">별점: {commentRating}</div>
         <ReviewLikeBtn like={true} />
         <ReviewLikeBtn like={false} />
         <ReplyBtn />
-        <button onClick={() => handleDeleteRewiew()}>삭제하기</button>
-        <button
-          onClick={() => setCommentUpdate(true)}
-          // * 게스트 이면 수정하기 버튼 노출 안됨
-          style={{ opacity: isGuset ? "0" : "1" }}
-        >
-          수정하기
-        </button>
       </div>
     </li>
   );

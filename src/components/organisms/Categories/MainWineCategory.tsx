@@ -17,12 +17,36 @@ const MainWineCategory = ({ randomWine }: WineData) => {
   const history = useHistory();
   const [isTagArr, setIsTagArr] = useState(true);
 
-  let tags: any = sessionStorage.getItem("userTag");
-  tags = JSON.parse(tags);
+  // let tags: any = sessionStorage.getItem("userTag");
+  // console.log("이전: ", tags);
+  // tags = JSON.parse(tags);
+  // console.log("들어와 ???", tags);
 
-  if (tags.langth === 0) {
-    setIsTagArr(false);
-  }
+  useEffect(() => {
+    if (sessionStorage.getItem("userTag")) {
+      let tags: any = sessionStorage.getItem("userTag");
+      tags = JSON.parse(tags);
+      setIsTagArr(false);
+      if (tags.length === 5) {
+        setIsTagArr(true);
+      }
+      if (sessionStorage.getItem("selectTags")) {
+        setIsTagArr(true);
+      }
+    }
+  });
+
+  const handleIsTagArr = () => {
+    setIsTagArr(true);
+    history.push("/survey");
+    window.location.reload();
+  };
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
 
   // TODO Loading에 이미지 파일 주기
   return (
@@ -39,7 +63,14 @@ const MainWineCategory = ({ randomWine }: WineData) => {
           </ul>
         </div>
       ) : (
-        <div>추천와인이 없습니다 </div>
+        <div
+          onClick={() => handleIsTagArr()}
+          className="guestNoSurvey"
+          style={{ opacity: isTagArr ? "0" : "1" }}
+        >
+          추천와인이 없습니다.
+          <div>나에게 맞는 와인 찾으러 가기</div>
+        </div>
       )}
     </div>
   );

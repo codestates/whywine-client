@@ -67,7 +67,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
   return (
     <li>
       {randomWine === undefined ? null : (
-        <div className={isOpen ? "openModal modal" : "modal"}>
+        <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
             price={randomWine.price}
             tags={randomWine.tags}

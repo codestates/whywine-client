@@ -40,6 +40,7 @@ const MainTags = ({
   //* 메인페이지에서 태그를 누르면 userMainTag를 업데이트 시켜주는 함수
   //! 배열은 참조값이기 때문에 if문이 제대로 먹지 않음
   const handleTagClick = (degree: string | boolean) => {
+    sessionStorage.setItem("selectTags", "true");
     switch (degree) {
       case degreeKOR[0]:
         setLow(!low);

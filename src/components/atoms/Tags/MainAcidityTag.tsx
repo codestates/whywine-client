@@ -13,6 +13,7 @@ const MainAcidityTag = () => {
   const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags));
 
   const handleAcidityTagClick = (e: any) => {
+    sessionStorage.setItem("selectTags", "true");
     switch (e.target.textContent) {
       case "낮은":
         setLow(!low);

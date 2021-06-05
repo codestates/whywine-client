@@ -37,6 +37,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
   const handleSignUpModal = () => {
     setIsSignUp(true);
   };
+
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}userinfo`, {
