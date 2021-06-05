@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import SurResultBtns from "../../organisms/Buttons/surResultBtns";
 import SurResultCards from "../../organisms/Cards/surResultCards";
+import noSurvey from "../../../img/no_survey.png";
+import GoToSurveyFromRes from "../../atoms/Buttons/GoToSurveyFromRes";
 import axios from "axios";
 import dotenv from "dotenv";
+import GoToMainBtn from "../../atoms/Buttons/GoToMainBtn";
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER;
 
@@ -10,7 +13,7 @@ let tagsArrJson: any = sessionStorage.getItem("userTag");
 let tagsArr = JSON.parse(tagsArrJson);
 
 const SurveyResultQ = () => {
-  const [wines, setWines] = useState();
+  const [isEmpty, setIsEmpty] = useState(false);
   const [randomWine, setRandomWine] = useState<object[]>([]);
   useEffect(() => {
     // * 세션 스토리지에 있는 선택한 태그들을 tagsArr에 할당
@@ -49,15 +52,37 @@ const SurveyResultQ = () => {
           }
         )
         .then((data) => {
-          setRandomWine(data.data.data.wines.sorted.random3);
+          if (data.status !== 204) {
+            setIsEmpty(false);
+            setRandomWine(data.data.data.wines.sorted.random3);
+          } else {
+            setIsEmpty(true);
+          }
         });
     }
   }, [tagsArr]);
-
+  console.log(randomWine);
   return (
-    <div id="result" className="surResultContainer">
-      <SurResultCards randomWine={randomWine} />
-      <SurResultBtns />
+    <div>
+      {isEmpty ? (
+        <div className="noSurvey">
+          <img src={noSurvey} />
+          <div>
+            <p>저런 와인 성향 테스트에서 아무것도 고르지 못 하셨군요.</p>
+            <p>테스트를 다시 한번 진행해보시겠어요?</p>
+            <GoToSurveyFromRes />
+            <p>아니면 바로 저희 서비스를 이용해보시겠어요?</p>
+            <div className="goToMainFromRes">
+              <GoToMainBtn />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div id="result" className="surResultContainer">
+          <SurResultCards randomWine={randomWine} />
+          <SurResultBtns />
+        </div>
+      )}
     </div>
   );
 };
