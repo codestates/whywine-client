@@ -13,6 +13,7 @@ function Like({ id }: Props) {
   const [isLike, setIsLike] = useState<boolean>();
   const [noLike, setNoLike] = useState(false);
 
+
   const getUserInfo = async () => {
     try {
       let data = await axios.get(`${server}userinfo`, {
@@ -27,6 +28,7 @@ function Like({ id }: Props) {
       console.dir(error);
     }
   };
+
 
   const handleLikeBtn = useCallback(async () => {
     setIsLike(!isLike);
@@ -44,6 +46,7 @@ function Like({ id }: Props) {
         .then(() => {
           getUserInfo();
         });
+
     } else {
       console.log(2);
       await axios
@@ -61,10 +64,13 @@ function Like({ id }: Props) {
         .catch((err) => console.dir(err));
       console.log("isLike 싫어요 요청", isLike);
     }
-  }, []);
+  }, [isLike]);
+
+ 
 
   useEffect(() => {
     getUserInfo();
+
     if (sessionStorage.getItem("userInfo")) {
       let userInfo: any = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);

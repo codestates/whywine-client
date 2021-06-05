@@ -52,6 +52,8 @@ function Reviews({
   let login: any = sessionStorage.getItem("login");
   let userInfo: any = sessionStorage.getItem("userInfo");
 
+
+    
   useEffect(() => {
     if (user.id == null) {
       // * 유저아이디와 댓글을 작성한 유저아이다가 다르면 각 리뷰에선 게스트 취급
@@ -72,7 +74,7 @@ function Reviews({
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       })
-      .then((data) => () => handleComments())
+      .then((data) => handleComments())
       // * 댓글 삭제 후 handleComments 함수 실행으로 commentsList 상태 변경해 재랜딩
       .catch((err) => {});
   };
@@ -93,7 +95,12 @@ function Reviews({
           >
             수정하기
           </div>
-          <div onClick={() => handleDeleteRewiew()}>삭제하기</div>
+          <div
+            onClick={() => handleDeleteRewiew()}
+            style={{ opacity: isGuset ? "0" : "1" }}
+          >
+            // * 게스트 이면 삭제하기 버튼 노출 안됨 삭제하기
+          </div>
         </div>
       </div>
       <div className="wineReview">{commentText}</div>

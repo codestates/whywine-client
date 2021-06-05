@@ -3,10 +3,20 @@ import WineModal from "../Modal/WineModal";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import wineSample from "../../../img/wine_sample.png";
 import Image from "../../atoms/Imgs/Image";
+import axios from "axios";
+import dotenv from "dotenv";
+require("dotenv").config();
+
+dotenv.config();
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
+
+
+
 
 interface wineData {
   searchWine: any;
 }
+
 let name: string,
   id: number,
   likeCount: number,
@@ -20,6 +30,22 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
+  const [commentList, setCommentList] = useState<any[]>([]);
+
+  const landingHandleComments = async () => {
+    if (searchWine) {
+      await axios
+        .get(`${server}comment?wineid=${searchWine.id}`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        })
+        .then((data) => {
+          return setCommentList(data.data.data.comments);
+        })
+        .catch((err) => console.dir(err));
+    }
+  };
+
 
   //확인
   if (searchWine) {
@@ -66,19 +92,23 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
     <li>
       {searchWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
-          <WineModal
-            price={searchWine.price}
-            tags={searchWine.tags}
-            id={searchWine.id}
-            sort={searchWine.sort}
-            likeCount={searchWine.likeCount}
-            description={searchWine.description}
-            image={process.env.REACT_APP_WINE_IMAGE_URL + searchWine.image}
-            name={searchWine.name}
-            ModalEl={ModalEl}
-          />
+        <WineModal
+          handleComments={landingHandleComments}
+          landingCommentList={commentList}
+          randomWine={searchWine}
+          price={searchWine.price}
+          tags={searchWine.tags}
+          id={searchWine.id}
+          sort={searchWine.sort}
+          likeCount={searchWine.likeCount}
+          description={searchWine.description}
+          image={process.env.REACT_APP_WINE_IMAGE_URL + searchWine.image}
+          name={searchWine.name}
+          ModalEl={ModalEl}
+        />
         </div>
       )}
+
 
       <div className="mainSearchCard" onClick={handleIsClicked}>
         <div className="mainSearchProfile">

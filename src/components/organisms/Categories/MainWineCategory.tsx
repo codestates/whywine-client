@@ -10,8 +10,11 @@ import ScrollDown from "../../atoms/Scroll/ScrollDown";
 
 interface WineData {
   randomWine: object[];
+  handleLoading: (time: number | undefined) => void;
 }
-const MainWineCategory = ({ randomWine }: WineData) => {
+
+const MainWineCategory = ({ randomWine, handleLoading }: WineData) => {
+
   const history = useHistory();
   const [isTagArr, setIsTagArr] = useState(true);
 
@@ -43,7 +46,11 @@ const MainWineCategory = ({ randomWine }: WineData) => {
           <ul className="mainWineCardBox">
             {[1, 2, 3].map((data, index) => {
               return (
-                <MainWineCard randomWine={randomWine[index]} key={index} />
+                <MainWineCard
+                  handleLoading={handleLoading}
+                  randomWine={randomWine[index]}
+                  key={index}
+                />
               );
             })}
           </ul>

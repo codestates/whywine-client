@@ -64,6 +64,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
           }
         )
         .then((res) => {
+          window.location.reload();
           closeModal(e);
           getUserInfo();
           sessionStorage.setItem("login", JSON.stringify(true));

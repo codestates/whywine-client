@@ -45,6 +45,7 @@ const Main = () => {
     },
     [userMainTag]
   );
+
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}userinfo`, {
@@ -78,21 +79,6 @@ const Main = () => {
     );
   };
 
-  useEffect(() => {
-    userTagUpdata();
-    // getUserInfo();
-    handleLoading();
-    if (
-      !sessionStorage.getItem("userInfo") ||
-      sessionStorage.getItem("login")
-    ) {
-      getUserInfo();
-    }
-    if (!sessionStorage.getItem("login")) {
-      sessionStorage.removeItem("userInfo");
-    }
-  }, []);
-
   //* 서버에 태그 요청
   const postTags = useCallback(async () => {
     if (userMainTag.length !== 0) {
@@ -125,15 +111,32 @@ const Main = () => {
   console.log(randomWine);
 
   //* 로딩
-  const handleLoading = () => {
-    setTimeout(() => setIsLoading(false), 500);
+  const handleLoading = (time: number | undefined) => {
+    setTimeout(() => setIsLoading(false), time);
   };
+
+  useEffect(() => {
+    userTagUpdata();
+    handleLoading(500);
+    getUserInfo();
+
+    if (
+      !sessionStorage.getItem("userInfo") ||
+      sessionStorage.getItem("login")
+    ) {
+      getUserInfo();
+    }
+    if (!sessionStorage.getItem("login")) {
+      sessionStorage.removeItem("userInfo");
+    }
+  }, []);
 
   //* 태그 최신화
   useEffect(() => {
     postTags();
   }, [userMainTag, userTypeTag]);
   //* 검색
+
   const [hasData, setHasData] = useState(true);
   const [searchWine, setSearchWine] = useState<object[]>([]);
   const [isSearch, setIsSearch] = useState(false);
@@ -161,7 +164,7 @@ const Main = () => {
 
       //로딩 이미지 보여줬다가 사라짐
       setIsLoading(true);
-      handleLoading();
+      handleLoading(500);
     }
   };
   const handleSearchInput = (e: any) => {
@@ -186,8 +189,8 @@ const Main = () => {
   return (
     <div>
       <Header
-        handleSearchInput={handleSearchInput}
-        handleClickSearchBtn={handleClickSearchBtn}
+        handleSearchInput={(e) => handleSearchInput(e)}
+        handleClickSearchBtn={(e) => handleClickSearchBtn(e)}
       />
 
       {isLoading ? (
@@ -208,10 +211,11 @@ const Main = () => {
             setTypeTag={setTypeTag}
             tags={userTags}
           />
+
           {isEmpty || randomWine.length === 0 ? (
             <MainEmptyCon />
           ) : (
-            <MainWineCon randomWine={randomWine} subWine={subWine} />
+            <MainWineCon randomWine={randomWine} subWine={subWine}  handleLoading={handleLoading} />
           )}
         </div>
       )}
