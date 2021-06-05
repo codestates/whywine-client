@@ -7,8 +7,9 @@ import { useHistory } from "react-router-dom";
 
 interface WineData {
   randomWine: object[];
+  handleLoading: (time: number | undefined) => void;
 }
-const MainWineCategory = ({ randomWine }: WineData) => {
+const MainWineCategory = ({ randomWine, handleLoading }: WineData) => {
   // let wineData = [
   //   <MainWineCard randomWine={randomWine[0]} />,
   //   <MainWineCard randomWine={randomWine[1]} />,
@@ -57,7 +58,11 @@ const MainWineCategory = ({ randomWine }: WineData) => {
           <ul className="mainWineCardBox">
             {[1, 2, 3].map((data, index) => {
               return (
-                <MainWineCard randomWine={randomWine[index]} key={index} />
+                <MainWineCard
+                  handleLoading={handleLoading}
+                  randomWine={randomWine[index]}
+                  key={index}
+                />
               );
             })}
           </ul>

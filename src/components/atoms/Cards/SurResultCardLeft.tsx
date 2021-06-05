@@ -59,12 +59,12 @@ const SurResultCardLeft = ({ randomWine }: WineData) => {
           className="cardLeft"
           src={card}
           alt="추천 와인 카드"
-          onClick={rotateCard}
+          onClick={(e) => rotateCard(e)}
         />
       </div>
 
       <div className="backCard">
-        <div className="resultWineCard" onClick={rotateCard}>
+        <div className="resultWineCard" onClick={(e) => rotateCard(e)}>
           <Rating rating_avg={rating_avg} />
           <div className="mainWineProfile">
             {image ? (

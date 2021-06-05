@@ -115,23 +115,29 @@ function WineModal({
 
   const handleCommentUpdate = async () => {};
 
-  // useEffect(() => {
-  //   window.location.reload(); // 새로고침
-  // }, [isOpen]);
-  // useEffect(() => {
-  //   handleComments();
-  // }, [randomWine]);
-
   useEffect(() => {
-    handleComments();
+    setCommentList(landingCommentList);
+
     let login: any = sessionStorage.getItem("login");
-    if (JSON.parse(login)) {
-      // ! 로그인 상태여야 랜딩해줌
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
+      let userInfo: any = sessionStorage.getItem("userInfo");
+      userInfo = JSON.parse(userInfo);
+      setUserName(`${userInfo.nickname}`);
+    } else if (!JSON.parse(login)) {
+      setUserName("게스트");
+      // * 세션 스토리지 로그인 상태가 거짓이면 유저이름을 "게스트"값으로 돌린다.
     }
   }, []);
 
   useEffect(() => {
-    setCommentList(() => landingCommentList);
+    if (userName === "게스트") {
+      console.log("게스트 로그인 리뷰들", landingCommentList);
+    }
+    console.log("실행안되내ㅔ");
+    if (userName !== "게스트") {
+      console.log("유저 로그인 리뷰들", landingCommentList);
+      setCommentList(landingCommentList);
+    }
   });
 
   // * 랜딩될떄 세션 스토리지에 있는 유저인포에서 유저 닉네임 가져옴
@@ -158,17 +164,18 @@ function WineModal({
       {userName === "게스트" ? (
         <div className="guestReview">
           <div className="guestLoginModal">
-            댓글을 작성하려면 로그인을 하셔야합니다.
+            <div>댓글을 작성하려면 로그인을 하셔야합니다.</div>
+            <div onClick={() => setsSignIn(true)} style={{ cursor: "pointer" }}>
+              로그인 바로가기
+            </div>
           </div>
+
           <SignInModal
             isOpen={signInOpen}
             closeModal={() => setsSignIn(false)}
           />
-          <div onClick={() => setsSignIn(true)} style={{ cursor: "pointer" }}>
-            로그인
-          </div>
           <ul className="reviewUl">
-            {commentList.reverse().map((el: any) => {
+            {commentList.map((el: any) => {
               return (
                 <Reviews
                   commentText={el.text}
@@ -179,7 +186,7 @@ function WineModal({
                   good_count={el.good_count}
                   createdAt={el.createdAt}
                   user={el.user}
-                  handleComments={() => handleComments}
+                  handleComments={() => handleComments()}
                   setCommentUpdate={setCommentUpdate}
                 />
               );
@@ -206,13 +213,13 @@ function WineModal({
                     );
                   })}
                 </div>
-                <ReviewBtn handleClick={handleSubmitClick} />
+                <ReviewBtn handleClick={() => handleSubmitClick()} />
               </div>
             </div>
           </div>
 
           <ul className="reviewUl">
-            {commentList.reverse().map((el: any) => {
+            {commentList.map((el: any) => {
               return (
                 <Reviews
                   commentText={el.text}

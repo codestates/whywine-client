@@ -9,7 +9,6 @@ import {
 import Loading from "../components/atoms/Icons/Loading";
 import axios from "axios";
 import dotenv from "dotenv";
-import WineModal from "../components/organisms/Modal/WineModal";
 require("dotenv").config();
 
 dotenv.config();
@@ -57,7 +56,6 @@ const App: React.FC = () => {
         >
           <Route path="/" exact component={Landing} />
           <Route path="/main" component={Main} />
-          <Route path="main/modal" component={WineModal} />
           <Route path="/survey" exact component={Survey} />
           <Route path="/userInfo" component={Mypage} />
           <Route path="/likeList" component={LikeList} />

@@ -100,24 +100,24 @@ const Main = () => {
   }, [userMainTag, userTypeTag]);
 
   //* 로딩
-  const handleLoading = () => {
-    setTimeout(() => setIsLoading(false), 500);
+  const handleLoading = (time: number | undefined) => {
+    setTimeout(() => setIsLoading(false), time);
   };
 
   useEffect(() => {
     userTagUpdata();
-    handleLoading();
-    // getUserInfo();
+    handleLoading(500);
+    getUserInfo();
 
-    // if (
-    //   !sessionStorage.getItem("userInfo") ||
-    //   sessionStorage.getItem("login")
-    // ) {
-    //   getUserInfo();
-    // }
-    // if (!sessionStorage.getItem("login")) {
-    //   sessionStorage.removeItem("userInfo");
-    // }
+    if (
+      !sessionStorage.getItem("userInfo") ||
+      sessionStorage.getItem("login")
+    ) {
+      getUserInfo();
+    }
+    if (!sessionStorage.getItem("login")) {
+      sessionStorage.removeItem("userInfo");
+    }
   }, []);
 
   //* 태그 최신화
@@ -153,7 +153,7 @@ const Main = () => {
 
       //로딩 이미지 보여줬다가 사라짐
       setIsLoading(true);
-      handleLoading();
+      handleLoading(500);
     }
   };
   const handleSearchInput = (e: any) => {
@@ -166,8 +166,8 @@ const Main = () => {
   return (
     <div>
       <Header
-        handleSearchInput={handleSearchInput}
-        handleClickSearchBtn={handleClickSearchBtn}
+        handleSearchInput={(e) => handleSearchInput(e)}
+        handleClickSearchBtn={(e) => handleClickSearchBtn(e)}
       />
 
       {isLoading ? (
@@ -188,7 +188,14 @@ const Main = () => {
             setTypeTag={setTypeTag}
             tags={userTags}
           />
-          {isEmpty ? <MainEmptyCon /> : <MainWineCon randomWine={randomWine} />}
+          {isEmpty ? (
+            <MainEmptyCon />
+          ) : (
+            <MainWineCon
+              handleLoading={handleLoading}
+              randomWine={randomWine}
+            />
+          )}
         </div>
       )}
       <Footer />

@@ -77,7 +77,7 @@ function Reviews({
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       })
-      .then((data) => () => handleComments())
+      .then((data) => handleComments())
       // * 댓글 삭제 후 handleComments 함수 실행으로 commentsList 상태 변경해 재랜딩
       .catch((err) => {});
   };
@@ -112,7 +112,7 @@ function Reviews({
         <div className="review_star">별점: {commentRating}</div>
         <ReviewLikeBtn like={true} />
         <ReviewLikeBtn like={false} />
-        <ReplyBtn isGuset={isGuset} />
+        <ReplyBtn />
       </div>
     </li>
   );

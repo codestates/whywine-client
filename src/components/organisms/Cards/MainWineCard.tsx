@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
 import dotenv from "dotenv";
@@ -11,6 +17,7 @@ const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface WineData {
   randomWine?: any;
+  handleLoading: (time: number | undefined) => void;
 }
 
 let name: string,
@@ -23,7 +30,7 @@ let name: string,
   tags: object[],
   rating_avg: number;
 
-const MainWineCard = ({ randomWine }: WineData) => {
+const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
@@ -42,10 +49,9 @@ const MainWineCard = ({ randomWine }: WineData) => {
     sort = randomWine.sort;
     rating_avg = randomWine.rating_avg;
   }
-
-  const landingHandleComments = useCallback(async () => {
+  const landingHandleComments = useCallback(() => {
     if (randomWine) {
-      await axios
+      axios
         .get(`${server}comment?wineid=${randomWine.id}`, {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -57,21 +63,28 @@ const MainWineCard = ({ randomWine }: WineData) => {
     }
   }, []);
 
-  const handleUploadImg = () => {
-    setTimeout(() => setIsUpload(true), 300);
+  // const landingHandleComments = async () => {
+
+  // };
+  const handleIsClicked = async () => {
+    setIsOpen(true);
+    landingHandleComments();
   };
 
+  // const guestList = useMemo(() => handleIsClicked, []);
+
+  // console.log("guestList", guestList());
+
+  // const handleUploadImg = () => {
+  //   setTimeout(() => setIsUpload(true), 300);
+  // };
+
   useEffect(() => {
-    handleUploadImg();
+    handleLoading(300);
     return () => {
       setIsUpload(false);
     };
   }, [tags]);
-
-  const handleIsClicked = () => {
-    setIsOpen(true);
-    landingHandleComments();
-  };
 
   const handleClickOutside = (e: any) => {
     if (isOpen && !ModalEl.current.contains(e.target)) {
@@ -92,7 +105,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
       {randomWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
-            handleComments={landingHandleComments}
+            handleComments={() => landingHandleComments()}
             landingCommentList={commentList}
             randomWine={randomWine}
             price={randomWine.price}
@@ -109,7 +122,7 @@ const MainWineCard = ({ randomWine }: WineData) => {
       )}
 
       {randomWine === undefined ? null : (
-        <div className="mainWineCard" onClick={handleIsClicked}>
+        <div className="mainWineCard" onClick={() => handleIsClicked()}>
           <Rating rating_avg={randomWine.rating_avg} />
           <div className="mainWineProfile">
             <img
