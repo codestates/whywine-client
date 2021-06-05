@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import GoToTop from "../atoms/Buttons/GoToTop";
 import LikeListCon from "../organisms/Containers/LikeListCon";
 import MyPageHeader from "../organisms/Header/MyPageHeader";
 
@@ -14,11 +15,34 @@ let likeWines = JSON.parse(userInfo).wines;
 const LikeList = () => {
   const [userLikeWines, setUserLikeWines] = useState<object[]>(likeWines);
 
-  console.log(userLikeWines);
+  //* 스크롤 내리면 스크롤다운 사라짐, 맨 위로가기 생김
+  const [scroll, setScroll] = useState(false);
+  const handleScrollDown = () => {
+    setScroll(true);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScrollDown);
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollDown);
+    };
+  });
   return (
     <div>
       <MyPageHeader />
-      <LikeListCon userLikeWines={userLikeWines} />
+      <LikeListCon
+        userLikeWines={userLikeWines}
+        scroll={scroll}
+        handleScrollDown={handleScrollDown}
+      />
+      <div
+        style={{
+          opacity: scroll ? "1" : "0",
+        }}
+        onScroll={handleScrollDown}
+      >
+        <GoToTop />
+      </div>
     </div>
   );
 };

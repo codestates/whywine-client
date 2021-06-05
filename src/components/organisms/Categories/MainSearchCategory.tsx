@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import GoBackBtn from "../../atoms/Icons/GoBackBtn";
+import GoBackBtn from "../../atoms/Buttons/GoBackBtn";
 import MainWineSearchCard from "../Cards/MainWineSearchCard";
 
 interface State {
