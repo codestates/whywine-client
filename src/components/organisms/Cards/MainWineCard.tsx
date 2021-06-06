@@ -52,7 +52,7 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
     sort = randomWine.sort;
     rating_avg = randomWine.rating_avg;
   }
-  const landingHandleComments = useCallback(() => {
+  const landingHandleComments = () => {
     if (randomWine) {
       axios
         .get(`${server}comment?wineid=${randomWine.id}`, {
@@ -64,12 +64,9 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
         })
         .catch((err) => console.dir(err));
     }
-  }, []);
+  };
 
-  // const landingHandleComments = async () => {
-
-  // };
-  const handleIsClicked = async () => {
+  const handleIsClicked = () => {
     setIsOpen(true);
     landingHandleComments();
   };
@@ -78,12 +75,12 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
 
   // console.log("guestList", guestList());
 
-  // const handleUploadImg = () => {
-  //   setTimeout(() => setIsUpload(true), 300);
-  // };
+  const handleUploadImg = () => {
+    setTimeout(() => setIsUpload(true), 100);
+  };
 
   useEffect(() => {
-    handleLoading(300);
+    handleUploadImg();
     return () => {
       setIsUpload(false);
     };
@@ -102,8 +99,6 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
       window.removeEventListener("click", handleClickOutside);
     };
   });
-
-  console.log(tags);
 
   return (
     <li>
@@ -135,21 +130,23 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
               alt="와인"
               className={isUpload ? "wineMainImg" : "wineMainSample"}
             /> */}
-            <Image
-              src={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
-              alt="와인"
-              placeholderImg={wineSample}
-              className={isUpload ? "wineMainImg" : "wineMainSample"}
-            />
+            {isUpload ? (
+              <Image
+                src={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
+                alt="와인"
+                placeholderImg={wineSample}
+                className="wineMainImg"
+                // style={{ opacity: isUpload ? "0" : "1" }}
+              />
+            ) : null}
 
             <div className="mainWineContent">
-
-<!--               {randomWine.name.length >= 30 ? (
+              {/* {randomWine.name.length >= 30 ? (
                 <div className="moreThan30">{randomWine.name}</div>
               ) : (
                 <div className="lessThan30">{randomWine.name}</div>
               )}
-              <p>{randomWine.description}</p> -->
+              <p>{randomWine.description}</p>  */}
 
               {name ? (
                 name.length >= 30 ? (

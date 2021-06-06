@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import card from "../../../img/wine_sample.png";
+import result from "../../../img/wine_result.png"; //!
 import ReactCardFlip from "react-card-flip";
 import Rating from "../../organisms/Ratings/Rating";
 import Image from "../Imgs/Image";
@@ -58,13 +58,9 @@ const SurResultCardRight = ({ randomWine }: WineData) => {
             width: "300px",
           }}
           className="cardLeft"
-          src={card}
+          src={result}
           alt="추천 와인 카드"
-
-          onClick={(e) => rotateCard(e)}
-
-          placeholderImg={wineSample}
-
+          onClick={(e: any) => rotateCard(e)}
         />
       </div>
 

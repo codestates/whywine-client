@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
-import wineSample from "../../../img/wine_sample.webp";
 import axios from "axios";
 import dotenv from "dotenv";
 import Image from "../../atoms/Imgs/Image";

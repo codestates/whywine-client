@@ -13,22 +13,20 @@ function Like({ id }: Props) {
   const [isLike, setIsLike] = useState<boolean>();
   const [noLike, setNoLike] = useState(false);
 
-
-  const getUserInfo = async () => {
-    try {
-      let data = await axios.get(`${server}userinfo`, {
-        withCredentials: true,
-      });
-      sessionStorage.setItem(
-        "userInfo",
-        JSON.stringify(data.data.data.userInfo)
-      );
-      // * 유저 정보 세션 스토리지 저장
-    } catch (error) {
-      console.dir(error);
-    }
-  };
-
+  // const getUserInfo = async () => {
+  //   try {
+  //     let data = await axios.get(`${server}userinfo`, {
+  //       withCredentials: true,
+  //     });
+  //     sessionStorage.setItem(
+  //       "userInfo",
+  //       JSON.stringify(data.data.data.userInfo)
+  //     );
+  //     // * 유저 정보 세션 스토리지 저장
+  //   } catch (error) {
+  //     console.dir(error);
+  //   }
+  // };
 
   const handleLikeBtn = useCallback(async () => {
     setIsLike(!isLike);
@@ -44,9 +42,8 @@ function Like({ id }: Props) {
           }
         )
         .then(() => {
-          getUserInfo();
+          // getUserInfo();
         });
-
     } else {
       console.log(2);
       await axios
@@ -66,10 +63,8 @@ function Like({ id }: Props) {
     }
   }, [isLike]);
 
- 
-
   useEffect(() => {
-    getUserInfo();
+    // getUserInfo();
 
     if (sessionStorage.getItem("userInfo")) {
       let userInfo: any = sessionStorage.getItem("userInfo");

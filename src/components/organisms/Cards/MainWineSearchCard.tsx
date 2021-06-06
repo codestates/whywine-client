@@ -10,9 +10,6 @@ require("dotenv").config();
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
-
-
-
 interface wineData {
   searchWine: any;
 }
@@ -45,7 +42,6 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
         .catch((err) => console.dir(err));
     }
   };
-
 
   //확인
   if (searchWine) {
@@ -92,26 +88,25 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
     <li>
       {searchWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
-        <WineModal
-          handleComments={landingHandleComments}
-          landingCommentList={commentList}
-          randomWine={searchWine}
-          price={searchWine.price}
-          tags={searchWine.tags}
-          id={searchWine.id}
-          sort={searchWine.sort}
-          likeCount={searchWine.likeCount}
-          description={searchWine.description}
-          image={process.env.REACT_APP_WINE_IMAGE_URL + searchWine.image}
-          name={searchWine.name}
-          ModalEl={ModalEl}
-        />
+          <WineModal
+            handleComments={landingHandleComments}
+            landingCommentList={commentList}
+            randomWine={searchWine}
+            price={searchWine.price}
+            tags={searchWine.tags}
+            id={searchWine.id}
+            sort={searchWine.sort}
+            likeCount={searchWine.likeCount}
+            description={searchWine.description}
+            image={process.env.REACT_APP_WINE_IMAGE_URL + searchWine.image}
+            name={searchWine.name}
+            ModalEl={ModalEl}
+          />
         </div>
       )}
 
-
-      <div className="mainSearchCard" onClick={handleIsClicked}>
-        <div className="mainSearchProfile">
+      <div className="searchCard" onClick={handleIsClicked}>
+        <div className="searchProfile">
           {/* <LazyLoadImage
             src={image}
             effect="blur"
@@ -122,7 +117,7 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
           /> */}
           <Image
             src={image}
-            className={isUpload ? "wineMainImg" : "wineMainSample"}
+            className="wineSearchImg"
             alt="와인"
             placeholderImg={wineSample}
           />

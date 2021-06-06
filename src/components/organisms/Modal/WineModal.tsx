@@ -60,7 +60,6 @@ function WineModal({
     rating: rating,
   });
 
-
   const handleTextArea = (e: any) => {
     setComment({
       text: `${e.target.value}`,

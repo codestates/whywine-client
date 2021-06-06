@@ -17,27 +17,23 @@ const MainSubWineCategory = ({ subWine }: WineData) => {
   const history = useHistory();
   const [isTagArr, setIsTagArr] = useState(true);
 
-  useEffect(() => {});
-  console.log(tags);
   // const handleIsTagArr = () => {
   //   setIsTagArr(true);
   //   history.push("/survey");
   //   window.location.reload();
   // };
 
-  console.log(Object.keys(subWine).includes("2"));
   // TODO Loading에 이미지 파일 주기
   return (
     <div>
       <div className="mainSubCategory">
         {/* {Object.keys(subWine).includes("2") ? ( */}
-        <div className="mainCategoryName">
+        <div className="mainSubCategoryName">
           <h2>
             이런 와인은 <span>어떠세요?</span>
           </h2>
           <p>
-            추천 와인이 마음에 들지 <br /> 않으신다면 여기서 원하는 와인을
-            찾아보세요.
+            추천 와인이 마음에 들지 않으신다면 여기서 원하는 와인을 찾아보세요.
           </p>
         </div>
         {/* // ) : null} */}

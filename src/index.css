@@ -301,7 +301,7 @@ section {
   justify-content: space-between;
   /* background-color: #ffffff; */
   background-color: #fdfaf6;
-  width: 95rem;
+  width: 90rem;
 }
 
 .headerMenu {
@@ -1123,7 +1123,7 @@ section {
   display: flex;
   justify-content: center;
   min-height: 450px;
-  margin-left: 16rem;
+  margin-left: 0rem;
 }
 .mainLikeCard {
   display: flex;
@@ -1234,7 +1234,7 @@ section {
   background-color: #faf1e6;
   border-radius: 15px;
   position: relative;
-  margin: 0 10px;
+  margin: 0 40px;
   transition: all 0.4s;
   flex-shrink: 0;
   box-shadow: 0 0 7px 0 rgb(0 0 0 / 6%);
@@ -1318,6 +1318,14 @@ section {
   font-weight: 600;
   /* font-family: 'Nanum Myeongjo', serif; */
 }
+.wineSearchImg {
+  width: 82px;
+  height: 300px;
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 27px;
+  animation: fadeIn 0.3s alternate;
+}
 
 .wineMainImg {
   width: 82px;
@@ -1325,17 +1333,19 @@ section {
   position: absolute;
   margin-top: 20px;
   margin-left: 70px;
+  animation: fadeIn 0.3s alternate;
+  /* transition: all 0.3s; */
   /* background-image: url(./img/wine_sample.webp); */
   /* transition: background-image 0.25s ease-in-out 0s; */
 }
-.wineMainSample {
+/* .wineMainSample {
   width: 82px;
   height: 300px;
   position: absolute;
   margin-top: 20px;
   margin-left: 70px;
   animation: fadeIn 0.6s alternate;
-}
+} */
 .mainWineContent {
   position: absolute;
   margin-top: 180px;
@@ -1385,6 +1395,22 @@ section {
 /* .mainWineContent h2 span {
   display: block;
 } */
+.searchCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 450px;
+  width: 300px;
+  cursor: pointer;
+  background-color: #faf1e6;
+  border-radius: 15px;
+  position: relative;
+  margin: 0 40px;
+  transition: all 0.4s;
+  flex-shrink: 0;
+  margin-top: 3px;
+  margin-bottom: 60px;
+}
 /**SearchCard**/
 .mainSearchCard {
   display: flex;
@@ -1396,13 +1422,20 @@ section {
   background-color: #faf1e6;
   border-radius: 15px;
   position: relative;
-  margin: 0 10px;
+  margin: 0 20px;
   transition: all 0.4s;
   flex-shrink: 0;
   margin-top: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 .mainSearchCard:hover {
+  box-shadow: 0 0 6px 0 rgb(50 50 50 / 10%);
+  height: 453px;
+  margin-bottom: 17px;
+
+  transition: all 0.3s;
+}
+.searchCard:hover {
   box-shadow: 0 0 6px 0 rgb(50 50 50 / 10%);
   height: 453px;
   margin-bottom: 17px;
@@ -1464,8 +1497,8 @@ section {
   background-color: #fdfaf6;
 }
 .mainSearchProfile img {
-  margin-left: 30px;
-  margin-top: 10px;
+  margin-left: 27px;
+  margin-top: 25px;
 }
 
 .navBars {
@@ -1510,8 +1543,36 @@ section {
   width: 200px;
   min-width: 200px;
   margin-bottom: 20px;
-  margin: 0 20px;
+  margin-right: 40px;
   padding-bottom: 10px;
+}
+.mainSubCategoryName {
+  display: flex;
+  flex-direction: column;
+  width: 91rem;
+  min-width: 200px;
+  margin-bottom: 60px;
+  margin-right: 40px;
+  padding-bottom: 10px;
+  margin-left: -3rem;
+}
+.mainSubCategoryName h2 {
+  width: 87rem;
+  min-width: 200px;
+  height: 100px;
+  border-bottom: 2px solid;
+}
+.mainSubCategoryName p {
+  color: black;
+  font-size: 15px;
+  width: 30rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+.mainSubCategoryName span {
+  display: block;
+  margin-left: 70px;
 }
 .mainCategoryName h2 {
   width: 200px;
@@ -1766,6 +1827,7 @@ section {
   display: flex;
   justify-content: center;
   margin-top: 3rem;
+  margin-left: 4rem;
 }
 
 .mainWineTypeBox {
@@ -1778,10 +1840,10 @@ section {
 }
 .redWhite div {
   display: flex;
-  width: 145px;
+  width: 140px;
   margin-right: 20px;
   padding: 8px;
-  height: 36px;
+  height: 40px;
   line-height: normal;
 }
 .roseSparkling {
@@ -1790,10 +1852,10 @@ section {
 }
 .roseSparkling div {
   display: flex;
-  width: 145px;
+  width: 140px;
   margin-right: 20px;
   padding: 8px;
-  height: 36px;
+  height: 40px;
   line-height: normal;
 }
 /* .mainTagBox img {
@@ -1804,7 +1866,7 @@ section {
   align-items: center;
   margin-right: 10px;
   margin-left: 10px;
-  width: 400px;
+  width: 380px;
   /* border-right: 1px solid #f3f3f3; */
 }
 .bodyTanninTag {
@@ -1812,7 +1874,7 @@ section {
   flex-direction: column;
   justify-content: center;
   margin: 0 10px;
-  width: 400px;
+  width: 380px;
   margin-bottom: 20px;
 }
 .aciditySweetnessTag {
@@ -1820,7 +1882,7 @@ section {
   flex-direction: column;
   justify-content: center;
   margin: 0 10px;
-  width: 400px;
+  width: 380px;
   margin-bottom: 20px;
 }
 .mainWineTags {
@@ -1910,15 +1972,17 @@ section {
   margin-bottom: 6.3rem;
   min-height: 33.5rem;
   justify-content: center;
-  margin-left: 13rem;
+  margin-left: 7.5rem;
 }
 .mainSubCategory {
   display: flex;
-  margin-top: 3rem;
+  flex-direction: column;
+  margin-top: 12rem;
   margin-bottom: 6.3rem;
   min-height: 33.5rem;
   justify-content: center;
-  margin-left: 13rem;
+  margin-left: 9rem;
+  align-items: center;
 }
 /* .mainSubCategory img {
   width: 80%;
@@ -1931,10 +1995,16 @@ section {
 }
 .mainWineCategory {
   display: flex;
-  width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   justify-content: center;
   margin: 2rem 0;
+}
+.mainSearchBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80rem;
+  min-width: 72rem;
+  margin-left: 2rem;
 }
 .mainWineSearchBox {
   display: flex;
@@ -1944,7 +2014,9 @@ section {
 .mainSubWineBox {
   display: flex;
   flex-wrap: wrap;
-  min-width: 92rem;
+  min-width: 90rem;
+  width: 90rem;
+  margin-left: -4rem;
 }
 @keyframes fadeIn {
   from {
@@ -2057,68 +2129,6 @@ section {
     filter: drop-shadow(0 0 0);
   }
 }
-@media screen and (max-width: 800px) {
-  body {
-    overflow: hidden;
-    overflow-y: scroll;
-  }
-  .mainNav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .mainLogoSearchBox {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-  .mainLogo {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-  .mainNavMenu {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    padding: 8px 24px;
-    display: none;
-    width: 100%;
-    text-align: center;
-  }
-  .navBars {
-    display: block;
-  }
-  .mainNavMenu.active {
-    display: flex;
-  }
-
-  .mainWineProfile {
-    width: 82px;
-  }
-  .mainWineData {
-    flex-direction: row;
-    width: 100%;
-  }
-  .slick-slider {
-    width: 100%;
-  }
-  .mainWineConBox {
-    width: 100%;
-  }
-  .mainTagBox {
-    display: none;
-  }
-  .mainTagBox.active {
-    display: block;
-    width: 800px;
-    position: absolute;
-  }
-  .mainLabelBox {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-  }
-}
 
 /**slick-slider**/
 
@@ -2203,3 +2213,497 @@ section {
   background-color: blueviolet;
 }
 /* -------------------------------------------------------------------------------------- */
+@media screen and (max-width: 1366px) {
+  body {
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+  .title {
+    margin-left: 1rem;
+  }
+  .MainHeader {
+    width: 75rem;
+  }
+  .mainTagBox {
+    margin-left: 1rem;
+  }
+  .typeTag {
+    width: 270px;
+    margin-right: 0;
+  }
+  .redWhite div {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    margin-right: 1rem;
+  }
+  .roseSparkling div {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    margin-right: 1rem;
+  }
+  .mainWineTypeTag {
+    width: 80px;
+    min-width: 80px;
+    font-size: 13px;
+    height: 28px;
+    min-height: 28px;
+    margin-right: 0.7rem;
+  }
+  .bodyTanninTag {
+    width: 270px;
+    margin-right: 2rem;
+    margin-left: 0;
+  }
+  .aciditySweetnessTag {
+    width: 270px;
+  }
+
+  /**mainWineCard**/
+  .mainWineCardBox {
+    margin-left: 5rem;
+  }
+  .mainWineCard {
+    width: 300px;
+    height: 300px;
+  }
+  .mainWineCard:hover {
+    width: 350px;
+    height: 350px;
+  }
+  .mainWineCard:hover .mainWineData {
+    width: 350px;
+    margin-top: 200px;
+  }
+  .mainWineCard:hover .moreThan30 {
+    width: 240px;
+    margin-bottom: 120px;
+    margin-left: 10px;
+  }
+  .mainWineCard:hover .lessThan30 {
+    width: 240px;
+    margin-bottom: 120px;
+    margin-left: 10px;
+  }
+  .mainWineCard:hover .wineMainImg {
+    margin-left: 90px;
+  }
+  .mainWineCard:hover .mainWineRatingAvg {
+    font-size: 28px;
+  }
+  .mainWineCard:hover .mainWineRatingStars {
+    top: 95px;
+    font-size: 15px;
+  }
+  .mainWineCard:hover .rating {
+    margin-left: 70px;
+    top: 95px;
+    font-size: 15px;
+  }
+  .mainWineData {
+    margin-top: 200px;
+    width: 300px;
+    height: 70px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .mainWineType {
+    font-size: 15px;
+  }
+  .mainWineLikeTagBox {
+    font-size: 13px;
+  }
+
+  .wineMainImg {
+    margin-top: 30px;
+    margin-left: 60px;
+    height: 190px;
+    width: inherit;
+  }
+  .moreThan30 {
+    font-size: 20px;
+    margin-bottom: 150px;
+    width: 150px;
+    margin-left: 10px;
+  }
+  .lessThan30 {
+    font-size: 22px;
+    width: 150px;
+    margin-bottom: 150px;
+    margin-left: 10px;
+  }
+  .mainWineRatingAvg {
+    font-size: 16px;
+    left: 110px;
+    top: 140px;
+  }
+  .mainWineRatingStars {
+    font-size: 10px;
+    left: 70px;
+    top: 172px;
+  }
+  .rating {
+    margin-left: 45px;
+  }
+  .mainWineContent p {
+    font-size: 12px;
+    min-width: 310px;
+    color: #f9f9f9;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s;
+    transition-delay: 0.3s;
+    opacity: 0;
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+  }
+  .mainSubCategory {
+    /* align-items: normal; */
+  }
+  .mainSubWineBox {
+    margin-left: -2.5rem;
+    width: 80rem;
+    min-width: 80rem;
+  }
+  .mainSearchCard {
+    width: 270px;
+    height: 350px;
+    margin: 0 8px;
+    margin-bottom: 60px;
+  }
+  .mainSearchBox {
+    min-width: 50rem;
+  }
+  .searchCard {
+    margin: 0 15px;
+    margin-bottom: 60px;
+    width: 270px;
+    height: 430px;
+  }
+  .mainSearchCard:hover {
+    height: 353px;
+  }
+  .mainSearchContent div {
+    font-size: 20px;
+    width: 130px;
+  }
+  .lessThanDes {
+    font-size: 12px;
+    height: 90px;
+  }
+  .moreThanDes {
+    font-size: 11px;
+    height: 90px;
+  }
+  .mainSearchProfile img {
+    margin-top: 40px;
+  }
+  .goToTop {
+    font-size: 20px;
+  }
+  .mainSubCategoryName {
+    margin-left: 8rem;
+    margin-right: 0;
+  }
+  .mainSubCategoryName h2 {
+    width: 72rem;
+  }
+  .wineSearchImg {
+    margin-top: 25px;
+  }
+  .searchCard:hover {
+    height: 433px;
+  }
+
+  /* -------------------------------------------------------------------------------------- */
+  @media screen and (max-width: 850px) {
+    body {
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+    .MainHeader {
+      width: 50rem;
+    }
+    .headerMenu {
+      margin-right: 0rem;
+    }
+    .title {
+      margin-left: 0rem;
+    }
+    .headerMenu > div {
+      margin: 0 20px;
+    }
+    .mainWineTagCon {
+      margin-left: 1rem;
+    }
+    .mainTags {
+      flex-direction: column;
+    }
+    .mainTagBox {
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-left: 2rem;
+    }
+    .mainWineCardBox {
+      flex-direction: column;
+      margin-left: 7rem;
+    }
+    .mainContainers {
+      display: flex;
+    }
+    .typeTag {
+      width: 230px;
+    }
+    .mainWineTypeBox {
+      margin-bottom: 11px;
+    }
+    .redWhite div {
+      width: 100px;
+      height: 32px;
+      font-size: 15px;
+    }
+    .roseSparkling div {
+      width: 100px;
+      height: 32px;
+      font-size: 15px;
+    }
+    .mainWineTypeTag {
+      width: 80px;
+      min-width: 80px;
+      font-size: 13px;
+      height: 28px;
+      min-height: 26px;
+      margin-right: 0.7rem;
+    }
+    .bodyTanninTag {
+      width: 230px;
+      margin-bottom: 5px;
+    }
+    .aciditySweetnessTag {
+      width: 230px;
+      margin-left: 0;
+    }
+    .toolTip {
+      font-size: 20px;
+    }
+    .mainCategoryName {
+      width: 200px;
+      min-width: 200px;
+      margin-bottom: 10px;
+      margin-right: 20px;
+    }
+    /* .mainCategoryName h2 {
+      font-size: 25px;
+    } */
+    .mainCategoryName p {
+      font-size: 12px;
+      width: 9rem;
+      margin-left: 3.5rem;
+    }
+
+    /**mainWineCard**/
+    .mainWineCon {
+      margin-top: 20px;
+    }
+    .mainWineCategory {
+      width: 0rem;
+      margin-left: -5rem;
+      justify-content: flex-start;
+    }
+    .mainWineCard {
+      width: 400px;
+      height: 200px;
+      margin-bottom: 2rem;
+    }
+    .mainWineCard:hover {
+      width: 400px;
+      height: 250px;
+    }
+    .mainWineCard:hover .mainWineData {
+      width: 400px;
+      margin-top: 150px;
+    }
+    .mainWineCard:hover .moreThan30 {
+      width: 270px;
+      margin-bottom: 80px;
+      margin-left: 10px;
+    }
+    .mainWineCard:hover .lessThan30 {
+      width: 270px;
+      margin-bottom: 80px;
+      margin-left: 10px;
+    }
+    .mainWineCard:hover .wineMainImg {
+      margin-left: 120px;
+    }
+    .mainWineCard:hover .mainWineRatingAvg {
+      top: 30px;
+      left: 70px;
+      font-size: 20px;
+    }
+    .mainWineCard:hover .mainWineRatingStars {
+      top: 35px;
+      left: 135px;
+      font-size: 12px;
+    }
+    .mainWineCard:hover .rating {
+      top: 20px;
+      margin-left: 5px;
+      font-size: 12px;
+    }
+    .mainWineData {
+      margin-top: 160px;
+      width: 400px;
+      height: 40px;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      line-height: 20px;
+    }
+    .mainWineType {
+      font-size: 13px;
+      margin-bottom: 0;
+    }
+    .mainWineLikeTagBox {
+      font-size: 12px;
+    }
+
+    .wineMainImg {
+      margin-top: 15px;
+      margin-left: 90px;
+      height: 160px;
+      width: inherit;
+    }
+    .moreThan30 {
+      font-size: 20px;
+      margin-bottom: 70px;
+      width: 230px;
+      margin-left: 10px;
+    }
+    .lessThan30 {
+      font-size: 20px;
+      width: 230px;
+      margin-bottom: 70px;
+      margin-left: 10px;
+    }
+    .mainWineRatingAvg {
+      font-size: 16px;
+      left: 170px;
+      top: 100px;
+    }
+    .mainWineRatingStars {
+      font-size: 10px;
+      left: 130px;
+      top: 133px;
+    }
+    .rating {
+      margin-left: 45px;
+    }
+    .mainWineContent p {
+      font-size: 11px;
+      min-width: 360px;
+      color: #f9f9f9;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s;
+      transition-delay: 0.3s;
+      opacity: 0;
+      position: absolute;
+      bottom: 30px;
+      left: 20px;
+    }
+    .mainWineCard:hover .mainWineContent p {
+      bottom: -15px;
+    }
+    .mainSubCategory {
+      flex-direction: column;
+      margin-left: -16.8rem;
+    }
+    .mainSubWineBox {
+      width: 50rem;
+      margin-left: -37rem;
+      margin-top: 1rem;
+      min-width: 50rem;
+    }
+    .mainSearchCard {
+      width: 280px;
+      height: 350px;
+      margin-right: 2rem;
+      margin-left: 2rem;
+      margin-bottom: 5rem;
+    }
+    .mainSearchCard:hover {
+      height: 353px;
+    }
+    .mainSearchContent div {
+      font-size: 20px;
+      width: 130px;
+    }
+    .lessThanDes {
+      font-size: 12px;
+      height: 90px;
+    }
+    .moreThanDes {
+      font-size: 11px;
+      height: 90px;
+    }
+    .mainSearchProfile img {
+      height: 190px;
+      margin-top: 40px;
+    }
+    .goToTop {
+      font-size: 20px;
+    }
+    .mainSubCategoryName {
+      margin-left: -1rem;
+    }
+    .mainSubCategoryName h2 {
+      width: 47rem;
+    }
+    .mainEmpty {
+      margin-left: 2rem;
+    }
+    .mainEmpty img {
+      width: 400px;
+    }
+    .mainEmpty p {
+      font-size: 18px;
+      margin-top: 3rem;
+    }
+    .mainEmptyDes :nth-child(3) {
+      width: 20rem;
+    }
+    .scroll-down-main {
+      display: none;
+    }
+    .question h1 {
+      font-size: 30px;
+    }
+    .question p {
+      font-size: 15px;
+    }
+    .searchCard:hover {
+      height: 433px;
+    }
+    .searchCard {
+      margin: 0 20px;
+      width: 350px;
+      margin-bottom: 80px;
+    }
+    .wineSearchImg {
+      margin-top: 30px;
+      margin-left: 25px;
+      height: 300px;
+      width: inherit;
+    }
+    .mainSearchCategory {
+      flex-direction: column;
+      margin-left: 1.5rem;
+    }
+    .mainSearchBox {
+      width: 70rem;
+      margin-top: 5rem;
+    }
+  }
+}

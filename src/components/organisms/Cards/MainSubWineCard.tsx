@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
 import wineSample from "../../../img/wine_sample.png";
 import dotenv from "dotenv";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Image from "../../atoms/Imgs/Image";
+import axios from "axios";
+
+require("dotenv").config();
 
 dotenv.config();
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface WineData {
   subWine: any;
@@ -24,8 +28,9 @@ let name: string,
 
 const MainSubWineCard = ({ subWine }: WineData) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isUpload, setIsUpload] = useState(false);
+  // const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
+  const [commentList, setCommentList] = useState<any[]>([]);
 
   //확인 확인
   if (subWine) {
@@ -39,19 +44,33 @@ const MainSubWineCard = ({ subWine }: WineData) => {
     sort = subWine.sort;
     rating_avg = subWine.rating_avg;
   }
+  const landingHandleComments = useCallback(() => {
+    if (subWine) {
+      axios
+        .get(`${server}comment?wineid=${subWine.id}`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        })
+        .then((data) => {
+          return setCommentList(data.data.data.comments);
+        })
+        .catch((err) => console.dir(err));
+    }
+  }, []);
 
-  const handleUploadImg = () => {
-    setTimeout(() => setIsUpload(true), 300);
-  };
-  useEffect(() => {
-    handleUploadImg();
-    return () => {
-      setIsUpload(false);
-    };
-  }, [tags]);
-
+  // const handleUploadImg = () => {
+  //   setTimeout(() => setIsUpload(true), 300);
+  // };
+  // useEffect(() => {
+  //   handleUploadImg();
+  //   return () => {
+  //     setIsUpload(false);
+  //   };
+  // }, [tags]);
+  // console.log(isUpload);
   const handleIsClicked = () => {
     setIsOpen(true);
+    landingHandleComments();
   };
 
   const handleClickOutside = (e: any) => {
@@ -73,6 +92,9 @@ const MainSubWineCard = ({ subWine }: WineData) => {
       {subWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            handleComments={() => landingHandleComments()}
+            landingCommentList={commentList}
+            randomWine={subWine}
             price={subWine.price}
             tags={subWine.tags}
             id={subWine.id}
@@ -98,9 +120,8 @@ const MainSubWineCard = ({ subWine }: WineData) => {
           <Image
             src={image}
             placeholderImg={wineSample}
-            // scrollPosition={scrollPosition}
             alt="와인"
-            className={isUpload ? "wineMainImg" : "wineMainSample"}
+            className={"wineMainImg"}
           />
           <div className="mainSearchContent">
             <div>{name}</div>
