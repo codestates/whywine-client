@@ -13,6 +13,7 @@ const MainBodyTag = () => {
   const [low, setLow] = useState(false);
   const [userMainTag, setUserMainTag] = useState<string[]>(JSON.parse(tags));
   const handleBodyTagClick = (body: string) => {
+    sessionStorage.setItem("selectTags", "true");
     switch (body) {
       case "가벼운":
         setLow(!low);

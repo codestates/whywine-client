@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ClickSearch from "../Imgs/ClickSearch";
+import ClickSearch from "../Icons/ClickSearch";
 
 interface State {
   handleSearchInput?: (e: any) => void;

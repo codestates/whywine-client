@@ -1,7 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
-import wineSample from "../../../img/wine_sample.webp";
+import axios from "axios";
+import dotenv from "dotenv";
+import Image from "../../atoms/Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
+
+require("dotenv").config();
+
+dotenv.config();
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface WineData {
   userLikeWines: any;
@@ -14,11 +22,14 @@ let name: string,
   image: string,
   price: number,
   sort: string,
-  tags: object[];
+  tags: object[],
+  rating_avg: number;
+
 const LikeCard = ({ userLikeWines }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
+  const [commentList, setCommentList] = useState<any[]>([]);
   const ModalEl: any = useRef();
 
   // 확인 확인
@@ -32,6 +43,20 @@ const LikeCard = ({ userLikeWines }: WineData) => {
     tags = userLikeWines.tags;
     sort = userLikeWines.sort;
   }
+
+  const landingHandleComments = async () => {
+    if (userLikeWines) {
+      await axios
+        .get(`${server}comment?wineid=${userLikeWines.id}`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        })
+        .then((data) => {
+          return setCommentList(data.data.data.comments);
+        })
+        .catch((err) => console.dir(err));
+    }
+  };
   const handleUploadImg = () => {
     setTimeout(() => setIsUpload(true), 300);
   };
@@ -64,8 +89,11 @@ const LikeCard = ({ userLikeWines }: WineData) => {
 
   return (
     <li>
-      <div className={isOpen ? "openModal modal" : "modal"}>
+      <div className={isOpen ? "openWineModal modal" : "modal"}>
         <WineModal
+          handleComments={landingHandleComments}
+          landingCommentList={commentList}
+          randomWine={userLikeWines}
           price={price}
           tags={tags}
           id={id}
@@ -74,6 +102,7 @@ const LikeCard = ({ userLikeWines }: WineData) => {
           description={description}
           image={image}
           name={name}
+          rating_avg={rating_avg}
           ModalEl={ModalEl}
         />
       </div>
@@ -87,10 +116,11 @@ const LikeCard = ({ userLikeWines }: WineData) => {
         </div>
 
         <div className="wineLikeImgBox">
-          <img
+          <Image
             src={image}
             alt="와인"
             className={isUpload ? "wineLikeImg" : "wineLikeImgSample"}
+            placeholderImg={wineSample}
           />
           <div className="wineLikeData">
             <div className="mainWineType">

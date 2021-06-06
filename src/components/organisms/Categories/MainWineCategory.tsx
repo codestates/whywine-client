@@ -2,29 +2,40 @@ import React, { useState, useEffect } from "react";
 import MainWineCard from "../Cards/MainWineCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Loading from "../../atoms/Imgs/Loading";
+import Loading from "../../atoms/Icons/Loading";
 import { useHistory } from "react-router-dom";
+import MainEmptyCon from "../Containers/MainEmptyCon";
+import MainWineSearchCard from "../Cards/MainWineSearchCard";
+import ScrollDown from "../../atoms/Scroll/ScrollDown";
 
 interface WineData {
   randomWine: object[];
+  handleLoading: (time: number | undefined) => void;
 }
-const MainWineCategory = ({ randomWine }: WineData) => {
-  // let wineData = [
-  //   <MainWineCard randomWine={randomWine[0]} />,
-  //   <MainWineCard randomWine={randomWine[1]} />,
-  //   <MainWineCard randomWine={randomWine[2]} />,
-  // ];
+
+const MainWineCategory = ({ randomWine, handleLoading }: WineData) => {
   const history = useHistory();
   const [isTagArr, setIsTagArr] = useState(true);
 
-  let tags: any = sessionStorage.getItem("userTag");
-  tags = JSON.parse(tags);
+  useEffect(() => {
+    if (sessionStorage.getItem("userTag")) {
+      let tags: any = sessionStorage.getItem("userTag");
+      tags = JSON.parse(tags);
+      setIsTagArr(false);
+      if (tags.length === 4) {
+        setIsTagArr(true);
+      }
+      if (sessionStorage.getItem("selectTags")) {
+        setIsTagArr(true);
+      }
+    }
+  });
 
-  if (tags.langth === 0) {
-    setIsTagArr(false);
-  }
-
-  // TODO Loading에 이미지 파일 주기
+  const handleIsTagArr = () => {
+    setIsTagArr(true);
+    history.push("/survey");
+    window.location.reload();
+  };
   return (
     <div>
       {isTagArr ? (
@@ -33,21 +44,17 @@ const MainWineCategory = ({ randomWine }: WineData) => {
           <ul className="mainWineCardBox">
             {[1, 2, 3].map((data, index) => {
               return (
-                <MainWineCard randomWine={randomWine[index]} key={index} />
+                <MainWineCard
+                  handleLoading={handleLoading}
+                  randomWine={randomWine[index]}
+                  key={index}
+                />
               );
             })}
           </ul>
-          <div
-            onClick={() => history.push("/survey")}
-            className="guestNoSurvey"
-            style={{ opacity: isTagArr ? "1" : "0" }}
-          >
-            추천와인이 없습니다. {"   "}
-            <div>나에게 맞는 와인 찾으러 가기</div>
-          </div>
         </div>
       ) : (
-        <div>추천와인이 없습니다 </div>
+        <MainEmptyCon />
       )}
     </div>
   );

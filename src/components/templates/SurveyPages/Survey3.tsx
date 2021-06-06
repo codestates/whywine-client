@@ -46,7 +46,6 @@ const Survey3 = ({ animatedItem, userTag, setUserTag }: Props) => {
   );
 
   useEffect(() => {
-    console.log("3", tag);
     let target = "";
     Object.keys(acidity).map((el) => {
       if (acidity[el] === tag) {

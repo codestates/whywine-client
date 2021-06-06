@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 ul {
@@ -20,7 +21,18 @@ body {
   box-sizing: border-box;
   overflow: hidden; */
 }
-
+.guestReview {
+  margin-top: 250px;
+  display: flex;
+  min-width: 400px;
+  align-items: center;
+  font-size: 25px;
+  width: 100%;
+  flex-direction: column;
+}
+.guestReview > div {
+  margin: 10px 10px;
+}
 @font-face {
   font-family: "MapoGoldenPier";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff")
@@ -99,18 +111,7 @@ section {
   color: rgb(226, 90, 55);
 }
 /* *      랜딩페이지 첫번째        */
-.SurveyModal {
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  color: #fdfaf6;
-  right: 11rem;
-  bottom: 16rem;
-  font-size: 23px;
-  font-family: "Noto Sans KR", sans-serif;
-}
+
 .goToSurveyBtn {
   height: 40px;
   border-radius: 15px;
@@ -212,6 +213,7 @@ section {
   text-align: center;
   opacity: 1;
 }
+
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -272,8 +274,8 @@ section {
   justify-content: center;
   width: 100%;
   height: 6rem;
-  background-color: #ffffff;
-  /* background-color: #fdfaf6; */
+  /* background-color: #ffffff; */
+  background-color: #fdfaf6;
   box-shadow: 0 1px 4px 0 rgb(30 30 30 / 20%);
 }
 .MainHeader {
@@ -281,15 +283,14 @@ section {
   /* margin-left: 200px;
   margin-right: 200px; */
   /* top: 0; */
-  z-index: 1000;
   font-size: 40px;
   font-weight: bold;
   line-height: 40px;
   display: flex;
   justify-content: space-between;
-  background-color: #ffffff;
-  /* background-color: #fdfaf6; */
-  width: 95rem;
+  /* background-color: #ffffff; */
+  background-color: #fdfaf6;
+  width: 90rem;
 }
 
 .headerMenu {
@@ -371,6 +372,7 @@ section {
 /* *      랜딩페이지 두번째        */
 
 .SecondPage {
+  color: #fdfaf6;
   background-image: url("./img/KakaoTalk_Photo_2021-05-20-00-28-15.jpeg");
   background-size: cover;
   display: flex;
@@ -389,7 +391,6 @@ section {
 /* *      랜딩페이지 세번째        */
 
 .ThirdPage {
-  background-image: url("./img/KakaoTalk_Photo_2021-05-20-00-28-22.jpeg");
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -399,12 +400,22 @@ section {
 /* *      랜딩페이지 네번째        */
 
 .FourthPage {
-  background-image: url("./img/KakaoTalk_Photo_2021-05-20-00-28-22.jpeg");
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
+}
+.landingGoToTop > a {
+  position: absolute;
+  top: 380%;
+  left: 90%;
+  font-size: 40px;
+  background-color: black;
+  width: 5rem;
+  height: 5rem;
+  border: none;
+  border-radius: 50%;
 }
 .login_h2 {
   color: #b42332;
@@ -539,7 +550,35 @@ section {
 .kakao-icon {
   width: 40px;
 }
+.SurveyModal_Back {
+  display: none;
+  position: fixed;
 
+  background-color: rgba(100, 100, 100, 0.8);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 3;
+    transform: none;
+  }
+}
+.SurveyModal {
+  animation: fadeIn 0.5s ease-in-out;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: #fdfaf6;
+  right: 4rem;
+  bottom: 22rem;
+  font-size: 23px;
+  font-family: "Noto Sans KR", sans-serif;
+}
 .modal {
   display: none;
   position: fixed;
@@ -556,9 +595,16 @@ section {
   margin: 0 auto;
   border-radius: 0.5rem;
   background-color: rgb(255, 255, 255);
-  animation: modal-show 0.3s;
+  transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
   color: black;
 }
+
+.openWineModal {
+  display: flex;
+  align-items: center;
+  transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
+}
+
 .signUpBtn {
   font-size: 13px;
   font-weight: 400;
@@ -581,7 +627,7 @@ section {
 .modal.openModal {
   display: flex;
   align-items: center;
-  animation: modal-bg-show 0.3s;
+  /* animation: modal-bg-show 0.3s; */
 }
 
 @keyframes modal-show {
@@ -696,6 +742,8 @@ section {
   cursor: pointer;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  margin: 2rem 0;
 }
 .guestNoSurvey:hover {
   color: rgb(240, 119, 88);
@@ -718,6 +766,32 @@ section {
   cursor: pointer;
   display: inline-block;
 }
+.noSurvey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.noSurvey p {
+  text-align: center;
+}
+.noSurvey div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.goToMainFromRes {
+  text-decoration: underline;
+  color: #000;
+  margin: 3rem 0;
+  margin-bottom: 1.8rem;
+  cursor: pointer;
+}
+.noSurvey img {
+  width: 50%;
+  margin-top: -90px;
+}
+
 .wineTypeTag button:hover {
   box-shadow: 0 0 5px 0 skyblue inset, 0 0 10px 1px skyblue;
   border: 1px solid skyblue;
@@ -844,7 +918,15 @@ section {
   position: absolute;
   left: -14rem;
 }
-
+.ModalWineRating {
+  font-size: 25px;
+  margin: 10px 0px;
+}
+.modalDescription {
+  color: black;
+  font-size: 17px;
+  padding: 20px;
+}
 /**Main**/
 /* .main {
   display: flex;
@@ -858,8 +940,10 @@ section {
   height: 500px;
 }
 .hrDiv {
-  display: flex;
+  margin-top: 78px;
+  position: absolute;
   flex-direction: row;
+  width: 80%;
 }
 
 .star {
@@ -878,12 +962,12 @@ section {
   cursor: pointer;
 }
 .winemodal {
-  max-width: 850px;
-  height: 700px;
+  max-width: 95rem;
+  height: 870px;
   width: 100%;
   margin: 0 auto;
   border-radius: 0.5rem;
-  background-color: #fff;
+  background-color: #fdfaf6;
   animation: modal-show 0.3s;
   font-family: "Noto Sans KR", sans-serif;
   display: flex;
@@ -891,14 +975,67 @@ section {
   justify-content: space-around;
 }
 .guestLoginModal {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+.reviewWineName {
+  padding: 13px;
+  color: #52565d;
+}
 .reviewUl {
+  margin: 0px 25px 0px 180px;
   scroll-snap-type: y mandatory;
   overflow: scroll;
+}
+.reviewUl::-webkit-scrollbar {
+  display: none;
+}
+.reviewHeader {
+  position: absolute;
+  font-size: 40px;
+}
+
+.reviews {
   max-height: 300px;
+  color: black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 10px;
+  height: 232px;
+}
+.reviewContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 13px 0px;
+}
+.reviewContent_btn {
+  display: flex;
+  cursor: pointer;
+  margin: 0px 5px;
+  align-items: flex-end;
+}
+.reviewContent_btn div {
+  margin: 0px 5px;
+}
+.wineReview {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 20px;
+  margin: 10px 0px;
+  padding: 10px;
+  height: 100px;
+  background-color: white;
+  border-radius: 5px;
+  user-select: auto;
+  color: black;
+}
+.reviewBtns button {
+  margin: 0px 5px;
+}
+.review_star {
+  margin: 0px 10px;
 }
 .mainNav {
   display: flex;
@@ -906,6 +1043,12 @@ section {
   background-color: cornflowerblue;
   align-items: center;
 }
+.review_date {
+  margin-top: 0.5rem;
+  color: rgb(134, 142, 150);
+  font-size: 0.875rem;
+}
+
 .mainNavMenu {
   display: flex;
 }
@@ -944,14 +1087,20 @@ section {
 }
 .searchGoBack {
   display: flex;
-  position: fixed;
-  top: 17rem;
-  left: 19.5rem;
+  margin-top: 4.3rem;
+  margin-left: 5rem;
 }
 .searchGoBack span {
   font-size: 20px;
   vertical-align: middle;
   margin-left: 5px;
+}
+.goToTop {
+  position: fixed;
+  font-size: 25px;
+  left: 93vw;
+  top: 77vh;
+  cursor: pointer;
 }
 /* .mainSearch:hover {
   width: 250px;
@@ -960,9 +1109,6 @@ section {
 .mainSearch.active {
   width: 250px;
   transition: all 0.5s;
-}
-.goBackBtn {
-  background-image: url(./components/atoms/Imgs/GoBackBtn.tsx);
 }
 
 .likeHover {
@@ -977,28 +1123,44 @@ section {
   color: white;
   line-height: 170%;
 }
+.ModalWineRatingAvg {
+  display: flex;
+  justify-content: center;
+}
+
 .mainWineRatingAvg {
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 150px;
-  top: 200px;
+  left: 143px;
+  top: 196px;
   color: rgb(196, 118, 1);
   font-size: 25px;
+}
+.ModalWineRatingStars {
+  display: flex;
+  color: rgb(255, 153, 0);
 }
 .mainWineRatingStars {
   display: flex;
   position: absolute;
-  left: 130px;
-  top: 250px;
+  left: 81px;
+  top: 245px;
   color: rgb(255, 153, 0);
 }
-
+.rating {
+  margin-left: 74px;
+}
+.reviewLikeBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
 .mainWineCardBox {
   display: flex;
   justify-content: center;
   min-height: 450px;
-  margin-left: 16rem;
+  margin-left: 0rem;
 }
 .mainLikeCard {
   display: flex;
@@ -1109,7 +1271,7 @@ section {
   background-color: #faf1e6;
   border-radius: 15px;
   position: relative;
-  margin: 0 10px;
+  margin: 0 40px;
   transition: all 0.4s;
   flex-shrink: 0;
   box-shadow: 0 0 7px 0 rgb(0 0 0 / 6%);
@@ -1136,14 +1298,20 @@ section {
 }
 .mainWineCard:hover .mainWineRatingAvg {
   font-size: 35px;
-  margin-left: 45px;
-  top: 30px;
+  margin-left: 12px;
+  top: 40px;
   color: rgb(238, 199, 24);
   transition: all 0.4s;
 }
 .mainWineCard:hover .mainWineRatingStars {
-  top: 100px;
-  font-size: 35px;
+  top: 110px;
+  font-size: 20px;
+  transition: all 0.4s;
+}
+.mainWineCard:hover .rating {
+  top: 110px;
+  font-size: 20px;
+  margin-left: 92px;
   transition: all 0.4s;
 }
 
@@ -1187,6 +1355,14 @@ section {
   font-weight: 600;
   /* font-family: 'Nanum Myeongjo', serif; */
 }
+.wineSearchImg {
+  width: 82px;
+  height: 300px;
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 27px;
+  animation: fadeIn 0.3s alternate;
+}
 
 .wineMainImg {
   width: 82px;
@@ -1194,17 +1370,19 @@ section {
   position: absolute;
   margin-top: 20px;
   margin-left: 70px;
+  animation: fadeIn 0.3s alternate;
+  /* transition: all 0.3s; */
   /* background-image: url(./img/wine_sample.webp); */
   /* transition: background-image 0.25s ease-in-out 0s; */
 }
-.wineMainSample {
+/* .wineMainSample {
   width: 82px;
   height: 300px;
   position: absolute;
   margin-top: 20px;
   margin-left: 70px;
   animation: fadeIn 0.6s alternate;
-}
+} */
 .mainWineContent {
   position: absolute;
   margin-top: 180px;
@@ -1254,6 +1432,22 @@ section {
 /* .mainWineContent h2 span {
   display: block;
 } */
+.searchCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 450px;
+  width: 300px;
+  cursor: pointer;
+  background-color: #faf1e6;
+  border-radius: 15px;
+  position: relative;
+  margin: 0 40px;
+  transition: all 0.4s;
+  flex-shrink: 0;
+  margin-top: 3px;
+  margin-bottom: 60px;
+}
 /**SearchCard**/
 .mainSearchCard {
   display: flex;
@@ -1265,13 +1459,20 @@ section {
   background-color: #faf1e6;
   border-radius: 15px;
   position: relative;
-  margin: 0 10px;
+  margin: 0 20px;
   transition: all 0.4s;
   flex-shrink: 0;
   margin-top: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 .mainSearchCard:hover {
+  box-shadow: 0 0 6px 0 rgb(50 50 50 / 10%);
+  height: 453px;
+  margin-bottom: 17px;
+
+  transition: all 0.3s;
+}
+.searchCard:hover {
   box-shadow: 0 0 6px 0 rgb(50 50 50 / 10%);
   height: 453px;
   margin-bottom: 17px;
@@ -1333,8 +1534,8 @@ section {
   background-color: #fdfaf6;
 }
 .mainSearchProfile img {
-  margin-left: 30px;
-  margin-top: 10px;
+  margin-left: 27px;
+  margin-top: 25px;
 }
 
 .navBars {
@@ -1379,8 +1580,36 @@ section {
   width: 200px;
   min-width: 200px;
   margin-bottom: 20px;
-  margin: 0 20px;
+  margin-right: 40px;
   padding-bottom: 10px;
+}
+.mainSubCategoryName {
+  display: flex;
+  flex-direction: column;
+  width: 91rem;
+  min-width: 200px;
+  margin-bottom: 60px;
+  margin-right: 40px;
+  padding-bottom: 10px;
+  margin-left: -3rem;
+}
+.mainSubCategoryName h2 {
+  width: 87rem;
+  min-width: 200px;
+  height: 100px;
+  border-bottom: 2px solid;
+}
+.mainSubCategoryName p {
+  color: black;
+  font-size: 15px;
+  width: 30rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+.mainSubCategoryName span {
+  display: block;
+  margin-left: 70px;
 }
 .mainCategoryName h2 {
   width: 200px;
@@ -1433,6 +1662,7 @@ section {
 }
 .reviewBtns {
   display: flex;
+  justify-content: flex-end;
 }
 .reviewWineCon {
   display: flex;
@@ -1445,45 +1675,115 @@ section {
 }
 
 .unlike {
-  background-image: url("./img/heart-regular.svg");
-  width: 20px;
-  height: 20px;
+  mask-image: url("./img/heart-regular.svg");
+  position: relative;
+  background-repeat: no-repeat;
+  height: 35px;
+  width: 35px;
+  top: 4px;
+  right: 0px;
 }
 .like {
-  background-image: url("./img/heart-solid.svg");
-
-  width: 20px;
-  height: 20px;
+  mask-image: url("./img/heart-solid.svg");
+  position: relative;
+  background-repeat: no-repeat;
+  height: 35px;
+  width: 35px;
+  top: 4px;
+  right: 0px;
+}
+.icon-red {
+  background-color: red;
+}
+.icon-black {
+  background-color: #52565d;
+}
+.reviewHeader_ {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+}
+.likeBox > div {
+  margin-left: 30px;
 }
 .wineimg {
-  min-width: 200px;
-  border: 1px solid;
+  max-height: 430px;
+  min-width: 270px;
   display: flex;
-  justify-content: center;
-  min-height: 450px;
-  max-height: 450px;
+  justify-content: flex-start;
+}
+.wineimg img {
+  max-height: 430px;
+  width: 127px;
 }
 .textarea {
+  padding: 1rem 1rem 1.5rem;
+  outline: none;
+  border: 1px solid rgb(233, 236, 239);
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  min-height: 8.125rem;
+  font-size: 1rem;
+  color: rgb(33, 37, 41);
+  line-height: 1.75;
   resize: none;
+  width: 85%;
 }
 .reviewBox {
   border: 2px solid black;
 }
 .likeBox {
-  border: 2px solid black;
+  display: flex;
+  padding: 40px;
+  margin-top: 76px;
+  min-width: 350px;
 }
 .review {
+  margin-top: 70px;
+
   width: 100%;
-  max-width: 350px;
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
-  justify-content: center;
+
+  justify-content: flex-start;
 }
 .reviewInput {
   display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+.reviewInput > div {
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+}
+.stars_btn {
+  display: flex;
+}
+.stars_btn button {
+  width: 150px;
+  margin-left: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: #faf1e6;
+  color: rgb(170, 20, 20);
+  border-radius: 4px;
+  padding: 0px 1.25rem;
+  height: 2rem;
+  font-size: 1rem;
+}
+.stars_btn button:hover {
+  background-color: #eedcc7;
 }
 .reviewBtn {
+  width: 10%;
   margin: 0;
 }
 .wineReviewBack {
@@ -1515,21 +1815,21 @@ section {
   flex-direction: row;
   width: 95%;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
-.hr2 {
-  width: 95%;
-}
+
 .footerCORK {
   margin-left: 0px;
 }
 .footerCrews {
-  margin: 20px 0px;
+  padding: 20px 0px;
   display: flex;
   line-height: 35px;
   cursor: pointer;
   flex-direction: row;
   width: 95%;
   justify-content: space-between;
+  border-bottom: 1px solid #dad5d5;
 }
 .footerCrews span {
   margin: 0px 10px;
@@ -1545,10 +1845,12 @@ section {
   display: flex;
   user-select: auto;
   flex-direction: row;
+  align-items: center;
 }
 .creator img {
   border-radius: 20px;
   width: 30px;
+  height: 30px;
   margin: 0px 5px;
 }
 .footerGitHub {
@@ -1570,8 +1872,8 @@ section {
 .mainTagBox {
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
   margin-top: 3rem;
+  margin-left: 4rem;
 }
 
 .mainWineTypeBox {
@@ -1584,10 +1886,10 @@ section {
 }
 .redWhite div {
   display: flex;
-  width: 120px;
+  width: 140px;
   margin-right: 20px;
   padding: 8px;
-  height: 35px;
+  height: 40px;
   line-height: normal;
 }
 .roseSparkling {
@@ -1596,10 +1898,10 @@ section {
 }
 .roseSparkling div {
   display: flex;
-  width: 120px;
+  width: 140px;
   margin-right: 20px;
   padding: 8px;
-  height: 35px;
+  height: 40px;
   line-height: normal;
 }
 /* .mainTagBox img {
@@ -1610,7 +1912,7 @@ section {
   align-items: center;
   margin-right: 10px;
   margin-left: 10px;
-  width: 400px;
+  width: 380px;
   /* border-right: 1px solid #f3f3f3; */
 }
 .bodyTanninTag {
@@ -1618,7 +1920,7 @@ section {
   flex-direction: column;
   justify-content: center;
   margin: 0 10px;
-  width: 400px;
+  width: 380px;
   margin-bottom: 20px;
 }
 .aciditySweetnessTag {
@@ -1626,7 +1928,7 @@ section {
   flex-direction: column;
   justify-content: center;
   margin: 0 10px;
-  width: 400px;
+  width: 380px;
   margin-bottom: 20px;
 }
 .mainWineTags {
@@ -1665,6 +1967,19 @@ section {
   border: 2px solid rgb(133, 49, 28);
   background-color: #aa1414;
   color: white;
+
+  transition: all 0.3s ease;
+}
+.mainWineTypeTag.diagonal {
+  border: 2px solid rgb(133, 49, 28);
+
+  background: repeating-linear-gradient(
+    135deg,
+    #f5c0c0,
+    #f5c0c0 10px,
+    #fdfaf6 0,
+    #fdfaf6 20px
+  );
   transition: all 0.3s ease;
 }
 .mainWineTag {
@@ -1703,24 +2018,52 @@ section {
   margin-bottom: 6.3rem;
   min-height: 33.5rem;
   justify-content: center;
-  margin-left: 13rem;
+  margin-left: 7.5rem;
 }
+.mainSubCategory {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12rem;
+  margin-bottom: 6.3rem;
+  min-height: 33.5rem;
+  justify-content: center;
+  margin-left: 9rem;
+  align-items: center;
+}
+/* .mainSubCategory img {
+  width: 80%;
+  position: absolute;
+  left: 0;
+  margin-bottom: 4rem;
+} */
 .mainWineSearchList {
   display: flex;
 }
 .mainWineCategory {
   display: flex;
-  width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   justify-content: center;
   margin: 2rem 0;
+}
+.mainSearchBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80rem;
+  min-width: 72rem;
+  margin-left: 2rem;
 }
 .mainWineSearchBox {
   display: flex;
   flex-wrap: wrap;
   min-width: 92rem;
 }
-
+.mainSubWineBox {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 90rem;
+  width: 90rem;
+  margin-left: -4rem;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1756,66 +2099,80 @@ section {
     opacity: 1;
   }
 }
-@media screen and (max-width: 800px) {
-  body {
-    overflow: hidden;
-    overflow-y: scroll;
-  }
-  .mainNav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .mainLogoSearchBox {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-  .mainLogo {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-  .mainNavMenu {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    padding: 8px 24px;
-    display: none;
-    width: 100%;
-    text-align: center;
-  }
-  .navBars {
-    display: block;
-  }
-  .mainNavMenu.active {
-    display: flex;
-  }
+.mainEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mainEmpty > div {
+}
+.mainEmpty div {
+  text-align: center;
+  position: relative;
+}
+.scroll-down-main {
+  font-family: "Noto Sans KR", sans-serif;
+  position: absolute;
+  bottom: 3rem;
+  font-size: 30px;
+  width: 100%;
+}
 
-  .mainWineProfile {
-    width: 82px;
+.mainEmpty p {
+  font-size: 20px;
+}
+/* .mainEmptyDes :nth-child(2) {
+} */
+.mainEmptyDes :nth-child(3) {
+  margin-top: 3rem;
+}
+/* .mainEmptyDes :nth-child(4) {
+  line-height: 30px;
+  font-size: 50px;
+}
+.mainEmptyDes :nth-child(5) {
+  line-height: 30px;
+  font-size: 50px;
+  margin-bottom: 2rem;
+}
+.mainEmptyDes :nth-child(7) {
+  margin-top: 0.5rem;
+  line-height: 30px;
+  font-size: 50px;
+}
+.mainEmptyDes :nth-child(8) {
+  line-height: 30px;
+  font-size: 50px;
+}
+.mainEmptyDes :nth-child(9) {
+  line-height: 30px;
+  font-size: 50px;
+} */
+
+.goToSurveyFromMain {
+  height: 40px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: 5rem 0;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: rgb(240, 119, 88);
+  font-family: "Prata", "Noto Serif KR", serif;
+  animation: light 2s infinite alternate;
+}
+@keyframes light {
+  0% {
+    filter: drop-shadow(0 0 5px rgb(230, 131, 131));
   }
-  .mainWineData {
-    flex-direction: row;
-    width: 100%;
+  25% {
+    filter: drop-shadow(0 0 0);
   }
-  .slick-slider {
-    width: 100%;
+  50% {
+    filter: drop-shadow(0 0 5px rgb(230, 131, 131));
   }
-  .mainWineConBox {
-    width: 100%;
-  }
-  .mainTagBox {
-    display: none;
-  }
-  .mainTagBox.active {
-    display: block;
-    width: 800px;
-    position: absolute;
-  }
-  .mainLabelBox {
-    display: inline-block;
-    position: absolute;
-    right: 0;
+  100% {
+    filter: drop-shadow(0 0 0);
   }
 }
 
@@ -1910,3 +2267,497 @@ section {
   text-align: right;
 }
 /* -------------------------------------------------------------------------------------- */
+@media screen and (max-width: 1366px) {
+  body {
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+  .title {
+    margin-left: 1rem;
+  }
+  .MainHeader {
+    width: 75rem;
+  }
+  .mainTagBox {
+    margin-left: 1rem;
+  }
+  .typeTag {
+    width: 270px;
+    margin-right: 0;
+  }
+  .redWhite div {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    margin-right: 1rem;
+  }
+  .roseSparkling div {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    margin-right: 1rem;
+  }
+  .mainWineTypeTag {
+    width: 80px;
+    min-width: 80px;
+    font-size: 13px;
+    height: 28px;
+    min-height: 28px;
+    margin-right: 0.7rem;
+  }
+  .bodyTanninTag {
+    width: 270px;
+    margin-right: 2rem;
+    margin-left: 0;
+  }
+  .aciditySweetnessTag {
+    width: 270px;
+  }
+
+  /**mainWineCard**/
+  .mainWineCardBox {
+    margin-left: 5rem;
+  }
+  .mainWineCard {
+    width: 300px;
+    height: 300px;
+  }
+  .mainWineCard:hover {
+    width: 350px;
+    height: 350px;
+  }
+  .mainWineCard:hover .mainWineData {
+    width: 350px;
+    margin-top: 200px;
+  }
+  .mainWineCard:hover .moreThan30 {
+    width: 240px;
+    margin-bottom: 120px;
+    margin-left: 10px;
+  }
+  .mainWineCard:hover .lessThan30 {
+    width: 240px;
+    margin-bottom: 120px;
+    margin-left: 10px;
+  }
+  .mainWineCard:hover .wineMainImg {
+    margin-left: 90px;
+  }
+  .mainWineCard:hover .mainWineRatingAvg {
+    font-size: 28px;
+  }
+  .mainWineCard:hover .mainWineRatingStars {
+    top: 95px;
+    font-size: 15px;
+  }
+  .mainWineCard:hover .rating {
+    margin-left: 70px;
+    top: 95px;
+    font-size: 15px;
+  }
+  .mainWineData {
+    margin-top: 200px;
+    width: 300px;
+    height: 70px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .mainWineType {
+    font-size: 15px;
+  }
+  .mainWineLikeTagBox {
+    font-size: 13px;
+  }
+
+  .wineMainImg {
+    margin-top: 30px;
+    margin-left: 60px;
+    height: 190px;
+    width: inherit;
+  }
+  .moreThan30 {
+    font-size: 20px;
+    margin-bottom: 150px;
+    width: 150px;
+    margin-left: 10px;
+  }
+  .lessThan30 {
+    font-size: 22px;
+    width: 150px;
+    margin-bottom: 150px;
+    margin-left: 10px;
+  }
+  .mainWineRatingAvg {
+    font-size: 16px;
+    left: 110px;
+    top: 140px;
+  }
+  .mainWineRatingStars {
+    font-size: 10px;
+    left: 70px;
+    top: 172px;
+  }
+  .rating {
+    margin-left: 45px;
+  }
+  .mainWineContent p {
+    font-size: 12px;
+    min-width: 310px;
+    color: #f9f9f9;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s;
+    transition-delay: 0.3s;
+    opacity: 0;
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+  }
+  .mainSubCategory {
+    /* align-items: normal; */
+  }
+  .mainSubWineBox {
+    margin-left: -2.5rem;
+    width: 80rem;
+    min-width: 80rem;
+  }
+  .mainSearchCard {
+    width: 270px;
+    height: 350px;
+    margin: 0 8px;
+    margin-bottom: 60px;
+  }
+  .mainSearchBox {
+    min-width: 50rem;
+  }
+  .searchCard {
+    margin: 0 15px;
+    margin-bottom: 60px;
+    width: 270px;
+    height: 430px;
+  }
+  .mainSearchCard:hover {
+    height: 353px;
+  }
+  .mainSearchContent div {
+    font-size: 20px;
+    width: 130px;
+  }
+  .lessThanDes {
+    font-size: 12px;
+    height: 90px;
+  }
+  .moreThanDes {
+    font-size: 11px;
+    height: 90px;
+  }
+  .mainSearchProfile img {
+    margin-top: 40px;
+  }
+  .goToTop {
+    font-size: 20px;
+  }
+  .mainSubCategoryName {
+    margin-left: 8rem;
+    margin-right: 0;
+  }
+  .mainSubCategoryName h2 {
+    width: 72rem;
+  }
+  .wineSearchImg {
+    margin-top: 25px;
+  }
+  .searchCard:hover {
+    height: 433px;
+  }
+
+  /* -------------------------------------------------------------------------------------- */
+  @media screen and (max-width: 850px) {
+    body {
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+    .MainHeader {
+      width: 50rem;
+    }
+    .headerMenu {
+      margin-right: 0rem;
+    }
+    .title {
+      margin-left: 0rem;
+    }
+    .headerMenu > div {
+      margin: 0 20px;
+    }
+    .mainWineTagCon {
+      margin-left: 1rem;
+    }
+    .mainTags {
+      flex-direction: column;
+    }
+    .mainTagBox {
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-left: 2rem;
+    }
+    .mainWineCardBox {
+      flex-direction: column;
+      margin-left: 7rem;
+    }
+    .mainContainers {
+      display: flex;
+    }
+    .typeTag {
+      width: 230px;
+    }
+    .mainWineTypeBox {
+      margin-bottom: 11px;
+    }
+    .redWhite div {
+      width: 100px;
+      height: 32px;
+      font-size: 15px;
+    }
+    .roseSparkling div {
+      width: 100px;
+      height: 32px;
+      font-size: 15px;
+    }
+    .mainWineTypeTag {
+      width: 80px;
+      min-width: 80px;
+      font-size: 13px;
+      height: 28px;
+      min-height: 26px;
+      margin-right: 0.7rem;
+    }
+    .bodyTanninTag {
+      width: 230px;
+      margin-bottom: 5px;
+    }
+    .aciditySweetnessTag {
+      width: 230px;
+      margin-left: 0;
+    }
+    .toolTip {
+      font-size: 20px;
+    }
+    .mainCategoryName {
+      width: 200px;
+      min-width: 200px;
+      margin-bottom: 10px;
+      margin-right: 20px;
+    }
+    /* .mainCategoryName h2 {
+      font-size: 25px;
+    } */
+    .mainCategoryName p {
+      font-size: 12px;
+      width: 9rem;
+      margin-left: 3.5rem;
+    }
+
+    /**mainWineCard**/
+    .mainWineCon {
+      margin-top: 20px;
+    }
+    .mainWineCategory {
+      width: 0rem;
+      margin-left: -5rem;
+      justify-content: flex-start;
+    }
+    .mainWineCard {
+      width: 400px;
+      height: 200px;
+      margin-bottom: 2rem;
+    }
+    .mainWineCard:hover {
+      width: 400px;
+      height: 250px;
+    }
+    .mainWineCard:hover .mainWineData {
+      width: 400px;
+      margin-top: 150px;
+    }
+    .mainWineCard:hover .moreThan30 {
+      width: 270px;
+      margin-bottom: 80px;
+      margin-left: 10px;
+    }
+    .mainWineCard:hover .lessThan30 {
+      width: 270px;
+      margin-bottom: 80px;
+      margin-left: 10px;
+    }
+    .mainWineCard:hover .wineMainImg {
+      margin-left: 120px;
+    }
+    .mainWineCard:hover .mainWineRatingAvg {
+      top: 30px;
+      left: 70px;
+      font-size: 20px;
+    }
+    .mainWineCard:hover .mainWineRatingStars {
+      top: 35px;
+      left: 135px;
+      font-size: 12px;
+    }
+    .mainWineCard:hover .rating {
+      top: 20px;
+      margin-left: 5px;
+      font-size: 12px;
+    }
+    .mainWineData {
+      margin-top: 160px;
+      width: 400px;
+      height: 40px;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      line-height: 20px;
+    }
+    .mainWineType {
+      font-size: 13px;
+      margin-bottom: 0;
+    }
+    .mainWineLikeTagBox {
+      font-size: 12px;
+    }
+
+    .wineMainImg {
+      margin-top: 15px;
+      margin-left: 90px;
+      height: 160px;
+      width: inherit;
+    }
+    .moreThan30 {
+      font-size: 20px;
+      margin-bottom: 70px;
+      width: 230px;
+      margin-left: 10px;
+    }
+    .lessThan30 {
+      font-size: 20px;
+      width: 230px;
+      margin-bottom: 70px;
+      margin-left: 10px;
+    }
+    .mainWineRatingAvg {
+      font-size: 16px;
+      left: 170px;
+      top: 100px;
+    }
+    .mainWineRatingStars {
+      font-size: 10px;
+      left: 130px;
+      top: 133px;
+    }
+    .rating {
+      margin-left: 45px;
+    }
+    .mainWineContent p {
+      font-size: 11px;
+      min-width: 360px;
+      color: #f9f9f9;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s;
+      transition-delay: 0.3s;
+      opacity: 0;
+      position: absolute;
+      bottom: 30px;
+      left: 20px;
+    }
+    .mainWineCard:hover .mainWineContent p {
+      bottom: -15px;
+    }
+    .mainSubCategory {
+      flex-direction: column;
+      margin-left: -16.8rem;
+    }
+    .mainSubWineBox {
+      width: 50rem;
+      margin-left: -37rem;
+      margin-top: 1rem;
+      min-width: 50rem;
+    }
+    .mainSearchCard {
+      width: 280px;
+      height: 350px;
+      margin-right: 2rem;
+      margin-left: 2rem;
+      margin-bottom: 5rem;
+    }
+    .mainSearchCard:hover {
+      height: 353px;
+    }
+    .mainSearchContent div {
+      font-size: 20px;
+      width: 130px;
+    }
+    .lessThanDes {
+      font-size: 12px;
+      height: 90px;
+    }
+    .moreThanDes {
+      font-size: 11px;
+      height: 90px;
+    }
+    .mainSearchProfile img {
+      height: 190px;
+      margin-top: 40px;
+    }
+    .goToTop {
+      font-size: 20px;
+    }
+    .mainSubCategoryName {
+      margin-left: -1rem;
+    }
+    .mainSubCategoryName h2 {
+      width: 47rem;
+    }
+    .mainEmpty {
+      margin-left: 2rem;
+    }
+    .mainEmpty img {
+      width: 400px;
+    }
+    .mainEmpty p {
+      font-size: 18px;
+      margin-top: 3rem;
+    }
+    .mainEmptyDes :nth-child(3) {
+      width: 20rem;
+    }
+    .scroll-down-main {
+      display: none;
+    }
+    .question h1 {
+      font-size: 30px;
+    }
+    .question p {
+      font-size: 15px;
+    }
+    .searchCard:hover {
+      height: 433px;
+    }
+    .searchCard {
+      margin: 0 20px;
+      width: 350px;
+      margin-bottom: 80px;
+    }
+    .wineSearchImg {
+      margin-top: 30px;
+      margin-left: 25px;
+      height: 300px;
+      width: inherit;
+    }
+    .mainSearchCategory {
+      flex-direction: column;
+      margin-left: 1.5rem;
+    }
+    .mainSearchBox {
+      width: 70rem;
+      margin-top: 5rem;
+    }
+  }
+}

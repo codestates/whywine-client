@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
+import GoToTop from "../../atoms/Buttons/GoToTop";
 
 function FourthPage() {
   const history = useHistory();

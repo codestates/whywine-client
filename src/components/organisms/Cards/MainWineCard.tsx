@@ -1,12 +1,26 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
 import dotenv from "dotenv";
+import Image from "../../atoms/Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+
+require("dotenv").config();
 
 dotenv.config();
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface WineData {
   randomWine?: any;
+  handleLoading: (time: number | undefined) => void;
 }
 
 let name: string,
@@ -16,12 +30,15 @@ let name: string,
   image: string,
   price: number,
   sort: string,
-  tags: object[];
+  tags: object[],
+  rating_avg: number;
 
-const MainWineCard = ({ randomWine }: WineData) => {
+const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
+  const history = useHistory();
+  const [commentList, setCommentList] = useState<any[]>([]);
 
   // 확인 확인
   if (randomWine) {
@@ -33,22 +50,41 @@ const MainWineCard = ({ randomWine }: WineData) => {
     price = randomWine.price;
     tags = randomWine.tags;
     sort = randomWine.sort;
+    rating_avg = randomWine.rating_avg;
   }
+  const landingHandleComments = () => {
+    if (randomWine) {
+      axios
+        .get(`${server}comment?wineid=${randomWine.id}`, {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        })
+        .then((data) => {
+          return setCommentList(data.data.data.comments);
+        })
+        .catch((err) => console.dir(err));
+    }
+  };
+
+  const handleIsClicked = () => {
+    setIsOpen(true);
+    landingHandleComments();
+  };
+
+  // const guestList = useMemo(() => handleIsClicked, []);
+
+  // console.log("guestList", guestList());
 
   const handleUploadImg = () => {
-    setTimeout(() => setIsUpload(true), 300);
+    setTimeout(() => setIsUpload(true), 100);
   };
+
   useEffect(() => {
     handleUploadImg();
     return () => {
       setIsUpload(false);
     };
   }, [tags]);
-
-  const handleIsClicked = () => {
-    console.log(randomWine);
-    setIsOpen(true);
-  };
 
   const handleClickOutside = (e: any) => {
     if (isOpen && !ModalEl.current.contains(e.target)) {
@@ -67,8 +103,11 @@ const MainWineCard = ({ randomWine }: WineData) => {
   return (
     <li>
       {randomWine === undefined ? null : (
-        <div className={isOpen ? "openModal modal" : "modal"}>
+        <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            handleComments={landingHandleComments}
+            landingCommentList={commentList}
+            randomWine={randomWine}
             price={randomWine.price}
             tags={randomWine.tags}
             id={randomWine.id}
@@ -77,34 +116,53 @@ const MainWineCard = ({ randomWine }: WineData) => {
             description={randomWine.description}
             image={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
             name={randomWine.name}
+            rating_avg={rating_avg}
             ModalEl={ModalEl}
           />
         </div>
       )}
 
       {randomWine === undefined ? null : (
-        <div className="mainWineCard" onClick={handleIsClicked}>
-          <Rating />
+        <div className="mainWineCard" onClick={() => handleIsClicked()}>
+          <Rating rating_avg={randomWine.rating_avg} />
           <div className="mainWineProfile">
-            <img
+            {/* <img
               src={image}
               alt="와인"
               className={isUpload ? "wineMainImg" : "wineMainSample"}
-            />
+            /> */}
+            {isUpload ? (
+              <Image
+                src={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
+                alt="와인"
+                placeholderImg={wineSample}
+                className="wineMainImg"
+                // style={{ opacity: isUpload ? "0" : "1" }}
+              />
+            ) : null}
 
             <div className="mainWineContent">
-              {name.length >= 30 ? (
-                <div className="moreThan30">{name}</div>
+              {/* {randomWine.name.length >= 30 ? (
+                <div className="moreThan30">{randomWine.name}</div>
               ) : (
-                <div className="lessThan30">{name}</div>
+                <div className="lessThan30">{randomWine.name}</div>
               )}
+              <p>{randomWine.description}</p>  */}
+
+              {name ? (
+                name.length >= 30 ? (
+                  <div className="moreThan30">{name}</div>
+                ) : (
+                  <div className="lessThan30">{name}</div>
+                )
+              ) : null}
               <p>{description}</p>
             </div>
           </div>
 
           <div className="mainWineData">
             <div className="mainWineType">
-              {sort === "red"
+              {randomWine.sort === "red"
                 ? " 레드"
                 : sort === "white"
                 ? " 화이트"

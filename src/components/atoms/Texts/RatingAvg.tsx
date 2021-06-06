@@ -1,9 +1,12 @@
 import React from "react";
 
-const RatingAvg = () => {
+interface Rating {
+  rating_avg: number;
+}
+const RatingAvg = ({ rating_avg }: Rating) => {
   return (
     <div>
-      <h2>4.8</h2>
+      <h2>{rating_avg === undefined ? null : rating_avg.toFixed(1)}</h2>
     </div>
   );
 };

@@ -10,6 +10,7 @@ const MainTypeTag = ({ userTypeTag, setTypeTag }: Tags) => {
   const [rose, setRose] = useState(false);
   const [sparkling, setSparkling] = useState(false);
   const handleTypeTagClick = (e: any) => {
+    sessionStorage.setItem("selectTags", "true");
     switch (e.target.textContent) {
       case "레드":
         setRed(!red);
@@ -72,10 +73,7 @@ const MainTypeTag = ({ userTypeTag, setTypeTag }: Tags) => {
   };
   return (
     <div className="mainWineTypeBox">
-      <span className="toolTip">
-        와인 타입
-        <div style={{ fontSize: "12px" }}>*중복 선택 가능</div>
-      </span>
+      <span className="toolTip">와인 타입</span>
       <div className="mainWineTypeTags">
         <div className="redWhite">
           <div

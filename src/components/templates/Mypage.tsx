@@ -6,8 +6,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const server = process.env.REACT_APP_SERVER || "https://localhost:4000/";
-const imgserver = process.env.REACT_APP_USER_IMAGE_URL
+
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
+const imgserver = process.env.REACT_APP_USER_IMAGE_URL;
 
 function Mypage() {
   const handleSearchInput = (e: any) => {};
@@ -72,12 +73,11 @@ function Mypage() {
         image:
           `${imgserver}` +
           userInfo.image,
-      });
-    }else{
-      history.push("/main")
-    }
 
-    console.log(IsOpen);
+      });
+    } else {
+      history.push("/main");
+    }
   }, []);
   
   const getUserInfo = async () => {
@@ -119,18 +119,16 @@ function Mypage() {
   };
 
   const MemberOutAxios = async () => {
-    console.log(Password);
     try {
       const leave = await axios.delete(`${server}userinfo/leave`, {
         data: { password: Password },
         withCredentials: true,
       });
-      console.log(leave);
       if (leave.data.massege === "ok") {
         //로그아웃
         //탈퇴 완료 메세지
         //페이지 이동
-        history.push("/main")
+        history.push("/main");
       }
     } catch (error) {
       console.error(error.massege);
@@ -169,20 +167,15 @@ function Mypage() {
   const onChangeImage = async (event: any) => {
     event.preventDefault();
     const img = event.target.files[0];
-    console.log(img);
     const formData = await new FormData();
     formData.append("image", event.target.files[0]);
-    console.log(formData);
     return axios
       .post(`${server}userinfo/profileimage`, formData, {
-
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
         const newimg = `${imgserver}` + res.data.data.user.image;
-        console.log(newimg);
         setUser({ ...user, image: newimg });
 
         alert("성공");
@@ -191,7 +184,6 @@ function Mypage() {
         alert("실패");
       });
   };
-  console.log(user.image);
 
   return (
     <>

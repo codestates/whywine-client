@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import card from "../../../img/wine_sample.png";
+import result from "../../../img/wine_result.png"; //!
 import ReactCardFlip from "react-card-flip";
 import Rating from "../../organisms/Ratings/Rating";
-
+import Image from "../Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
 interface WineData {
   randomWine: any;
 }
@@ -13,12 +14,12 @@ let name: string,
   image: string,
   price: number,
   sort: string,
-  tags: object[];
+  tags: object[],
+  rating_avg: number;
 const SurResultCardLeft = ({ randomWine }: WineData) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isOpacity, setIsOpacity] = useState<boolean>(false);
   const [isUpload, setIsUpload] = useState(false);
-  console.log(randomWine);
 
   if (randomWine) {
     name = randomWine.name;
@@ -29,6 +30,7 @@ const SurResultCardLeft = ({ randomWine }: WineData) => {
     price = randomWine.price;
     tags = randomWine.tags;
     sort = randomWine.sort;
+    rating_avg = randomWine.rating_avg;
   }
   const rotateCard = (e: any) => {
     e.preventDefault();
@@ -49,24 +51,29 @@ const SurResultCardLeft = ({ randomWine }: WineData) => {
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       <div className="frontCard">
-        <img
+        <Image
           style={{
             opacity: isOpacity ? "1" : "0",
             width: "300px",
           }}
           className="cardLeft"
-          src={card}
+          src={result}
           alt="추천 와인 카드"
-          onClick={rotateCard}
+          onClick={(e: any) => rotateCard(e)}
         />
       </div>
 
       <div className="backCard">
-        <div className="resultWineCard" onClick={rotateCard}>
-          <Rating />
+        <div className="resultWineCard" onClick={(e) => rotateCard(e)}>
+          <Rating rating_avg={rating_avg} />
           <div className="mainWineProfile">
             {image ? (
-              <img src={image} alt="와인" className={"wineMainImg"} />
+              <Image
+                src={image}
+                alt="와인"
+                className={"wineMainImg"}
+                placeholderImg={wineSample}
+              />
             ) : null}
 
             <div className="mainWineContent">
