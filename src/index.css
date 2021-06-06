@@ -1874,10 +1874,12 @@ section {
   position: absolute;
   bottom: 10%;
   left: 50%;
+  width: 400px;
   transform: translate(-50%, 0);
 }
 .MyPageWrap .MemberOut input {
   line-height: 30px;
+  margin-right: 10px;
 }
 .MyPageWrap .MemberOut .fas{
   font-size: 23px;
