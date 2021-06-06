@@ -17,27 +17,28 @@ const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 //* 세션 스토리지에 담겨있는 태그 불러오기
 let userTags: any;
+let userTagsJSON: any;
 if (!sessionStorage.getItem("userTag")) {
   sessionStorage.setItem("userTag", JSON.stringify([]));
   userTags = sessionStorage.getItem("userTag");
 }
-userTags = sessionStorage.getItem("userTag");
-
+userTagsJSON = sessionStorage.getItem("userTag");
+userTags = JSON.parse(userTagsJSON);
 type SubWine = {
   1: any[];
   2: any[];
   3: any[];
   4: any[];
 };
+
 const Main = () => {
-  const [userMainTag, setUserMainTag] = useState<string[]>(
-    JSON.parse(userTags)
-  ); // 유저의 와인 맛 태그
+  const [userMainTag, setUserMainTag] = useState<string[]>([]); // 유저의 와인 맛 태그
   const [userTypeTag, setTypeTag] = useState<string[]>([]); // 유저의 와인 타입 태그
   const [randomWine, setRandomWine] = useState<any>([]);
   const [subWine, setSubWine] = useState<any>({});
   const [isLoading, setIsLoading] = useState(true);
   const [isEmpty, setIsEmpty] = useState(false);
+  console.log(userMainTag);
 
   const handleSetUserTag = useCallback(
     (userTag: string[]) => {
@@ -45,7 +46,12 @@ const Main = () => {
     },
     [userMainTag]
   );
-
+  const handleSetTypeTag = useCallback(
+    (typeTag: string[]) => {
+      setTypeTag(typeTag);
+    },
+    [userTypeTag]
+  );
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}userinfo`, {
@@ -81,35 +87,34 @@ const Main = () => {
 
   //* 서버에 태그 요청
   const postTags = useCallback(async () => {
-    if (userMainTag.length !== 0) {
-      await axios
-        .post(
-          `${server}main/tags`,
-          {
-            tags: userMainTag.filter((el: string) => el !== ""),
-            sort: userTypeTag,
-          },
-          // * (el: string) => el !== "") 빈문자열 제외하는 부분
-          {
-            headers: { "Content-Type": "application/json" },
-            withCredentials: true,
-          }
-        )
-        .then((data) => {
-          if (data.status !== 204) {
-            setIsEmpty(false);
-            setRandomWine(data.data.data.wines.sorted.random3);
-            setSubWine(data.data.data.wines.sorted);
-            console.log(data.data.data.wines.sorted.random3);
-            console.log(subWine);
-          } else {
-            console.log(data);
-            setIsEmpty(true);
-          }
-        });
-    }
+    console.log(userMainTag);
+
+    await axios
+      .post(
+        `${server}main/tags`,
+        {
+          tags: userMainTag.filter((el: string) => el !== ""),
+          sort: userTypeTag,
+        },
+        // * (el: string) => el !== "") 빈문자열 제외하는 부분
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      )
+      .then((data) => {
+        if (data.status !== 204) {
+          console.log(data);
+
+          setIsEmpty(false);
+          setRandomWine(data.data.data.wines.sorted.random3);
+          setSubWine(data.data.data.wines.sorted);
+        } else if (data.status === 204) {
+          console.log(data);
+          setIsEmpty(true);
+        }
+      });
   }, [userMainTag, userTypeTag]);
-  console.log(randomWine);
 
   //* 로딩
   const handleLoading = (time: number | undefined) => {
@@ -209,7 +214,7 @@ const Main = () => {
             userMainTag={userMainTag}
             handleSetUserTag={handleSetUserTag}
             userTypeTag={userTypeTag}
-            setTypeTag={setTypeTag}
+            handleSetTypeTag={handleSetTypeTag}
             tags={userTags}
           />
 

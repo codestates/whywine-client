@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   placeholderImg?: string;
   errorImg?: string;
+  src: string | undefined;
 }
 export default ({ src, placeholderImg, errorImg, ...props }: ImageProps) => {
   const [imgSrc, setSrc] = useState(placeholderImg || src);
@@ -16,7 +17,7 @@ export default ({ src, placeholderImg, errorImg, ...props }: ImageProps) => {
 
   useEffect(() => {
     const img = new Image();
-    img.src = src as string;
+    img.src = String(src);
 
     img.addEventListener("load", onLoad);
     img.addEventListener("error", onError);

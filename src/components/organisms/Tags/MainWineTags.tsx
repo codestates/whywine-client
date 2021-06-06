@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import MainTypeTag from "../../atoms/Tags/MainTypeTag";
 import MainTags from "../../atoms/Tags/MainTags";
-import MainSweetnessTag from "../../atoms/Tags/MainSweetnessTag";
 
 interface Tags {
   userMainTag: string[];
   userTypeTag: string[];
   // setUserMainTag: React.Dispatch<React.SetStateAction<string[]>>;
   handleSetUserTag: (userTag: string[]) => void;
-  setTypeTag: React.Dispatch<React.SetStateAction<string[]>>;
+  handleSetTypeTag: (typeTag: string[]) => void;
   tags: any;
 }
+let surveyTags: any;
+let surveyTagsJSON: any;
+if (!sessionStorage.getItem("userTag")) {
+  sessionStorage.setItem("userTag", JSON.stringify([]));
+  surveyTags = sessionStorage.getItem("userTag");
+}
+surveyTagsJSON = sessionStorage.getItem("userTag");
+surveyTags = JSON.parse(surveyTagsJSON);
+
 const body =
   "와인에서 말하는 바디란 와인을 마실 때 입안에서 느껴지는 무게감을 뜻합니다. (알코올 함량이 높으면 바디감이 묵직해 집니다)";
 const tannin =
@@ -25,7 +33,7 @@ const MainWineTags = ({
   userMainTag,
   handleSetUserTag,
   userTypeTag,
-  setTypeTag,
+  handleSetTypeTag,
   tags,
 }: Tags) => {
   // const [userTags, setUserTags] = useState(JSON.parse(tags));
@@ -48,12 +56,15 @@ const MainWineTags = ({
 
         <div className="mainTags">
           <div className="typeTag">
-            <MainTypeTag userTypeTag={userTypeTag} setTypeTag={setTypeTag} />
+            <MainTypeTag
+              userTypeTag={userTypeTag}
+              handleSetTypeTag={handleSetTypeTag}
+            />
           </div>
           <div className="bodyTanninTag">
             <MainTags
               tags={tags}
-              userTags={userMainTag[0]}
+              userTags={surveyTags[0]}
               tagTitle="바디."
               degreeENG={["body_light", "body_medium", "body_bold"]}
               degreeKOR={["가벼운", "적당한", "무거운"]}
@@ -63,7 +74,7 @@ const MainWineTags = ({
             />
             <MainTags
               tags={tags}
-              userTags={userMainTag[1]}
+              userTags={surveyTags[1]}
               tagTitle="탄닌."
               degreeENG={["tannins_smooth", "tannins_medium", "tannins_tannic"]}
               degreeKOR={["부드러운", "적당한", "떫은"]}
@@ -75,7 +86,7 @@ const MainWineTags = ({
           <div className="aciditySweetnessTag">
             <MainTags
               tags={tags}
-              userTags={userMainTag[2]}
+              userTags={surveyTags[2]}
               tagTitle="산미."
               degreeENG={["acidity_soft", "acidity_medium", "acidity_acidic"]}
               degreeKOR={["낮은", "적당한", "높은"]}
@@ -83,13 +94,10 @@ const MainWineTags = ({
               handleSetUserTag={handleSetUserTag}
               wineFlavor={wineFlavor[2]}
             />
-            {/* <MainSweetnessTag
-              userMainTag={userMainTag}
-              handleSetUserTag={handleSetUserTag}
-            /> */}
+
             <MainTags
               tags={tags}
-              userTags={userMainTag[3]}
+              userTags={surveyTags[3]}
               tagTitle="당도."
               degreeENG={[
                 "sweetness_dry",
@@ -108,4 +116,4 @@ const MainWineTags = ({
   );
 };
 
-export default MainWineTags;
+export default React.memo(MainWineTags);
