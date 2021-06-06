@@ -31,7 +31,7 @@ body {
   flex-direction: column;
 }
 .guestReview > div {
-  margin: 10px 10px;
+  margin: 1px 0px 0px 71px;
 }
 @font-face {
   font-family: "MapoGoldenPier";
@@ -372,39 +372,124 @@ section {
 /* *      랜딩페이지 두번째        */
 
 .SecondPage {
-  color: #fdfaf6;
-  background-image: url("./img/KakaoTalk_Photo_2021-05-20-00-28-15.jpeg");
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #eae0da;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
 }
-
+.secondGif {
+  border-radius: 5px;
+  max-width: 800px;
+}
+.SecondPage_Summery1 {
+  text-align: left;
+}
 .SecondPage > div {
+  text-align: left;
+  display: flex;
+  margin: 0px 45px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SecondPage_Summery {
   margin: 0px 30px;
+  text-align: left;
+  font-size: 25px;
 }
-.SecondPage_Summery h1 {
-  margin: 0;
+/* .SecondPage_Summery h1,
+span {
+  margin: 10px;
   font-size: 30px;
-}
+} */
 /* *      랜딩페이지 세번째        */
 
+.ThirdGif {
+  border-radius: 5px;
+  max-width: 800px;
+}
 .ThirdPage {
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #eae0da;
   background-size: cover;
   display: flex;
   flex-direction: column;
-  align-content: center;
   justify-content: center;
 }
+.ThirdPageSummery {
+  margin: 0px 60px;
+  text-align: left;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.ThirdPage > div {
+  text-align: left;
+  display: flex;
+  margin: 0px 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* *      랜딩페이지 네번째        */
 
 .FourthPage {
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #eae0da;
   background-size: cover;
   display: flex;
   flex-direction: column;
-  align-content: center;
   justify-content: center;
+}
+
+.FourthPage > div {
+  text-align: left;
+  display: flex;
+  margin: 0px 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+.FourthPageGif {
+  border-radius: 5px;
+  max-width: 800px;
+}
+.FourthPage_Summery {
+  margin: 0px 30px;
+  text-align: left;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+/* *      랜딩페이지 다섯번째        */
+
+.FifthPage {
+  font-family: "Noto Sans KR", sans-serif;
+  background: url(./img/KakaoTalk_Photo_2021-05-20-00-28-15.jpeg);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.FifthPage > div {
+  display: flex;
+  font-size: 40px;
+  user-select: auto;
+  color: #eae0da;
+  cursor: pointer;
+}
+
+.FifthPage > div:hover {
+  color: rgb(240, 119, 88);
 }
 .landingGoToTop > a {
   position: absolute;
@@ -1011,6 +1096,22 @@ section {
   justify-content: space-between;
   margin: 13px 0px;
 }
+.gusetReviewContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 13px 0px;
+}
+.gusetReviews {
+  width: 500px;
+  max-height: 300px;
+  color: black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 10px;
+  height: 232px;
+}
+
 .reviewContent_btn {
   display: flex;
   cursor: pointer;
@@ -1739,6 +1840,35 @@ section {
   margin-top: 76px;
   min-width: 350px;
 }
+.myAccount_review {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.reviewUserInfo {
+  display: flex;
+}
+.guestBtn {
+  width: 150px;
+  margin-left: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: #faf1e6;
+  color: rgb(170, 20, 20);
+  border-radius: 4px;
+  padding: 0px 1.25rem;
+  height: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.guestBtn:hover {
+  background-color: #eedcc7;
+}
 .review {
   margin-top: 70px;
 
@@ -1758,6 +1888,17 @@ section {
   display: flex;
   width: 100%;
   align-items: flex-end;
+}
+.guestReviewInput {
+  padding: 40px;
+  margin: 1px 0px 0px 71px;
+  padding-right: 0px;
+}
+.guestReviewInput > div {
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  margin: 15px;
 }
 .stars_btn {
   display: flex;
@@ -2104,8 +2245,7 @@ section {
   flex-direction: column;
   align-items: center;
 }
-.mainEmpty > div {
-}
+
 .mainEmpty div {
   text-align: center;
   position: relative;
@@ -2219,7 +2359,8 @@ section {
   border-radius: 50%;
   background-image: url(./img/basicImg.png);
 }
-.MyPageWrap .EditInfo, .MyInfo{
+.MyPageWrap .EditInfo,
+.MyInfo {
   position: absolute;
   top: 170px;
   left: 50%;
@@ -2238,7 +2379,7 @@ section {
   line-height: 30px;
   margin-right: 10px;
 }
-.MyPageWrap .MemberOut .fas{
+.MyPageWrap .MemberOut .fas {
   font-size: 23px;
   position: unset;
   width: 30px;
@@ -2249,20 +2390,20 @@ section {
   width: 240px;
   text-align: center;
 }
-.EditInfo input{
+.EditInfo input {
   float: left;
   line-height: 30px;
   margin-bottom: 5px;
 }
-.EditInfo .fas{
+.EditInfo .fas {
   position: unset;
   float: right;
 }
-.EditInfo .fa-times{
+.EditInfo .fa-times {
   float: left;
   font-size: 20px;
 }
-.MyPageWrap .fa-edit{
+.MyPageWrap .fa-edit {
   margin-left: 100px;
   text-align: right;
 }
