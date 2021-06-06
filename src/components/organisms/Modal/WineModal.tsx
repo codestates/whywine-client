@@ -105,7 +105,6 @@ function WineModal({
         }
       )
       .then((data) => {
-        console.log("성공적 요청");
         handleComments();
       })
       .catch((err) => {
@@ -148,11 +147,9 @@ function WineModal({
       // * 세션 스토리지 로그인 상태가 거짓이면 유저이름을 "게스트"값으로 돌린다.
     }
     if (userName === "게스트") {
-      console.log("게스트 로그인 리뷰들", landingCommentList);
     }
 
     if (userName !== "게스트") {
-      console.log("유저 로그인 리뷰들", landingCommentList);
       return () => setCommentList(landingCommentList);
     }
     setIscomment(!iscomment);
@@ -160,14 +157,15 @@ function WineModal({
 
   useEffect(() => {
     if (userName === "게스트") {
+
       console.log("게스트 로그인 리뷰들", landingCommentList);
       if (commentList.length === 0) {
         return setCommentList(landingCommentList);
       }
+
     }
 
     if (userName !== "게스트") {
-      console.log("유저 로그인 리뷰들", landingCommentList);
       setCommentList(landingCommentList);
     }
   });

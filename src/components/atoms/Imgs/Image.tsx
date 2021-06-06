@@ -18,8 +18,6 @@ export default ({ src, placeholderImg, errorImg, ...props }: ImageProps) => {
   useEffect(() => {
     const img = new Image();
     img.src = String(src);
-
-
     img.addEventListener("load", onLoad);
     img.addEventListener("error", onError);
     return () => {
