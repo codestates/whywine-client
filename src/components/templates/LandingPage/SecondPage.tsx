@@ -1,11 +1,13 @@
 import * as React from "react";
 import UseScrollFadeIn from "../../atoms/Scroll/UseScrollFadeIn";
 import useScrollCount from "../../atoms/Scroll/UseScrollCount";
+import UseScrollClipPath from "../../atoms/Scroll/UseScrollClipPath";
 import SurveyGif from "../../../gif/Survey.gif";
 
 function SecondPage() {
   const animatedItem1 = UseScrollFadeIn("up", 1, 0.5);
   const animatedItem2 = UseScrollFadeIn("down", 2, 1);
+  const animatedItem3 = UseScrollClipPath("left", 2, 1);
 
   return (
     <div>
@@ -15,7 +17,7 @@ function SecondPage() {
         <h1>내 취향 와인을 확인하세요.</h1>
       </div>
 
-      <img className="secondGif" src={SurveyGif} {...animatedItem2}></img>
+      <img className="secondGif" src={SurveyGif} {...animatedItem3}></img>
     </div>
   );
 }

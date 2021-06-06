@@ -1,10 +1,11 @@
 import * as React from "react";
 import MainRandingGif from "../../../gif/MainRendin.gif";
 import UseScrollFadeIn from "../../atoms/Scroll/UseScrollFadeIn";
+import UseScrollClipPath from "../../atoms/Scroll/UseScrollClipPath";
 
 function ThirdPage() {
   const animatedItem1 = UseScrollFadeIn("up", 1, 0.5);
-  const animatedItem2 = UseScrollFadeIn("down", 2, 1);
+  const animatedItem2 = UseScrollClipPath("right", 2, 1);
   return (
     <div className="ThirdItem">
       <img src={MainRandingGif} className="ThirdGif" {...animatedItem2}></img>
