@@ -19,9 +19,10 @@ let name: string,
   likeCount: number,
   description: string,
   image: string,
-  price: number,
+  price: string,
   sort: string,
-  tags: object[];
+  tags: object[],
+  rating_avg: number;
 
 const MainWineSearchCard = ({ searchWine }: wineData) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -100,10 +101,12 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
             description={searchWine.description}
             image={process.env.REACT_APP_WINE_IMAGE_URL + searchWine.image}
             name={searchWine.name}
+            rating_avg={rating_avg}
             ModalEl={ModalEl}
           />
         </div>
       )}
+
 
       <div className="searchCard" onClick={handleIsClicked}>
         <div className="searchProfile">

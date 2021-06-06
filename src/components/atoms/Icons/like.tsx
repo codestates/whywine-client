@@ -7,26 +7,10 @@ interface Props {
   id: number;
 }
 
-// const active = useMemo(() => Active(boolean), [isLike]);
-
 function Like({ id }: Props) {
   const [isLike, setIsLike] = useState<boolean>();
   const [noLike, setNoLike] = useState(false);
 
-  // const getUserInfo = async () => {
-  //   try {
-  //     let data = await axios.get(`${server}userinfo`, {
-  //       withCredentials: true,
-  //     });
-  //     sessionStorage.setItem(
-  //       "userInfo",
-  //       JSON.stringify(data.data.data.userInfo)
-  //     );
-  //     // * 유저 정보 세션 스토리지 저장
-  //   } catch (error) {
-  //     console.dir(error);
-  //   }
-  // };
 
   const handleLikeBtn = useCallback(async () => {
     setIsLike(!isLike);
@@ -41,8 +25,8 @@ function Like({ id }: Props) {
             withCredentials: true,
           }
         )
-        .then(() => {
-          // getUserInfo();
+        .then(() => {});
+
         });
     } else {
       console.log(2);
@@ -55,16 +39,13 @@ function Like({ id }: Props) {
             withCredentials: true,
           }
         )
-        .then(() => {
-          // getUserInfo();
-        })
+        .then(() => {})
         .catch((err) => console.dir(err));
       console.log("isLike 싫어요 요청", isLike);
     }
   }, [isLike]);
 
   useEffect(() => {
-    // getUserInfo();
 
     if (sessionStorage.getItem("userInfo")) {
       let userInfo: any = sessionStorage.getItem("userInfo");

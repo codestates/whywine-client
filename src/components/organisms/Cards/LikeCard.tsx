@@ -11,9 +11,6 @@ require("dotenv").config();
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
-
-
-
 interface WineData {
   userLikeWines: any;
   key: number;
@@ -25,7 +22,9 @@ let name: string,
   image: string,
   price: number,
   sort: string,
-  tags: object[];
+  tags: object[],
+  rating_avg: number;
+
 const LikeCard = ({ userLikeWines }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -103,6 +102,7 @@ const LikeCard = ({ userLikeWines }: WineData) => {
           description={description}
           image={image}
           name={name}
+          rating_avg={rating_avg}
           ModalEl={ModalEl}
         />
       </div>

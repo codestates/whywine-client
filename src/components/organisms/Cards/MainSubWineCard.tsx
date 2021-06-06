@@ -103,6 +103,7 @@ const MainSubWineCard = ({ subWine }: WineData) => {
             description={subWine.description}
             image={process.env.REACT_APP_WINE_IMAGE_URL + subWine.image}
             name={subWine.name}
+            rating_avg={rating_avg}
             ModalEl={ModalEl}
           />
         </div>

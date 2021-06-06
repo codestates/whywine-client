@@ -105,7 +105,7 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
       {randomWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
-            handleComments={() => landingHandleComments()}
+            handleComments={landingHandleComments}
             landingCommentList={commentList}
             randomWine={randomWine}
             price={randomWine.price}
@@ -116,6 +116,7 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
             description={randomWine.description}
             image={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
             name={randomWine.name}
+            rating_avg={rating_avg}
             ModalEl={ModalEl}
           />
         </div>

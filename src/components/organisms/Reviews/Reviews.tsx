@@ -2,22 +2,12 @@ import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
 import ReviewLikeBtn from "../../atoms/Buttons/ReviewLikeBtn";
 import ReplyBtn from "../../atoms/Buttons/ReplyBtn";
 import axios from "axios";
+import Stars from "../../atoms/Icons/Stars";
 
 require("dotenv").config();
 
 const server = process.env.REACT_APP_API_SERVER;
 
-interface UserInfoPrpos {
-  bad: [];
-  email: string;
-  good: [];
-  id: number;
-  image: string;
-  likes: number;
-  nickname: string;
-  tags: [];
-  wines: [];
-}
 interface ReviewsProps {
   commentText: string;
   commentRating: number;
@@ -32,7 +22,6 @@ interface ReviewsProps {
     nickname: string;
   };
   handleComments: () => void;
-  setCommentUpdate: Dispatch<SetStateAction<boolean>>;
 }
 
 function Reviews({
@@ -44,16 +33,14 @@ function Reviews({
   createdAt,
   user,
   handleComments,
-  setCommentUpdate,
 }: ReviewsProps) {
   const [deleteReview, setDeleteReview] = useState(false);
   const [isGuset, setIsGuest] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
 
   let login: any = sessionStorage.getItem("login");
   let userInfo: any = sessionStorage.getItem("userInfo");
 
-
-    
   useEffect(() => {
     if (user.id == null) {
       // * 유저아이디와 댓글을 작성한 유저아이다가 다르면 각 리뷰에선 게스트 취급
@@ -65,6 +52,14 @@ function Reviews({
     }
   }, []);
 
+  // * 댓글 수정함수
+  // const setCommentUpdate = useCallback (
+  //   () => {
+
+  //   },
+  //   [isUpdate],
+  // )
+
   // * 댓글 삭제 함수
   const handleDeleteRewiew = async () => {
     setDeleteReview(true);
@@ -74,7 +69,10 @@ function Reviews({
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       })
-      .then((data) => handleComments())
+      .then((data) => {
+        console.log(commentId);
+        return handleComments();
+      })
       // * 댓글 삭제 후 handleComments 함수 실행으로 commentsList 상태 변경해 재랜딩
       .catch((err) => {});
   };
@@ -89,8 +87,7 @@ function Reviews({
 
         <div className="reviewContent_btn">
           <div
-            onClick={() => setCommentUpdate(true)}
-            // * 게스트 이면 수정하기 버튼 노출 안됨
+            onClick={() => setIsUpdate(true)}
             style={{ opacity: isGuset ? "0" : "1" }}
           >
             수정하기
@@ -99,16 +96,27 @@ function Reviews({
             onClick={() => handleDeleteRewiew()}
             style={{ opacity: isGuset ? "0" : "1" }}
           >
-            // * 게스트 이면 삭제하기 버튼 노출 안됨 삭제하기
+            삭제하기
           </div>
         </div>
       </div>
+
       <div className="wineReview">{commentText}</div>
 
       <div className="reviewBtns">
         <div className="review_star">별점: {commentRating}</div>
-        <ReviewLikeBtn like={true} />
-        <ReviewLikeBtn like={false} />
+        <ReviewLikeBtn
+          like={true}
+          good_count={good_count}
+          handleComments={() => handleComments()}
+          commentId={commentId}
+        />
+        <ReviewLikeBtn
+          like={false}
+          good_count={good_count}
+          handleComments={() => handleComments()}
+          commentId={commentId}
+        />
         <ReplyBtn />
       </div>
     </li>

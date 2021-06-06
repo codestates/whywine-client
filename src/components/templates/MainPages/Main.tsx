@@ -100,6 +100,7 @@ const Main = () => {
             setIsEmpty(false);
             setRandomWine(data.data.data.wines.sorted.random3);
             setSubWine(data.data.data.wines.sorted);
+            console.log(data.data.data.wines.sorted.random3);
             console.log(subWine);
           } else {
             console.log(data);

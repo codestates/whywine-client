@@ -111,18 +111,7 @@ section {
   color: rgb(226, 90, 55);
 }
 /* *      랜딩페이지 첫번째        */
-.SurveyModal {
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  color: #fdfaf6;
-  right: 11rem;
-  bottom: 16rem;
-  font-size: 23px;
-  font-family: "Noto Sans KR", sans-serif;
-}
+
 .goToSurveyBtn {
   height: 40px;
   border-radius: 15px;
@@ -561,7 +550,35 @@ section {
 .kakao-icon {
   width: 40px;
 }
+.SurveyModal_Back {
+  display: none;
+  position: fixed;
 
+  background-color: rgba(100, 100, 100, 0.8);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 3;
+    transform: none;
+  }
+}
+.SurveyModal {
+  animation: fadeIn 0.5s ease-in-out;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: #fdfaf6;
+  right: 4rem;
+  bottom: 22rem;
+  font-size: 23px;
+  font-family: "Noto Sans KR", sans-serif;
+}
 .modal {
   display: none;
   position: fixed;
@@ -584,7 +601,7 @@ section {
 
 .openWineModal {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
 }
 
@@ -901,7 +918,15 @@ section {
   position: absolute;
   left: -14rem;
 }
-
+.ModalWineRating {
+  font-size: 25px;
+  margin: 10px 0px;
+}
+.modalDescription {
+  color: black;
+  font-size: 17px;
+  padding: 20px;
+}
 /**Main**/
 /* .main {
   display: flex;
@@ -1098,6 +1123,10 @@ section {
   color: white;
   line-height: 170%;
 }
+.ModalWineRatingAvg {
+  display: flex;
+  justify-content: center;
+}
 
 .mainWineRatingAvg {
   display: flex;
@@ -1107,6 +1136,10 @@ section {
   top: 196px;
   color: rgb(196, 118, 1);
   font-size: 25px;
+}
+.ModalWineRatingStars {
+  display: flex;
+  color: rgb(255, 153, 0);
 }
 .mainWineRatingStars {
   display: flex;
@@ -1118,7 +1151,11 @@ section {
 .rating {
   margin-left: 74px;
 }
-
+.reviewLikeBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
 .mainWineCardBox {
   display: flex;
   justify-content: center;
@@ -1661,11 +1698,20 @@ section {
 .icon-black {
   background-color: #52565d;
 }
+.reviewHeader_ {
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+}
+.likeBox > div {
+  margin-left: 30px;
+}
 .wineimg {
   max-height: 430px;
   min-width: 270px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .wineimg img {
   max-height: 430px;
