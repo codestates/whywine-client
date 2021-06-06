@@ -117,7 +117,7 @@ const Main = () => {
 
   useEffect(() => {
     userTagUpdata();
-    handleLoading(500);
+    handleLoading(300);
     getUserInfo();
 
     if (
@@ -164,7 +164,7 @@ const Main = () => {
 
       //로딩 이미지 보여줬다가 사라짐
       setIsLoading(true);
-      handleLoading(500);
+      handleLoading(300);
     }
   };
   const handleSearchInput = (e: any) => {
@@ -215,7 +215,11 @@ const Main = () => {
           {isEmpty || randomWine.length === 0 ? (
             <MainEmptyCon />
           ) : (
-            <MainWineCon randomWine={randomWine} subWine={subWine}  handleLoading={handleLoading} />
+            <MainWineCon
+              randomWine={randomWine}
+              subWine={subWine}
+              handleLoading={handleLoading}
+            />
           )}
         </div>
       )}

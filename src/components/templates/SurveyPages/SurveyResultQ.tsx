@@ -61,7 +61,6 @@ const SurveyResultQ = () => {
         });
     }
   }, [tagsArr]);
-  console.log(randomWine);
   return (
     <div>
       {isEmpty ? (

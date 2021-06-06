@@ -46,7 +46,6 @@ const Survey4 = ({ animatedItem, userTag, setUserTag }: Props) => {
   );
 
   useEffect(() => {
-    console.log("4", tag);
     let target = "";
     Object.keys(sweetness).map((el) => {
       if (sweetness[el] === tag) {
@@ -67,10 +66,9 @@ const Survey4 = ({ animatedItem, userTag, setUserTag }: Props) => {
       </div>
       <hr className="hr"></hr>
       <SurMainText
-        text1={
-          "황금 같은 주말이 다가왔다./n친구들과 집에서 와인파티를 하기로 했다."
-        }
-        text2={"어떤 와인을 마시겠습니까?"}
+        text1={"황금 같은 주말이 다가왔다. "}
+        text2={"친구들과 집에서 와인파티를 하기로 했다."}
+        text3={"어떤 와인을 마시겠습니까?"}
       />
       <SurTypeTags num={4} answer={answer} getTag={getTag} />
     </div>

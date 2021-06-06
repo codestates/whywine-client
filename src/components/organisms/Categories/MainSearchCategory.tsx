@@ -14,7 +14,7 @@ const MainSearchCategory = ({ searchWine, goBack }: State) => {
         <GoBackBtn goBack={goBack} />
       </div>
 
-      <ul className="mainWineSearchBox">
+      <ul className="mainSearchBox">
         {searchWine.map((wine: object, idx) => {
           return <MainWineSearchCard searchWine={wine} key={idx} />;
         })}
