@@ -1003,6 +1003,11 @@ span {
   position: absolute;
   left: -14rem;
 }
+.ModalWineRating2 {
+  font-size: 25px;
+  margin: 10px 0px;
+  display: flex;
+}
 .ModalWineRating {
   font-size: 25px;
   margin: 10px 0px;
@@ -1761,9 +1766,15 @@ span {
   width: 100%;
   height: 600px;
 }
+.Likebtns {
+  display: flex;
+  width: 78px;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .reviewBtns {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .reviewWineCon {
   display: flex;
@@ -1834,10 +1845,16 @@ span {
 .reviewBox {
   border: 2px solid black;
 }
+.like_Btn {
+  display: flex;
+  user-select: auto;
+  flex-direction: column;
+  justify-content: center;
+}
 .likeBox {
   display: flex;
   padding: 40px;
-  margin-top: 76px;
+  margin-top: 97px;
   min-width: 350px;
 }
 .myAccount_review {

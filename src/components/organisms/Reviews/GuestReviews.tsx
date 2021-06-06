@@ -55,18 +55,21 @@ function Reviews({
 
         <div className="reviewBtns">
           <div className="review_star">별점: {commentRating}</div>
-          <ReviewLikeBtn
-            like={true}
-            good_count={good_count}
-            handleComments={() => handleComments()}
-            commentId={commentId}
-          />
-          <ReviewLikeBtn
-            like={false}
-            good_count={good_count}
-            handleComments={() => handleComments()}
-            commentId={commentId}
-          />
+          <div className="Likebtns">
+            {" "}
+            <ReviewLikeBtn
+              like={true}
+              good_count={good_count}
+              handleComments={() => handleComments()}
+              commentId={commentId}
+            />
+            <ReviewLikeBtn
+              like={false}
+              good_count={good_count}
+              handleComments={() => handleComments()}
+              commentId={commentId}
+            />
+          </div>
         </div>
       </div>
     </li>

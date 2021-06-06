@@ -192,7 +192,7 @@ function WineModal({
             <div className="reviewHeader_">
               <div>{likeCount}Likes!</div>
               <div>{price}WON</div>
-              <Rating rating_avg={rating_avg} />
+              <Rating rating_avg={rating_avg} Style={"ModalWineRating2"} />
               <hr></hr>
             </div>
           </div>
