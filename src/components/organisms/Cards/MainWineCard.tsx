@@ -75,12 +75,12 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
 
   // console.log("guestList", guestList());
 
-  // const handleUploadImg = () => {
-  //   setTimeout(() => setIsUpload(true), 300);
-  // };
+  const handleUploadImg = () => {
+    setTimeout(() => setIsUpload(true), 100);
+  };
 
   useEffect(() => {
-    handleLoading(300);
+    handleUploadImg();
     return () => {
       setIsUpload(false);
     };
@@ -99,8 +99,6 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
       window.removeEventListener("click", handleClickOutside);
     };
   });
-
-  console.log(tags);
 
   return (
     <li>
@@ -133,12 +131,15 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
               alt="와인"
               className={isUpload ? "wineMainImg" : "wineMainSample"}
             /> */}
-            <Image
-              src={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
-              alt="와인"
-              placeholderImg={wineSample}
-              className={isUpload ? "wineMainImg" : "wineMainSample"}
-            />
+            {isUpload ? (
+              <Image
+                src={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
+                alt="와인"
+                placeholderImg={wineSample}
+                className="wineMainImg"
+                // style={{ opacity: isUpload ? "0" : "1" }}
+              />
+            ) : null}
 
             <div className="mainWineContent">
               {/* {randomWine.name.length >= 30 ? (

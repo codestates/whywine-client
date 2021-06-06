@@ -3,14 +3,16 @@ import React from "react";
 interface Props {
   text1: string;
   text2: string;
+  text3?: string;
 }
 
-export default function surMainText({ text1, text2 }: Props) {
+export default function surMainText({ text1, text2, text3 }: Props) {
   return (
     <div>
       <div className="surMainText">
         <div>{text1}</div>
         <div>{text2}</div>
+        <div>{text3}</div>
       </div>
     </div>
   );

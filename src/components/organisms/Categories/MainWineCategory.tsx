@@ -14,7 +14,6 @@ interface WineData {
 }
 
 const MainWineCategory = ({ randomWine, handleLoading }: WineData) => {
-
   const history = useHistory();
   const [isTagArr, setIsTagArr] = useState(true);
 
@@ -37,7 +36,6 @@ const MainWineCategory = ({ randomWine, handleLoading }: WineData) => {
     history.push("/survey");
     window.location.reload();
   };
-  console.log(isTagArr);
   return (
     <div>
       {isTagArr ? (

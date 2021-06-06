@@ -152,29 +152,29 @@ const MainTags = ({
   // console.log(degreeENG[2]);
   //* 설문에서 받아온 기본 태그를 메인에 띄워줌
   //! handleTagClick이 실행되지만 태그 배열이 바뀌지 않음
-  const setSurveyTags = useCallback(() => {
-    switch (userTags) {
-      case degreeENG[0]:
-        setLow(!low);
-        handleTagClick(degreeKOR[0]);
-        break;
-      case degreeENG[1]:
-        setMid(!mid);
-        handleTagClick(degreeKOR[1]);
-        break;
-      case degreeENG[2]:
-        setHigh(!high);
-        handleTagClick(degreeKOR[2]);
-        break;
-      default:
-        break;
-    }
-  }, []);
-  useEffect(() => {
-    setSurveyTags();
-  }, []);
+  // const setSurveyTags = useCallback(() => {
+  //   switch (userTags) {
+  //     case degreeENG[0]:
+  //       setLow(!low);
+  //       handleTagClick(degreeKOR[0]);
+  //       break;
+  //     case degreeENG[1]:
+  //       setMid(!mid);
+  //       handleTagClick(degreeKOR[1]);
+  //       break;
+  //     case degreeENG[2]:
+  //       setHigh(!high);
+  //       handleTagClick(degreeKOR[2]);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }, []);
+  // useEffect(() => {
+  //   setSurveyTags();
+  // }, []);
   //! 처음 상태를 바꾸지 못하는 오류를 해결하기 위해 클래스 하나를 더 만들어  입히는 방식으로 해결
-
+  console.log(userMainTag);
   return (
     <div className="mainWineTagBox">
       <span className="toolTip">

@@ -28,7 +28,7 @@ let name: string,
 
 const MainSubWineCard = ({ subWine }: WineData) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isUpload, setIsUpload] = useState(false);
+  // const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
   const [commentList, setCommentList] = useState<any[]>([]);
 
@@ -58,16 +58,16 @@ const MainSubWineCard = ({ subWine }: WineData) => {
     }
   }, []);
 
-  const handleUploadImg = () => {
-    setTimeout(() => setIsUpload(true), 300);
-  };
-  useEffect(() => {
-    handleUploadImg();
-    return () => {
-      setIsUpload(false);
-    };
-  }, [tags]);
-
+  // const handleUploadImg = () => {
+  //   setTimeout(() => setIsUpload(true), 300);
+  // };
+  // useEffect(() => {
+  //   handleUploadImg();
+  //   return () => {
+  //     setIsUpload(false);
+  //   };
+  // }, [tags]);
+  // console.log(isUpload);
   const handleIsClicked = () => {
     setIsOpen(true);
     landingHandleComments();
@@ -121,9 +121,8 @@ const MainSubWineCard = ({ subWine }: WineData) => {
           <Image
             src={image}
             placeholderImg={wineSample}
-            // scrollPosition={scrollPosition}
             alt="와인"
-            className={isUpload ? "wineMainImg" : "wineMainSample"}
+            className={"wineMainImg"}
           />
           <div className="mainSearchContent">
             <div>{name}</div>

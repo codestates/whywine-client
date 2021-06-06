@@ -11,6 +11,7 @@ function Like({ id }: Props) {
   const [isLike, setIsLike] = useState<boolean>();
   const [noLike, setNoLike] = useState(false);
 
+
   const handleLikeBtn = useCallback(async () => {
     setIsLike(!isLike);
     if (!isLike) {
@@ -25,6 +26,8 @@ function Like({ id }: Props) {
           }
         )
         .then(() => {});
+
+        });
     } else {
       console.log(2);
       await axios
@@ -43,6 +46,7 @@ function Like({ id }: Props) {
   }, [isLike]);
 
   useEffect(() => {
+
     if (sessionStorage.getItem("userInfo")) {
       let userInfo: any = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);

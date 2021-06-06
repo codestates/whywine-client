@@ -46,7 +46,6 @@ const Survey1 = ({ animatedItem, userTag, setUserTag }: Props) => {
   );
 
   useEffect(() => {
-    console.log("1", tag);
     let target = "";
 
     Object.keys(body).map((el) => {

@@ -107,8 +107,9 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
         </div>
       )}
 
-      <div className="mainSearchCard" onClick={handleIsClicked}>
-        <div className="mainSearchProfile">
+
+      <div className="searchCard" onClick={handleIsClicked}>
+        <div className="searchProfile">
           {/* <LazyLoadImage
             src={image}
             effect="blur"
@@ -119,7 +120,7 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
           /> */}
           <Image
             src={image}
-            className={isUpload ? "wineMainImg" : "wineMainSample"}
+            className="wineSearchImg"
             alt="와인"
             placeholderImg={wineSample}
           />

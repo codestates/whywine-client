@@ -9,8 +9,6 @@ interface WineData {
   handleLoading: (time: number | undefined) => void;
 }
 
-
- 
 //! 와인 카테고리가 나뉘어서 들어와야함
 const MainWineCon = ({ randomWine, handleLoading, subWine }: WineData) => {
   return (
