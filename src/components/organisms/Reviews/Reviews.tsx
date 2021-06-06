@@ -35,22 +35,10 @@ function Reviews({
   handleComments,
 }: ReviewsProps) {
   const [deleteReview, setDeleteReview] = useState(false);
-  const [isGuset, setIsGuest] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
 
   let login: any = sessionStorage.getItem("login");
   let userInfo: any = sessionStorage.getItem("userInfo");
-
-  useEffect(() => {
-    if (user.id == null) {
-      // * 유저아이디와 댓글을 작성한 유저아이다가 다르면 각 리뷰에선 게스트 취급
-      setIsGuest(true);
-    }
-    if (!JSON.parse(login)) {
-      // * 로그인 상태가 아니면 게스트
-      setIsGuest(true);
-    }
-  }, []);
 
   // * 댓글 수정함수
   // const setCommentUpdate = useCallback (
@@ -86,18 +74,8 @@ function Reviews({
         </div>
 
         <div className="reviewContent_btn">
-          <div
-            onClick={() => setIsUpdate(true)}
-            style={{ opacity: isGuset ? "0" : "1" }}
-          >
-            수정하기
-          </div>
-          <div
-            onClick={() => handleDeleteRewiew()}
-            style={{ opacity: isGuset ? "0" : "1" }}
-          >
-            삭제하기
-          </div>
+          <div onClick={() => setIsUpdate(true)}>수정하기</div>
+          <div onClick={() => handleDeleteRewiew()}>삭제하기</div>
         </div>
       </div>
 

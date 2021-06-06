@@ -9,8 +9,9 @@ import axios from "axios";
 import SignInModal from "../Modal/SignInModal";
 import Image from "../../atoms/Imgs/Image";
 import wineSample from "../../../img/wine_sample.png";
-import RatingAvg from "../../atoms/Texts/RatingAvg";
 import Rating from "../../organisms/Ratings/ModalRating";
+import GuestReviews from "../Reviews/GuestReviews";
+
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
@@ -160,6 +161,9 @@ function WineModal({
   useEffect(() => {
     if (userName === "게스트") {
       console.log("게스트 로그인 리뷰들", landingCommentList);
+      if (commentList.length === 0) {
+        return setCommentList(landingCommentList);
+      }
     }
 
     if (userName !== "게스트") {
@@ -197,10 +201,14 @@ function WineModal({
       </div>
 
       {userName === "게스트" ? (
-        <div className="guestReview">
-          <div className="guestLoginModal">
+        <div className="guestReview review">
+          <div className="guestReviewInput">
             <div>댓글을 작성하려면 로그인을 하셔야합니다.</div>
-            <div onClick={() => setsSignIn(true)} style={{ cursor: "pointer" }}>
+            <div
+              className="guestBtn"
+              onClick={() => setsSignIn(true)}
+              style={{ cursor: "pointer" }}
+            >
               로그인 바로가기
             </div>
           </div>
@@ -212,7 +220,7 @@ function WineModal({
           <ul className="reviewUl">
             {commentList.map((el: any) => {
               return (
-                <Reviews
+                <GuestReviews
                   commentText={el.text}
                   commentRating={el.rating}
                   key={el.id}
