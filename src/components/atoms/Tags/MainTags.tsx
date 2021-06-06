@@ -113,17 +113,12 @@ const MainTags = ({
         }
         userMainTag.map((tag: string) => {
           if (tag !== degreeENG[2]) {
-            console.log(2222222222222);
-
             handleSetUserTag([...userMainTag, degreeENG[2]]);
           } else if (tag === degreeENG[2]) {
-            console.log(33333333333333);
-
             handleSetUserTag(
               userMainTag.filter((tag: string) => tag !== degreeENG[2])
             );
           }
-          console.log(userMainTag);
         });
 
         // for (let i = 0; i < userMainTag.length; i++) {
@@ -157,24 +152,27 @@ const MainTags = ({
   // console.log(degreeENG[2]);
   //* 설문에서 받아온 기본 태그를 메인에 띄워줌
   //! handleTagClick이 실행되지만 태그 배열이 바뀌지 않음
-  // const setSurveyTags = useCallback(() => {
-  //   switch (userTags) {
-  //     case degreeENG[0]:
-  //       handleTagClick(degreeKOR[0]);
-  //       break;
-  //     case degreeENG[1]:
-  //       handleTagClick(degreeKOR[1]);
-  //       break;
-  //     case degreeENG[2]:
-  //       handleTagClick(degreeKOR[2]);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }, []);
-  // useEffect(() => {
-  //   setSurveyTags();
-  // }, []);
+  const setSurveyTags = useCallback(() => {
+    switch (userTags) {
+      case degreeENG[0]:
+        setLow(!low);
+        handleTagClick(degreeKOR[0]);
+        break;
+      case degreeENG[1]:
+        setMid(!mid);
+        handleTagClick(degreeKOR[1]);
+        break;
+      case degreeENG[2]:
+        setHigh(!high);
+        handleTagClick(degreeKOR[2]);
+        break;
+      default:
+        break;
+    }
+  }, []);
+  useEffect(() => {
+    setSurveyTags();
+  }, []);
   //! 처음 상태를 바꾸지 못하는 오류를 해결하기 위해 클래스 하나를 더 만들어  입히는 방식으로 해결
 
   return (
@@ -188,17 +186,16 @@ const MainTags = ({
           return (
             <div
               className={
-                degree[0]
-                  ? `mainWineTypeTag active`
-                  : degree[2] === userMainTag[0]
-                  ? "mainWineTypeTag diagonal"
-                  : degree[2] === userMainTag[1]
-                  ? "mainWineTypeTag diagonal"
-                  : degree[2] === userMainTag[2]
-                  ? "mainWineTypeTag diagonal"
-                  : degree[2] === userMainTag[3]
-                  ? "mainWineTypeTag diagonal"
-                  : `mainWineTypeTag`
+                degree[0] ? `mainWineTypeTag active` : `mainWineTypeTag`
+                // : degree[2] === userMainTag[0]
+                // ? "mainWineTypeTag diagonal"
+                // : degree[2] === userMainTag[1]
+                // ? "mainWineTypeTag diagonal"
+                // : degree[2] === userMainTag[2]
+                // ? "mainWineTypeTag diagonal"
+                // : degree[2] === userMainTag[3]
+                // ? "mainWineTypeTag diagonal"
+                // : `mainWineTypeTag`
               }
               onClick={() => {
                 handleTagClick(degree[1]);

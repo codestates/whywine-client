@@ -14,10 +14,6 @@ const Survey: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/survey" exact component={SurveyFirstQ}></Route>
-        <Route path="/survey/2" exact component={SurveySecondQ}></Route>
-        <Route path="/survey/3" exact component={SurveyThirdQ}></Route>
-        <Route path="/survey/4" exact component={SurveyResultQ}></Route>
-        <Route path="/survey/result" component={result}></Route>
         <Route path="/main" component={Main}></Route>
       </Switch>
     </BrowserRouter>

@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Rating from "../Ratings/Rating";
 import WineModal from "../Modal/WineModal";
-import wineSample from "../../../img/wine_sample.webp";
 import axios from "axios";
 import dotenv from "dotenv";
+import Image from "../../atoms/Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
 
 require("dotenv").config();
 
@@ -21,7 +22,9 @@ let name: string,
   image: string,
   price: number,
   sort: string,
-  tags: object[];
+  tags: object[],
+  rating_avg: number;
+
 const LikeCard = ({ userLikeWines }: WineData) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -99,6 +102,7 @@ const LikeCard = ({ userLikeWines }: WineData) => {
           description={description}
           image={image}
           name={name}
+          rating_avg={rating_avg}
           ModalEl={ModalEl}
         />
       </div>
@@ -112,10 +116,11 @@ const LikeCard = ({ userLikeWines }: WineData) => {
         </div>
 
         <div className="wineLikeImgBox">
-          <img
+          <Image
             src={image}
             alt="와인"
             className={isUpload ? "wineLikeImg" : "wineLikeImgSample"}
+            placeholderImg={wineSample}
           />
           <div className="wineLikeData">
             <div className="mainWineType">

@@ -7,9 +7,24 @@ import Stars from "../../atoms/Icons/Stars";
 import Reviews from "../Reviews/Reviews";
 import axios from "axios";
 import SignInModal from "../Modal/SignInModal";
-
+import Image from "../../atoms/Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
+import RatingAvg from "../../atoms/Texts/RatingAvg";
+import Rating from "../../organisms/Ratings/ModalRating";
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
+
+interface UserInfoPrpos {
+  id: number;
+  email: string;
+  nickname: string;
+  image: string;
+  likes: number;
+  bad: [];
+  good: [];
+  tags?: [];
+  wines?: [];
+}
 
 interface Props {
   ModalEl: any;
@@ -21,6 +36,7 @@ interface Props {
   price: number;
   sort: string;
   tags: object[];
+  rating_avg: number;
   randomWine: any;
   landingCommentList: any;
   handleComments: () => void;
@@ -40,6 +56,7 @@ function WineModal({
   description,
   image,
   name,
+  rating_avg,
   ModalEl,
   randomWine,
   landingCommentList,
@@ -52,6 +69,8 @@ function WineModal({
   const [commentUpdate, setCommentUpdate] = useState(false);
   const [commentList, setCommentList] = useState<any[]>([]);
   // ! 랜더링 될 코멘트들 [{},{},{}....]
+  const [iscomment, setIscomment] = useState(false);
+
   const [comment, setComment] = useState<Comment>({
     // ! 현재 코멘트 상태
     user: userName,
@@ -70,7 +89,7 @@ function WineModal({
 
   const handleSubmitClick = async () => {
     // * comment 상태 초기화
-
+    setIscomment(!iscomment);
     await axios
       .post(
         `${server}comment`,
@@ -127,13 +146,22 @@ function WineModal({
       setUserName("게스트");
       // * 세션 스토리지 로그인 상태가 거짓이면 유저이름을 "게스트"값으로 돌린다.
     }
+    if (userName === "게스트") {
+      console.log("게스트 로그인 리뷰들", landingCommentList);
+    }
+
+    if (userName !== "게스트") {
+      console.log("유저 로그인 리뷰들", landingCommentList);
+      return () => setCommentList(landingCommentList);
+    }
+    setIscomment(!iscomment);
   }, []);
 
   useEffect(() => {
     if (userName === "게스트") {
       console.log("게스트 로그인 리뷰들", landingCommentList);
     }
-    console.log("실행안되내ㅔ");
+
     if (userName !== "게스트") {
       console.log("유저 로그인 리뷰들", landingCommentList);
       setCommentList(landingCommentList);
@@ -153,12 +181,19 @@ function WineModal({
         <hr className="hr2"></hr>
       </div>
       <div className="likeBox">
-        <div className="wineimg">
-          <img src={image} alt="와인" />
-          <Like id={id} />
+        <div>
+          <div className="wineimg">
+            <Image src={image} alt="와인" placeholderImg={wineSample} />
+            <Like id={id} />
+            <div className="reviewHeader_">
+              <div>{likeCount}Likes!</div>
+              <div>{price}WON</div>
+              <Rating rating_avg={rating_avg} />
+              <hr></hr>
+            </div>
+          </div>
+          <div className="modalDescription">{description}</div>
         </div>
-
-        <div>{likeCount}명이 찜한 와인입니다!</div>
       </div>
 
       {userName === "게스트" ? (
@@ -186,8 +221,7 @@ function WineModal({
                   good_count={el.good_count}
                   createdAt={el.createdAt}
                   user={el.user}
-                  handleComments={() => handleComments()}
-                  setCommentUpdate={setCommentUpdate}
+                  handleComments={handleComments}
                 />
               );
             })}
@@ -230,8 +264,7 @@ function WineModal({
                   good_count={el.good_count}
                   createdAt={el.createdAt}
                   user={el.user}
-                  handleComments={() => handleComments}
-                  setCommentUpdate={setCommentUpdate}
+                  handleComments={() => handleComments()}
                 />
               );
             })}
