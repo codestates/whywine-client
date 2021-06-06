@@ -4,16 +4,17 @@ import StarIconRegular from "../../atoms/Icons/StarIconRegular";
 
 interface RatingProps {
   rating_avg: number;
+  Style: string;
 }
 
-const Rating = ({ rating_avg }: RatingProps) => {
+const Rating = ({ rating_avg, Style }: RatingProps) => {
   let ratingArr: number[] = [];
   for (let i = 0; i < rating_avg - 0.5; i++) {
     ratingArr.push(1);
   }
 
   return (
-    <div className="ModalWineRating">
+    <div className={Style ? "ModalWineRating2" : "ModalWineRating"}>
       <div className="ModalWineRatingAvg">
         <RatingAvg rating_avg={rating_avg} />
       </div>
