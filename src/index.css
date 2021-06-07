@@ -1243,8 +1243,9 @@ span {
   justify-content: center;
 }
 .searchEmpty img {
-  margin-top: 4rem;
-  margin-bottom: 8.9rem;
+  margin-top: 3rem;
+  margin-bottom: 15rem;
+  margin-left: 10rem;
   width: 30rem;
 }
 .mainSearch {
@@ -2524,8 +2525,12 @@ span {
     margin-right: 3rem;
   }
   .ThirdPageSummery h1 {
+    text-align: left;
     font-size: 3rem;
     width: 32rem;
+  }
+  .ThirdPageSummery p {
+    text-align: left;
   }
   .ThirdGif {
     max-width: 55rem;

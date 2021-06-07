@@ -135,6 +135,7 @@ const Main = () => {
     if (!sessionStorage.getItem("login")) {
       sessionStorage.removeItem("userInfo");
     }
+    setUserMainTag(userTags);
   }, []);
 
   //* 태그 최신화
