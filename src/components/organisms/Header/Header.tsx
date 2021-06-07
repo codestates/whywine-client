@@ -6,6 +6,7 @@ import SignInModal from "../Modal/SignInModal";
 import SignUpModal from "../Modal/SignUpModal";
 import MyAccount from "../../organisms/Togle/MyAccount";
 import MainSearch from "../../atoms/Inputs/MainSearch";
+import GoToSurveyIcon from "../../atoms/Icons/GoToSurveyIcon";
 
 interface State {
   handleSearchInput?: (e: any) => void;
@@ -54,9 +55,8 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
               handleSearchInput={handleSearchInput}
               handleClickSearchBtn={handleClickSearchBtn}
             />
-
+            <GoToSurveyIcon />
             <MyAccount isLogin={isLogin} openModal={openSignInModal} />
-
           </div>
         </div>
       ) : (
@@ -68,12 +68,12 @@ function LandingHeader({ handleSearchInput, handleClickSearchBtn }: State) {
               handleSearchInput={handleSearchInput}
               handleClickSearchBtn={handleClickSearchBtn}
             />
+            <GoToSurveyIcon />
 
             <MyAccount isLogin={isLogin} openModal={openSignInModal} />
             {/* <SignIn openModal={openSignInModal} />
             <SignUp openModal={openSignUpModal} /> */}
             {/* <GoToMainBtn /> */}
-
           </div>
           <SignInModal isOpen={signInOpen} closeModal={closeSignInModal} />
           <SignUpModal isOpen={signUpOpen} closeModal={closeSignUpModal} />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MainSearchCon from "../../organisms/Containers/MainSearchCon";
 import empty from "../../../img/wine_empty_search.png";
-import GoBackBtn from "../../atoms/Buttons/GoBackBtn";
+import Footer from "../../organisms/Footer/Footer";
 
 import GoToTop from "../../atoms/Buttons/GoToTop";
 
@@ -39,7 +39,6 @@ const Search = ({ searchWine, hasData, goBack }: State) => {
         </div>
       ) : (
         <div className="searchEmpty">
-          <GoBackBtn goBack={goBack} />
           <img src={empty} alt={"빈 검색"} />
         </div>
       )}

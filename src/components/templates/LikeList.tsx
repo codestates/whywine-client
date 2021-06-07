@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import GoToTop from "../atoms/Buttons/GoToTop";
 import LikeListCon from "../organisms/Containers/LikeListCon";
 import MyPageHeader from "../organisms/Header/MyPageHeader";
+import Footer from "../organisms/Footer/Footer";
 
 //* 세션 스토리지에 담겨있는 유저인포 불러오기
 let userInfo: any;
@@ -43,6 +44,7 @@ const LikeList = () => {
       >
         <GoToTop />
       </div>
+      <Footer />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LikeCard from "../Cards/LikeCard";
 import LikeEmpty from "../../../img/wine_like_empty.png";
-import Footer from "../Footer/Footer";
 import GoBackBtnFromLikeList from "../../atoms/Buttons/GoBackBtnFromLikeList";
 interface State {
   userLikeWines: object[];
@@ -18,7 +17,10 @@ const LikeListCategory = ({
     <div>
       {userLikeWines.length === 0 ? (
         <div className="mainSearchCategory">
-          <img src={LikeEmpty} style={{ height: "400px", width: "400px" }} />
+          <img
+            src={LikeEmpty}
+            style={{ height: "400px", width: "400px", marginBottom: "13rem" }}
+          />
         </div>
       ) : userLikeWines.length > 4 ? (
         <div className="mainSearchCategory">
@@ -57,7 +59,6 @@ const LikeListCategory = ({
           </ul>
         </div>
       )}
-      <Footer />
     </div>
   );
 };
