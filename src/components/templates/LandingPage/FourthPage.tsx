@@ -8,9 +8,12 @@ function FourthPage() {
   return (
     <div>
       <div className="FourthPage_Summery" {...animatedItem1}>
-        <h1>다른 사람들은 어떻게 생각하는지</h1>
-        <h1>내 생각을 자유롭게 공유하고</h1>
-        <h1>마음에 드셨으면 찜하세요 !</h1>
+        <h1>
+          추천 와인이 <br />
+          마음에 드셨나요?
+        </h1>
+        <p>그렇다면 내 생각을 자유롭게 공유하고</p>
+        <p>다른 분들에게도 추천해보세요!</p>
       </div>
       <img
         src={MainCommentGif}

@@ -381,11 +381,23 @@ section {
   justify-content: center;
 }
 .secondGif {
-  border-radius: 5px;
-  max-width: 800px;
+  margin-top: 3rem;
+
+  border-radius: 15px;
+  max-width: 55rem;
+  margin-right: 5.5rem;
 }
 .SecondPage_Summery1 {
   text-align: left;
+}
+
+.SecondPage_Summery h1 {
+  font-size: 4rem;
+  width: 43rem;
+  margin-bottom: 3rem;
+}
+.SecondPage_Summery p {
+  color: black;
 }
 .SecondPage > div {
   text-align: left;
@@ -396,7 +408,8 @@ section {
 }
 
 .SecondPage_Summery {
-  margin: 0px 30px;
+  margin-bottom: 10rem;
+  margin-left: 5.5rem;
   text-align: left;
   font-size: 25px;
 }
@@ -408,8 +421,10 @@ span {
 /* *      랜딩페이지 세번째        */
 
 .ThirdGif {
-  border-radius: 5px;
-  max-width: 800px;
+  margin-top: 3rem;
+  border-radius: 15px;
+  max-width: 55rem;
+  margin-left: 5.5rem;
 }
 .ThirdPage {
   font-family: "Noto Sans KR", sans-serif;
@@ -420,15 +435,19 @@ span {
   justify-content: center;
 }
 .ThirdPageSummery {
-  margin: 0px 60px;
-  text-align: left;
+  margin-bottom: 5rem;
+  margin-right: 5.5rem;
+  text-align: right;
   font-size: 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: column;
 }
-
+.ThirdPageSummery h1 {
+  font-size: 4rem;
+  width: 43rem;
+  margin-bottom: 3rem;
+}
+.ThirdPageSummery p {
+  color: black;
+}
 .ThirdPage > div {
   text-align: left;
   display: flex;
@@ -456,41 +475,96 @@ span {
   align-items: center;
 }
 .FourthPageGif {
-  border-radius: 5px;
-  max-width: 800px;
+  margin-top: 3rem;
+
+  border-radius: 15px;
+  max-width: 55rem;
+  margin-right: 5.5rem;
 }
 .FourthPage_Summery {
-  margin: 0px 30px;
+  margin-bottom: 10rem;
+  margin-left: 5.5rem;
   text-align: left;
   font-size: 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: column;
+}
+.FourthPage_Summery h1 {
+  font-size: 4rem;
+  width: 43rem;
+  margin-bottom: 3rem;
+}
+.FourthPage_Summery p {
+  color: black;
 }
 
 /* *      랜딩페이지 다섯번째        */
 
 .FifthPage {
   font-family: "Noto Sans KR", sans-serif;
+
   background: url(./img/KakaoTalk_Photo_2021-05-20-00-28-15.jpeg);
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+.FifthPage::before {
+  background-color: rgba(0, 0, 0, 0.37);
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  width: 100%;
 }
 .FifthPage > div {
   display: flex;
-  font-size: 40px;
+  /* font-size: 40px; */
   user-select: auto;
   color: #eae0da;
+  cursor: default;
+  margin-top: 3rem;
+  z-index: 1;
+}
+.FifthPage p {
+  font-size: 3rem;
+  margin-top: 7rem;
+  text-align: center;
   cursor: pointer;
+  height: 3rem;
+  color: rgb(240, 119, 88);
+  width: 26rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+.FifthPage i {
+  height: 60px;
+  margin-left: 20px;
 }
 
-.FifthPage > div:hover {
-  color: rgb(240, 119, 88);
+.FifthPage p:hover {
+  filter: drop-shadow(0 0 5px rgb(216, 80, 80));
 }
+.FifthPageHover {
+  display: flex;
+  margin-right: 5rem;
+}
+.FifthPage_Summery {
+  margin-bottom: 5rem;
+  text-align: left;
+  margin-right: 10rem;
+  font-size: 3rem;
+  width: 50rem;
+}
+.FifthPage_Summery h2 {
+  color: #aa1414;
+  margin-top: 3rem;
+  font-family: "Prata", "Noto Serif KR", serif;
+}
+/* .FifthPage_Summery p {
+  ma
+} */
 .landingGoToTop > a {
   position: absolute;
   top: 380%;
@@ -659,8 +733,8 @@ span {
   align-items: center;
   justify-content: space-around;
   color: #fdfaf6;
-  right: 4rem;
-  bottom: 22rem;
+  right: 7rem;
+  bottom: 17rem;
   font-size: 23px;
   font-family: "Noto Sans KR", sans-serif;
 }
@@ -2433,6 +2507,45 @@ span {
   text-align: right;
 }
 /* -------------------------------------------------------------------------------------- */
+@media screen and (max-width: 1700px) {
+  .SecondPage_Summery h1 {
+    font-size: 3rem;
+    width: 32rem;
+  }
+  .SecondPage_Summery {
+    margin-bottom: 5rem;
+    margin-left: 3rem;
+  }
+  .secondGif {
+    max-width: 55rem;
+    margin-right: 0;
+  }
+  .ThirdPageSummery {
+    margin-right: 3rem;
+  }
+  .ThirdPageSummery h1 {
+    font-size: 3rem;
+    width: 32rem;
+  }
+  .ThirdGif {
+    max-width: 55rem;
+    margin-left: 0;
+  }
+  .FourthPage_Summery h1 {
+    font-size: 3rem;
+    width: 32rem;
+  }
+  .FourthPage_Summery {
+    margin-bottom: 5rem;
+    margin-left: 3rem;
+  }
+  .FourthPageGif {
+    max-width: 55rem;
+    margin-right: 0;
+  }
+  .FifthPage > div {
+  }
+}
 @media screen and (max-width: 1366px) {
   body {
     overflow: hidden;
@@ -2636,7 +2749,98 @@ span {
   .searchCard:hover {
     height: 433px;
   }
-
+  .SurveyModal {
+    font-size: 20px;
+    bottom: 25rem;
+  }
+  .FirstPage_Summery h1 {
+    width: 40rem;
+  }
+  .SecondPage_Summery {
+    margin-left: 0rem;
+    margin-right: 1rem;
+  }
+  .SecondPage_Summery h1 {
+    font-size: 2.5rem;
+    width: 25rem;
+  }
+  .secondGif {
+    max-width: 40rem;
+    margin-top: 0rem;
+    margin-right: 2rem;
+  }
+  .ThirdPageSummery {
+    margin-right: 0;
+  }
+  .ThirdPageSummery h1 {
+    font-size: 2.5rem;
+    width: 25rem;
+  }
+  .ThirdGif {
+    max-width: 40rem;
+    margin-top: 0rem;
+    margin-left: 0rem;
+  }
+  .FourthPage_Summery {
+    margin-left: 0rem;
+    margin-right: 1rem;
+  }
+  .FourthPage_Summery h1 {
+    font-size: 2.5rem;
+    width: 25rem;
+  }
+  .FourthPageGif {
+    max-width: 40rem;
+    margin-top: 0rem;
+    margin-right: 2rem;
+  }
+  .FifthPage_Summery {
+    font-size: 2rem;
+    margin-right: -10rem;
+    margin-left: 2rem;
+  }
+  .FifthPage p {
+    font-size: 3rem;
+  }
+  .FifthPageHover {
+    margin-right: 0;
+  }
+  .FifthPage {
+    background-size: cover;
+    background-position-x: center;
+  }
+  @media screen and (max-width: 1100px) {
+    .SecondPage > div {
+      flex-direction: column;
+    }
+    .SecondPage_Summery {
+      margin-bottom: 5rem;
+    }
+    .secondGif {
+      max-width: 50rem;
+      margin-right: 0;
+    }
+    .ThirdPage > div {
+      flex-direction: column-reverse;
+    }
+    .ThirdGif {
+      max-width: 50rem;
+      margin-left: 0;
+    }
+    .FourthPage > div {
+      flex-direction: column;
+    }
+    .FourthPage_Summery {
+      margin-bottom: 5rem;
+    }
+    .FourthPageGif {
+      max-width: 50rem;
+      margin-right: 0;
+    }
+    .FifthPage > div {
+      flex-direction: column;
+    }
+  }
   /* -------------------------------------------------------------------------------------- */
   @media screen and (max-width: 850px) {
     body {
@@ -2924,6 +3128,52 @@ span {
     .mainSearchBox {
       width: 70rem;
       margin-top: 5rem;
+    }
+    .SurveyModal {
+      font-size: 18px;
+      bottom: 2rem;
+      right: 2rem;
+    }
+    .SecondPage > div {
+      flex-direction: column;
+    }
+    .SecondPage_Summery {
+      margin-left: 0rem;
+      margin-bottom: 5rem;
+    }
+    .secondGif {
+      margin-right: 0;
+      max-width: 45rem;
+    }
+    .ThirdPage > div {
+      flex-direction: column-reverse;
+    }
+    .ThirdPageSummery {
+      margin-right: 0;
+      margin-bottom: 5rem;
+      text-align: left;
+    }
+    .ThirdGif {
+      margin-left: 0;
+      max-width: 45rem;
+    }
+    .FourthPage > div {
+      flex-direction: column;
+    }
+    .FourthPage_Summery {
+      margin-left: 0rem;
+      margin-bottom: 5rem;
+    }
+    .FourthPageGif {
+      margin-right: 0;
+      max-width: 45rem;
+    }
+    .FifthPage > div {
+      flex-direction: column;
+    }
+    .FifthPage {
+      background-size: cover;
+      background-position-x: center;
     }
   }
 }
