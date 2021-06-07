@@ -1135,11 +1135,14 @@ span {
   width: 100%;
   height: 500px;
 }
+.hr2 {
+  border: solid;
+}
 .hrDiv {
   margin-top: 78px;
   position: absolute;
   flex-direction: row;
-  width: 80%;
+  width: 37%;
 }
 
 .star {
@@ -1158,7 +1161,7 @@ span {
   cursor: pointer;
 }
 .winemodal {
-  max-width: 95rem;
+  max-width: 84rem;
   height: 870px;
   width: 100%;
   margin: 0 auto;
@@ -1231,6 +1234,19 @@ span {
 }
 .reviewContent_btn div {
   margin: 0px 5px;
+}
+
+.wineReviewUpdate {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 20px;
+  margin: 10px 0px;
+  padding: 10px;
+  height: 100px;
+  background-color: white;
+  border-radius: 5px;
+  user-select: auto;
+  color: black;
+  width: -webkit-fill-available;
 }
 .wineReview {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -1899,9 +1915,13 @@ span {
   height: 100%;
   border: 2px solid black;
 }
-
+.modalExit {
+  font-size: 25px;
+  right: 0;
+  padding: 10px;
+}
 .unlike {
-  mask-image: url("./img/heart-regular.svg");
+  mask-image: url(./img/heart-regular.svg);
   position: relative;
   background-repeat: no-repeat;
   height: 35px;
@@ -1910,7 +1930,7 @@ span {
   right: 0px;
 }
 .like {
-  mask-image: url("./img/heart-solid.svg");
+  mask-image: url(./img/heart-solid.svg);
   position: relative;
   background-repeat: no-repeat;
   height: 35px;
@@ -2053,6 +2073,27 @@ span {
 }
 .stars_btn button:hover {
   background-color: #eedcc7;
+}
+.reviewBtns > div {
+  display: flex;
+  align-items: center;
+}
+.updateBtn button {
+  width: 150px;
+  margin-left: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: #faf1e6;
+  color: rgb(170, 20, 20);
+  border-radius: 4px;
+  padding: 0px 1.25rem;
+  height: 2rem;
+  font-size: 1rem;
 }
 .reviewBtn {
   width: 10%;

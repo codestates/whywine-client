@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import StarIcon from "./StarIcon";
 
 interface Props {
@@ -25,6 +25,7 @@ const Stars = ({
     return false;
   }, [rating, hoverRating, idx]);
 
+  useEffect(() => {}, [rating]);
   return (
     <div
       className="star"

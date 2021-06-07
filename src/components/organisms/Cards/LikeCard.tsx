@@ -11,6 +11,18 @@ require("dotenv").config();
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
+interface UserInfoPrpos {
+  id: number;
+  email: string;
+  nickname: string;
+  image: string;
+  likes: number;
+  bad: [];
+  good: [];
+  tags?: [];
+  wines?: [];
+}
+
 interface WineData {
   userLikeWines: any;
   key: number;
@@ -31,6 +43,17 @@ const LikeCard = ({ userLikeWines }: WineData) => {
   const [isUpload, setIsUpload] = useState(false);
   const [commentList, setCommentList] = useState<any[]>([]);
   const ModalEl: any = useRef();
+  const [isUserInfo, setIsUserInfo] = useState<UserInfoPrpos>({
+    id: 0,
+    email: "",
+    nickname: "",
+    image: "",
+    likes: 0,
+    bad: [],
+    good: [],
+    tags: [],
+    wines: [],
+  });
 
   // 확인 확인
   if (userLikeWines) {
@@ -67,8 +90,24 @@ const LikeCard = ({ userLikeWines }: WineData) => {
     };
   }, [tags]);
 
+  let login: any = sessionStorage.getItem("login");
+  useEffect(() => {
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
+      let userInfo: any = sessionStorage.getItem("userInfo");
+      userInfo = JSON.parse(userInfo);
+      setIsUserInfo(() => userInfo);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
+    }
+    let userInfo: any = sessionStorage.getItem("userInfo");
+    userInfo = JSON.parse(userInfo);
+    setIsUserInfo(userInfo);
+  }, [isOpen]);
+
   const handleIsClicked = () => {
-    console.log(userLikeWines);
     setIsOpen(true);
     setIsClicked(true);
   };
@@ -86,26 +125,26 @@ const LikeCard = ({ userLikeWines }: WineData) => {
     };
   });
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <li>
-      <div className={isOpen ? "openWineModal modal" : "modal"}>
-        <WineModal
-          handleComments={landingHandleComments}
-          landingCommentList={commentList}
-          randomWine={userLikeWines}
-          price={price}
-          tags={tags}
-          id={id}
-          sort={sort}
-          likeCount={likeCount}
-          description={description}
-          image={image}
-          name={name}
-          rating_avg={rating_avg}
-          ModalEl={ModalEl}
-        />
-      </div>
+      {userLikeWines === undefined ? null : (
+        <div className={isOpen ? "openWineModal modal" : "modal"}>
+          <WineModal
+            closeModal={closeModal}
+            ModalOpen={isOpen}
+            handleComments={landingHandleComments}
+            landingCommentList={commentList}
+            isUserInfo={isUserInfo}
+            randomWine={userLikeWines}
+            image={image}
+            ModalEl={ModalEl}
+          />
+        </div>
+      )}
 
       <div className="mainLikeCard" onClick={handleIsClicked}>
         <div className="mainWineProfile">

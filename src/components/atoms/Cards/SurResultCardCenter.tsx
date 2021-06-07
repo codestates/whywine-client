@@ -52,7 +52,6 @@ const SurResultCardCenter = ({ randomWine }: WineData) => {
   //     setIsUpload(false);
   //   };
   // }, [tags]);
-  console.log(image);
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">

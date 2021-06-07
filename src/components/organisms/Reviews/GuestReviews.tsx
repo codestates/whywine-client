@@ -14,10 +14,22 @@ interface ReviewsProps {
   bad_count: number;
   good_count: number;
   createdAt?: string;
+  updatedAt?: string;
   user: {
     id: number;
     image: string;
     nickname: string;
+  };
+  isUserInfo: {
+    id: number;
+    email: string;
+    nickname: string;
+    image: string;
+    likes: number;
+    bad: [];
+    good: [];
+    tags?: [];
+    wines?: [];
   };
   handleComments: () => void;
 }
@@ -31,6 +43,7 @@ function Reviews({
   createdAt,
   user,
   handleComments,
+  isUserInfo,
 }: ReviewsProps) {
   const [signInOpen, setSignInOpen] = useState<boolean>(false);
   const [isLogin, setIslogin] = useState<boolean>(false);

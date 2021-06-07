@@ -99,7 +99,7 @@ function Mypage() {
       const userInfo = await axios.get(`${server}userinfo`, {
         withCredentials: true,
       });
-      console.log("userInfo", userInfo);
+
       sessionStorage.setItem(
         "userInfo",
         JSON.stringify(userInfo.data.data.userInfo)

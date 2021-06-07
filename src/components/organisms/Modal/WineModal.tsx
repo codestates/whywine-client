@@ -15,33 +15,37 @@ import GuestReviews from "../Reviews/GuestReviews";
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
-interface UserInfoPrpos {
-  id: number;
-  email: string;
-  nickname: string;
-  image: string;
-  likes: number;
-  bad: [];
-  good: [];
-  tags?: [];
-  wines?: [];
-}
-
 interface Props {
+  closeModal: () => void;
+  ModalOpen: boolean;
   ModalEl: any;
-  name: string;
-  id: number;
-  likeCount: number;
-  description: string;
-  image: string;
-  price: number;
-  sort: string;
-  tags: object[];
-  rating_avg: number;
-  randomWine: any;
+  image: any;
+  randomWine: {
+    name: string;
+    id: number;
+    likeCount: number;
+    description: string;
+    image: string;
+    price: number;
+    sort: string;
+    tags: object[];
+    rating_avg: number;
+  };
   landingCommentList: any;
   handleComments: () => void;
+  isUserInfo: {
+    id: number;
+    email: string;
+    nickname: string;
+    image: string;
+    likes: number;
+    bad: [];
+    good: [];
+    tags?: [];
+    wines?: [];
+  };
 }
+
 type Comment = {
   user: string;
   text: string;
@@ -49,19 +53,14 @@ type Comment = {
 };
 
 function WineModal({
-  price,
-  tags,
-  id,
-  sort,
-  likeCount,
-  description,
+  closeModal,
   image,
-  name,
-  rating_avg,
   ModalEl,
   randomWine,
   landingCommentList,
   handleComments,
+  isUserInfo,
+  ModalOpen,
 }: Props) {
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
@@ -70,7 +69,6 @@ function WineModal({
   const [commentUpdate, setCommentUpdate] = useState(false);
   const [commentList, setCommentList] = useState<any[]>([]);
   // ! 랜더링 될 코멘트들 [{},{},{}....]
-  const [iscomment, setIscomment] = useState(false);
 
   const [comment, setComment] = useState<Comment>({
     // ! 현재 코멘트 상태
@@ -90,13 +88,12 @@ function WineModal({
 
   const handleSubmitClick = async () => {
     // * comment 상태 초기화
-    setIscomment(!iscomment);
     await axios
       .post(
         `${server}comment`,
         {
           rating: comment.rating,
-          wineId: id,
+          wineId: randomWine.id,
           text: comment.text,
         },
         {
@@ -132,12 +129,24 @@ function WineModal({
   };
   // * 댓글 작성버튼을 누르면 랜딩시켜줄 comments에 작성된 comment가 들어감
 
-  const handleCommentUpdate = async () => {};
+  let login: any = sessionStorage.getItem("login");
+
+  useEffect(() => {
+    if (userName === "게스트") {
+      if (commentList.length === 0) {
+        return setCommentList(landingCommentList);
+      }
+    }
+    if (userName !== "게스트") {
+      // setModalUserInfo(isUserInfo);
+      setCommentList(landingCommentList);
+    }
+  });
+
+  useEffect(() => {}, [ModalOpen]);
 
   useEffect(() => {
     setCommentList(landingCommentList);
-
-    let login: any = sessionStorage.getItem("login");
     if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
       let userInfo: any = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
@@ -146,38 +155,12 @@ function WineModal({
       setUserName("게스트");
       // * 세션 스토리지 로그인 상태가 거짓이면 유저이름을 "게스트"값으로 돌린다.
     }
-    if (userName === "게스트") {
-    }
-
-    if (userName !== "게스트") {
-      return () => setCommentList(landingCommentList);
-    }
-    setIscomment(!iscomment);
   }, []);
-
-  useEffect(() => {
-    if (userName === "게스트") {
-
-      console.log("게스트 로그인 리뷰들", landingCommentList);
-      if (commentList.length === 0) {
-        return setCommentList(landingCommentList);
-      }
-
-    }
-
-    if (userName !== "게스트") {
-      setCommentList(landingCommentList);
-    }
-  });
-
-  // * 랜딩될떄 세션 스토리지에 있는 유저인포에서 유저 닉네임 가져옴
-
-  // const RendigComment = useMemo(() => handleComments, [comments]);
 
   return (
     <section ref={ModalEl} className="winemodal">
       <div className="reviewHeader">
-        <ReviewWineName name={name} />
+        <ReviewWineName name={randomWine.name} />
       </div>
       <div className="hrDiv">
         <hr className="hr2"></hr>
@@ -186,15 +169,18 @@ function WineModal({
         <div>
           <div className="wineimg">
             <Image src={image} alt="와인" placeholderImg={wineSample} />
-            <Like id={id} />
+            <Like wineId={randomWine.id} isUserInfo={isUserInfo} />
             <div className="reviewHeader_">
-              <div>{likeCount}Likes!</div>
-              <div>{price}WON</div>
-              <Rating rating_avg={rating_avg} Style={"ModalWineRating2"} />
+              <div>{randomWine.likeCount}Likes!</div>
+              <div>{randomWine.price}WON</div>
+              <Rating
+                rating_avg={randomWine.rating_avg}
+                Style={"ModalWineRating2"}
+              />
               <hr></hr>
             </div>
           </div>
-          <div className="modalDescription">{description}</div>
+          <div className="modalDescription">{randomWine.description}</div>
         </div>
       </div>
 
@@ -219,6 +205,7 @@ function WineModal({
             {commentList.map((el: any) => {
               return (
                 <GuestReviews
+                  isUserInfo={isUserInfo}
                   commentText={el.text}
                   commentRating={el.rating}
                   key={el.id}
@@ -226,6 +213,7 @@ function WineModal({
                   bad_count={el.bad_count}
                   good_count={el.good_count}
                   createdAt={el.createdAt}
+                  updatedAt={el.updatedAt}
                   user={el.user}
                   handleComments={handleComments}
                 />
@@ -262,6 +250,7 @@ function WineModal({
             {commentList.map((el: any) => {
               return (
                 <Reviews
+                  isUserInfo={isUserInfo}
                   commentText={el.text}
                   commentRating={el.rating}
                   key={el.id}
@@ -269,6 +258,7 @@ function WineModal({
                   bad_count={el.bad_count}
                   good_count={el.good_count}
                   createdAt={el.createdAt}
+                  updatedAt={el.updatedAt}
                   user={el.user}
                   handleComments={() => handleComments()}
                 />
@@ -277,6 +267,9 @@ function WineModal({
           </ul>
         </div>
       )}
+      <span>
+        <i className="fas fa-door-open modalExit" onClick={closeModal}></i>
+      </span>
     </section>
   );
 }

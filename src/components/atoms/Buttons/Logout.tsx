@@ -26,9 +26,7 @@ function Logout({ setIslogin }: Props) {
         history.push("/");
         setIslogin(false);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   return (

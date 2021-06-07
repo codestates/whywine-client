@@ -12,6 +12,18 @@ require("dotenv").config();
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
+interface UserInfoPrpos {
+  id: number;
+  email: string;
+  nickname: string;
+  image: string;
+  likes: number;
+  bad: [];
+  good: [];
+  tags?: [];
+  wines?: [];
+}
+
 interface WineData {
   subWine: any;
 }
@@ -31,6 +43,17 @@ const MainSubWineCard = ({ subWine }: WineData) => {
   // const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
   const [commentList, setCommentList] = useState<any[]>([]);
+  const [isUserInfo, setIsUserInfo] = useState<UserInfoPrpos>({
+    id: 0,
+    email: "",
+    nickname: "",
+    image: "",
+    likes: 0,
+    bad: [],
+    good: [],
+    tags: [],
+    wines: [],
+  });
 
   //확인 확인
   if (subWine) {
@@ -58,16 +81,23 @@ const MainSubWineCard = ({ subWine }: WineData) => {
     }
   }, []);
 
-  // const handleUploadImg = () => {
-  //   setTimeout(() => setIsUpload(true), 300);
-  // };
-  // useEffect(() => {
-  //   handleUploadImg();
-  //   return () => {
-  //     setIsUpload(false);
-  //   };
-  // }, [tags]);
-  // console.log(isUpload);
+  let login: any = sessionStorage.getItem("login");
+  useEffect(() => {
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
+      let userInfo: any = sessionStorage.getItem("userInfo");
+      userInfo = JSON.parse(userInfo);
+      setIsUserInfo(() => userInfo);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
+    }
+    let userInfo: any = sessionStorage.getItem("userInfo");
+    userInfo = JSON.parse(userInfo);
+    setIsUserInfo(userInfo);
+  }, [isOpen]);
+
   const handleIsClicked = () => {
     setIsOpen(true);
     landingHandleComments();
@@ -86,24 +116,22 @@ const MainSubWineCard = ({ subWine }: WineData) => {
       window.removeEventListener("click", handleClickOutside);
     };
   });
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <li>
       {subWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            closeModal={closeModal}
+            ModalOpen={isOpen}
             handleComments={() => landingHandleComments()}
             landingCommentList={commentList}
+            isUserInfo={isUserInfo}
             randomWine={subWine}
-            price={subWine.price}
-            tags={subWine.tags}
-            id={subWine.id}
-            sort={subWine.sort}
-            likeCount={subWine.likeCount}
-            description={subWine.description}
             image={process.env.REACT_APP_WINE_IMAGE_URL + subWine.image}
-            name={subWine.name}
-            rating_avg={rating_avg}
             ModalEl={ModalEl}
           />
         </div>
