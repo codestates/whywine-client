@@ -55,12 +55,21 @@ function Mypage() {
       if (sessionStorage.getItem("userInfo")) {
         userInfo = sessionStorage.getItem("userInfo");
         userInfo = JSON.parse(userInfo);
-        setUser({
-          ...userInfo,
-          image:
-            `${imgserver}` +
-            userInfo.image,
-        });
+
+        if(userInfo.image.startsWith( 'https' )){
+          setUser({
+            ...userInfo,
+            image: userInfo.image,
+          });
+        }else{
+          setUser({
+            ...userInfo,
+            image:
+              `${imgserver}` +
+              userInfo.image,
+          });
+        }
+        
       }
     }else{
       history.push("/main")
