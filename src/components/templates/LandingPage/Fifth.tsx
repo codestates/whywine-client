@@ -5,7 +5,7 @@ import GoToTop from "../../atoms/Buttons/GoToTop";
 function FifthPage() {
   const history = useHistory();
   return (
-    <div className='FifthPageHover'>
+    <div className="FifthPageHover blinking">
       <div className="FifthPage_Summery">
         <h1 onClick={() => history.push("/survey")}>
           와인이 처음이어도 실패하지 않게
