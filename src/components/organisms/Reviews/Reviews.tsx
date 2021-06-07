@@ -21,6 +21,17 @@ interface ReviewsProps {
     image: string;
     nickname: string;
   };
+  isUserInfo: {
+    id: number;
+    email: string;
+    nickname: string;
+    image: string;
+    likes: number;
+    bad: [];
+    good: [];
+    tags?: [];
+    wines?: [];
+  };
   handleComments: () => void;
 }
 
@@ -33,8 +44,10 @@ function Reviews({
   createdAt,
   user,
   handleComments,
+  isUserInfo,
 }: ReviewsProps) {
   const [deleteReview, setDeleteReview] = useState(false);
+  const [allowedUser, setAllowedUser] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
 
   let login: any = sessionStorage.getItem("login");

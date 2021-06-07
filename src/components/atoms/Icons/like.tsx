@@ -22,7 +22,7 @@ function Like({ wineId, isUserInfo }: Props) {
   const [isLike, setIsLike] = useState<boolean>(false);
 
   const handleLikeBtn = async () => {
-    setIsLike(!isLike);
+    console.log("라이크 와인아디?", wineId);
     if (!isLike) {
       console.log(1);
       await axios
@@ -49,17 +49,34 @@ function Like({ wineId, isUserInfo }: Props) {
         .then(() => {})
         .catch((err) => console.dir(err));
     }
+    setIsLike(!isLike);
   };
 
-  useEffect(() => {
-    if (isUserInfo.wines) {
-      isUserInfo.wines.map((el: any) => {
-        if (el.id === wineId) {
-          return setIsLike(() => true);
-        }
-      });
+  const LikeCheck = () => {
+    if (isLike) {
+      setIsLike(true);
+    } else if (!isLike) {
+      setIsLike(false);
     }
-  }, []);
+  };
+  useEffect(() => {
+    LikeCheck();
+  }, [isLike]);
+
+  useEffect(() => {
+    console.log("랜딩되지?");
+    if (isUserInfo.wines) {
+      let userWines = isUserInfo.wines.map((el: any) => {
+        return el.id;
+      });
+      if (userWines.includes(wineId)) {
+        setIsLike(true);
+      } else if (!userWines.includes(wineId)) {
+        setIsLike(false);
+      }
+    }
+  }, [isUserInfo]);
+
   return (
     <i
       onClick={() => handleLikeBtn()}

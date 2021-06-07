@@ -1899,7 +1899,7 @@ span {
 }
 
 .unlike {
-  mask-image: url("./img/heart-regular.svg");
+  mask-image: url(./img/heart-regular.svg);
   position: relative;
   background-repeat: no-repeat;
   height: 35px;
@@ -1908,7 +1908,7 @@ span {
   right: 0px;
 }
 .like {
-  mask-image: url("./img/heart-solid.svg");
+  mask-image: url(./img/heart-solid.svg);
   position: relative;
   background-repeat: no-repeat;
   height: 35px;

@@ -16,17 +16,20 @@ require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface Props {
+  ModalOpen: boolean;
   ModalEl: any;
-  name: string;
-  id: number;
-  likeCount: number;
-  description: string;
-  image: string;
-  price: number;
-  sort: string;
-  tags: object[];
-  rating_avg: number;
-  randomWine: any;
+  image: any;
+  randomWine: {
+    name: string;
+    id: number;
+    likeCount: number;
+    description: string;
+    image: string;
+    price: number;
+    sort: string;
+    tags: object[];
+    rating_avg: number;
+  };
   landingCommentList: any;
   handleComments: () => void;
   isUserInfo: {
@@ -41,6 +44,7 @@ interface Props {
     wines?: [];
   };
 }
+
 type Comment = {
   user: string;
   text: string;
@@ -48,20 +52,13 @@ type Comment = {
 };
 
 function WineModal({
-  price,
-  tags,
-  id,
-  sort,
-  likeCount,
-  description,
   image,
-  name,
-  rating_avg,
   ModalEl,
   randomWine,
   landingCommentList,
   handleComments,
   isUserInfo,
+  ModalOpen,
 }: Props) {
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
@@ -94,7 +91,7 @@ function WineModal({
         `${server}comment`,
         {
           rating: comment.rating,
-          wineId: id,
+          wineId: randomWine.id,
           text: comment.text,
         },
         {
@@ -133,20 +130,6 @@ function WineModal({
   const handleCommentUpdate = async () => {};
 
   let login: any = sessionStorage.getItem("login");
-  let userInfo: any = "";
-
-  useEffect(() => {
-    setCommentList(landingCommentList);
-
-    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
-      userInfo = sessionStorage.getItem("userInfo");
-      userInfo = JSON.parse(userInfo);
-      setUserName(`${userInfo.nickname}`);
-    } else if (!JSON.parse(login)) {
-      setUserName("게스트");
-      // * 세션 스토리지 로그인 상태가 거짓이면 유저이름을 "게스트"값으로 돌린다.
-    }
-  }, []);
 
   useEffect(() => {
     if (userName === "게스트") {
@@ -155,16 +138,31 @@ function WineModal({
       }
     }
     if (userName !== "게스트") {
+      // setModalUserInfo(isUserInfo);
       setCommentList(landingCommentList);
     }
-    console.log("isUserInfo", isUserInfo);
   });
-  // const RendigComment = useMemo(() => handleComments, [comments]);
+
+  useEffect(() => {
+    console.log("모달누르면 프롭스", isUserInfo);
+  }, [ModalOpen]);
+
+  useEffect(() => {
+    setCommentList(landingCommentList);
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
+      let userInfo: any = sessionStorage.getItem("userInfo");
+      userInfo = JSON.parse(userInfo);
+      setUserName(`${userInfo.nickname}`);
+    } else if (!JSON.parse(login)) {
+      setUserName("게스트");
+      // * 세션 스토리지 로그인 상태가 거짓이면 유저이름을 "게스트"값으로 돌린다.
+    }
+  }, []);
 
   return (
     <section ref={ModalEl} className="winemodal">
       <div className="reviewHeader">
-        <ReviewWineName name={name} />
+        <ReviewWineName name={randomWine.name} />
       </div>
       <div className="hrDiv">
         <hr className="hr2"></hr>
@@ -173,15 +171,18 @@ function WineModal({
         <div>
           <div className="wineimg">
             <Image src={image} alt="와인" placeholderImg={wineSample} />
-            <Like wineId={id} isUserInfo={isUserInfo} />
+            <Like wineId={randomWine.id} isUserInfo={isUserInfo} />
             <div className="reviewHeader_">
-              <div>{likeCount}Likes!</div>
-              <div>{price}WON</div>
-              <Rating rating_avg={rating_avg} Style={"ModalWineRating2"} />
+              <div>{randomWine.likeCount}Likes!</div>
+              <div>{randomWine.price}WON</div>
+              <Rating
+                rating_avg={randomWine.rating_avg}
+                Style={"ModalWineRating2"}
+              />
               <hr></hr>
             </div>
           </div>
-          <div className="modalDescription">{description}</div>
+          <div className="modalDescription">{randomWine.description}</div>
         </div>
       </div>
 
@@ -206,6 +207,7 @@ function WineModal({
             {commentList.map((el: any) => {
               return (
                 <GuestReviews
+                  isUserInfo={isUserInfo}
                   commentText={el.text}
                   commentRating={el.rating}
                   key={el.id}
@@ -249,6 +251,7 @@ function WineModal({
             {commentList.map((el: any) => {
               return (
                 <Reviews
+                  isUserInfo={isUserInfo}
                   commentText={el.text}
                   commentRating={el.rating}
                   key={el.id}

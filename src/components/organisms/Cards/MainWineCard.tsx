@@ -105,13 +105,16 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
   }, [tags]);
 
   let login: any = sessionStorage.getItem("login");
+
   useEffect(() => {
     if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
-      let userInfo: any = sessionStorage.getItem("userInfo");
-      userInfo = JSON.parse(userInfo);
-      setIsUserInfo(() => userInfo);
     }
-  }, []);
+    let userInfo: any = sessionStorage.getItem("userInfo");
+    userInfo = JSON.parse(userInfo);
+    setIsUserInfo(userInfo);
+  }, [isOpen]);
+
+  useEffect(() => {}, [isOpen]);
 
   const handleClickOutside = (e: any) => {
     if (isOpen && !ModalEl.current.contains(e.target)) {
@@ -132,19 +135,12 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
       {randomWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            ModalOpen={isOpen}
             handleComments={landingHandleComments}
             landingCommentList={commentList}
             isUserInfo={isUserInfo}
             randomWine={randomWine}
-            price={randomWine.price}
-            tags={randomWine.tags}
-            id={randomWine.id}
-            sort={randomWine.sort}
-            likeCount={randomWine.likeCount}
-            description={randomWine.description}
             image={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
-            name={randomWine.name}
-            rating_avg={rating_avg}
             ModalEl={ModalEl}
           />
         </div>

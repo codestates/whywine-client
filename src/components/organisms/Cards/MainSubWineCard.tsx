@@ -90,6 +90,14 @@ const MainSubWineCard = ({ subWine }: WineData) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
+    }
+    let userInfo: any = sessionStorage.getItem("userInfo");
+    userInfo = JSON.parse(userInfo);
+    setIsUserInfo(userInfo);
+  }, [isOpen]);
+
   const handleIsClicked = () => {
     setIsOpen(true);
     landingHandleComments();
@@ -114,19 +122,12 @@ const MainSubWineCard = ({ subWine }: WineData) => {
       {subWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            ModalOpen={isOpen}
             handleComments={() => landingHandleComments()}
             landingCommentList={commentList}
             isUserInfo={isUserInfo}
             randomWine={subWine}
-            price={subWine.price}
-            tags={subWine.tags}
-            id={subWine.id}
-            sort={subWine.sort}
-            likeCount={subWine.likeCount}
-            description={subWine.description}
             image={process.env.REACT_APP_WINE_IMAGE_URL + subWine.image}
-            name={subWine.name}
-            rating_avg={rating_avg}
             ModalEl={ModalEl}
           />
         </div>

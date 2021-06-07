@@ -107,6 +107,13 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
       setIsOpen(false);
     }
   };
+  useEffect(() => {
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
+    }
+    let userInfo: any = sessionStorage.getItem("userInfo");
+    userInfo = JSON.parse(userInfo);
+    setIsUserInfo(userInfo);
+  }, [isOpen]);
 
   useEffect(() => {
     window.addEventListener("click", handleClickOutside);
@@ -122,19 +129,12 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
       {searchWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            ModalOpen={isOpen}
             handleComments={landingHandleComments}
             landingCommentList={commentList}
             randomWine={searchWine}
             isUserInfo={isUserInfo}
-            price={searchWine.price}
-            tags={searchWine.tags}
-            id={searchWine.id}
-            sort={searchWine.sort}
-            likeCount={searchWine.likeCount}
-            description={searchWine.description}
             image={process.env.REACT_APP_WINE_IMAGE_URL + searchWine.image}
-            name={searchWine.name}
-            rating_avg={rating_avg}
             ModalEl={ModalEl}
           />
         </div>

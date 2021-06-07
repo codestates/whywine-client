@@ -96,8 +96,17 @@ const LikeCard = ({ userLikeWines }: WineData) => {
       let userInfo: any = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
       setIsUserInfo(() => userInfo);
+      console.log("라이크카드", userInfo);
     }
   }, []);
+
+  useEffect(() => {
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
+    }
+    let userInfo: any = sessionStorage.getItem("userInfo");
+    userInfo = JSON.parse(userInfo);
+    setIsUserInfo(userInfo);
+  }, [isOpen]);
 
   const handleIsClicked = () => {
     console.log(userLikeWines);
@@ -121,24 +130,19 @@ const LikeCard = ({ userLikeWines }: WineData) => {
 
   return (
     <li>
-      <div className={isOpen ? "openWineModal modal" : "modal"}>
-        <WineModal
-          handleComments={landingHandleComments}
-          landingCommentList={commentList}
-          isUserInfo={isUserInfo}
-          randomWine={userLikeWines}
-          price={price}
-          tags={tags}
-          id={id}
-          sort={sort}
-          likeCount={likeCount}
-          description={description}
-          image={image}
-          name={name}
-          rating_avg={rating_avg}
-          ModalEl={ModalEl}
-        />
-      </div>
+      {userLikeWines === undefined ? null : (
+        <div className={isOpen ? "openWineModal modal" : "modal"}>
+          <WineModal
+            ModalOpen={isOpen}
+            handleComments={landingHandleComments}
+            landingCommentList={commentList}
+            isUserInfo={isUserInfo}
+            randomWine={userLikeWines}
+            image={image}
+            ModalEl={ModalEl}
+          />
+        </div>
+      )}
 
       <div className="mainLikeCard" onClick={handleIsClicked}>
         <div className="mainWineProfile">
