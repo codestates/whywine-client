@@ -32,7 +32,7 @@ const SurveyResultQ = () => {
           withCredentials: true,
         }
       )
-      .then((data) => console.log(data));
+      .then((data) => data);
   };
 
   //* 서버에 태그 요청

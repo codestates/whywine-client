@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../../../img/star-regular.svg";
+import Icon from "../../../img/star-solid.svg";
 
 interface IconProps {
   isActive: boolean;

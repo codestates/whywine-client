@@ -85,7 +85,7 @@ const Main = () => {
   };
 
   //* 서버에 태그 요청
-  const postTags = useCallback(async () => {    
+  const postTags = useCallback(async () => {
     if (userMainTag.length !== 0) {
       await axios
         .post(
@@ -102,13 +102,10 @@ const Main = () => {
         )
         .then((data) => {
           if (data.status !== 204) {
-            console.log(data);
-
             setIsEmpty(false);
             setRandomWine(data.data.data.wines.sorted.random3);
             setSubWine(data.data.data.wines.sorted);
           } else if (data.status === 204) {
-            console.log(data);
             setIsEmpty(true);
           }
         });
@@ -119,7 +116,7 @@ const Main = () => {
   const handleLoading = (time: number | undefined) => {
     setTimeout(() => setIsLoading(false), time);
   };
-  console.log(userTags);
+
   useEffect(() => {
     userTagUpdata();
     handleLoading(300);

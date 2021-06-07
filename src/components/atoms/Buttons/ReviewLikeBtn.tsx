@@ -35,7 +35,6 @@ const ReviewLikeBtn = ({
       })
       // * 댓글 삭제 후 handleComments 함수 실행으로 commentsList 상태 변경해 재랜딩
       .catch((err) => {
-        console.log(commentId);
         console.dir(err);
       });
   };
