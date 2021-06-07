@@ -14,6 +14,7 @@ interface ReviewsProps {
   bad_count: number;
   good_count: number;
   createdAt?: string;
+  updatedAt?: string;
   user: {
     id: number;
     image: string;

@@ -129,8 +129,6 @@ function WineModal({
   };
   // * 댓글 작성버튼을 누르면 랜딩시켜줄 comments에 작성된 comment가 들어감
 
-  const handleCommentUpdate = async () => {};
-
   let login: any = sessionStorage.getItem("login");
 
   useEffect(() => {
@@ -215,6 +213,7 @@ function WineModal({
                   bad_count={el.bad_count}
                   good_count={el.good_count}
                   createdAt={el.createdAt}
+                  updatedAt={el.updatedAt}
                   user={el.user}
                   handleComments={handleComments}
                 />
@@ -259,6 +258,7 @@ function WineModal({
                   bad_count={el.bad_count}
                   good_count={el.good_count}
                   createdAt={el.createdAt}
+                  updatedAt={el.updatedAt}
                   user={el.user}
                   handleComments={() => handleComments()}
                 />
