@@ -64,7 +64,7 @@ function Like({ wineId, isUserInfo }: Props) {
   }, [isLike]);
 
   useEffect(() => {
-    if (isUserInfo.wines) {
+    if (isUserInfo !== null && isUserInfo.wines) {
       let userWines = isUserInfo.wines.map((el: any) => {
         return el.id;
       });
