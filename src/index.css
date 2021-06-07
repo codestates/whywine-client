@@ -2525,8 +2525,12 @@ span {
     margin-right: 3rem;
   }
   .ThirdPageSummery h1 {
+    text-align: left;
     font-size: 3rem;
     width: 32rem;
+  }
+  .ThirdPageSummery p {
+    text-align: left;
   }
   .ThirdGif {
     max-width: 55rem;
