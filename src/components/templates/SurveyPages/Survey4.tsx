@@ -52,7 +52,7 @@ const Survey4 = ({ animatedItem, userTag, setUserTag }: Props) => {
         target = el;
       }
     });
-    return setUserTag([...userTag, target]);
+    return setUserTag([...userTag, target, ""]);
   }, [tag]);
 
   Object.keys(sweetness).map((el) => answer.push(sweetness[el]));

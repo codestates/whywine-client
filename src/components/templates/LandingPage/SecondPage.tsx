@@ -7,14 +7,14 @@ import SurveyGif from "../../../gif/Survey.gif";
 function SecondPage() {
   const animatedItem1 = UseScrollFadeIn("up", 1, 0.5);
   const animatedItem2 = UseScrollFadeIn("down", 2, 1);
-  const animatedItem3 = UseScrollClipPath("left", 2, 1);
+  const animatedItem3 = UseScrollClipPath("right", 2, 1);
 
   return (
     <div>
       <div className="SecondPage_Summery" {...animatedItem1}>
-        <h1>설문을 하고</h1>
-        <h1>준비된 알고리즘으로</h1>
-        <h1>내 취향 와인을 확인하세요.</h1>
+        <h1>어떤 와인을 골라야할지 고민이신가요?</h1>
+        <p>간단한 취향 테스트를 통해</p>
+        <p>당신을 위한 완벽한 와인을 만나보세요.</p>
       </div>
 
       <img className="secondGif" src={SurveyGif} {...animatedItem3}></img>

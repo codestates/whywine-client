@@ -72,7 +72,7 @@ const MainTags = ({
         //     // );
         //   }
         // }
-        break;
+        return userMainTag;
       case degreeKOR[1]:
         setMid(!mid);
         if (userMainTag.length === 0) {
@@ -104,7 +104,7 @@ const MainTags = ({
         //     // );
         //   }
         // }
-        break;
+        return userMainTag;
       case degreeKOR[2]:
         setHigh(!high);
         if (userMainTag.length === 0) {
@@ -140,8 +140,7 @@ const MainTags = ({
         // );
         //   }
         // }
-        break;
-
+        return userMainTag;
       default:
         break;
     }

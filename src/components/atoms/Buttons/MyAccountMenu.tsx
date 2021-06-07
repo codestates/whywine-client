@@ -27,7 +27,13 @@ function MyAccountMenu({ setMeunOpen }: Props) {
     <div className="togle">
       <div className="menuWrapper ">
         <div onClick={() => history.push("userInfo")}>마이페이지</div>
-        <div onClick={() => history.push("likeList")}>내 찜 목록</div>
+        <div
+          onClick={() => {
+            window.location.replace("/likeList");
+          }}
+        >
+          내 찜 목록
+        </div>
         <div onClick={() => alert("관리자 계정이 필요합니다.")}>
           관리자 와인 등록
         </div>
