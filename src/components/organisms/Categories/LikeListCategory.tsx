@@ -18,7 +18,10 @@ const LikeListCategory = ({
     <div>
       {userLikeWines.length === 0 ? (
         <div className="mainSearchCategory">
-          <img src={LikeEmpty} style={{ height: "400px", width: "400px" }} />
+          <img
+            src={LikeEmpty}
+            style={{ height: "400px", width: "400px", marginBottom: "13rem" }}
+          />
         </div>
       ) : userLikeWines.length > 4 ? (
         <div className="mainSearchCategory">
