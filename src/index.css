@@ -126,6 +126,10 @@ section {
 .goToSurveyBtn:hover {
   filter: drop-shadow(0 0 5px rgb(165, 61, 61));
 }
+.goToMain div {
+  margin-bottom: 2rem;
+  font-size: 20px;
+}
 .FirstPage_GoTomain {
   width: 300px;
   font-size: 31px;
@@ -999,9 +1003,9 @@ span {
   cursor: pointer;
 }
 .signUpResult {
-  font-size: 20px;
+  font-size: 28px;
   text-align: left;
-  margin-bottom: 0.2rem;
+  margin: 2rem 0;
 }
 .signUpResult:hover {
   text-decoration: underline;
@@ -1011,7 +1015,7 @@ span {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-top: 10rem;
+  margin-top: 7rem;
 }
 .resultBtnBox {
   display: flex;
