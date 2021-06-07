@@ -3622,3 +3622,17 @@ span {
   height: 8px;
   border-radius: 7px;
 }
+.signUpPoto {
+  transform: translate(-50%, 0);
+  position: fixed;
+  left: 50%;
+  border-radius: 0.5rem;
+}
+.googleStyle {
+  background-color: ghostwhite;
+  color: cadetblue;
+}
+.kakaoStyle {
+  background-color: cornsilk;
+  color: darkgoldenrod;
+}

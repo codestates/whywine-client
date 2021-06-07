@@ -7,7 +7,7 @@ export default function KakaoLogin() {
   };
 
   return (
-    <button className="socialButtons">
+    <button className="socialButtons kakaoStyle">
       <div>
         <link
           rel="stylesheet"
