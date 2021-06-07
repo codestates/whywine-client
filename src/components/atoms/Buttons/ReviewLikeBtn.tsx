@@ -20,11 +20,15 @@ const ReviewLikeBtn = ({
 }: Props) => {
   const handleLikeCount = async () => {
     await axios
-      .post(`${server}comment/good`, {
-        data: { commentId: commentId },
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      })
+      .post(
+        `${server}comment/good`,
+        { data: { commentId: commentId } },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      )
+
       .then((data) => {
         console.dir(data);
         handleComments();

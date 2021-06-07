@@ -7,6 +7,7 @@ import SingInModal from "../Modal/SignInModal";
 import SignUpModal from "../Modal/SignUpModal";
 import Logout from "../../atoms/Buttons/Logout";
 import MyAccount from "../../organisms/Togle/MyAccount";
+import GoToSurveyIcon from "../../atoms/Icons/GoToSurveyIcon";
 
 function MyPageHeader() {
   const [signInOpen, setSignInOpen] = useState<boolean>(false);
@@ -44,7 +45,9 @@ function MyPageHeader() {
 
           <div className="headerMenu">
             {/* <GoToMainBtn /> */}
-            <Logout setIslogin={setIslogin} />
+            <div className="surveyIconMyHeader">
+              <GoToSurveyIcon />
+            </div>
             <MyAccount isLogin={isLogin} openModal={openSignInModal} />
           </div>
         </div>
@@ -53,6 +56,8 @@ function MyPageHeader() {
           <Title />
 
           <div className="headerMenu">
+            <GoToSurveyIcon />
+
             <MyAccount isLogin={isLogin} openModal={openSignInModal} />
 
             {/* <SignIn openModal={openSignInModal} />

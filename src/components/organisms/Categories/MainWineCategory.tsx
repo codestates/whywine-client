@@ -14,31 +14,31 @@ interface WineData {
 }
 
 const MainWineCategory = ({ randomWine, handleLoading }: WineData) => {
-  const history = useHistory();
-  const [isTagArr, setIsTagArr] = useState(true);
+  // const history = useHistory();
+  // const [isTagArr, setIsTagArr] = useState(true);
 
-  useEffect(() => {
-    if (sessionStorage.getItem("userTag")) {
-      let tags: any = sessionStorage.getItem("userTag");
-      tags = JSON.parse(tags);
-      setIsTagArr(false);
-      if (tags.length === 4) {
-        setIsTagArr(true);
-      }
-      if (sessionStorage.getItem("selectTags")) {
-        setIsTagArr(true);
-      }
-    }
-  });
+  // useEffect(() => {
+  //   if (sessionStorage.getItem("userTag")) {
+  //     let tags: any = sessionStorage.getItem("userTag");
+  //     tags = JSON.parse(tags);
+  //     setIsTagArr(false);
+  //     if (tags.length === 4) {
+  //       setIsTagArr(true);
+  //     }
+  //     if (sessionStorage.getItem("selectTags")) {
+  //       setIsTagArr(true);
+  //     }
+  //   }
+  // });
 
-  const handleIsTagArr = () => {
-    setIsTagArr(true);
-    history.push("/survey");
-    window.location.reload();
-  };
+  // const handleIsTagArr = () => {
+  //   setIsTagArr(true);
+  //   history.push("/survey");
+  //   window.location.reload();
+  // };
   return (
     <div>
-      {isTagArr ? (
+      {
         <div className="mainWineCategory">
           {/* <div style={{ width: "240px" }}></div> */}
           <ul className="mainWineCardBox">
@@ -53,9 +53,7 @@ const MainWineCategory = ({ randomWine, handleLoading }: WineData) => {
             })}
           </ul>
         </div>
-      ) : (
-        <MainEmptyCon />
-      )}
+      }
     </div>
   );
 };

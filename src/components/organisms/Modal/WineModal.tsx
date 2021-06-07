@@ -178,6 +178,19 @@ function WineModal({
                 Style={"ModalWineRating2"}
               />
               <hr></hr>
+              <div>
+                <tr>
+                  <td>
+                    <div></div>
+                  </td>
+                  <td>
+                    <div></div>
+                  </td>
+                  <td>
+                    <div></div>
+                  </td>
+                </tr>
+              </div>
             </div>
           </div>
           <div className="modalDescription">{randomWine.description}</div>
