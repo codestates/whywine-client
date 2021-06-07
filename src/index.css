@@ -5,6 +5,15 @@
   scroll-behavior: smooth;
 }
 
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+td {
+  display: table-cell;
+  vertical-align: inherit;
+}
 ul {
   margin: 0;
   padding: 0;
@@ -397,7 +406,7 @@ section {
   margin-bottom: 3rem;
 }
 .SecondPage_Summery p {
-  color: black;
+  color: #1e1e1e;
 }
 .SecondPage > div {
   text-align: left;
@@ -447,7 +456,7 @@ span {
   margin-bottom: 3rem;
 }
 .ThirdPageSummery p {
-  color: black;
+  color: #1e1e1e;
 }
 .ThirdPage > div {
   text-align: left;
@@ -495,7 +504,7 @@ span {
   margin-bottom: 3rem;
 }
 .FourthPage_Summery p {
-  color: black;
+  color: #1e1e1e;
 }
 
 /* *      랜딩페이지 다섯번째        */
@@ -673,7 +682,7 @@ span {
 }
 .socialButtons:hover {
   box-shadow: 0 0px 3px 1px #4285f4;
-  color: black;
+  color: #1e1e1e;
 }
 .SignUpModal {
   display: flex;
@@ -787,7 +796,7 @@ span {
   border-radius: 0.5rem;
   background-color: rgb(255, 255, 255);
   transition: all 600ms cubic-bezier(0.86, 0, 0.07, 1);
-  color: black;
+  color: #1e1e1e;
 }
 
 .openWineModal {
@@ -799,7 +808,7 @@ span {
 .signUpBtn {
   font-size: 13px;
   font-weight: 400;
-  color: black;
+  color: #1e1e1e;
   text-align: center;
   width: 300px;
   margin-bottom: 40px;
@@ -911,6 +920,7 @@ span {
   box-shadow: 7px 7px 20px #a6a6a6, -7px -7px 20px #ffffff;
 }
 .surMainText {
+  font-size: 25px;
   margin-top: 100px;
   margin-bottom: 20px;
 }
@@ -945,7 +955,7 @@ span {
   border-radius: 50px;
   -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
-  color: black;
+  color: #1e1e1e;
   user-select: auto;
   width: 100%;
   padding-top: 15px;
@@ -1030,7 +1040,7 @@ span {
   align-items: center;
 }
 .resultBtnBox p {
-  color: black;
+  color: #1e1e1e;
   text-align: center;
 }
 .resultDes {
@@ -1120,7 +1130,8 @@ span {
   margin: 10px 0px;
 }
 .modalDescription {
-  color: black;
+  margin-top: 16px;
+  color: #1e1e1e;
   font-size: 17px;
   padding: 20px;
 }
@@ -1137,6 +1148,7 @@ span {
   height: 500px;
 }
 .hr2 {
+  color: #faf1e6;
   border-radius: 3px;
   border: solid;
 }
@@ -1153,13 +1165,26 @@ span {
   height: 35px;
 }
 .starActive {
-  background-image: url("./img/star-solid.svg");
+  position: relative;
+  background-repeat: no-repeat;
+  mask-image: url(./img/star-solid.svg);
   margin-right: 5px;
   cursor: pointer;
 }
-.starNoActive {
-  background-image: url("./img/star-regular.svg");
+/* .starNoActive {
+  position: relative;
+  background-repeat: no-repeat;
+  mask-image: url(./img/star-regular.svg);
   margin-right: 5px;
+  cursor: pointer;
+} */
+
+.starNoActive {
+  mask-image: url(./img/star-regular.svg);
+  filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0.01deg)
+    brightness(280%) contrast(70%);
+  margin-right: 5px;
+  height: 25px;
   cursor: pointer;
 }
 .winemodal {
@@ -1200,7 +1225,7 @@ span {
 
 .reviews {
   max-height: 300px;
-  color: black;
+  color: #1e1e1e;
   border-radius: 5px;
   padding: 10px;
   margin: 10px 10px;
@@ -1221,7 +1246,7 @@ span {
 .gusetReviews {
   width: 500px;
   max-height: 300px;
-  color: black;
+  color: #1e1e1e;
   border-radius: 5px;
   padding: 10px;
   margin: 10px 10px;
@@ -1247,7 +1272,7 @@ span {
   background-color: white;
   border-radius: 5px;
   user-select: auto;
-  color: black;
+  color: #1e1e1e;
   width: -webkit-fill-available;
 }
 .wineReview {
@@ -1259,7 +1284,7 @@ span {
   background-color: white;
   border-radius: 5px;
   user-select: auto;
-  color: black;
+  color: #1e1e1e;
 }
 .reviewBtns button {
   margin: 0px 5px;
@@ -1425,7 +1450,7 @@ span {
   height: 100px;
   flex-direction: column;
   align-items: center;
-  color: black;
+  color: #1e1e1e;
   position: absolute;
   left: 0;
   top: 430px;
@@ -1575,7 +1600,7 @@ span {
   line-height: 30px;
   flex-direction: column;
   align-items: center;
-  color: black;
+  color: #1e1e1e;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
@@ -1725,7 +1750,7 @@ span {
   line-height: 30px;
   flex-direction: column;
   align-items: center;
-  color: black;
+  color: #1e1e1e;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 } */
@@ -1836,7 +1861,7 @@ span {
   border-bottom: 2px solid;
 }
 .mainSubCategoryName p {
-  color: black;
+  color: #1e1e1e;
   font-size: 15px;
   width: 30rem;
   margin-top: 1rem;
@@ -1855,7 +1880,7 @@ span {
   cursor: default;
 }
 .mainCategoryName p {
-  color: black;
+  color: #1e1e1e;
   font-size: 15px;
   width: 11rem;
   margin-top: 1rem;
@@ -1927,8 +1952,8 @@ span {
   background-repeat: no-repeat;
   height: 35px;
   width: 35px;
-  top: 4px;
-  right: 0px;
+  top: 81px;
+  right: 16px;
 }
 .like {
   mask-image: url(./img/heart-solid.svg);
@@ -1936,9 +1961,13 @@ span {
   background-repeat: no-repeat;
   height: 35px;
   width: 35px;
-  top: 4px;
-  right: 0px;
+  top: 81px;
+  right: 16px;
 }
+.icon-wine {
+  background-color: rgb(170, 20, 20);
+}
+
 .icon-red {
   background-color: red;
 }
@@ -1955,14 +1984,19 @@ span {
   margin-left: 30px;
 }
 .wineimg {
-  max-height: 430px;
+  margin: -15px 10px;
+  max-height: 530px;
   min-width: 270px;
   display: flex;
   justify-content: flex-start;
+  margin-top: -25px;
 }
+
 .wineimg img {
-  max-height: 430px;
+  margin-bottom: 0px;
+  max-height: 434px;
   width: 127px;
+  margin-top: 81px;
 }
 .textarea {
   padding: 1rem 1rem 1.5rem;
@@ -2264,7 +2298,7 @@ span {
   padding: 8px;
   cursor: pointer;
   font-weight: 1000;
-  color: black;
+  color: #1e1e1e;
   margin-right: 1rem;
   transition: all 0.1s ease;
   min-width: 80px;
@@ -2297,7 +2331,7 @@ span {
   transition: all 0.3s ease;
 }
 .mainWineTag {
-  color: black;
+  color: #1e1e1e;
 }
 .toolTip {
   color: #000;
@@ -3457,13 +3491,12 @@ span {
     }
   }
 }
-@media screen and (min-width:320px) and (max-width: 1024px) {
+@media screen and (min-width: 320px) and (max-width: 1024px) {
   #root {
     overflow: unset;
     width: 100%;
-
   }
-  .FirstPage > div{
+  .FirstPage > div {
     margin: 10px;
   }
   .FirstPage_Summery p {
@@ -3471,41 +3504,112 @@ span {
     color: #fdfaf6;
     font-size: 20px;
     margin-bottom: 5px;
+  }
+  .FirstPage_Summery h1 {
+    margin: 0;
+    font-size: 60px;
+  }
+  .FirstPage_Summery h1 {
+    width: 100%;
+  }
+  .FirstPage_InputSurvey {
+    width: 100%;
+    cursor: pointer;
+    margin-top: 10px;
+    display: flex;
+    font-size: 20px;
+    color: rgb(240, 119, 88);
+  }
+  .FirstPage_GoTomain {
+    width: 300px;
+    font-size: 25px;
+    margin: 10px 3px;
+    cursor: pointer;
+  }
+  .scroll-down {
+    font-family: "Noto Sans KR", sans-serif;
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    opacity: 1;
+  }
+
+  .SecondPage > div {
+    flex-direction: column;
+    justify-content: unset;
+  }
 }
-.FirstPage_Summery h1 {
-  margin: 0;
-  font-size: 60px;
-}
-.FirstPage_Summery h1 {
-  width: 100%;
-}
-.FirstPage_InputSurvey {
-  width: 100%;
-  cursor: pointer;
-  margin-top: 10px;
+.table {
   display: flex;
-  font-size: 20px;
-  color: rgb(240, 119, 88);
+  height: 45px;
+  align-items: center;
 }
-.FirstPage_GoTomain {
-  width: 300px;
-  font-size: 25px;
-  margin: 10px 3px;
-  cursor: pointer;
+.tableView {
+  min-width: 344px;
+  margin-top: 15px;
 }
-.scroll-down {
-  font-family: "Noto Sans KR", sans-serif;
-  position: absolute;
-  left: 0;
-  bottom: 10px;
+.tableTag {
+  opacity: 0.5;
+  font-size: 14px;
+}
+.tasteStructure {
   width: 100%;
-  text-align: center;
-  opacity: 1;
+  background-color: #f7f3f0;
+  max-height: 8px;
+  height: 8px;
+  position: relative;
+  border-radius: 7px;
 }
-
-.SecondPage > div {
+.tasteStructure__progressBar {
+  width: 85%;
+}
+.indicatorBar {
+  width: 20%;
+  left: 39.6985%;
+  display: block;
+  background-color: #ba1628;
+  position: absolute;
+  overflow: hidden;
+  height: 8px;
+  border-radius: 7px;
+}
+.tableRow {
+  display: flex;
   flex-direction: column;
-  justify-content:unset
 }
-
+.tableTagM {
+  font-size: 25px;
+  color: #1e1e1e;
+}
+.low {
+  width: 27%;
+  left: 5.6985%;
+  display: block;
+  background-color: #ba1628;
+  position: absolute;
+  overflow: hidden;
+  height: 8px;
+  border-radius: 7px;
+}
+.medium {
+  width: 27%;
+  left: 35.6985%;
+  display: block;
+  background-color: #ba1628;
+  position: absolute;
+  overflow: hidden;
+  height: 8px;
+  border-radius: 7px;
+}
+.high {
+  width: 27%;
+  left: 69.6985%;
+  display: block;
+  background-color: #ba1628;
+  position: absolute;
+  overflow: hidden;
+  height: 8px;
+  border-radius: 7px;
 }
