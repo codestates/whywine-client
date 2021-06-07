@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LikeCard from "../Cards/LikeCard";
 import LikeEmpty from "../../../img/wine_like_empty.png";
-import Footer from "../Footer/Footer";
 import GoBackBtnFromLikeList from "../../atoms/Buttons/GoBackBtnFromLikeList";
 interface State {
   userLikeWines: object[];
@@ -60,7 +59,6 @@ const LikeListCategory = ({
           </ul>
         </div>
       )}
-      <Footer />
     </div>
   );
 };
