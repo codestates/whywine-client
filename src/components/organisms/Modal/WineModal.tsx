@@ -205,13 +205,13 @@ function WineModal({
             <Image src={image} alt="와인" placeholderImg={wineSample} />
             <Like wineId={randomWine.id} isUserInfo={isUserInfo} />
             <div className="reviewHeader_">
-              <div>{randomWine.likeCount}Likes!</div>
-              <div>{randomWine.price}₩</div>
+              <div className="header_text1">{randomWine.likeCount}Likes!</div>
+              <div className="header_text2"> {randomWine.price}₩</div>
               <Rating
                 rating_avg={randomWine.rating_avg}
                 Style={"ModalWineRating2"}
               />
-              <hr></hr>
+              <hr className="hr2"></hr>
               <div className="tableView">
                 <div className="tableRow">
                   <div className="tableTagM">바디.</div>
@@ -289,7 +289,7 @@ function WineModal({
       {userName === "게스트" ? (
         <div className="guestReview review">
           <div className="guestReviewInput">
-            <div>댓글을 작성하려면 로그인을 하셔야합니다.</div>
+            <div>작성하려면 로그인을 하셔야합니다.</div>
             <div
               className="guestBtn"
               onClick={() => setsSignIn(true)}

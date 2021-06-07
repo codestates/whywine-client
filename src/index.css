@@ -1141,6 +1141,13 @@ span {
   flex-direction: column;
   width: 70%;
 } */
+.header_text1 {
+  color: #1e1e1e;
+  font-size: 20px;
+}
+.header_text2 {
+  color: #1e1e1e;
+}
 .loading {
   text-align: center;
   margin-top: 20rem;
@@ -1188,6 +1195,7 @@ span {
   cursor: pointer;
 }
 .winemodal {
+  padding: 40px;
   max-width: 84rem;
   height: 870px;
   width: 100%;
@@ -1942,6 +1950,7 @@ span {
   border: 2px solid black;
 }
 .modalExit {
+  margin-top: 10px;
   font-size: 25px;
   right: 0;
   padding: 10px;
