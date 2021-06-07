@@ -3,9 +3,10 @@ import Header from "../organisms/Header/Header";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import dotenv from "dotenv";
+import MyPageHeader from "../organisms/Header/MyPageHeader";
+import MyPageProfile from "../atoms/Icons/MyPageProfile";
 
 dotenv.config();
-
 
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 const imgserver = process.env.REACT_APP_USER_IMAGE_URL;
@@ -50,45 +51,39 @@ function Mypage() {
   let userInfo: any;
 
   useEffect(() => {
-    if(sessionStorage.getItem("login")){
-      getUserInfo()
+    if (sessionStorage.getItem("login")) {
+      getUserInfo();
       if (sessionStorage.getItem("userInfo")) {
         userInfo = sessionStorage.getItem("userInfo");
         userInfo = JSON.parse(userInfo);
 
-        if(userInfo.image.startsWith( 'https' )){
+        if (userInfo.image.startsWith("https")) {
           setUser({
             ...userInfo,
             image: userInfo.image,
           });
-        }else{
+        } else {
           setUser({
             ...userInfo,
-            image:
-              `${imgserver}` +
-              userInfo.image,
+            image: `${imgserver}` + userInfo.image,
           });
         }
-        
       }
-    }else{
-      history.push("/main")
+    } else {
+      history.push("/main");
     }
     if (sessionStorage.getItem("userInfo")) {
       userInfo = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
       setUser({
         ...userInfo,
-        image:
-          `${imgserver}` +
-          userInfo.image,
-
+        image: `${imgserver}` + userInfo.image,
       });
     } else {
       history.push("/main");
     }
   }, []);
-  
+
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}userinfo`, {
@@ -196,15 +191,14 @@ function Mypage() {
 
   return (
     <>
-      <Header
-        handleSearchInput={handleSearchInput}
-        handleClickSearchBtn={handleClickSearchBtn}
-      />
+      <MyPageHeader />
       <div className="MyPageWrap">
+        <div className="MyPageHeader"></div>
         <ul>
           <li>
             <div className="profile">
-              <img className="userImage" src={user.image}></img>
+              <MyPageProfile />
+              {/* <img className="userImage" src={user.image}></img> */}
               <i className="fas fa-camera" onClick={onButtonClick}></i>
               <input
                 className="onChangeImage"
@@ -222,14 +216,16 @@ function Mypage() {
               <ul className="EditInfo">
                 <i className="fas fa-times" onClick={EditClick}></i>
                 <li>
-                  <div>회원 정보 변경</div>
+                  <div style={{ marginBottom: "1rem" }}>회원 정보 변경</div>
                   <input
                     type="text"
                     name="newNickName"
                     placeholder="변경할 닉네임"
                     onChange={NewNickNameInputValue}
                   />
-                  <i className="fas fa-check" onClick={EditNickNameAxios}>ok</i>
+                  <i className="fas fa-check" onClick={EditNickNameAxios}>
+                    ok
+                  </i>
                 </li>
                 <li>
                   <input
@@ -246,14 +242,17 @@ function Mypage() {
                     placeholder="새 비밀번호"
                     onChange={NewPasswordInputValue}
                   />
-                  <i className="fas fa-check" onClick={EditPasswordAxios}>ok</i>
+                  <i className="fas fa-check" onClick={EditPasswordAxios}>
+                    ok
+                  </i>
                 </li>
               </ul>
             </li>
           ) : (
-            <li className ="MyInfo">
+            <li className="MyInfo">
               <div>{user.nickname}</div>
-              <div>email: {user.email}</div>
+
+              <div>{user.email}</div>
             </li>
           )}
 
@@ -271,8 +270,15 @@ function Mypage() {
             </li>
           ) : (
             <li className="MemberOut">
-              <i className="fas fa-user-slash" onClick={MemberOutClick}></i>
-              <i className="fas fa-edit" onClick={EditClick}></i>
+              <div>
+                <i className="fas fa-user-slash" onClick={MemberOutClick}></i>
+                <div>회원 탈퇴</div>
+              </div>
+
+              <div>
+                <i className="fas fa-edit" onClick={EditClick}></i>
+                <div>회원 정보 변경</div>
+              </div>
             </li>
           )}
         </ul>
