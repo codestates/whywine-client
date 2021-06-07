@@ -88,39 +88,40 @@ const Main = () => {
   //* 서버에 태그 요청
   const postTags = useCallback(async () => {
     console.log(userMainTag);
+    if (userMainTag.length !== 0) {
+      await axios
+        .post(
+          `${server}main/tags`,
+          {
+            tags: userMainTag.filter((el: string) => el !== ""),
+            sort: userTypeTag,
+          },
+          // * (el: string) => el !== "") 빈문자열 제외하는 부분
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        )
+        .then((data) => {
+          if (data.status !== 204) {
+            console.log(data);
 
-    await axios
-      .post(
-        `${server}main/tags`,
-        {
-          tags: userMainTag.filter((el: string) => el !== ""),
-          sort: userTypeTag,
-        },
-        // * (el: string) => el !== "") 빈문자열 제외하는 부분
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      )
-      .then((data) => {
-        if (data.status !== 204) {
-          console.log(data);
-
-          setIsEmpty(false);
-          setRandomWine(data.data.data.wines.sorted.random3);
-          setSubWine(data.data.data.wines.sorted);
-        } else if (data.status === 204) {
-          console.log(data);
-          setIsEmpty(true);
-        }
-      });
+            setIsEmpty(false);
+            setRandomWine(data.data.data.wines.sorted.random3);
+            setSubWine(data.data.data.wines.sorted);
+          } else if (data.status === 204) {
+            console.log(data);
+            setIsEmpty(true);
+          }
+        });
+    }
   }, [userMainTag, userTypeTag]);
 
   //* 로딩
   const handleLoading = (time: number | undefined) => {
     setTimeout(() => setIsLoading(false), time);
   };
-
+  console.log(userTags);
   useEffect(() => {
     userTagUpdata();
     handleLoading(300);
@@ -136,6 +137,7 @@ const Main = () => {
       sessionStorage.removeItem("userInfo");
     }
     setUserMainTag(userTags);
+    postTags();
   }, []);
 
   //* 태그 최신화
