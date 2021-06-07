@@ -1,8 +1,8 @@
 import * as React from "react";
 import UseScrollFadeIn from "../../atoms/Scroll/UseScrollFadeIn";
 import useScrollCount from "../../atoms/Scroll/UseScrollCount";
-import SurveyGif from "../../../gif/Survey.gif";
 import UseScrollClipPath from "../../atoms/Scroll/UseScrollClipPath";
+import SurveyGif from "../../../gif/Survey.gif";
 
 function SecondPage() {
   const animatedItem1 = UseScrollFadeIn("up", 1, 0.5);
