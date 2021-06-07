@@ -2537,6 +2537,7 @@ span {
 }
 .userImage {
   color: #aa1414;
+  width: 200px;
   border: 2px solid #aa1414;
   background-color: white;
   border-radius: 50%;
@@ -3452,4 +3453,56 @@ span {
       width: 40rem;
     }
   }
+}
+@media screen and (min-width:320px) and (max-width: 1024px) {
+  #root {
+    overflow: unset;
+    width: 100%;
+
+  }
+  .FirstPage > div{
+    margin: 10px;
+  }
+  .FirstPage_Summery p {
+    font-family: "Noto Sans KR", sans-serif;
+    color: #fdfaf6;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.FirstPage_Summery h1 {
+  margin: 0;
+  font-size: 60px;
+}
+.FirstPage_Summery h1 {
+  width: 100%;
+}
+.FirstPage_InputSurvey {
+  width: 100%;
+  cursor: pointer;
+  margin-top: 10px;
+  display: flex;
+  font-size: 20px;
+  color: rgb(240, 119, 88);
+}
+.FirstPage_GoTomain {
+  width: 300px;
+  font-size: 25px;
+  margin: 10px 3px;
+  cursor: pointer;
+}
+.scroll-down {
+  font-family: "Noto Sans KR", sans-serif;
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  opacity: 1;
+}
+
+.SecondPage > div {
+  flex-direction: column;
+  justify-content:unset
+}
+
 }

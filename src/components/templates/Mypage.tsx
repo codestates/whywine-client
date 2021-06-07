@@ -207,8 +207,8 @@ function Mypage() {
         <ul>
           <li>
             <div className="profile">
-              <MyPageProfile />
-              {/* <img className="userImage" src={user.image}></img> */}
+              {/* <MyPageProfile /> */}
+              <img className="userImage" src={user.image}></img>
               <i className="fas fa-camera" onClick={onButtonClick}></i>
               <input
                 className="onChangeImage"
