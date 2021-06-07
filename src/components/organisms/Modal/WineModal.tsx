@@ -70,7 +70,17 @@ function WineModal({
   const [commentUpdate, setCommentUpdate] = useState(false);
   const [commentList, setCommentList] = useState<any[]>([]);
   // ! 랜더링 될 코멘트들 [{},{},{}....]
-  const [iscomment, setIscomment] = useState(false);
+  const [isUserInfo, setIsUserInfo] = useState<UserInfoPrpos>({
+    id: 0,
+    email: "",
+    nickname: "",
+    image: "",
+    likes: 0,
+    bad: [],
+    good: [],
+    tags: [],
+    wines: [],
+  });
 
   const [comment, setComment] = useState<Comment>({
     // ! 현재 코멘트 상태
@@ -90,7 +100,6 @@ function WineModal({
 
   const handleSubmitClick = async () => {
     // * comment 상태 초기화
-    setIscomment(!iscomment);
     await axios
       .post(
         `${server}comment`,
@@ -133,20 +142,21 @@ function WineModal({
   // * 댓글 작성버튼을 누르면 랜딩시켜줄 comments에 작성된 comment가 들어감
 
   const handleCommentUpdate = async () => {};
+  let login: any = sessionStorage.getItem("login");
+  let userInfo: any = "";
 
   useEffect(() => {
     setCommentList(landingCommentList);
 
-    let login: any = sessionStorage.getItem("login");
     if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
-      let userInfo: any = sessionStorage.getItem("userInfo");
+      userInfo = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
+      setIsUserInfo(userInfo);
       setUserName(`${userInfo.nickname}`);
     } else if (!JSON.parse(login)) {
       setUserName("게스트");
       // * 세션 스토리지 로그인 상태가 거짓이면 유저이름을 "게스트"값으로 돌린다.
     }
-    setIscomment(!iscomment);
   }, []);
 
   useEffect(() => {
@@ -159,10 +169,8 @@ function WineModal({
     if (userName !== "게스트") {
       setCommentList(landingCommentList);
     }
+    console.log("isUserInfo", isUserInfo);
   });
-
-  // * 랜딩될떄 세션 스토리지에 있는 유저인포에서 유저 닉네임 가져옴
-
   // const RendigComment = useMemo(() => handleComments, [comments]);
 
   return (
@@ -177,7 +185,7 @@ function WineModal({
         <div>
           <div className="wineimg">
             <Image src={image} alt="와인" placeholderImg={wineSample} />
-            <Like id={id} />
+            <Like wineId={id} isUserInfo={isUserInfo} />
             <div className="reviewHeader_">
               <div>{likeCount}Likes!</div>
               <div>{price}WON</div>

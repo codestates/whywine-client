@@ -4,11 +4,22 @@ require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface Props {
-  id: number;
+  isUserInfo: {
+    id: number;
+    email: string;
+    nickname: string;
+    image: string;
+    likes: number;
+    bad: [];
+    good: [];
+    tags?: [];
+    wines?: [];
+  };
+  wineId: number;
 }
 
-function Like({ id }: Props) {
-  const [isLike, setIsLike] = useState<boolean>();
+function Like({ wineId, isUserInfo }: Props) {
+  const [isLike, setIsLike] = useState<boolean>(false);
   const [noLike, setNoLike] = useState(false);
 
   const handleLikeBtn = useCallback(async () => {
@@ -18,7 +29,7 @@ function Like({ id }: Props) {
       await axios
         .post(
           `${server}user/like`,
-          { wineId: id },
+          { wineId: wineId },
           {
             headers: { "Content-Type": "application/json" },
             withCredentials: true,
@@ -30,7 +41,7 @@ function Like({ id }: Props) {
       await axios
         .post(
           `${server}user/unlike`,
-          { wineId: id },
+          { wineId: wineId },
           {
             headers: { "Content-Type": "application/json" },
             withCredentials: true,
@@ -43,21 +54,12 @@ function Like({ id }: Props) {
   }, [isLike]);
 
   useEffect(() => {
-    if (sessionStorage.getItem("userInfo")) {
-      let userInfo: any = sessionStorage.getItem("userInfo");
-      userInfo = JSON.parse(userInfo);
-      let { wines } = userInfo;
-      // * 유저 정보에서 찜한 와인 목록 구조분해할당
-      if (wines) {
-        wines.map((el: any) => {
-          if (id === el.id) {
-            return setNoLike(true);
-          } else {
-            return setIsLike(false);
-          }
-        });
-      }
-      // * 유저가 찜한 와인 배열에서 같은 와인 id가 있으면 islike 상태를 true로 반환한다.
+    if (isUserInfo.wines) {
+      isUserInfo.wines.map((el: any) => {
+        if (el.id === wineId) {
+          return setIsLike(true);
+        }
+      });
     }
   }, []);
   return (
