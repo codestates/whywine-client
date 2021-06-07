@@ -10,6 +10,18 @@ require("dotenv").config();
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
+interface UserInfoPrpos {
+  id: number;
+  email: string;
+  nickname: string;
+  image: string;
+  likes: number;
+  bad: [];
+  good: [];
+  tags?: [];
+  wines?: [];
+}
+
 interface wineData {
   searchWine: any;
 }
@@ -29,6 +41,17 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
   const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
   const [commentList, setCommentList] = useState<any[]>([]);
+  const [isUserInfo, setIsUserInfo] = useState<UserInfoPrpos>({
+    id: 0,
+    email: "",
+    nickname: "",
+    image: "",
+    likes: 0,
+    bad: [],
+    good: [],
+    tags: [],
+    wines: [],
+  });
 
   const landingHandleComments = async () => {
     if (searchWine) {
@@ -66,6 +89,15 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
     };
   }, [tags]);
 
+  let login: any = sessionStorage.getItem("login");
+  useEffect(() => {
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
+      let userInfo: any = sessionStorage.getItem("userInfo");
+      userInfo = JSON.parse(userInfo);
+      setIsUserInfo(() => userInfo);
+    }
+  }, []);
+
   const handleIsClicked = () => {
     setIsOpen(true);
   };
@@ -93,6 +125,7 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
             handleComments={landingHandleComments}
             landingCommentList={commentList}
             randomWine={searchWine}
+            isUserInfo={isUserInfo}
             price={searchWine.price}
             tags={searchWine.tags}
             id={searchWine.id}
@@ -106,7 +139,6 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
           />
         </div>
       )}
-
 
       <div className="searchCard" onClick={handleIsClicked}>
         <div className="searchProfile">

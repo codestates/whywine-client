@@ -15,18 +15,6 @@ import GuestReviews from "../Reviews/GuestReviews";
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
-interface UserInfoPrpos {
-  id: number;
-  email: string;
-  nickname: string;
-  image: string;
-  likes: number;
-  bad: [];
-  good: [];
-  tags?: [];
-  wines?: [];
-}
-
 interface Props {
   ModalEl: any;
   name: string;
@@ -41,6 +29,17 @@ interface Props {
   randomWine: any;
   landingCommentList: any;
   handleComments: () => void;
+  isUserInfo: {
+    id: number;
+    email: string;
+    nickname: string;
+    image: string;
+    likes: number;
+    bad: [];
+    good: [];
+    tags?: [];
+    wines?: [];
+  };
 }
 type Comment = {
   user: string;
@@ -62,6 +61,7 @@ function WineModal({
   randomWine,
   landingCommentList,
   handleComments,
+  isUserInfo,
 }: Props) {
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
@@ -70,17 +70,6 @@ function WineModal({
   const [commentUpdate, setCommentUpdate] = useState(false);
   const [commentList, setCommentList] = useState<any[]>([]);
   // ! 랜더링 될 코멘트들 [{},{},{}....]
-  const [isUserInfo, setIsUserInfo] = useState<UserInfoPrpos>({
-    id: 0,
-    email: "",
-    nickname: "",
-    image: "",
-    likes: 0,
-    bad: [],
-    good: [],
-    tags: [],
-    wines: [],
-  });
 
   const [comment, setComment] = useState<Comment>({
     // ! 현재 코멘트 상태
@@ -142,6 +131,7 @@ function WineModal({
   // * 댓글 작성버튼을 누르면 랜딩시켜줄 comments에 작성된 comment가 들어감
 
   const handleCommentUpdate = async () => {};
+
   let login: any = sessionStorage.getItem("login");
   let userInfo: any = "";
 
@@ -151,7 +141,6 @@ function WineModal({
     if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
       userInfo = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
-      setIsUserInfo(userInfo);
       setUserName(`${userInfo.nickname}`);
     } else if (!JSON.parse(login)) {
       setUserName("게스트");
@@ -165,7 +154,6 @@ function WineModal({
         return setCommentList(landingCommentList);
       }
     }
-
     if (userName !== "게스트") {
       setCommentList(landingCommentList);
     }

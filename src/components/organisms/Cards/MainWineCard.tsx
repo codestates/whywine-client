@@ -18,6 +18,18 @@ require("dotenv").config();
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
+interface UserInfoPrpos {
+  id: number;
+  email: string;
+  nickname: string;
+  image: string;
+  likes: number;
+  bad: [];
+  good: [];
+  tags?: [];
+  wines?: [];
+}
+
 interface WineData {
   randomWine?: any;
   handleLoading: (time: number | undefined) => void;
@@ -39,7 +51,17 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
   const ModalEl: any = useRef();
   const history = useHistory();
   const [commentList, setCommentList] = useState<any[]>([]);
-
+  const [isUserInfo, setIsUserInfo] = useState<UserInfoPrpos>({
+    id: 0,
+    email: "",
+    nickname: "",
+    image: "",
+    likes: 0,
+    bad: [],
+    good: [],
+    tags: [],
+    wines: [],
+  });
   // 확인 확인
   if (randomWine) {
     name = randomWine.name;
@@ -71,10 +93,6 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
     landingHandleComments();
   };
 
-  // const guestList = useMemo(() => handleIsClicked, []);
-
-  // console.log("guestList", guestList());
-
   const handleUploadImg = () => {
     setTimeout(() => setIsUpload(true), 100);
   };
@@ -85,6 +103,15 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
       setIsUpload(false);
     };
   }, [tags]);
+
+  let login: any = sessionStorage.getItem("login");
+  useEffect(() => {
+    if (JSON.parse(login) && sessionStorage.getItem("userInfo")) {
+      let userInfo: any = sessionStorage.getItem("userInfo");
+      userInfo = JSON.parse(userInfo);
+      setIsUserInfo(() => userInfo);
+    }
+  }, []);
 
   const handleClickOutside = (e: any) => {
     if (isOpen && !ModalEl.current.contains(e.target)) {
@@ -107,6 +134,7 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
           <WineModal
             handleComments={landingHandleComments}
             landingCommentList={commentList}
+            isUserInfo={isUserInfo}
             randomWine={randomWine}
             price={randomWine.price}
             tags={randomWine.tags}

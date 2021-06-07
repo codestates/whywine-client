@@ -20,9 +20,8 @@ interface Props {
 
 function Like({ wineId, isUserInfo }: Props) {
   const [isLike, setIsLike] = useState<boolean>(false);
-  const [noLike, setNoLike] = useState(false);
 
-  const handleLikeBtn = useCallback(async () => {
+  const handleLikeBtn = async () => {
     setIsLike(!isLike);
     if (!isLike) {
       console.log(1);
@@ -49,15 +48,14 @@ function Like({ wineId, isUserInfo }: Props) {
         )
         .then(() => {})
         .catch((err) => console.dir(err));
-      console.log("isLike 싫어요 요청", isLike);
     }
-  }, [isLike]);
+  };
 
   useEffect(() => {
     if (isUserInfo.wines) {
       isUserInfo.wines.map((el: any) => {
         if (el.id === wineId) {
-          return setIsLike(true);
+          return setIsLike(() => true);
         }
       });
     }
