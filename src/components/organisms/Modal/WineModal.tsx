@@ -235,7 +235,7 @@ function WineModal({
                   <div className="tableTagM">산미.</div>
                   <tr className="table">
                     <td>
-                      <div className="tableTag">낮은</div>
+                      <div className="tableTag">낮음</div>
                     </td>
                     <td className="tasteStructure__progressBar">
                       <div className="tasteStructure">
@@ -251,7 +251,7 @@ function WineModal({
                   <div className="tableTagM">탄닌.</div>
                   <tr className="table">
                     <td>
-                      <div className="tableTag">낮은</div>
+                      <div className="tableTag">낮음</div>
                     </td>
                     <td className="tasteStructure__progressBar">
                       <div className="tasteStructure">
@@ -267,7 +267,7 @@ function WineModal({
                   <div className="tableTagM">당도.</div>
                   <tr className="table">
                     <td>
-                      <div className="tableTag">낮은</div>
+                      <div className="tableTag">낮음</div>
                     </td>
                     <td className="tasteStructure__progressBar">
                       <div className="tasteStructure">
