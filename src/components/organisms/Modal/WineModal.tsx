@@ -172,7 +172,7 @@ function WineModal({
             <Like wineId={randomWine.id} isUserInfo={isUserInfo} />
             <div className="reviewHeader_">
               <div>{randomWine.likeCount}Likes!</div>
-              <div>{randomWine.price}WON</div>
+              <div>{randomWine.price}₩</div>
               <Rating
                 rating_avg={randomWine.rating_avg}
                 Style={"ModalWineRating2"}

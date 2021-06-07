@@ -1135,6 +1135,7 @@ span {
   height: 500px;
 }
 .hr2 {
+  border-radius: 3px;
   border: solid;
 }
 .hrDiv {
