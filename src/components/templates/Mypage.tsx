@@ -6,7 +6,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 const imgserver = process.env.REACT_APP_USER_IMAGE_URL;
 
@@ -50,42 +49,37 @@ function Mypage() {
   let userInfo: any;
 
   useEffect(() => {
-    if(sessionStorage.getItem("login")){
-      getUserInfo()
+    if (sessionStorage.getItem("login")) {
+      getUserInfo();
       if (sessionStorage.getItem("userInfo")) {
         userInfo = sessionStorage.getItem("userInfo");
         userInfo = JSON.parse(userInfo);
         setUser({
           ...userInfo,
-          image:
-            `${imgserver}` +
-            userInfo.image,
+          image: `${imgserver}` + userInfo.image,
         });
       }
-    }else{
-      history.push("/main")
+    } else {
+      history.push("/main");
     }
     if (sessionStorage.getItem("userInfo")) {
       userInfo = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
       setUser({
         ...userInfo,
-        image:
-          `${imgserver}` +
-          userInfo.image,
-
+        image: `${imgserver}` + userInfo.image,
       });
     } else {
       history.push("/main");
     }
   }, []);
-  
+
   const getUserInfo = async () => {
     try {
       const userInfo = await axios.get(`${server}userinfo`, {
         withCredentials: true,
       });
-      console.log("userInfo", userInfo);
+
       sessionStorage.setItem(
         "userInfo",
         JSON.stringify(userInfo.data.data.userInfo)
@@ -220,7 +214,9 @@ function Mypage() {
                     placeholder="변경할 닉네임"
                     onChange={NewNickNameInputValue}
                   />
-                  <i className="fas fa-check" onClick={EditNickNameAxios}>ok</i>
+                  <i className="fas fa-check" onClick={EditNickNameAxios}>
+                    ok
+                  </i>
                 </li>
                 <li>
                   <input
@@ -237,12 +233,14 @@ function Mypage() {
                     placeholder="새 비밀번호"
                     onChange={NewPasswordInputValue}
                   />
-                  <i className="fas fa-check" onClick={EditPasswordAxios}>ok</i>
+                  <i className="fas fa-check" onClick={EditPasswordAxios}>
+                    ok
+                  </i>
                 </li>
               </ul>
             </li>
           ) : (
-            <li className ="MyInfo">
+            <li className="MyInfo">
               <div>{user.nickname}</div>
               <div>email: {user.email}</div>
             </li>

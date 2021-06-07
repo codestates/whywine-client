@@ -96,7 +96,6 @@ const LikeCard = ({ userLikeWines }: WineData) => {
       let userInfo: any = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
       setIsUserInfo(() => userInfo);
-      console.log("라이크카드", userInfo);
     }
   }, []);
 
@@ -109,7 +108,6 @@ const LikeCard = ({ userLikeWines }: WineData) => {
   }, [isOpen]);
 
   const handleIsClicked = () => {
-    console.log(userLikeWines);
     setIsOpen(true);
     setIsClicked(true);
   };
@@ -127,12 +125,16 @@ const LikeCard = ({ userLikeWines }: WineData) => {
     };
   });
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <li>
       {userLikeWines === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            closeModal={closeModal}
             ModalOpen={isOpen}
             handleComments={landingHandleComments}
             landingCommentList={commentList}

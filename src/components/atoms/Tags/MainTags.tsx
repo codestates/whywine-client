@@ -123,13 +123,13 @@ const MainTags = ({
 
         // for (let i = 0; i < userMainTag.length; i++) {
         //   if (userMainTag[i] !== degreeENG[2]) {
-        //     console.log(2222222222222);
+        //     (2222222222222);
 
         //     handleSetUserTag([...userMainTag, degreeENG[2]]);
 
         //     // setUserMainTag([...userMainTag, degreeENG[2]]);
         //   } else if (userMainTag[i] === degreeENG[2]) {
-        //     console.log(333333333333);
+        //     (333333333333);
 
         //     handleSetUserTag(
         //       userMainTag.filter((tag: string) => tag !== degreeENG[2])
@@ -146,9 +146,9 @@ const MainTags = ({
     }
   };
 
-  // console.log(userMainTag[0] === degreeENG[2]);
+  // (userMainTag[0] === degreeENG[2]);
 
-  // console.log(degreeENG[2]);
+  // (degreeENG[2]);
   //* 설문에서 받아온 기본 태그를 메인에 띄워줌
   //! handleTagClick이 실행되지만 태그 배열이 바뀌지 않음
   // const setSurveyTags = useCallback(() => {
@@ -173,7 +173,7 @@ const MainTags = ({
   //   setSurveyTags();
   // }, []);
   //! 처음 상태를 바꾸지 못하는 오류를 해결하기 위해 클래스 하나를 더 만들어  입히는 방식으로 해결
-  console.log(userMainTag);
+
   return (
     <div className="mainWineTagBox">
       <span className="toolTip">
@@ -236,7 +236,7 @@ const MainTags = ({
         <div
           className={
             userMainTag.map((tag) => {
-              console.log(tag);
+              (tag);
               if (tag === degreeENG[2]) {
                 return true;
               }

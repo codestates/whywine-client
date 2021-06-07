@@ -71,7 +71,6 @@ function Reviews({
         withCredentials: true,
       })
       .then((data) => {
-        console.log(commentId);
         return handleComments();
       })
       // * 댓글 삭제 후 handleComments 함수 실행으로 commentsList 상태 변경해 재랜딩

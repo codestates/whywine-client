@@ -1897,7 +1897,11 @@ span {
   height: 100%;
   border: 2px solid black;
 }
-
+.modalExit {
+  font-size: 25px;
+  right: 0;
+  padding: 10px;
+}
 .unlike {
   mask-image: url(./img/heart-regular.svg);
   position: relative;

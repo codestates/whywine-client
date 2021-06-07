@@ -64,7 +64,6 @@ function Like({ wineId, isUserInfo }: Props) {
   }, [isLike]);
 
   useEffect(() => {
-    console.log("랜딩되지?");
     if (isUserInfo.wines) {
       let userWines = isUserInfo.wines.map((el: any) => {
         return el.id;

@@ -122,13 +122,16 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
       window.removeEventListener("click", handleClickOutside);
     };
   });
-
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   //! 와인 데이터를 받아 올 때 처음 와인만 따로 랜더하고 나머지 맵핑
   return (
     <li>
       {searchWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            closeModal={closeModal}
             ModalOpen={isOpen}
             handleComments={landingHandleComments}
             landingCommentList={commentList}

@@ -129,12 +129,16 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
       window.removeEventListener("click", handleClickOutside);
     };
   });
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <li>
       {randomWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            closeModal={closeModal}
             ModalOpen={isOpen}
             handleComments={landingHandleComments}
             landingCommentList={commentList}

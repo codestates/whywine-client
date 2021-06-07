@@ -38,7 +38,6 @@ const Main = () => {
   const [subWine, setSubWine] = useState<any>({});
   const [isLoading, setIsLoading] = useState(true);
   const [isEmpty, setIsEmpty] = useState(false);
-  console.log(userMainTag);
 
   const handleSetUserTag = useCallback(
     (userTag: string[]) => {
@@ -57,7 +56,7 @@ const Main = () => {
       const userInfo = await axios.get(`${server}userinfo`, {
         withCredentials: true,
       });
-      console.log("userInfo", userInfo);
+
       sessionStorage.setItem(
         "userInfo",
         JSON.stringify(userInfo.data.data.userInfo)
@@ -87,7 +86,7 @@ const Main = () => {
 
   //* 서버에 태그 요청
   const postTags = useCallback(async () => {
-    console.log(userMainTag);
+    userMainTag;
 
     await axios
       .post(
@@ -104,13 +103,13 @@ const Main = () => {
       )
       .then((data) => {
         if (data.status !== 204) {
-          console.log(data);
+          data;
 
           setIsEmpty(false);
           setRandomWine(data.data.data.wines.sorted.random3);
           setSubWine(data.data.data.wines.sorted);
         } else if (data.status === 204) {
-          console.log(data);
+          data;
           setIsEmpty(true);
         }
       });
@@ -161,7 +160,7 @@ const Main = () => {
             setIsSearch(true);
             setHasData(false);
           } else {
-            console.log(data.data.data.wines);
+            data.data.data.wines;
             setSearchWine(data.data.data.wines);
             setIsSearch(true);
             setHasData(true);

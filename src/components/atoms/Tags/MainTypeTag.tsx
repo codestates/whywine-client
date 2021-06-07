@@ -78,7 +78,7 @@ const MainTypeTag = ({ userTypeTag, handleSetTypeTag }: Tags) => {
         break;
     }
   };
-  console.log(userTypeTag);
+
   return (
     <div className="mainWineTypeBox">
       <span className="toolTip">와인 타입</span>

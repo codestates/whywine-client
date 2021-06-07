@@ -16,6 +16,7 @@ require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 interface Props {
+  closeModal: () => void;
   ModalOpen: boolean;
   ModalEl: any;
   image: any;
@@ -52,6 +53,7 @@ type Comment = {
 };
 
 function WineModal({
+  closeModal,
   image,
   ModalEl,
   randomWine,
@@ -143,9 +145,7 @@ function WineModal({
     }
   });
 
-  useEffect(() => {
-    console.log("모달누르면 프롭스", isUserInfo);
-  }, [ModalOpen]);
+  useEffect(() => {}, [ModalOpen]);
 
   useEffect(() => {
     setCommentList(landingCommentList);
@@ -267,6 +267,9 @@ function WineModal({
           </ul>
         </div>
       )}
+      <span>
+        <i className="fas fa-door-open modalExit" onClick={closeModal}></i>
+      </span>
     </section>
   );
 }
