@@ -57,7 +57,7 @@ const SurResultCardCenter = ({ randomWine }: WineData) => {
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
       <div className="frontCard">
-        <Image
+        <img
           style={{
             opacity: isOpacity ? "1" : "0",
             width: "300px",
@@ -72,14 +72,14 @@ const SurResultCardCenter = ({ randomWine }: WineData) => {
         <div className="resultWineCard" onClick={(e) => rotateCard(e)}>
           <Rating rating_avg={rating_avg} />
           <div className="mainWineProfile">
-            {image ? (
+            {image === undefined ? null : (
               <Image
-                src={process.env.REACT_APP_WINE_IMAGE_URL + randomWine.image}
+                src={image}
                 alt="와인"
-                className={"wineMainImg"}
+                className={"wineResultImg"}
                 placeholderImg={wineSample}
               />
-            ) : null}
+            )}
 
             <div className="mainWineContent">
               {name ? (

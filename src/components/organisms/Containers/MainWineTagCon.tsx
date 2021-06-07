@@ -5,14 +5,14 @@ interface Tags {
   userMainTag: string[];
   userTypeTag: string[];
   handleSetUserTag: (userTag: string[]) => void;
-  setTypeTag: React.Dispatch<React.SetStateAction<string[]>>;
+  handleSetTypeTag: (typeTag: string[]) => void;
   tags: any;
 }
 const MainWineTagCon = ({
   userMainTag,
   handleSetUserTag,
   userTypeTag,
-  setTypeTag,
+  handleSetTypeTag,
   tags,
 }: Tags) => {
   return (
@@ -21,7 +21,7 @@ const MainWineTagCon = ({
         userMainTag={userMainTag}
         handleSetUserTag={handleSetUserTag}
         userTypeTag={userTypeTag}
-        setTypeTag={setTypeTag}
+        handleSetTypeTag={handleSetTypeTag}
         tags={tags}
       />
     </div>

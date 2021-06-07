@@ -9,8 +9,9 @@ import axios from "axios";
 import SignInModal from "../Modal/SignInModal";
 import Image from "../../atoms/Imgs/Image";
 import wineSample from "../../../img/wine_sample.png";
-import RatingAvg from "../../atoms/Texts/RatingAvg";
 import Rating from "../../organisms/Ratings/ModalRating";
+import GuestReviews from "../Reviews/GuestReviews";
+
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
@@ -104,7 +105,6 @@ function WineModal({
         }
       )
       .then((data) => {
-        console.log("성공적 요청");
         handleComments();
       })
       .catch((err) => {
@@ -147,11 +147,9 @@ function WineModal({
       // * 세션 스토리지 로그인 상태가 거짓이면 유저이름을 "게스트"값으로 돌린다.
     }
     if (userName === "게스트") {
-      console.log("게스트 로그인 리뷰들", landingCommentList);
     }
 
     if (userName !== "게스트") {
-      console.log("유저 로그인 리뷰들", landingCommentList);
       return () => setCommentList(landingCommentList);
     }
     setIscomment(!iscomment);
@@ -159,11 +157,15 @@ function WineModal({
 
   useEffect(() => {
     if (userName === "게스트") {
+
       console.log("게스트 로그인 리뷰들", landingCommentList);
+      if (commentList.length === 0) {
+        return setCommentList(landingCommentList);
+      }
+
     }
 
     if (userName !== "게스트") {
-      console.log("유저 로그인 리뷰들", landingCommentList);
       setCommentList(landingCommentList);
     }
   });
@@ -188,7 +190,7 @@ function WineModal({
             <div className="reviewHeader_">
               <div>{likeCount}Likes!</div>
               <div>{price}WON</div>
-              <Rating rating_avg={rating_avg} />
+              <Rating rating_avg={rating_avg} Style={"ModalWineRating2"} />
               <hr></hr>
             </div>
           </div>
@@ -197,10 +199,14 @@ function WineModal({
       </div>
 
       {userName === "게스트" ? (
-        <div className="guestReview">
-          <div className="guestLoginModal">
+        <div className="guestReview review">
+          <div className="guestReviewInput">
             <div>댓글을 작성하려면 로그인을 하셔야합니다.</div>
-            <div onClick={() => setsSignIn(true)} style={{ cursor: "pointer" }}>
+            <div
+              className="guestBtn"
+              onClick={() => setsSignIn(true)}
+              style={{ cursor: "pointer" }}
+            >
               로그인 바로가기
             </div>
           </div>
@@ -212,7 +218,7 @@ function WineModal({
           <ul className="reviewUl">
             {commentList.map((el: any) => {
               return (
-                <Reviews
+                <GuestReviews
                   commentText={el.text}
                   commentRating={el.rating}
                   key={el.id}

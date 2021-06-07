@@ -37,13 +37,15 @@ const ReviewLikeBtn = ({
   };
 
   return (
-    <div>
+    <div className="like_Btn">
       {like ? (
         <button onClick={() => handleLikeCount()} className="reviewLikeBtn">
-          좋아요 : {good_count}
+          <i className="fas fa-thumbs-up"></i> : {good_count}
         </button>
       ) : (
-        <button className="reviewLikeBtn">싫어요</button>
+        <button className="reviewLikeBtn">
+          <i className="fas fa-thumbs-down"></i>
+        </button>
       )}
     </div>
   );

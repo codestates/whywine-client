@@ -42,29 +42,29 @@ const MainSubWineCategory = ({ subWine }: WineData) => {
           {subWine[4]
             ? Object.keys(subWine).length === 0
               ? null
-              : subWine[4].map((wine: any) => {
-                  return <MainSubWineCard subWine={wine} />;
+              : subWine[4].map((wine: any, idx: number) => {
+                  return <MainSubWineCard subWine={wine} key={idx} />;
                 })
             : null}
           {subWine[3]
             ? Object.keys(subWine).length === 0
               ? null
-              : subWine[3].map((wine: any) => {
-                  return <MainSubWineCard subWine={wine} />;
+              : subWine[3].map((wine: any, idx: number) => {
+                  return <MainSubWineCard subWine={wine} key={idx} />;
                 })
             : null}
           {subWine[2]
             ? Object.keys(subWine).length === 0
               ? null
-              : subWine[2].map((wine: any) => {
-                  return <MainSubWineCard subWine={wine} />;
+              : subWine[2].map((wine: any, idx: number) => {
+                  return <MainSubWineCard subWine={wine} key={idx} />;
                 })
             : null}
           {subWine[1]
             ? Object.keys(subWine).length === 0
               ? null
-              : subWine[1].map((wine: any) => {
-                  return <MainSubWineCard subWine={wine} />;
+              : subWine[1].map((wine: any, idx: number) => {
+                  return <MainSubWineCard subWine={wine} key={idx} />;
                 })
             : null}
         </ul>
