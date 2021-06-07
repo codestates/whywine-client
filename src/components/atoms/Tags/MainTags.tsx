@@ -40,6 +40,7 @@ const MainTags = ({
   //* 메인페이지에서 태그를 누르면 userMainTag를 업데이트 시켜주는 함수
   //! 배열은 참조값이기 때문에 if문이 제대로 먹지 않음
   const handleTagClick = (degree: string | boolean) => {
+    sessionStorage.setItem("selectTags", "true");
     switch (degree) {
       case degreeKOR[0]:
         setLow(!low);
@@ -71,7 +72,7 @@ const MainTags = ({
         //     // );
         //   }
         // }
-        break;
+        return userMainTag;
       case degreeKOR[1]:
         setMid(!mid);
         if (userMainTag.length === 0) {
@@ -103,7 +104,7 @@ const MainTags = ({
         //     // );
         //   }
         // }
-        break;
+        return userMainTag;
       case degreeKOR[2]:
         setHigh(!high);
         if (userMainTag.length === 0) {
@@ -112,17 +113,12 @@ const MainTags = ({
         }
         userMainTag.map((tag: string) => {
           if (tag !== degreeENG[2]) {
-            console.log(2222222222222);
-
             handleSetUserTag([...userMainTag, degreeENG[2]]);
           } else if (tag === degreeENG[2]) {
-            console.log(33333333333333);
-
             handleSetUserTag(
               userMainTag.filter((tag: string) => tag !== degreeENG[2])
             );
           }
-          console.log(userMainTag);
         });
 
         // for (let i = 0; i < userMainTag.length; i++) {
@@ -144,8 +140,7 @@ const MainTags = ({
         // );
         //   }
         // }
-        break;
-
+        return userMainTag;
       default:
         break;
     }
@@ -159,12 +154,15 @@ const MainTags = ({
   // const setSurveyTags = useCallback(() => {
   //   switch (userTags) {
   //     case degreeENG[0]:
+  //       setLow(!low);
   //       handleTagClick(degreeKOR[0]);
   //       break;
   //     case degreeENG[1]:
+  //       setMid(!mid);
   //       handleTagClick(degreeKOR[1]);
   //       break;
   //     case degreeENG[2]:
+  //       setHigh(!high);
   //       handleTagClick(degreeKOR[2]);
   //       break;
   //     default:
@@ -175,7 +173,7 @@ const MainTags = ({
   //   setSurveyTags();
   // }, []);
   //! 처음 상태를 바꾸지 못하는 오류를 해결하기 위해 클래스 하나를 더 만들어  입히는 방식으로 해결
-
+  console.log(userMainTag);
   return (
     <div className="mainWineTagBox">
       <span className="toolTip">
@@ -187,17 +185,16 @@ const MainTags = ({
           return (
             <div
               className={
-                degree[0]
-                  ? `mainWineTypeTag active`
-                  : degree[2] === userMainTag[0]
-                  ? "mainWineTypeTag diagonal"
-                  : degree[2] === userMainTag[1]
-                  ? "mainWineTypeTag diagonal"
-                  : degree[2] === userMainTag[2]
-                  ? "mainWineTypeTag diagonal"
-                  : degree[2] === userMainTag[3]
-                  ? "mainWineTypeTag diagonal"
-                  : `mainWineTypeTag`
+                degree[0] ? `mainWineTypeTag active` : `mainWineTypeTag`
+                // : degree[2] === userMainTag[0]
+                // ? "mainWineTypeTag diagonal"
+                // : degree[2] === userMainTag[1]
+                // ? "mainWineTypeTag diagonal"
+                // : degree[2] === userMainTag[2]
+                // ? "mainWineTypeTag diagonal"
+                // : degree[2] === userMainTag[3]
+                // ? "mainWineTypeTag diagonal"
+                // : `mainWineTypeTag`
               }
               onClick={() => {
                 handleTagClick(degree[1]);

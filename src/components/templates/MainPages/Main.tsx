@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import MainWineCon from "../../organisms/Containers/MainWineCon";
 import MainWineTagCon from "../../organisms/Containers/MainWineTagCon";
 import Header from "../../organisms/Header/Header";
@@ -8,33 +8,49 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import dotenv from "dotenv";
 import Loading from "../../atoms/Icons/Loading";
+import WineModal from "../../organisms/Modal/WineModal";
 import MainEmptyCon from "../../organisms/Containers/MainEmptyCon";
+import GoToTop from "../../atoms/Buttons/GoToTop";
+
 dotenv.config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
 //* 세션 스토리지에 담겨있는 태그 불러오기
 let userTags: any;
+let userTagsJSON: any;
 if (!sessionStorage.getItem("userTag")) {
   sessionStorage.setItem("userTag", JSON.stringify([]));
   userTags = sessionStorage.getItem("userTag");
 }
-userTags = sessionStorage.getItem("userTag");
+userTagsJSON = sessionStorage.getItem("userTag");
+userTags = JSON.parse(userTagsJSON);
+type SubWine = {
+  1: any[];
+  2: any[];
+  3: any[];
+  4: any[];
+};
 
 const Main = () => {
-  const [userMainTag, setUserMainTag] = useState<string[]>(
-    JSON.parse(userTags)
-  ); // 유저의 와인 맛 태그
+  const [userMainTag, setUserMainTag] = useState<string[]>([]); // 유저의 와인 맛 태그
   const [userTypeTag, setTypeTag] = useState<string[]>([]); // 유저의 와인 타입 태그
-  const [randomWine, setRandomWine] = useState<object[]>([]);
+  const [randomWine, setRandomWine] = useState<any>([]);
+  const [subWine, setSubWine] = useState<any>({});
   const [isLoading, setIsLoading] = useState(true);
   const [isEmpty, setIsEmpty] = useState(false);
+  console.log(userMainTag);
 
   const handleSetUserTag = useCallback(
     (userTag: string[]) => {
-      console.log("userTag123123123123123", userTag);
       setUserMainTag(userTag);
     },
     [userMainTag]
+  );
+  const handleSetTypeTag = useCallback(
+    (typeTag: string[]) => {
+      setTypeTag(typeTag);
+    },
+    [userTypeTag]
   );
   const getUserInfo = async () => {
     try {
@@ -69,10 +85,47 @@ const Main = () => {
     );
   };
 
+  //* 서버에 태그 요청
+  const postTags = useCallback(async () => {
+    console.log(userMainTag);
+
+    await axios
+      .post(
+        `${server}main/tags`,
+        {
+          tags: userMainTag.filter((el: string) => el !== ""),
+          sort: userTypeTag,
+        },
+        // * (el: string) => el !== "") 빈문자열 제외하는 부분
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      )
+      .then((data) => {
+        if (data.status !== 204) {
+          console.log(data);
+
+          setIsEmpty(false);
+          setRandomWine(data.data.data.wines.sorted.random3);
+          setSubWine(data.data.data.wines.sorted);
+        } else if (data.status === 204) {
+          console.log(data);
+          setIsEmpty(true);
+        }
+      });
+  }, [userMainTag, userTypeTag]);
+
+  //* 로딩
+  const handleLoading = (time: number | undefined) => {
+    setTimeout(() => setIsLoading(false), time);
+  };
+
   useEffect(() => {
     userTagUpdata();
-    // getUserInfo();
-    handleLoading();
+    handleLoading(300);
+    getUserInfo();
+
     if (
       !sessionStorage.getItem("userInfo") ||
       sessionStorage.getItem("login")
@@ -82,45 +135,15 @@ const Main = () => {
     if (!sessionStorage.getItem("login")) {
       sessionStorage.removeItem("userInfo");
     }
+    setUserMainTag(userTags);
   }, []);
-
-  //* 서버에 태그 요청
-  const postTags = useCallback(async () => {
-    if (userMainTag.length !== 0) {
-      await axios
-        .post(
-          `${server}main/tags`,
-          {
-            tags: userMainTag.filter((el: string) => el !== ""),
-            sort: userTypeTag,
-          },
-          // * (el: string) => el !== "") 빈문자열 제외하는 부분
-          {
-            headers: { "Content-Type": "application/json" },
-            withCredentials: true,
-          }
-        )
-        .then((data) => {
-          if (data.status !== 204) {
-            setRandomWine(data.data.data.wines.sorted.random3);
-          } else {
-            console.log(data);
-            setIsEmpty(true);
-          }
-        });
-    }
-  }, [userMainTag, userTypeTag]);
-
-  //* 로딩
-  const handleLoading = () => {
-    setTimeout(() => setIsLoading(false), 500);
-  };
 
   //* 태그 최신화
   useEffect(() => {
     postTags();
   }, [userMainTag, userTypeTag]);
   //* 검색
+
   const [hasData, setHasData] = useState(true);
   const [searchWine, setSearchWine] = useState<object[]>([]);
   const [isSearch, setIsSearch] = useState(false);
@@ -148,7 +171,7 @@ const Main = () => {
 
       //로딩 이미지 보여줬다가 사라짐
       setIsLoading(true);
-      handleLoading();
+      handleLoading(300);
     }
   };
   const handleSearchInput = (e: any) => {
@@ -158,11 +181,23 @@ const Main = () => {
     setIsSearch(false);
   };
 
+  //* 스크롤 내리면 스크롤다운 사라짐, 맨 위로가기 생김
+  const [scroll, setScroll] = useState(false);
+  const handleScrollDown = () => {
+    setScroll(true);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScrollDown);
+
+    return () => {
+      window.removeEventListener("scroll", handleScrollDown);
+    };
+  });
   return (
     <div>
       <Header
-        handleSearchInput={handleSearchInput}
-        handleClickSearchBtn={handleClickSearchBtn}
+        handleSearchInput={(e) => handleSearchInput(e)}
+        handleClickSearchBtn={(e) => handleClickSearchBtn(e)}
       />
 
       {isLoading ? (
@@ -180,12 +215,29 @@ const Main = () => {
             userMainTag={userMainTag}
             handleSetUserTag={handleSetUserTag}
             userTypeTag={userTypeTag}
-            setTypeTag={setTypeTag}
+            handleSetTypeTag={handleSetTypeTag}
             tags={userTags}
           />
-          {isEmpty ? <MainEmptyCon /> : <MainWineCon randomWine={randomWine} />}
+
+          {isEmpty || randomWine.length === 0 ? (
+            <MainEmptyCon />
+          ) : (
+            <MainWineCon
+              randomWine={randomWine}
+              subWine={subWine}
+              handleLoading={handleLoading}
+            />
+          )}
         </div>
       )}
+      <div
+        style={{
+          opacity: scroll ? "1" : "0",
+        }}
+        onScroll={handleScrollDown}
+      >
+        <GoToTop />
+      </div>
       <Footer />
     </div>
   );

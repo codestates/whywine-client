@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import card from "../../../img/wine_sample.png";
+import result from "../../../img/wine_result.png"; //!
 import ReactCardFlip from "react-card-flip";
 import Rating from "../../organisms/Ratings/Rating";
-
+import Image from "../Imgs/Image";
+import wineSample from "../../../img/wine_sample.png";
 interface WineData {
   randomWine: any;
 }
@@ -57,18 +58,23 @@ const SurResultCardRight = ({ randomWine }: WineData) => {
             width: "300px",
           }}
           className="cardRight"
-          src={card}
+          src={result}
           alt="추천 와인 카드"
-          onClick={rotateCard}
+          onClick={(e: any) => rotateCard(e)}
         />
       </div>
 
       <div className="backCard">
-        <div className="resultWineCard" onClick={rotateCard}>
+        <div className="resultWineCard" onClick={(e) => rotateCard(e)}>
           <Rating rating_avg={rating_avg} />
           <div className="mainWineProfile">
             {image ? (
-              <img src={image} alt="와인" className={"wineMainImg"} />
+              <Image
+                src={image}
+                alt="와인"
+                className={"wineResultImg"}
+                placeholderImg={wineSample}
+              />
             ) : null}
 
             <div className="mainWineContent">

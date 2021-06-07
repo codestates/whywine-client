@@ -17,7 +17,6 @@ function Logout({ setIslogin }: Props) {
     await axios
       .get(`${server}auth/logout`, { withCredentials: true })
       .then((res) => {
-        console.log("쿠키삭제성공");
         let login: any = sessionStorage.getItem("login");
         if (JSON.parse(login)) {
           sessionStorage.setItem("login", JSON.stringify(false));

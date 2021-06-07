@@ -3,6 +3,7 @@ import FirstPage from "./LandingPage/FirstPage";
 import SecondPage from "./LandingPage/SecondPage";
 import ThirdPage from "./LandingPage/ThirdPage";
 import FourthPage from "./LandingPage/FourthPage";
+import FifthPage from "./LandingPage/Fifth";
 import Header from "../organisms/Header/Header";
 
 interface Handler {
@@ -25,6 +26,9 @@ function Landing() {
         </section>
         <section className="FourthPage">
           <FourthPage />
+        </section>
+        <section className="FifthPage">
+          <FifthPage />
         </section>
       </div>
     </div>

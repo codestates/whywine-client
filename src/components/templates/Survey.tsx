@@ -16,7 +16,7 @@ function Survey() {
       sessionStorage.setItem("userTag", JSON.stringify(userTag));
       // * 선택한 답변의 갯수가 5개가 되면 세션스토리지에 "userTag"으로 태그들을 저장함
     }
-  });
+  }, [userTag]);
 
   return (
     <div className="SurveyWrap">
@@ -49,13 +49,13 @@ function Survey() {
             setUserTag={setUserTag}
           />
         </section>
-        <section className="survey">
+        {/* <section className="survey">
           <Survey5
             animatedItem={animatedItem}
             userTag={userTag}
             setUserTag={setUserTag}
           />
-        </section>
+        </section> */}
       </div>
     </div>
   );

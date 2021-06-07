@@ -6,16 +6,15 @@ interface typeTag {
   num: number;
   getTag: any;
 }
-
+//* 설문이 끝나면 설문 결과페이지로 이동
 const surTypeTag: React.FC<typeTag> = ({ answer, num, getTag }) => {
   const history = useHistory();
-
   return (
     <div className="wineTypeBox">
       {answer.map((type, index) => {
         return (
           <a
-            href={num !== 5 ? `#survey${num + 1}` : "/survey/result"}
+            href={num !== 4 ? `#survey${num + 1}` : "/survey/result"}
             className="wineTypeTag"
           >
             <button onClick={(e) => getTag(type, e)}>{type}</button>

@@ -14,7 +14,7 @@ const ReviewInput = ({ handleTextArea, comment }: ReviewInputProps) => {
       placeholder="리뷰 쓰기..."
       name="댓글"
       cols={30}
-      rows={10}
+      rows={5}
     >
       {comment.text}
     </textarea>

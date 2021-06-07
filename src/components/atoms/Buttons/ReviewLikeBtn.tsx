@@ -28,6 +28,7 @@ const ReviewLikeBtn = ({
           withCredentials: true,
         }
       )
+
       .then((data) => {
         console.dir(data);
         handleComments();

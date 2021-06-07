@@ -7,25 +7,12 @@ interface Props {
   id: number;
 }
 
-const Like = ({ id }: Props) => {
-  const [isLike, setIsLike] = useState(false);
-
-  const getUserInfo = async () => {
-    try {
-      let data = await axios.get(`${server}userinfo`, {
-        withCredentials: true,
-      });
-      sessionStorage.setItem(
-        "userInfo",
-        JSON.stringify(data.data.data.userInfo)
-      );
-      // * 유저 정보 세션 스토리지 저장
-    } catch (error) {}
-  };
+function Like({ id }: Props) {
+  const [isLike, setIsLike] = useState<boolean>();
+  const [noLike, setNoLike] = useState(false);
 
   const handleLikeBtn = useCallback(async () => {
     setIsLike(!isLike);
-
     if (!isLike) {
       console.log(1);
       await axios
@@ -37,9 +24,7 @@ const Like = ({ id }: Props) => {
             withCredentials: true,
           }
         )
-        .then(() => {
-          getUserInfo();
-        });
+        .then(() => {});
     } else {
       console.log(2);
       await axios
@@ -51,39 +36,36 @@ const Like = ({ id }: Props) => {
             withCredentials: true,
           }
         )
-        .then(() => {
-          getUserInfo();
-        });
+        .then(() => {})
+        .catch((err) => console.dir(err));
+      console.log("isLike 싫어요 요청", isLike);
     }
   }, [isLike]);
 
   useEffect(() => {
-    getUserInfo();
     if (sessionStorage.getItem("userInfo")) {
       let userInfo: any = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
       let { wines } = userInfo;
-
       // * 유저 정보에서 찜한 와인 목록 구조분해할당
       if (wines) {
-        wines.forEach((el: any) => {
+        wines.map((el: any) => {
           if (id === el.id) {
-            console.log("isLike 1111: ", isLike);
-            return setIsLike(false);
+            return setNoLike(true);
           } else {
-            console.log("isLike 2222 : ", isLike);
             return setIsLike(false);
           }
         });
       }
-
       // * 유저가 찜한 와인 배열에서 같은 와인 id가 있으면 islike 상태를 true로 반환한다.
     }
   }, []);
-
   return (
-    <div onClick={handleLikeBtn} className={isLike ? "like" : "unlike"}></div>
+    <i
+      onClick={() => handleLikeBtn()}
+      className={isLike ? "like icon-red" : "unlike icon-black"}
+    ></i>
   );
-};
+}
 
 export default Like;

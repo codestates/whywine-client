@@ -6,20 +6,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
-const imgserver = process.env.REACT_APP_USER_IMAGE_URL
 
-// interface User {
-//   id: number
-//   email: string
-//   nickname: string
-//   image: string
-//   good: number[]
-//   bad: number[]
-//   likes: number
-//   tags: number[]
-//   wines: number[]
-// }
+const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
+const imgserver = process.env.REACT_APP_USER_IMAGE_URL;
 
 function Mypage() {
   const handleSearchInput = (e: any) => {};
@@ -61,22 +50,60 @@ function Mypage() {
   let userInfo: any;
 
   useEffect(() => {
+    if(sessionStorage.getItem("login")){
+      getUserInfo()
+      if (sessionStorage.getItem("userInfo")) {
+        userInfo = sessionStorage.getItem("userInfo");
+        userInfo = JSON.parse(userInfo);
+
+        if(userInfo.image.startsWith( 'https' )){
+          setUser({
+            ...userInfo,
+            image: userInfo.image,
+          });
+        }else{
+          setUser({
+            ...userInfo,
+            image:
+              `${imgserver}` +
+              userInfo.image,
+          });
+        }
+        
+      }
+    }else{
+      history.push("/main")
+    }
     if (sessionStorage.getItem("userInfo")) {
       userInfo = sessionStorage.getItem("userInfo");
-
       userInfo = JSON.parse(userInfo);
       setUser({
         ...userInfo,
         image:
-        imgserver +
+          `${imgserver}` +
           userInfo.image,
-      });
-    }else{
-      history.push("/main")
-    }
 
-    console.log(IsOpen);
+      });
+    } else {
+      history.push("/main");
+    }
   }, []);
+  
+  const getUserInfo = async () => {
+    try {
+      const userInfo = await axios.get(`${server}userinfo`, {
+        withCredentials: true,
+      });
+      console.log("userInfo", userInfo);
+      sessionStorage.setItem(
+        "userInfo",
+        JSON.stringify(userInfo.data.data.userInfo)
+      );
+      // * 유저 정보 세션스토리지 저장
+    } catch (error) {
+      sessionStorage.setItem("login", JSON.stringify(false));
+    }
+  };
 
   const MemberOutClick = () => {
     if (MemberOut) {
@@ -101,18 +128,16 @@ function Mypage() {
   };
 
   const MemberOutAxios = async () => {
-    console.log(Password);
     try {
       const leave = await axios.delete(`${server}userinfo/leave`, {
         data: { password: Password },
         withCredentials: true,
       });
-      console.log(leave);
       if (leave.data.massege === "ok") {
         //로그아웃
         //탈퇴 완료 메세지
         //페이지 이동
-        history.push("/main")
+        history.push("/main");
       }
     } catch (error) {
       console.error(error.massege);
@@ -151,20 +176,15 @@ function Mypage() {
   const onChangeImage = async (event: any) => {
     event.preventDefault();
     const img = event.target.files[0];
-    console.log(img);
     const formData = await new FormData();
     formData.append("image", event.target.files[0]);
-    console.log(formData);
     return axios
       .post(`${server}userinfo/profileimage`, formData, {
-
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
         const newimg = `${imgserver}` + res.data.data.user.image;
-        console.log(newimg);
         setUser({ ...user, image: newimg });
 
         alert("성공");
@@ -173,16 +193,6 @@ function Mypage() {
         alert("실패");
       });
   };
-  console.log(user.image);
-
-  /* const handleFileInput=(e:any)=>{
-    setImageUpload({
-      file: e.target.files[0],
-    })
-  } */
-  /* const handlePost=()=>{
-    
-  } */
 
   return (
     <>
@@ -206,18 +216,20 @@ function Mypage() {
               />
             </div>
           </li>
+
           {IsOpen ? (
             <li>
-              <ul>
+              <ul className="EditInfo">
                 <i className="fas fa-times" onClick={EditClick}></i>
                 <li>
+                  <div>회원 정보 변경</div>
                   <input
                     type="text"
                     name="newNickName"
                     placeholder="변경할 닉네임"
                     onChange={NewNickNameInputValue}
                   />
-                  <i className="fas fa-check" onClick={EditNickNameAxios}></i>
+                  <i className="fas fa-check" onClick={EditNickNameAxios}>ok</i>
                 </li>
                 <li>
                   <input
@@ -234,20 +246,19 @@ function Mypage() {
                     placeholder="새 비밀번호"
                     onChange={NewPasswordInputValue}
                   />
-                  <i className="fas fa-check" onClick={EditPasswordAxios}></i>
+                  <i className="fas fa-check" onClick={EditPasswordAxios}>ok</i>
                 </li>
               </ul>
             </li>
           ) : (
-            <li>
-              <div className="userNickName">{user.nickname}</div>
-              <div>{user.email}</div>
-              <i className="fas fa-edit" onClick={EditClick}></i>
+            <li className ="MyInfo">
+              <div>{user.nickname}</div>
+              <div>email: {user.email}</div>
             </li>
           )}
 
           {MemberOut ? (
-            <li>
+            <li className="MemberOut">
               <p>탈퇴 하시겠습니까?</p>
               <input
                 type="password"
@@ -259,8 +270,9 @@ function Mypage() {
               <i className="fas fa-times" onClick={MemberOutClick}></i>
             </li>
           ) : (
-            <li>
+            <li className="MemberOut">
               <i className="fas fa-user-slash" onClick={MemberOutClick}></i>
+              <i className="fas fa-edit" onClick={EditClick}></i>
             </li>
           )}
         </ul>

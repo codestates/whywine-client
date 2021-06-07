@@ -45,7 +45,6 @@ const Survey5 = ({ animatedItem, userTag, setUserTag }: Props) => {
   );
 
   useEffect(() => {
-    console.log("5", tag);
     let target = "";
     Object.keys(sparkling).map((el) => {
       if (sparkling[el] === tag) {

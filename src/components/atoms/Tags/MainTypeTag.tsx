@@ -2,80 +2,86 @@ import React, { useReducer, useState } from "react";
 
 interface Tags {
   userTypeTag: string[];
-  setTypeTag: React.Dispatch<React.SetStateAction<string[]>>;
+  handleSetTypeTag: (typeTag: string[]) => void;
 }
-const MainTypeTag = ({ userTypeTag, setTypeTag }: Tags) => {
+
+const MainTypeTag = ({ userTypeTag, handleSetTypeTag }: Tags) => {
   const [red, setRed] = useState(false);
   const [white, setWhite] = useState(false);
   const [rose, setRose] = useState(false);
   const [sparkling, setSparkling] = useState(false);
   const handleTypeTagClick = (e: any) => {
+    sessionStorage.setItem("selectTags", "true");
     switch (e.target.textContent) {
       case "레드":
         setRed(!red);
         if (userTypeTag.length === 0) {
-          setTypeTag([...userTypeTag, "red"]);
+          handleSetTypeTag([...userTypeTag, "red"]);
         }
         for (let i = 0; i < userTypeTag.length; i++) {
           if (userTypeTag[i] !== "red") {
-            setTypeTag([...userTypeTag, "red"]);
+            handleSetTypeTag([...userTypeTag, "red"]);
           } else if (userTypeTag[i] === "red") {
-            setTypeTag(userTypeTag.filter((tag: string) => tag !== "red"));
+            handleSetTypeTag(
+              userTypeTag.filter((tag: string) => tag !== "red")
+            );
           }
         }
-        break;
+        return userTypeTag;
       case "화이트":
         setWhite(!white);
         if (userTypeTag.length === 0) {
-          setTypeTag([...userTypeTag, "white"]);
+          handleSetTypeTag([...userTypeTag, "white"]);
         }
         for (let i = 0; i < userTypeTag.length; i++) {
           if (userTypeTag[i] !== "white") {
-            setTypeTag([...userTypeTag, "white"]);
+            handleSetTypeTag([...userTypeTag, "white"]);
           } else if (userTypeTag[i] === "white") {
-            setTypeTag(userTypeTag.filter((tag: string) => tag !== "white"));
+            handleSetTypeTag(
+              userTypeTag.filter((tag: string) => tag !== "white")
+            );
           }
         }
-        break;
+        return userTypeTag;
       case "로제":
         setRose(!rose);
         if (userTypeTag.length === 0) {
-          setTypeTag([...userTypeTag, "rose"]);
+          handleSetTypeTag([...userTypeTag, "rose"]);
         }
         for (let i = 0; i < userTypeTag.length; i++) {
           if (userTypeTag[i] !== "rose") {
-            setTypeTag([...userTypeTag, "rose"]);
+            handleSetTypeTag([...userTypeTag, "rose"]);
           } else if (userTypeTag[i] === "rose") {
-            setTypeTag(userTypeTag.filter((tag: string) => tag !== "rose"));
+            handleSetTypeTag(
+              userTypeTag.filter((tag: string) => tag !== "rose")
+            );
           }
         }
-        break;
+        return userTypeTag;
       case "스파클링":
         setSparkling(!sparkling);
         if (userTypeTag.length === 0) {
-          setTypeTag([...userTypeTag, "sparkling"]);
+          handleSetTypeTag([...userTypeTag, "sparkling"]);
         }
         for (let i = 0; i < userTypeTag.length; i++) {
           if (userTypeTag[i] !== "sparkling") {
-            setTypeTag([...userTypeTag, "sparkling"]);
+            handleSetTypeTag([...userTypeTag, "sparkling"]);
           } else if (userTypeTag[i] === "sparkling") {
-            setTypeTag(
+            handleSetTypeTag(
               userTypeTag.filter((tag: string) => tag !== "sparkling")
             );
           }
         }
-        break;
+        return userTypeTag;
 
       default:
         break;
     }
   };
+  console.log(userTypeTag);
   return (
     <div className="mainWineTypeBox">
-      <span className="toolTip">
-        와인 타입
-        <div style={{ fontSize: "12px" }}>*중복 선택 가능</div>
-      </span>
+      <span className="toolTip">와인 타입</span>
       <div className="mainWineTypeTags">
         <div className="redWhite">
           <div

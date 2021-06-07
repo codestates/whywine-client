@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import GoBackBtn from "../../atoms/Icons/GoBackBtn";
+import GoBackBtn from "../../atoms/Buttons/GoBackBtn";
 import MainWineSearchCard from "../Cards/MainWineSearchCard";
 
 interface State {
@@ -14,7 +14,7 @@ const MainSearchCategory = ({ searchWine, goBack }: State) => {
         <GoBackBtn goBack={goBack} />
       </div>
 
-      <ul className="mainWineSearchBox">
+      <ul className="mainSearchBox">
         {searchWine.map((wine: object, idx) => {
           return <MainWineSearchCard searchWine={wine} key={idx} />;
         })}
