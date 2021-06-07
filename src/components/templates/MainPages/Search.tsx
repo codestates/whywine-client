@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MainSearchCon from "../../organisms/Containers/MainSearchCon";
-import empty from "../../../img/wine_empty_search.png";
+import searchEmpty from "../../../img/search_empty.png";
 import Footer from "../../organisms/Footer/Footer";
 
 import GoToTop from "../../atoms/Buttons/GoToTop";
@@ -39,7 +39,7 @@ const Search = ({ searchWine, hasData, goBack }: State) => {
         </div>
       ) : (
         <div className="searchEmpty">
-          <img src={empty} alt={"빈 검색"} />
+          <img src={searchEmpty} alt={"빈 검색"} />
         </div>
       )}
     </div>
