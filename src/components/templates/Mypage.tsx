@@ -56,8 +56,8 @@ function Mypage() {
       if (sessionStorage.getItem("userInfo")) {
         userInfo = sessionStorage.getItem("userInfo");
         userInfo = JSON.parse(userInfo);
-
-        if (userInfo.image.startsWith("https")) {
+        let url = userInfo.image
+        if(url.startsWith( 'https' )){
           setUser({
             ...userInfo,
             image: userInfo.image,
@@ -75,10 +75,20 @@ function Mypage() {
     if (sessionStorage.getItem("userInfo")) {
       userInfo = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
-      setUser({
-        ...userInfo,
-        image: `${imgserver}` + userInfo.image,
-      });
+      let url = userInfo.image
+        if(url.startsWith( 'https' )){
+          setUser({
+            ...userInfo,
+            image: userInfo.image,
+          });
+        }else{
+          setUser({
+            ...userInfo,
+            image:
+              `${imgserver}` +
+              userInfo.image,
+          });
+        }
     } else {
       history.push("/main");
     }
