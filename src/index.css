@@ -1325,9 +1325,8 @@ span {
   justify-content: center;
 }
 .searchEmpty img {
-  margin-top: 3rem;
-  margin-bottom: 15rem;
-  width: 30rem;
+  margin-bottom: 10rem;
+  width: 60rem;
 }
 .mainSearch {
   border: 1px solid #dedede;
@@ -2018,7 +2017,7 @@ span {
   color: rgb(33, 37, 41);
   line-height: 1.75;
   resize: none;
-  width: 85%;
+  width: 100%;
 }
 .reviewBox {
   border: 2px solid black;
@@ -2303,7 +2302,7 @@ span {
   justify-content: center;
   align-items: center;
   border: 2px solid #aa1414;
-  border-radius: 15px;
+  border-radius: 20px;
   padding: 8px;
   cursor: pointer;
   font-weight: 1000;
@@ -3635,4 +3634,5 @@ span {
 .kakaoStyle {
   background-color: cornsilk;
   color: darkgoldenrod;
+
 }
