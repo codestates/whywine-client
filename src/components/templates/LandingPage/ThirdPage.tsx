@@ -1,5 +1,5 @@
 import * as React from "react";
-import MainRandingGif from "../../../gif/MainRendin.gif";
+import MainRandingGif from "../../../gif/main2.gif";
 import UseScrollFadeIn from "../../atoms/Scroll/UseScrollFadeIn";
 import UseScrollClipPath from "../../atoms/Scroll/UseScrollClipPath";
 
