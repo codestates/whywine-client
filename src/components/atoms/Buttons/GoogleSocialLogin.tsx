@@ -7,7 +7,7 @@ export default function GoogleLogin() {
   };
 
   return (
-    <button className="socialButtons">
+    <button className="socialButtons googleStyle">
       <div>
         <link
           rel="stylesheet"

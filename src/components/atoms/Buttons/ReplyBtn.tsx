@@ -6,10 +6,9 @@ const ReplyBtn = () => {
 
   return (
     <div>
-      {/* <SignInModal isOpen={signInOpen} closeModal={() => setsSignIn(false)} /> */}
       <button
-        // onClick={() => (isGuset ? setsSignIn(true) : undefined)}
         className="replyBtn"
+        onClick={() => alert("서비스 준비중 입니다.")}
       >
         답글
       </button>

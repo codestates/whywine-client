@@ -22,9 +22,7 @@ function Like({ wineId, isUserInfo }: Props) {
   const [isLike, setIsLike] = useState<boolean>(false);
 
   const handleLikeBtn = async () => {
-    console.log("라이크 와인아디?", wineId);
     if (!isLike) {
-      console.log(1);
       await axios
         .post(
           `${server}user/like`,
@@ -36,7 +34,6 @@ function Like({ wineId, isUserInfo }: Props) {
         )
         .then(() => {});
     } else {
-      console.log(2);
       await axios
         .post(
           `${server}user/unlike`,

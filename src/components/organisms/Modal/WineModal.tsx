@@ -15,6 +15,13 @@ import GuestReviews from "../Reviews/GuestReviews";
 require("dotenv").config();
 const server = process.env.REACT_APP_API_SERVER || "https://localhost:4000/";
 
+const wineTaste = {
+  body: ["body_light", "body_medium", "body_bold"],
+  tannins: ["tannins_smooth", "tannins_medium", "tannins_tannic"],
+  acidity: ["acidity_soft", "acidity_medium", "acidity_acidic"],
+  sweetness: ["sweetness_dry", "sweetness_medium", "sweetness_sweet"],
+};
+
 interface Props {
   closeModal: () => void;
   ModalOpen: boolean;
@@ -28,7 +35,7 @@ interface Props {
     image: string;
     price: number;
     sort: string;
-    tags: object[];
+    tags: any;
     rating_avg: number;
   };
   landingCommentList: any;
@@ -66,15 +73,42 @@ function WineModal({
   const [hoverRating, setHoverRating] = useState<number>(0);
   const [userName, setUserName] = useState("게스트");
   const [signInOpen, setsSignIn] = useState(false);
-  const [commentUpdate, setCommentUpdate] = useState(false);
   const [commentList, setCommentList] = useState<any[]>([]);
   // ! 랜더링 될 코멘트들 [{},{},{}....]
-
   const [comment, setComment] = useState<Comment>({
     // ! 현재 코멘트 상태
     user: userName,
     text: "",
     rating: rating,
+  });
+
+  let wineTypeArr = [];
+
+  for (let i = 0; i < randomWine.tags.length; i++) {
+    if (i === 0) {
+      wineTypeArr.push(wineTaste["body"].indexOf(randomWine.tags[0].name));
+    }
+    if (i === 1) {
+      wineTypeArr.push(wineTaste["tannins"].indexOf(randomWine.tags[1].name));
+    }
+    if (i === 2) {
+      wineTypeArr.push(wineTaste["acidity"].indexOf(randomWine.tags[2].name));
+    }
+    if (i === 3) {
+      wineTypeArr.push(wineTaste["sweetness"].indexOf(randomWine.tags[3].name));
+    }
+  }
+
+  wineTypeArr = wineTypeArr.map((el) => {
+    if (el === 0) {
+      return "low";
+    }
+    if (el === 1) {
+      return "medium";
+    }
+    if (el === 2) {
+      return "high";
+    }
   });
 
   const handleTextArea = (e: any) => {
@@ -171,13 +205,81 @@ function WineModal({
             <Image src={image} alt="와인" placeholderImg={wineSample} />
             <Like wineId={randomWine.id} isUserInfo={isUserInfo} />
             <div className="reviewHeader_">
-              <div>{randomWine.likeCount}Likes!</div>
-              <div>{randomWine.price}WON</div>
+              <div className="header_text1">{randomWine.likeCount}Likes!</div>
+              <div className="header_text2"> {randomWine.price}₩</div>
               <Rating
                 rating_avg={randomWine.rating_avg}
                 Style={"ModalWineRating2"}
               />
-              <hr></hr>
+              <hr className="hr2"></hr>
+              <div className="tableView">
+                <div className="tableRow">
+                  <div className="tableTagM">바디.</div>
+
+                  <tr className="table">
+                    <td>
+                      <div className="tableTag">낮음</div>
+                    </td>
+                    <td className="tasteStructure__progressBar">
+                      <div className="tasteStructure">
+                        <span className={wineTypeArr[0]}></span>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="tableTag">높은</div>
+                    </td>
+                  </tr>
+                </div>
+
+                <div className="tableRow">
+                  <div className="tableTagM">산미.</div>
+                  <tr className="table">
+                    <td>
+                      <div className="tableTag">낮음</div>
+                    </td>
+                    <td className="tasteStructure__progressBar">
+                      <div className="tasteStructure">
+                        <span className={wineTypeArr[1]}></span>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="tableTag">높음</div>
+                    </td>
+                  </tr>
+                </div>
+                <div className="tableRow">
+                  <div className="tableTagM">탄닌.</div>
+                  <tr className="table">
+                    <td>
+                      <div className="tableTag">낮음</div>
+                    </td>
+                    <td className="tasteStructure__progressBar">
+                      <div className="tasteStructure">
+                        <span className={wineTypeArr[2]}></span>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="tableTag">높음</div>
+                    </td>
+                  </tr>
+                </div>
+                <div className="tableRow">
+                  <div className="tableTagM">당도.</div>
+                  <tr className="table">
+                    <td>
+                      <div className="tableTag">낮음</div>
+                    </td>
+                    <td className="tasteStructure__progressBar">
+                      <div className="tasteStructure">
+                        <span className={wineTypeArr[3]}></span>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="tableTag">높음</div>
+                    </td>
+                  </tr>
+                </div>
+              </div>
             </div>
           </div>
           <div className="modalDescription">{randomWine.description}</div>
@@ -187,7 +289,7 @@ function WineModal({
       {userName === "게스트" ? (
         <div className="guestReview review">
           <div className="guestReviewInput">
-            <div>댓글을 작성하려면 로그인을 하셔야합니다.</div>
+            <div>작성하려면 로그인을 하셔야합니다.</div>
             <div
               className="guestBtn"
               onClick={() => setsSignIn(true)}

@@ -6,6 +6,7 @@ import Title from "../../atoms/Title/Title";
 import SignUpModal from "../../organisms/Modal/SignUpModal";
 import axios from "axios";
 import SignUpBtn from "../../atoms/Buttons/SignUpBtn";
+import SignUpPoto from "../../../img/people-2295052_640.jpg";
 
 require("dotenv").config();
 
@@ -91,6 +92,7 @@ function SignInModal({ isOpen, closeModal }: Props) {
   };
   return (
     <div className={isOpen ? "openModal modal" : "modal"}>
+      <img src={SignUpPoto} className="signUpPoto"></img>
       {isOpen ? (
         <div className="SignInModal" style={{ backgroundColor: "white" }}>
           <h2 className="login_h2">
