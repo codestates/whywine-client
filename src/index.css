@@ -1506,7 +1506,7 @@ span {
 .mainWineLikeBox {
   display: flex;
   flex-wrap: wrap;
-  min-width: 92rem;
+  width: 80rem;
 }
 .resultWineCard {
   display: flex;

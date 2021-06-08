@@ -54,7 +54,6 @@ const LikeCard = ({ userLikeWines }: WineData) => {
     tags: [],
     wines: [],
   });
-
   // 확인 확인
   if (userLikeWines) {
     name = userLikeWines.name;
@@ -175,7 +174,7 @@ const LikeCard = ({ userLikeWines }: WineData) => {
             </div>
             <div className="mainWineLikeTagBox">
               <div className="mainWineTag">
-                {/* {tags.map((tag: any) => {
+                {tags.map((tag: any) => {
                   switch (tag.name) {
                     case "body_light":
                       return " #가벼운";
@@ -204,7 +203,7 @@ const LikeCard = ({ userLikeWines }: WineData) => {
                     default:
                       break;
                   }
-                })} */}
+                })}
               </div>
             </div>
           </div>

@@ -81,21 +81,24 @@ function WineModal({
     text: "",
     rating: rating,
   });
-
+  console.log(randomWine);
   let wineTypeArr = [];
-
-  for (let i = 0; i < randomWine.tags.length; i++) {
-    if (i === 0) {
-      wineTypeArr.push(wineTaste["body"].indexOf(randomWine.tags[0].name));
-    }
-    if (i === 1) {
-      wineTypeArr.push(wineTaste["tannins"].indexOf(randomWine.tags[1].name));
-    }
-    if (i === 2) {
-      wineTypeArr.push(wineTaste["acidity"].indexOf(randomWine.tags[2].name));
-    }
-    if (i === 3) {
-      wineTypeArr.push(wineTaste["sweetness"].indexOf(randomWine.tags[3].name));
+  if (randomWine) {
+    for (let i = 0; i < randomWine.tags.length; i++) {
+      if (i === 0) {
+        wineTypeArr.push(wineTaste["body"].indexOf(randomWine.tags[0].name));
+      }
+      if (i === 1) {
+        wineTypeArr.push(wineTaste["tannins"].indexOf(randomWine.tags[1].name));
+      }
+      if (i === 2) {
+        wineTypeArr.push(wineTaste["acidity"].indexOf(randomWine.tags[2].name));
+      }
+      if (i === 3) {
+        wineTypeArr.push(
+          wineTaste["sweetness"].indexOf(randomWine.tags[3].name)
+        );
+      }
     }
   }
 
