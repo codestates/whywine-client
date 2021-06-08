@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LikeCard from "../Cards/LikeCard";
-import LikeEmpty from "../../../img/wine_like_empty.png";
+import LikeEmpty from "../../../img/like_empty.png";
 import GoBackBtnFromLikeList from "../../atoms/Buttons/GoBackBtnFromLikeList";
 interface State {
   userLikeWines: object[];
@@ -13,14 +13,12 @@ const LikeListCategory = ({
   scroll,
   handleScrollDown,
 }: State) => {
+  console.log(userLikeWines);
   return (
     <div>
       {userLikeWines.length === 0 ? (
         <div className="mainSearchCategory">
-          <img
-            src={LikeEmpty}
-            style={{ height: "400px", width: "400px", marginBottom: "13rem" }}
-          />
+          <img src={LikeEmpty} style={{ width: "70rem" }} />
         </div>
       ) : userLikeWines.length > 4 ? (
         <div className="mainSearchCategory">

@@ -85,7 +85,7 @@ function WineModal({
   let wineTypeArr: any = [];
 
   if (randomWine.tags) {
-    for (let i = 0; i < randomWine.tags.length; i++) {
+    for (let i = 0; i < 4; i++) {
       if (i === 0) {
         wineTypeArr.push(wineTaste["body"].indexOf(randomWine.tags[0].name));
       }
@@ -217,7 +217,7 @@ function WineModal({
               />
               <hr className="hr2"></hr>
               <div className="tableView">
-                <div className="tableRow">
+                <tr className="tableRow">
                   <div className="tableTagM">바디.</div>
 
                   <tr className="table">
@@ -233,9 +233,9 @@ function WineModal({
                       <div className="tableTag">높은</div>
                     </td>
                   </tr>
-                </div>
+                </tr>
 
-                <div className="tableRow">
+                <tr className="tableRow">
                   <div className="tableTagM">산미.</div>
                   <tr className="table">
                     <td>
@@ -250,8 +250,8 @@ function WineModal({
                       <div className="tableTag">높음</div>
                     </td>
                   </tr>
-                </div>
-                <div className="tableRow">
+                </tr>
+                <tr className="tableRow">
                   <div className="tableTagM">탄닌.</div>
                   <tr className="table">
                     <td>
@@ -266,8 +266,8 @@ function WineModal({
                       <div className="tableTag">높음</div>
                     </td>
                   </tr>
-                </div>
-                <div className="tableRow">
+                </tr>
+                <tr className="tableRow">
                   <div className="tableTagM">당도.</div>
                   <tr className="table">
                     <td>
@@ -282,7 +282,7 @@ function WineModal({
                       <div className="tableTag">높음</div>
                     </td>
                   </tr>
-                </div>
+                </tr>
               </div>
             </div>
           </div>

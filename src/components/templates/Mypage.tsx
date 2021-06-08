@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import dotenv from "dotenv";
 import MyPageHeader from "../organisms/Header/MyPageHeader";
-import MyPageProfile from "../atoms/Icons/MyPageProfile";
 
 dotenv.config();
 
@@ -56,8 +55,8 @@ function Mypage() {
       if (sessionStorage.getItem("userInfo")) {
         userInfo = sessionStorage.getItem("userInfo");
         userInfo = JSON.parse(userInfo);
-        let url = userInfo.image
-        if(url.startsWith( 'https' )){
+        let url = userInfo.image;
+        if (url.startsWith("https")) {
           setUser({
             ...userInfo,
             image: userInfo.image,
@@ -75,20 +74,18 @@ function Mypage() {
     if (sessionStorage.getItem("userInfo")) {
       userInfo = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
-      let url = userInfo.image
-        if(url.startsWith( 'https' )){
-          setUser({
-            ...userInfo,
-            image: userInfo.image,
-          });
-        }else{
-          setUser({
-            ...userInfo,
-            image:
-              `${imgserver}` +
-              userInfo.image,
-          });
-        }
+      let url = userInfo.image;
+      if (url.startsWith("https")) {
+        setUser({
+          ...userInfo,
+          image: userInfo.image,
+        });
+      } else {
+        setUser({
+          ...userInfo,
+          image: `${imgserver}` + userInfo.image,
+        });
+      }
     } else {
       history.push("/main");
     }
