@@ -82,34 +82,38 @@ function WineModal({
     rating: rating,
   });
 
-  let wineTypeArr = [];
+  let wineTypeArr: any = [];
 
-  for (let i = 0; i < randomWine.tags.length; i++) {
-    if (i === 0) {
-      wineTypeArr.push(wineTaste["body"].indexOf(randomWine.tags[0].name));
+  if (randomWine.tags) {
+    for (let i = 0; i < randomWine.tags.length; i++) {
+      if (i === 0) {
+        wineTypeArr.push(wineTaste["body"].indexOf(randomWine.tags[0].name));
+      }
+      if (i === 1) {
+        wineTypeArr.push(wineTaste["tannins"].indexOf(randomWine.tags[1].name));
+      }
+      if (i === 2) {
+        wineTypeArr.push(wineTaste["acidity"].indexOf(randomWine.tags[2].name));
+      }
+      if (i === 3) {
+        wineTypeArr.push(
+          wineTaste["sweetness"].indexOf(randomWine.tags[3].name)
+        );
+      }
     }
-    if (i === 1) {
-      wineTypeArr.push(wineTaste["tannins"].indexOf(randomWine.tags[1].name));
-    }
-    if (i === 2) {
-      wineTypeArr.push(wineTaste["acidity"].indexOf(randomWine.tags[2].name));
-    }
-    if (i === 3) {
-      wineTypeArr.push(wineTaste["sweetness"].indexOf(randomWine.tags[3].name));
-    }
+
+    wineTypeArr = wineTypeArr.map((el: any) => {
+      if (el === 0) {
+        return "low";
+      }
+      if (el === 1) {
+        return "medium";
+      }
+      if (el === 2) {
+        return "high";
+      }
+    });
   }
-
-  wineTypeArr = wineTypeArr.map((el) => {
-    if (el === 0) {
-      return "low";
-    }
-    if (el === 1) {
-      return "medium";
-    }
-    if (el === 2) {
-      return "high";
-    }
-  });
 
   const handleTextArea = (e: any) => {
     setComment({
