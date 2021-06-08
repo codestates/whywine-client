@@ -1,5 +1,5 @@
 import * as React from "react";
-import MainCommentGif from "../../../gif/MainComment.gif";
+import MainCommentGif from "../../../gif/wineModal2.gif";
 import UseScrollFadeIn from "../../atoms/Scroll/UseScrollFadeIn";
 
 function FourthPage() {
