@@ -13,6 +13,7 @@ const LikeListCategory = ({
   scroll,
   handleScrollDown,
 }: State) => {
+  console.log(userLikeWines);
   return (
     <div>
       {userLikeWines.length === 0 ? (

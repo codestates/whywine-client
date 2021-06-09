@@ -81,10 +81,11 @@ function WineModal({
     text: "",
     rating: rating,
   });
-  console.log(randomWine);
-  let wineTypeArr = [];
-  if (randomWine) {
-    for (let i = 0; i < randomWine.tags.length; i++) {
+
+  let wineTypeArr: any = [];
+
+  if (randomWine.tags) {
+    for (let i = 0; i < 4; i++) {
       if (i === 0) {
         wineTypeArr.push(wineTaste["body"].indexOf(randomWine.tags[0].name));
       }
@@ -100,19 +101,19 @@ function WineModal({
         );
       }
     }
-  }
 
-  wineTypeArr = wineTypeArr.map((el) => {
-    if (el === 0) {
-      return "low";
-    }
-    if (el === 1) {
-      return "medium";
-    }
-    if (el === 2) {
-      return "high";
-    }
-  });
+    wineTypeArr = wineTypeArr.map((el: any) => {
+      if (el === 0) {
+        return "low";
+      }
+      if (el === 1) {
+        return "medium";
+      }
+      if (el === 2) {
+        return "high";
+      }
+    });
+  }
 
   const handleTextArea = (e: any) => {
     setComment({
@@ -216,7 +217,7 @@ function WineModal({
               />
               <hr className="hr2"></hr>
               <div className="tableView">
-                <div className="tableRow">
+                <tr className="tableRow">
                   <div className="tableTagM">바디.</div>
 
                   <tr className="table">
@@ -232,9 +233,9 @@ function WineModal({
                       <div className="tableTag">높은</div>
                     </td>
                   </tr>
-                </div>
+                </tr>
 
-                <div className="tableRow">
+                <tr className="tableRow">
                   <div className="tableTagM">산미.</div>
                   <tr className="table">
                     <td>
@@ -249,8 +250,8 @@ function WineModal({
                       <div className="tableTag">높음</div>
                     </td>
                   </tr>
-                </div>
-                <div className="tableRow">
+                </tr>
+                <tr className="tableRow">
                   <div className="tableTagM">탄닌.</div>
                   <tr className="table">
                     <td>
@@ -265,8 +266,8 @@ function WineModal({
                       <div className="tableTag">높음</div>
                     </td>
                   </tr>
-                </div>
-                <div className="tableRow">
+                </tr>
+                <tr className="tableRow">
                   <div className="tableTagM">당도.</div>
                   <tr className="table">
                     <td>
@@ -281,7 +282,7 @@ function WineModal({
                       <div className="tableTag">높음</div>
                     </td>
                   </tr>
-                </div>
+                </tr>
               </div>
             </div>
           </div>
