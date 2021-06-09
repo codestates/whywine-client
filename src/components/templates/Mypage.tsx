@@ -55,8 +55,8 @@ function Mypage() {
       if (sessionStorage.getItem("userInfo")) {
         userInfo = sessionStorage.getItem("userInfo");
         userInfo = JSON.parse(userInfo);
-        let url = userInfo.image;
-        if (url.startsWith("https")) {
+        let url = String(userInfo.image);
+        if (url.includes('http')) {
           setUser({
             ...userInfo,
             image: userInfo.image,
@@ -74,8 +74,8 @@ function Mypage() {
     if (sessionStorage.getItem("userInfo")) {
       userInfo = sessionStorage.getItem("userInfo");
       userInfo = JSON.parse(userInfo);
-      let url = userInfo.image;
-      if (url.startsWith("https")) {
+      let url = String(userInfo.image);
+      if (url.includes('http')) {
         setUser({
           ...userInfo,
           image: userInfo.image,

@@ -2580,6 +2580,7 @@ span {
 .userImage {
   color: #aa1414;
   width: 200px;
+  height: 200px;
   border: 2px solid #aa1414;
   background-color: white;
   border-radius: 50%;
