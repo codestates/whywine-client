@@ -393,7 +393,7 @@ section {
   margin-top: 3rem;
 
   border-radius: 15px;
-  max-width: 65rem;
+  max-width: 60rem;
   margin-right: 5.5rem;
 }
 .SecondPage_Summery1 {
@@ -433,7 +433,7 @@ span {
 .ThirdGif {
   margin-top: 3rem;
   border-radius: 15px;
-  max-width: 70rem;
+  max-width: 60rem;
   margin-left: 10rem;
 }
 .ThirdPage {
@@ -489,7 +489,7 @@ span {
   margin-top: 3rem;
 
   border-radius: 15px;
-  max-width: 70rem;
+  max-width: 60rem;
   margin-right: 5.5rem;
 }
 .FourthPage_Summery {
@@ -1326,7 +1326,7 @@ span {
 }
 .searchEmpty img {
   margin-bottom: 10rem;
-  width: 60rem;
+  width: 50rem;
 }
 .mainSearch {
   border: 1px solid #dedede;
@@ -2398,7 +2398,7 @@ span {
 .mainWineCategory {
   display: flex;
   justify-content: center;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 .mainSearchBox {
   display: flex;
@@ -3451,7 +3451,7 @@ span {
       flex-direction: column;
     }
     .FourthPage_Summery {
-      margin-bottom: 1rem;
+      margin-bottom: 3rem;
     }
     .FourthPage_Summery h1 {
       font-size: 2rem;
