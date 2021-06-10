@@ -66,7 +66,7 @@ export default function Survey2({ animatedItem, userTag, setUserTag }: Props) {
       </div>
       <hr className="hr"></hr>
       <SurMainText
-        text1={"방금 꿀맛같은 퇴근을한 당신, 오늘의 기분은?"}
+        text1={"방금 꿀 맛 같은 퇴근을 한 당신, 오늘의 기분은?"}
         text2={""}
       />
       <SurTypeTags num={2} answer={answer} getTag={getTag} />
