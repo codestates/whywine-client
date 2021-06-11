@@ -174,36 +174,38 @@ const LikeCard = ({ userLikeWines }: WineData) => {
             </div>
             <div className="mainWineLikeTagBox">
               <div className="mainWineTag">
-                {tags.map((tag: any) => {
-                  switch (tag.name) {
-                    case "body_light":
-                      return " #가벼운";
-                    case "body_medium":
-                      return "";
-                    case "body_bold":
-                      return " #무거운";
-                    case "tannins_smooth":
-                      return " #부드러운";
-                    case "tannins_medium":
-                      return "";
-                    case "tannins_tannic":
-                      return " #떫은";
-                    case "acidity_soft":
-                      return " #산미가 적은";
-                    case "acidity_medium":
-                      return "";
-                    case "acidity_acidic":
-                      return " #산미가 높은";
-                    case "sweetness_dry":
-                      return " #씁쓸한";
-                    case "sweetness_medium":
-                      return "";
-                    case "sweetness_sweet":
-                      return "#달달한";
-                    default:
-                      break;
-                  }
-                })}
+                {tags
+                  ? tags.map((tag: any) => {
+                      switch (tag.name) {
+                        case "body_light":
+                          return " #가벼운";
+                        case "body_medium":
+                          return "";
+                        case "body_bold":
+                          return " #무거운";
+                        case "tannins_smooth":
+                          return " #부드러운";
+                        case "tannins_medium":
+                          return "";
+                        case "tannins_tannic":
+                          return " #떫은";
+                        case "acidity_soft":
+                          return " #산미가 적은";
+                        case "acidity_medium":
+                          return "";
+                        case "acidity_acidic":
+                          return " #산미가 높은";
+                        case "sweetness_dry":
+                          return " #씁쓸한";
+                        case "sweetness_medium":
+                          return "";
+                        case "sweetness_sweet":
+                          return "#달달한";
+                        default:
+                          break;
+                      }
+                    })
+                  : null}
               </div>
             </div>
           </div>
