@@ -33,20 +33,20 @@
 **이제 Whywine에서 마음 편하게 와인을 추천받으세요!**
 
 ## Whywine 서비스 둘러보기
-사용자의 취향을 조사하고, 선택한 취향에 가장 잘 맞는 와인 3가지를 추천해드립니다   
+사용자의 **취향을 조사**하고, 선택한 취향에 가장 잘 맞는 **와인 3가지를 추천**해드립니다   
 ![survey](https://imgur.com/lAzfcAW.png)  
 ![survey_result](https://imgur.com/06jDMz4.png)
   
-태그를 이용해 필터링을 할 수 있습니다  
+태그를 이용해 **필터링**을 할 수 있습니다  
 ![태그 필터링](https://imgur.com/sHpNobL.png)  
   
-와인을 직접 검색할 수도 있어요  
+와인을 직접 **검색**할 수도 있어요  
 ![search](https://imgur.com/4hrP5K5.png)  
   
-와인 카드를 클릭해 상세정보를 확인하고, 리뷰를 달아보세요
+와인 카드를 클릭해 **상세정보**를 확인하고, **리뷰**를 달아보세요
 ![review](https://imgur.com/RqkaVzt.png)  
   
-와인을 찜하고, 찜 목록에서 확인하세요
+와인을 **찜**하고, 찜 목록에서 확인하세요
 ![찜 목록](https://imgur.com/4hrP5K5.png)  
   
 ## 직접 사용해보고 싶다면?
