@@ -92,7 +92,6 @@ function SignInModal({ isOpen, closeModal }: Props) {
   };
   return (
     <div className={isOpen ? "openModal modal" : "modal"}>
-      <img src={SignUpPoto} className="signUpPoto"></img>
       {isOpen ? (
         <div className="SignInModal" style={{ backgroundColor: "white" }}>
           <h2 className="login_h2">
