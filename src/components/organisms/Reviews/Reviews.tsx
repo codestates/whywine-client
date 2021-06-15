@@ -15,6 +15,7 @@ type Comment = {
 };
 
 interface ReviewsProps {
+  setOverlapUser: React.Dispatch<React.SetStateAction<boolean>>;
   commentText: string;
   commentRating: number;
   key: number;
@@ -53,6 +54,7 @@ function Reviews({
   user,
   handleComments,
   isUserInfo,
+  setOverlapUser,
 }: ReviewsProps) {
   const [deleteReview, setDeleteReview] = useState(false);
   const [allowedUser, setAllowedUser] = useState(false);
@@ -92,6 +94,7 @@ function Reviews({
       user: user.nickname,
     });
   };
+
   // * 댓글 삭제 함수
   const handleDeleteRewiew = async () => {
     setDeleteReview(true);
@@ -102,6 +105,7 @@ function Reviews({
         withCredentials: true,
       })
       .then((data) => {
+        setOverlapUser(false);
         return handleComments();
       })
       // * 댓글 삭제 후 handleComments 함수 실행으로 commentsList 상태 변경해 재랜딩

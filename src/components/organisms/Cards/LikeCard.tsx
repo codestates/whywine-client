@@ -142,6 +142,7 @@ const LikeCard = ({ userLikeWines }: WineData) => {
       {userLikeWines === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            setOverlapUser={setOverlapUser}
             overlapUser={overlapUser}
             closeModal={closeModal}
             ModalOpen={isOpen}

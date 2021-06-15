@@ -23,6 +23,7 @@ const wineTaste = {
 };
 
 interface Props {
+  setOverlapUser: React.Dispatch<React.SetStateAction<boolean>>;
   closeModal: () => void;
   ModalOpen: boolean;
   ModalEl: any;
@@ -70,6 +71,7 @@ function WineModal({
   isUserInfo,
   ModalOpen,
   overlapUser,
+  setOverlapUser,
 }: Props) {
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
@@ -363,6 +365,7 @@ function WineModal({
             {commentList.map((el: any) => {
               return (
                 <Reviews
+                  setOverlapUser={setOverlapUser}
                   isUserInfo={isUserInfo}
                   commentText={el.text}
                   commentRating={el.rating}
