@@ -40,9 +40,9 @@ body {
   width: 100%;
   flex-direction: column;
 }
-.guestReview > div {
+/* .guestReview > div {
   margin: 1px 0px 0px 71px;
-}
+} */
 @font-face {
   font-family: "MapoGoldenPier";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff")
@@ -391,9 +391,8 @@ section {
 }
 .secondGif {
   margin-top: 3rem;
-
   border-radius: 15px;
-  max-width: 65rem;
+  max-width: 55rem;
   margin-right: 5.5rem;
 }
 .SecondPage_Summery1 {
@@ -433,7 +432,7 @@ span {
 .ThirdGif {
   margin-top: 3rem;
   border-radius: 15px;
-  max-width: 70rem;
+  max-width: 60rem;
   margin-left: 10rem;
 }
 .ThirdPage {
@@ -489,7 +488,7 @@ span {
   margin-top: 3rem;
 
   border-radius: 15px;
-  max-width: 70rem;
+  max-width: 60rem;
   margin-right: 5.5rem;
 }
 .FourthPage_Summery {
@@ -559,7 +558,7 @@ span {
 }
 .FifthPageHover {
   display: flex;
-  margin-right: 5rem;
+  margin: 40px 80px;
 }
 .FifthPage_Summery {
   margin-bottom: 5rem;
@@ -1326,7 +1325,7 @@ span {
 }
 .searchEmpty img {
   margin-bottom: 10rem;
-  width: 60rem;
+  width: 50rem;
 }
 .mainSearch {
   border: 1px solid #dedede;
@@ -2017,7 +2016,7 @@ span {
   color: rgb(33, 37, 41);
   line-height: 1.75;
   resize: none;
-  width: 100%;
+  width: 77%;
 }
 .reviewBox {
   border: 2px solid black;
@@ -2398,7 +2397,7 @@ span {
 .mainWineCategory {
   display: flex;
   justify-content: center;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 .mainSearchBox {
   display: flex;
@@ -2580,6 +2579,7 @@ span {
 .userImage {
   color: #aa1414;
   width: 200px;
+  height: 200px;
   border: 2px solid #aa1414;
   background-color: white;
   border-radius: 50%;
@@ -2696,7 +2696,7 @@ span {
     margin-left: 3rem;
   }
   .secondGif {
-    max-width: 55rem;
+    max-width: 50rem;
     margin-right: 0;
   }
   .ThirdPageSummery {
@@ -2709,7 +2709,7 @@ span {
   .ThirdPageSummery p {
   }
   .ThirdGif {
-    max-width: 55rem;
+    max-width: 50rem;
     margin-left: 0;
   }
   .FourthPage_Summery h1 {
@@ -2721,7 +2721,7 @@ span {
     margin-left: 3rem;
   }
   .FourthPageGif {
-    max-width: 55rem;
+    max-width: 50rem;
     margin-right: 0;
   }
   .SurveyModal {
@@ -2953,7 +2953,7 @@ span {
     width: 25rem;
   }
   .secondGif {
-    max-width: 45rem;
+    max-width: 40rem;
     margin-top: 0rem;
     margin-right: 2rem;
   }
@@ -2966,7 +2966,7 @@ span {
   }
 
   .ThirdGif {
-    max-width: 45rem;
+    max-width: 40rem;
     margin-top: 0rem;
     margin-left: 1rem;
   }
@@ -2979,7 +2979,7 @@ span {
     width: 25rem;
   }
   .FourthPageGif {
-    max-width: 45rem;
+    max-width: 40rem;
     margin-top: 0rem;
     margin-right: 2rem;
   }
@@ -3013,7 +3013,7 @@ span {
       margin-bottom: -5rem;
     }
     .secondGif {
-      max-width: 50rem;
+      max-width: 36rem;
       margin-right: 0;
     }
     .ThirdPage > div {
@@ -3021,7 +3021,7 @@ span {
       justify-content: space-evenly;
     }
     .ThirdGif {
-      max-width: 55rem;
+      max-width: 36rem;
       margin-left: 0;
     }
     .ThirdPageSummery {
@@ -3040,7 +3040,7 @@ span {
       margin-bottom: 5rem;
     }
     .FourthPageGif {
-      max-width: 55rem;
+      max-width: 36rem;
       margin-right: 0;
     }
     .FifthPage > div {
@@ -3424,7 +3424,7 @@ span {
       margin-bottom: 1rem;
     }
     .secondGif {
-      max-width: 50rem;
+      max-width: 40rem;
       margin-right: 0;
     }
     .ThirdPage > div {
@@ -3432,7 +3432,7 @@ span {
       justify-content: space-evenly;
     }
     .ThirdGif {
-      max-width: 50rem;
+      max-width: 40rem;
       margin-left: 0;
     }
     .ThirdPageSummery {
@@ -3450,14 +3450,14 @@ span {
       flex-direction: column;
     }
     .FourthPage_Summery {
-      margin-bottom: 1rem;
+      margin-bottom: 3rem;
     }
     .FourthPage_Summery h1 {
       font-size: 2rem;
       margin-bottom: 1rem;
     }
     .FourthPageGif {
-      max-width: 50rem;
+      max-width: 40rem;
       margin-right: 0;
     }
     .FifthPage > div {

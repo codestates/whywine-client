@@ -66,8 +66,8 @@ const Survey3 = ({ animatedItem, userTag, setUserTag }: Props) => {
       </div>
       <hr className="hr"></hr>
       <SurMainText
-        text1={"새해선물로 생전 처음보는 와인이 들어왔다."}
-        text2={"이 와인과 같이 먹고싶은 음식은?"}
+        text1={"새해 선물로 생전 처음보는 와인이 들어왔다."}
+        text2={"이 와인과 같이 먹고 싶은 음식은?"}
       />
       <SurTypeTags num={3} answer={answer} getTag={getTag} />
     </div>

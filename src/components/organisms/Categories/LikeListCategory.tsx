@@ -13,12 +13,11 @@ const LikeListCategory = ({
   scroll,
   handleScrollDown,
 }: State) => {
-  console.log(userLikeWines);
   return (
     <div>
       {userLikeWines.length === 0 ? (
         <div className="mainSearchCategory">
-          <img src={LikeEmpty} style={{ width: "70rem" }} />
+          <img src={LikeEmpty} style={{ width: "60rem" }} />
         </div>
       ) : userLikeWines.length > 4 ? (
         <div className="mainSearchCategory">
