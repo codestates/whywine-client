@@ -27,6 +27,7 @@ interface Props {
   ModalOpen: boolean;
   ModalEl: any;
   image: any;
+  overlapUser: boolean;
   randomWine: {
     name: string;
     id: number;
@@ -68,6 +69,7 @@ function WineModal({
   handleComments,
   isUserInfo,
   ModalOpen,
+  overlapUser,
 }: Props) {
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
@@ -126,43 +128,47 @@ function WineModal({
 
   const handleSubmitClick = async () => {
     // * comment 상태 초기화
-    await axios
-      .post(
-        `${server}comment`,
-        {
-          rating: comment.rating,
-          wineId: randomWine.id,
-          text: comment.text,
-        },
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      )
-      .then((data) => {
-        handleComments();
-      })
-      .catch((err) => {
-        switch (err.response.data.message) {
-          case "rating is empty":
-            return alert("평점을 입력해주세요");
-          case "text is empty":
-            return alert("리뷰가 비어있습니다");
-        }
-      });
+    if (!overlapUser) {
+      await axios
+        .post(
+          `${server}comment`,
+          {
+            rating: comment.rating,
+            wineId: randomWine.id,
+            text: comment.text,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        )
+        .then((data) => {
+          handleComments();
+        })
+        .catch((err) => {
+          switch (err.response.data.message) {
+            case "rating is empty":
+              return alert("평점을 입력해주세요");
+            case "text is empty":
+              return alert("리뷰가 비어있습니다");
+          }
+        });
 
-    if (comment.text !== "") {
-      setComment({
-        text: "",
-        user: `${userName}`,
-        rating: 0,
-      });
-    } else if (comment.text === "") {
-      setComment({
-        text: "",
-        user: `${userName}`,
-        rating: 0,
-      });
+      if (comment.text !== "") {
+        setComment({
+          text: "",
+          user: `${userName}`,
+          rating: 0,
+        });
+      } else if (comment.text === "") {
+        setComment({
+          text: "",
+          user: `${userName}`,
+          rating: 0,
+        });
+      }
+    } else if (overlapUser) {
+      return alert("이미 작성된 댓글이 있습니다.");
     }
   };
   // * 댓글 작성버튼을 누르면 랜딩시켜줄 comments에 작성된 comment가 들어감
@@ -179,6 +185,7 @@ function WineModal({
       // setModalUserInfo(isUserInfo);
       setCommentList(landingCommentList);
     }
+    console.log(landingCommentList);
   });
 
   useEffect(() => {}, [ModalOpen]);

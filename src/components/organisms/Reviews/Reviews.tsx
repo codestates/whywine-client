@@ -115,7 +115,11 @@ function Reviews({
   }, []);
   // useEffect(() => {}, [isUpdate]);
   const HandlingUpdate = (e?: any) => {
-    setIsUpdate(!isUpdate);
+    if (isUpdate) {
+      setIsUpdate(false);
+    } else if (!isUpdate) {
+      setIsUpdate(true);
+    }
   };
 
   return (
@@ -123,10 +127,10 @@ function Reviews({
       <div className="reviewContent">
         <div>
           <div className="reviewWriter">작성자: {user.nickname}</div>
-          {updatedAt !== "" ? (
-            <div className="review_date">{createdAt?.slice(0, 10)}</div>
-          ) : (
+          {updatedAt !== createdAt ? (
             <div className="review_date">수정됨: {updatedAt?.slice(0, 10)}</div>
+          ) : (
+            <div className="review_date">{createdAt?.slice(0, 10)}</div>
           )}
         </div>
 
@@ -135,7 +139,7 @@ function Reviews({
             <>
               {isUpdate ? (
                 <>
-                  <div onClick={(e) => HandlingUpdate(e)}>취소</div>
+                  <div onClick={() => HandlingUpdate()}>취소</div>
                   <div onClick={() => handleDeleteRewiew()}>삭제하기</div>
                 </>
               ) : (
@@ -150,10 +154,10 @@ function Reviews({
         </div>
       </div>
       {isUpdate ? (
-        <input
+        <textarea
           className="wineReviewUpdate"
           onChange={(e) => handleTextArea(e)}
-        ></input>
+        ></textarea>
       ) : (
         <div className="wineReview">{commentText}</div>
       )}

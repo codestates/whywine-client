@@ -12,6 +12,7 @@ import Image from "../../atoms/Imgs/Image";
 import wineSample from "../../../img/wine_sample.png";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { userInfo } from "os";
 
 require("dotenv").config();
 
@@ -49,8 +50,8 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
-  const history = useHistory();
   const [commentList, setCommentList] = useState<any[]>([]);
+  const [overlapUser, setOverlapUser] = useState(false);
   const [isUserInfo, setIsUserInfo] = useState<UserInfoPrpos>({
     id: 0,
     email: "",
@@ -62,6 +63,7 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
     tags: [],
     wines: [],
   });
+
   // 확인 확인
   if (randomWine) {
     name = randomWine.name;
@@ -82,7 +84,16 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
           withCredentials: true,
         })
         .then((data) => {
-          return setCommentList(data.data.data.comments);
+          setCommentList(data.data.data.comments);
+          if (data.data.data.comments) {
+            for (let i = 0; i < data.data.data.comments.length; i++) {
+              if (
+                isUserInfo.nickname === data.data.data.comments[i].user.nickname
+              ) {
+                setOverlapUser(true);
+              }
+            }
+          }
         })
         .catch((err) => console.dir(err));
     }
@@ -138,6 +149,7 @@ const MainWineCard = ({ randomWine, handleLoading }: WineData) => {
       {randomWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            overlapUser={overlapUser}
             closeModal={closeModal}
             ModalOpen={isOpen}
             handleComments={landingHandleComments}
