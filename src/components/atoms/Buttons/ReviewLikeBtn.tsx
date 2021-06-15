@@ -22,7 +22,7 @@ const ReviewLikeBtn = ({
     await axios
       .post(
         `${server}comment/good`,
-        { data: { commentId: commentId } },
+        { commentId: commentId },
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
