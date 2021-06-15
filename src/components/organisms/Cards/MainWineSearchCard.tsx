@@ -100,6 +100,7 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
 
   const handleIsClicked = () => {
     setIsOpen(true);
+    landingHandleComments();
   };
 
   const handleClickOutside = (e: any) => {

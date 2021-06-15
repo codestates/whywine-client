@@ -109,6 +109,7 @@ const LikeCard = ({ userLikeWines }: WineData) => {
   const handleIsClicked = () => {
     setIsOpen(true);
     setIsClicked(true);
+    landingHandleComments();
   };
 
   const handleClickOutside = (e: any) => {
