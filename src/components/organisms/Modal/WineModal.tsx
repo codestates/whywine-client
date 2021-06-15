@@ -127,6 +127,13 @@ function WineModal({
     });
   };
   // * TextArea 값 상태
+  useEffect(() => {
+    setComment({
+      text: comment.text,
+      user: `${userName}`,
+      rating: rating,
+    });
+  }, [rating]);
 
   const handleSubmitClick = async () => {
     // * comment 상태 초기화
@@ -187,7 +194,6 @@ function WineModal({
       // setModalUserInfo(isUserInfo);
       setCommentList(landingCommentList);
     }
-    console.log(landingCommentList);
   });
 
   useEffect(() => {}, [ModalOpen]);
