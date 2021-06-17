@@ -15,6 +15,7 @@ type Comment = {
 };
 
 interface ReviewsProps {
+  setOverlapUser: React.Dispatch<React.SetStateAction<boolean>>;
   commentText: string;
   commentRating: number;
   key: number;
@@ -53,6 +54,7 @@ function Reviews({
   user,
   handleComments,
   isUserInfo,
+  setOverlapUser,
 }: ReviewsProps) {
   const [deleteReview, setDeleteReview] = useState(false);
   const [allowedUser, setAllowedUser] = useState(false);
@@ -92,6 +94,7 @@ function Reviews({
       user: user.nickname,
     });
   };
+
   // * 댓글 삭제 함수
   const handleDeleteRewiew = async () => {
     setDeleteReview(true);
@@ -102,6 +105,7 @@ function Reviews({
         withCredentials: true,
       })
       .then((data) => {
+        setOverlapUser(false);
         return handleComments();
       })
       // * 댓글 삭제 후 handleComments 함수 실행으로 commentsList 상태 변경해 재랜딩
@@ -115,7 +119,11 @@ function Reviews({
   }, []);
   // useEffect(() => {}, [isUpdate]);
   const HandlingUpdate = (e?: any) => {
-    setIsUpdate(!isUpdate);
+    if (isUpdate) {
+      setIsUpdate(false);
+    } else if (!isUpdate) {
+      setIsUpdate(true);
+    }
   };
 
   return (
@@ -123,10 +131,10 @@ function Reviews({
       <div className="reviewContent">
         <div>
           <div className="reviewWriter">작성자: {user.nickname}</div>
-          {updatedAt !== "" ? (
-            <div className="review_date">{createdAt?.slice(0, 10)}</div>
-          ) : (
+          {updatedAt !== createdAt ? (
             <div className="review_date">수정됨: {updatedAt?.slice(0, 10)}</div>
+          ) : (
+            <div className="review_date">{createdAt?.slice(0, 10)}</div>
           )}
         </div>
 
@@ -135,7 +143,7 @@ function Reviews({
             <>
               {isUpdate ? (
                 <>
-                  <div onClick={(e) => HandlingUpdate(e)}>취소</div>
+                  <div onClick={() => HandlingUpdate()}>취소</div>
                   <div onClick={() => handleDeleteRewiew()}>삭제하기</div>
                 </>
               ) : (
@@ -150,10 +158,10 @@ function Reviews({
         </div>
       </div>
       {isUpdate ? (
-        <input
+        <textarea
           className="wineReviewUpdate"
           onChange={(e) => handleTextArea(e)}
-        ></input>
+        ></textarea>
       ) : (
         <div className="wineReview">{commentText}</div>
       )}

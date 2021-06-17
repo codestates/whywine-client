@@ -43,6 +43,7 @@ const MainSubWineCard = ({ subWine }: WineData) => {
   // const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
   const [commentList, setCommentList] = useState<any[]>([]);
+  const [overlapUser, setOverlapUser] = useState(false);
   const [isUserInfo, setIsUserInfo] = useState<UserInfoPrpos>({
     id: 0,
     email: "",
@@ -75,7 +76,16 @@ const MainSubWineCard = ({ subWine }: WineData) => {
           withCredentials: true,
         })
         .then((data) => {
-          return setCommentList(data.data.data.comments);
+          setCommentList(data.data.data.comments);
+          if (data.data.data.comments) {
+            for (let i = 0; i < data.data.data.comments.length; i++) {
+              if (
+                isUserInfo.nickname === data.data.data.comments[i].user.nickname
+              ) {
+                setOverlapUser(true);
+              }
+            }
+          }
         })
         .catch((err) => console.dir(err));
     }
@@ -125,6 +135,8 @@ const MainSubWineCard = ({ subWine }: WineData) => {
       {subWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            setOverlapUser={setOverlapUser}
+            overlapUser={overlapUser}
             closeModal={closeModal}
             ModalOpen={isOpen}
             handleComments={() => landingHandleComments()}

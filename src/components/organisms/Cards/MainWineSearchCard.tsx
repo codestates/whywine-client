@@ -41,6 +41,7 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
   const [isUpload, setIsUpload] = useState(false);
   const ModalEl: any = useRef();
   const [commentList, setCommentList] = useState<any[]>([]);
+  const [overlapUser, setOverlapUser] = useState(false);
   const [isUserInfo, setIsUserInfo] = useState<UserInfoPrpos>({
     id: 0,
     email: "",
@@ -61,7 +62,16 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
           withCredentials: true,
         })
         .then((data) => {
-          return setCommentList(data.data.data.comments);
+          setCommentList(data.data.data.comments);
+          if (data.data.data.comments) {
+            for (let i = 0; i < data.data.data.comments.length; i++) {
+              if (
+                isUserInfo.nickname === data.data.data.comments[i].user.nickname
+              ) {
+                setOverlapUser(true);
+              }
+            }
+          }
         })
         .catch((err) => console.dir(err));
     }
@@ -100,6 +110,7 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
 
   const handleIsClicked = () => {
     setIsOpen(true);
+    landingHandleComments();
   };
 
   const handleClickOutside = (e: any) => {
@@ -131,6 +142,8 @@ const MainWineSearchCard = ({ searchWine }: wineData) => {
       {searchWine === undefined ? null : (
         <div className={isOpen ? "openWineModal modal" : "modal"}>
           <WineModal
+            setOverlapUser={setOverlapUser}
+            overlapUser={overlapUser}
             closeModal={closeModal}
             ModalOpen={isOpen}
             handleComments={landingHandleComments}
