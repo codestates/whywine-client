@@ -10,7 +10,7 @@ function SecondPage() {
   const animatedItem3 = UseScrollClipPath("right", 2, 1);
 
   return (
-    <div>
+    <div className="SecondPage_Div">
       <div className="SecondPage_Summery" {...animatedItem1}>
         <h1>어떤 와인을 골라야할지 고민이신가요?</h1>
         <p>간단한 취향 테스트를 통해</p>
