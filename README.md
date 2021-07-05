@@ -16,7 +16,7 @@
 와인을 위한 공간 **whywine🍷**을 지금 방문해보세요
 
 **[👉 Whywine 둘러보러 가기!](www.whywine.co.kr)**  
-[**📘 프로젝트 소개 노션 페이지**](https://www.notion.so/nittre/Cork-WhyWine-5d2db6e4d45143bb8959791ab6a6efc8)
+[**📘 프로젝트 소개 노션 페이지**](bit.ly/whywine_project)
 
 
 ## 왜 Whywine을 만들었나요?
@@ -52,4 +52,4 @@
 ## 직접 사용해보고 싶다면?
 지금 Whywine을 방문하세요!
 **[👉 Whywine 둘러보러 가기!](www.whywine.co.kr)**  
-[**📘 프로젝트 소개 노션 페이지**](https://www.notion.so/nittre/Cork-WhyWine-5d2db6e4d45143bb8959791ab6a6efc8)에서는 GIF로 서비스를 확인하실 수 있습니다. 
+[**📘 프로젝트 소개 노션 페이지**](bit.ly/whywine_project)에서는 GIF로 서비스를 확인하실 수 있습니다. 
